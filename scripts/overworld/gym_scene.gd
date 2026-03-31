@@ -81,8 +81,8 @@ func _instancier_pnj() -> void:
 		npc.initialiser_depuis_json(pnj_data)
 		if npc.has_signal("dialogue_demarre"):
 			npc.dialogue_demarre.connect(_on_dialogue_demarre)
-		if npc.has_signal("combat_dresseur"):
-			npc.combat_dresseur.connect(_on_combat_dresseur)
+		if npc.has_signal("combat_dresseur_demarre"):
+			npc.combat_dresseur_demarre.connect(_on_combat_dresseur)
 		entities.add_child(npc)
 
 func _teleporter_sur_warp(warp_id: String) -> void:
@@ -104,7 +104,7 @@ func _on_dialogue_termine() -> void:
 	if joueur:
 		joueur.set_peut_bouger(true)
 
-func _on_combat_dresseur(dresseur_id: String) -> void:
+func _on_combat_dresseur(dresseur_id: String, _equipe: Array, _recompense_npc: int, _nom: String) -> void:
 	# Vérifier si déjà battu
 	if PlayerData.dresseur_est_battu(dresseur_id):
 		return

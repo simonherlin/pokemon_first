@@ -29,6 +29,7 @@ extends Node2D
 var _type_combat: String = "sauvage"
 var _carte_retour: String = "bourg_palette"
 var _dresseur_data: Dictionary = {}
+var _params_retour: Dictionary = {}  # Paramètres supplémentaires à renvoyer à la carte
 
 # --- Battle Controller ---
 var _controller: Node = null
@@ -53,6 +54,9 @@ func recevoir_params(params: Dictionary) -> void:
 	_type_combat = params.get("type_combat", "sauvage")
 	_carte_retour = params.get("carte_retour", "bourg_palette")
 	_dresseur_data = params.get("dresseur_data", {})
+	# Conserver les paramètres supplémentaires pour les renvoyer à la carte
+	if params.get("champion_battu", false):
+		_params_retour["champion_battu"] = true
 
 	# Obtenir le Pokémon du joueur
 	var pokemon_index: int = params.get("pokemon_joueur_index", 0)
@@ -163,9 +167,9 @@ func _on_combat_termine(victoire: bool) -> void:
 		PlayerData.equipe[_controller.index_pokemon_joueur] = _controller.pokemon_joueur.to_dict()
 	# Retour à la carte
 	await get_tree().create_timer(2.0).timeout
-	SceneManager.charger_scene("res://scenes/maps/%s.tscn" % _carte_retour, {
-		"carte_id": _carte_retour
-	})
+	var retour_params := {"carte_id": _carte_retour}
+	retour_params.merge(_params_retour)
+	SceneManager.charger_scene("res://scenes/maps/%s.tscn" % _carte_retour, retour_params)
 
 func _afficher_info_pokemon() -> void:
 	if not _controller:
