@@ -15,6 +15,8 @@ var carte_data: Dictionary = {}
 @onready var dialog_box: Control = $DialogBox
 
 var joueur: CharacterBody2D = null
+var _menu_ouvert: bool = false
+var _start_menu: Node = null
 
 func _ready() -> void:
 	# Le carte_id peut être défini via recevoir_params ou depuis le nom de la scène
@@ -116,3 +118,27 @@ func _afficher_nom_carte() -> void:
 func _deviner_carte_id() -> String:
 	var nom_fichier := get_scene_file_path().get_file().get_basename()
 	return nom_fichier
+
+# --- Gestion du Start Menu ---
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("action_menu") and not _menu_ouvert:
+		_ouvrir_menu()
+
+func _ouvrir_menu() -> void:
+	if _menu_ouvert or SceneManager.est_en_transition():
+		return
+	_menu_ouvert = true
+	if joueur:
+		joueur.set_peut_bouger(false)
+	var scr = load("res://scripts/ui/start_menu.gd")
+	_start_menu = CanvasLayer.new()
+	_start_menu.set_script(scr)
+	add_child(_start_menu)
+	_start_menu.menu_ferme.connect(_on_menu_ferme)
+
+func _on_menu_ferme() -> void:
+	_menu_ouvert = false
+	_start_menu = null
+	if joueur:
+		joueur.set_peut_bouger(true)
+
