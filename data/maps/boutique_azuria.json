@@ -1,0 +1,46 @@
+{
+  "id": "boutique_azuria",
+  "nom": "Boutique Pokémon",
+  "largeur": 10,
+  "hauteur": 8,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/boutique_pokemon.ogg",
+  "connexions": [],
+  "warps": [
+    {"id": "sortie", "x": 5, "y": 7, "vers_map": "azuria_ville", "vers_warp": "boutique_entree", "type": "porte"}
+  ],
+  "pnj": [
+    {
+      "id": "vendeur_azuria",
+      "x": 5, "y": 1,
+      "sprite": "pnj_vendeur",
+      "direction": "bas",
+      "dialogue": ["Bienvenue à la Boutique Pokémon !", "Que puis-je faire pour vous ?"],
+      "mobile": false,
+      "type": "vendeur",
+      "inventaire_boutique": ["pokeball", "superball", "potion", "super_potion", "antidote", "anti_para", "reveil", "anti_brule", "corde_sortie", "repousse"]
+    }
+  ],
+  "objets_sol": [],
+  "panneaux": [],
+  "tiles_sol": [
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24]
+  ],
+  "tiles_objets": [
+    [25, 25, 25, 25, 25, 25, 25, 25, 25, 25],
+    [25, 28, 26, 26, 26, 26, 26, 28, -1, 25],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, 28, -1, -1, -1, -1, -1, 28, -1, -1],
+    [-1, 28, -1, -1, -1, -1, -1, 28, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [25, -1, -1, -1, -1, -1, -1, -1, -1, 25]
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "id": "centre_pokemon_azuria",
+  "nom": "Centre Pokémon",
+  "largeur": 10,
+  "hauteur": 8,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/centre_pokemon.ogg",
+  "connexions": [],
+  "warps": [
+    {"id": "sortie", "x": 5, "y": 7, "vers_map": "azuria_ville", "vers_warp": "centre_pokemon_entree", "type": "porte"}
+  ],
+  "pnj": [
+    {
+      "id": "infirmiere_azuria",
+      "x": 5, "y": 1,
+      "sprite": "pnj_infirmiere",
+      "direction": "bas",
+      "dialogue": ["Bienvenue au Centre Pokémon !", "Je vais soigner vos Pokémon.", "...Vos Pokémon sont maintenant en pleine forme !", "Revenez quand vous voulez !"],
+      "mobile": false,
+      "type": "infirmiere"
+    },
+    {
+      "id": "pnj_centre_azuria_01",
+      "x": 2, "y": 4,
+      "sprite": "pnj_femme",
+      "direction": "droite",
+      "dialogue": ["ONDINE est une championne redoutable.", "Ses Pokémon Eau sont puissants !"],
+      "mobile": false
+    },
+    {
+      "id": "pnj_centre_azuria_02",
+      "x": 8, "y": 5,
+      "sprite": "pnj_homme",
+      "direction": "gauche",
+      "dialogue": ["Tu devrais aller voir BILL au nord.", "Il habite au bout de la Route 25.", "C'est un génie des Pokémon !"],
+      "mobile": false
+    }
+  ],
+  "objets_sol": [],
+  "panneaux": [],
+  "tiles_sol": [
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24]
+  ],
+  "tiles_objets": [
+    [25, 25, 25, 25, 25, 25, 25, 25, 25, 25],
+    [25, 27, 26, 26, 26, 26, 26, 27, -1, 25],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [25, -1, -1, -1, -1, -1, -1, -1, -1, 25]
+  ]
+}
