@@ -24,6 +24,7 @@ var flags: Dictionary = {
 # --- État de jeu ---
 var partie_en_cours: bool = false
 var temps_jeu_secondes: int = 0
+var _temps_accum: float = 0.0
 var nom_rival: String = "Régis"
 
 # --- Signal ---
@@ -35,7 +36,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if partie_en_cours:
-		temps_jeu_secondes += int(delta)
+		_temps_accum += delta
+		temps_jeu_secondes = int(_temps_accum)
 
 # Accorder un badge (0-7)
 func donner_badge(index: int) -> void:

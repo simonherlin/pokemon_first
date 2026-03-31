@@ -8,6 +8,7 @@ signal ecran_ferme()
 var items_en_vente: Array = []  # IDs des items disponibles
 var _items_data: Array = []     # Données complètes [{id, nom, prix, desc}]
 var _index: int = 0
+var _scroll_offset: int = 0  # Décalage de défilement pour la liste
 var _labels: Array[Label] = []
 var _label_argent: Label = null
 var _label_desc: Label = null
@@ -112,20 +113,30 @@ func _process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("action_haut") and _items_data.size() > 0:
 		_index = (_index - 1 + _items_data.size()) % _items_data.size()
+		_maj_scroll()
 		_maj_affichage()
 	elif Input.is_action_just_pressed("action_bas") and _items_data.size() > 0:
 		_index = (_index + 1) % _items_data.size()
+		_maj_scroll()
 		_maj_affichage()
 	elif Input.is_action_just_pressed("action_confirmer") and _items_data.size() > 0:
 		_demarrer_achat()
 	elif Input.is_action_just_pressed("action_annuler") or Input.is_action_just_pressed("action_menu"):
 		_fermer()
 
+# Ajuster le scroll_offset pour que _index reste visible
+func _maj_scroll() -> void:
+	if _index < _scroll_offset:
+		_scroll_offset = _index
+	elif _index >= _scroll_offset + MAX_VISIBLE:
+		_scroll_offset = _index - MAX_VISIBLE + 1
+
 func _maj_affichage() -> void:
 	for i in range(MAX_VISIBLE):
-		if i < _items_data.size():
-			var item: Dictionary = _items_data[i]
-			var prefix := "▶ " if i == _index else "  "
+		var data_idx := _scroll_offset + i
+		if data_idx < _items_data.size():
+			var item: Dictionary = _items_data[data_idx]
+			var prefix := "▶ " if data_idx == _index else "  "
 			_labels[i].text = prefix + "%s   %d ₽" % [item["nom"], item["prix"]]
 			_labels[i].visible = true
 		else:

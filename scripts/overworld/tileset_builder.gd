@@ -99,12 +99,13 @@ func _construire_tileset() -> void:
 			var tile_index := row * COLONNES_ATLAS + col
 			if tile_index in TILES_COLLISION:
 				var tile_data := atlas_source.get_tile_data(atlas_coords, 0)
-				# Polygone de collision = rectangle complet du tile
+				# Polygone de collision centré (coordonnées relatives au centre du tile)
+				var half := TAILLE_TILE / 2.0
 				var polygon := PackedVector2Array([
-					Vector2(0, 0),
-					Vector2(TAILLE_TILE, 0),
-					Vector2(TAILLE_TILE, TAILLE_TILE),
-					Vector2(0, TAILLE_TILE)
+					Vector2(-half, -half),
+					Vector2(half, -half),
+					Vector2(half, half),
+					Vector2(-half, half)
 				])
 				tile_data.add_collision_polygon(0)
 				tile_data.set_collision_polygon_points(0, 0, polygon)

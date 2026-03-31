@@ -25,6 +25,10 @@ var _tween: Tween = null
 var _cache_audio: Dictionary = {}
 
 func _ready() -> void:
+	# Créer les bus audio s'ils n'existent pas
+	_assurer_bus("Musique")
+	_assurer_bus("SFX")
+
 	_joueur_musique_a = AudioStreamPlayer.new()
 	_joueur_musique_a.bus = "Musique"
 	add_child(_joueur_musique_a)
@@ -38,6 +42,12 @@ func _ready() -> void:
 	add_child(_joueur_sfx)
 
 	_joueur_actif = _joueur_musique_a
+
+func _assurer_bus(nom_bus: String) -> void:
+	if AudioServer.get_bus_index(nom_bus) == -1:
+		var idx := AudioServer.bus_count
+		AudioServer.add_bus(idx)
+		AudioServer.set_bus_name(idx, nom_bus)
 
 # Jouer une musique (avec crossfade si une autre joue déjà)
 func jouer_musique(chemin: String, boucle: bool = true) -> void:

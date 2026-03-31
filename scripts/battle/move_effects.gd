@@ -37,14 +37,14 @@ func appliquer_effet(attaquant: Pokemon, defenseur: Pokemon, attaque: Dictionary
 			var etapes: int = effet.get("etapes", -1)
 			var change := defenseur.modifier_stat(stat, etapes)
 			resultat["stat_modifiee"] = stat
-			resultat["message"] = _message_modif_stat(defenseur, stat, change)
+			resultat["message"] = _message_modif_stat(defenseur, stat, change, etapes)
 
 		"modifier_stat_soi":
 			var stat: String = effet.get("stat", "")
 			var etapes: int = effet.get("etapes", 1)
 			var change := attaquant.modifier_stat(stat, etapes)
 			resultat["stat_modifiee"] = stat
-			resultat["message"] = _message_modif_stat(attaquant, stat, change)
+			resultat["message"] = _message_modif_stat(attaquant, stat, change, etapes)
 
 		"soin":
 			var pourcentage: float = effet.get("pourcentage", 0.5)
@@ -104,15 +104,19 @@ func _message_immunite(statut: String) -> String:
 	return ""
 
 # Message de modification de stat
-func _message_modif_stat(pokemon: Pokemon, stat: String, changement: int) -> String:
-	if changement == 0:
-		return "La %s de %s ne peut pas baisser davantage !" % [stat, pokemon.surnom] if changement == 0 else ""
+# etapes_visees indique la direction souhaitée (>0 hausse, <0 baisse)
+func _message_modif_stat(pokemon: Pokemon, stat: String, changement: int, etapes_visees: int = 0) -> String:
 	var noms_stats := {
 		"attaque": "l'Attaque", "defense": "la Défense",
 		"special": "le Spécial", "vitesse": "la Vitesse",
 		"precision": "la Précision", "esquive": "l'Esquive"
 	}
 	var nom_stat: String = noms_stats.get(stat, stat)
+	if changement == 0:
+		if etapes_visees > 0:
+			return "%s de %s ne peut plus monter !" % [nom_stat, pokemon.surnom]
+		else:
+			return "%s de %s ne peut plus baisser !" % [nom_stat, pokemon.surnom]
 	if changement > 0:
 		match changement:
 			1: return "%s de %s monte !" % [nom_stat, pokemon.surnom]

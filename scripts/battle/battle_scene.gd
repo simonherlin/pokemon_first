@@ -68,9 +68,9 @@ func recevoir_params(params: Dictionary) -> void:
 	if _type_combat == "sauvage":
 		var espece_id: String = params.get("espece_id", "019")
 		var niveau: int = params.get("niveau", 5)
-		_controller.demarrer_sauvage(pokemon_joueur, espece_id, niveau)
+		_controller.demarrer_sauvage(pokemon_joueur, espece_id, niveau, pokemon_index)
 	else:
-		_controller.demarrer_dresseur(pokemon_joueur, _dresseur_data)
+		_controller.demarrer_dresseur(pokemon_joueur, _dresseur_data, pokemon_index)
 	
 	# Charger les sprites des Pokémon
 	_charger_sprites_pokemon()

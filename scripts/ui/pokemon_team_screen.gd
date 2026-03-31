@@ -107,7 +107,7 @@ func _creer_slot(index: int, pokemon_data: Dictionary) -> Dictionary:
 
 	# Barre PV
 	var pv_act: int = pokemon_data.get("pv_actuels", 0)
-	var pv_max: int = pokemon_data.get("pv_max", 1)
+	var pv_max: int = pokemon_data.get("stats", {}).get("pv", maxi(pv_act, 1))
 	var barre := ProgressBar.new()
 	barre.min_value = 0
 	barre.max_value = pv_max

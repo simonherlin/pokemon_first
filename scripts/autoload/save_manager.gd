@@ -122,11 +122,16 @@ func _collecter_donnees() -> Dictionary:
 func _appliquer_donnees(data: Dictionary) -> void:
 	# GameManager
 	if "badges" in data:
-		GameManager.badges = data["badges"]
+		var badges_raw: Array = data["badges"]
+		var badges_typed: Array[bool] = []
+		for b in badges_raw:
+			badges_typed.append(bool(b))
+		GameManager.badges = badges_typed
 	if "flags" in data:
 		GameManager.flags = data["flags"]
 	if "temps_jeu_secondes" in data:
-		GameManager.temps_jeu_secondes = data["temps_jeu_secondes"]
+		GameManager.temps_jeu_secondes = int(data["temps_jeu_secondes"])
+		GameManager._temps_accum = float(GameManager.temps_jeu_secondes)
 	if "nom_rival" in data:
 		GameManager.nom_rival = data["nom_rival"]
 	GameManager.partie_en_cours = true
@@ -135,15 +140,15 @@ func _appliquer_donnees(data: Dictionary) -> void:
 	if "nom_joueur" in data:
 		PlayerData.nom_joueur = data["nom_joueur"]
 	if "argent" in data:
-		PlayerData.argent = data["argent"]
+		PlayerData.argent = int(data["argent"])
 	if "id_joueur" in data:
-		PlayerData.id_joueur = data["id_joueur"]
+		PlayerData.id_joueur = int(data["id_joueur"])
 	if "carte_actuelle" in data:
 		PlayerData.carte_actuelle = data["carte_actuelle"]
 	if "position_x" in data:
-		PlayerData.position_x = data["position_x"]
+		PlayerData.position_x = int(data["position_x"])
 	if "position_y" in data:
-		PlayerData.position_y = data["position_y"]
+		PlayerData.position_y = int(data["position_y"])
 	if "direction" in data:
 		PlayerData.direction = data["direction"]
 	if "equipe" in data:
@@ -151,10 +156,22 @@ func _appliquer_donnees(data: Dictionary) -> void:
 	if "inventaire" in data:
 		PlayerData.inventaire = data["inventaire"]
 	if "pokedex_vu" in data:
-		PlayerData.pokedex_vu = data["pokedex_vu"]
+		var vu_typed: Array[String] = []
+		for s in data["pokedex_vu"]:
+			vu_typed.append(str(s))
+		PlayerData.pokedex_vu = vu_typed
 	if "pokedex_capture" in data:
-		PlayerData.pokedex_capture = data["pokedex_capture"]
+		var cap_typed: Array[String] = []
+		for s in data["pokedex_capture"]:
+			cap_typed.append(str(s))
+		PlayerData.pokedex_capture = cap_typed
 	if "dresseurs_battus" in data:
-		PlayerData.dresseurs_battus = data["dresseurs_battus"]
+		var bat_typed: Array[String] = []
+		for s in data["dresseurs_battus"]:
+			bat_typed.append(str(s))
+		PlayerData.dresseurs_battus = bat_typed
 	if "objets_ramasses" in data:
-		PlayerData.objets_ramasses = data["objets_ramasses"]
+		var obj_typed: Array[String] = []
+		for s in data["objets_ramasses"]:
+			obj_typed.append(str(s))
+		PlayerData.objets_ramasses = obj_typed

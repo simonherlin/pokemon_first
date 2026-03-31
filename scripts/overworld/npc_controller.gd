@@ -96,8 +96,8 @@ func _interagir_infirmiere(joueur: Node) -> void:
 func _soigner_equipe() -> void:
 	for i in range(PlayerData.equipe.size()):
 		var p: Dictionary = PlayerData.equipe[i]
-		# Restaurer les PV au max
-		p["pv_actuels"] = p.get("pv_max", p.get("pv_actuels", 1))
+		# Restaurer les PV au max (pv_max est dans stats.pv)
+		p["pv_actuels"] = p.get("stats", {}).get("pv", p.get("pv_actuels", 1))
 		# Supprimer le statut
 		p["statut"] = ""
 		# Restaurer les PP de toutes les attaques

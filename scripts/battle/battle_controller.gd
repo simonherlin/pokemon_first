@@ -43,6 +43,7 @@ var pokemon_ennemi: Pokemon = null
 var dresseur_ennemi: Dictionary = {}
 var equipe_ennemi: Array = []
 var index_pokemon_ennemi: int = 0
+var index_pokemon_joueur: int = 0
 
 # Index d'attaque choisis ce tour
 var attaque_joueur_index: int = -1
@@ -73,18 +74,20 @@ signal evolution_proposee(pokemon: Pokemon, vers_id: String)
 # ----------------------------------------------------------------
 # Démarrer un combat sauvage
 # ----------------------------------------------------------------
-func demarrer_sauvage(pokemon_du_joueur: Pokemon, espece_id: String, niveau: int) -> void:
+func demarrer_sauvage(pokemon_du_joueur: Pokemon, espece_id: String, niveau: int, idx_joueur: int = 0) -> void:
 	type_combat = TypeCombat.SAUVAGE
 	pokemon_joueur = pokemon_du_joueur
+	index_pokemon_joueur = idx_joueur
 	pokemon_ennemi = SpeciesData.creer_sauvage(espece_id, niveau)
 	tour = 0
 	etat_actuel = Etat.INTRO
 	_changer_etat(Etat.INTRO)
 
 # Démarrer un combat contre un dresseur
-func demarrer_dresseur(pokemon_du_joueur: Pokemon, donnees_dresseur: Dictionary) -> void:
+func demarrer_dresseur(pokemon_du_joueur: Pokemon, donnees_dresseur: Dictionary, idx_joueur: int = 0) -> void:
 	type_combat = TypeCombat.DRESSEUR
 	dresseur_ennemi = donnees_dresseur
+	index_pokemon_joueur = idx_joueur
 	equipe_ennemi = []
 	for p_data in donnees_dresseur.get("equipe", []):
 		var p := SpeciesData.creer_pokemon(p_data.get("espece_id", "001"), p_data.get("niveau", 5))
@@ -136,13 +139,14 @@ func _phase_intro() -> void:
 		emit_signal("message_affiche", "%s veut se battre !" % nom_dresseur)
 	emit_signal("pv_mis_a_jour", false, pokemon_ennemi.pv_actuels, pokemon_ennemi.pv_max)
 	emit_signal("pv_mis_a_jour", true, pokemon_joueur.pv_actuels, pokemon_joueur.pv_max)
+	await get_tree().create_timer(1.5).timeout
 	_changer_etat(Etat.CHOIX_ACTION)
 
 # ----------------------------------------------------------------
 # Appel depuis l'UI : le joueur a choisi une action
 # ----------------------------------------------------------------
 func joueur_choisit_attaque(index: int) -> void:
-	if etat_actuel != Etat.CHOIX_ATTAQUE:
+	if etat_actuel != Etat.CHOIX_ACTION and etat_actuel != Etat.CHOIX_ATTAQUE:
 		return
 	if index < 0 or index >= pokemon_joueur.attaques.size():
 		return
@@ -255,8 +259,8 @@ func _executer_tour() -> void:
 		if not msg_statut.is_empty():
 			emit_signal("message_affiche", msg_statut)
 			await get_tree().create_timer(1.0).timeout
-			# Si paralysie/gel bloque l'action → passer seulement l'attaque joueur
-			if pokemon_joueur.statut in ["gel"] or (pokemon_joueur.statut == "paralysie" and "ne peut pas" in msg_statut):
+			# Si statut bloquant → passer l'attaque joueur
+			if pokemon_joueur.statut in ["gel", "sommeil"] or (pokemon_joueur.statut == "paralysie" and "ne peut pas" in msg_statut):
 				pass
 			else:
 				await _pokemon_attaque(pokemon_joueur, pokemon_ennemi, attaque_joueur_index, true)
@@ -272,6 +276,10 @@ func _executer_tour() -> void:
 		if not msg_statut_ennemi.is_empty():
 			emit_signal("message_affiche", msg_statut_ennemi)
 			await get_tree().create_timer(1.0).timeout
+			# Statut bloquant ennemi → pas d'attaque
+			if not (pokemon_ennemi.statut in ["gel", "sommeil"] or (pokemon_ennemi.statut == "paralysie" and "ne peut pas" in msg_statut_ennemi)):
+				if attaque_ennemi_index >= 0:
+					await _pokemon_attaque(pokemon_ennemi, pokemon_joueur, attaque_ennemi_index, false)
 		else:
 			if attaque_ennemi_index >= 0:
 				await _pokemon_attaque(pokemon_ennemi, pokemon_joueur, attaque_ennemi_index, false)
@@ -281,6 +289,9 @@ func _executer_tour() -> void:
 		if not msg_statut_ennemi.is_empty():
 			emit_signal("message_affiche", msg_statut_ennemi)
 			await get_tree().create_timer(1.0).timeout
+			if not (pokemon_ennemi.statut in ["gel", "sommeil"] or (pokemon_ennemi.statut == "paralysie" and "ne peut pas" in msg_statut_ennemi)):
+				if attaque_ennemi_index >= 0:
+					await _pokemon_attaque(pokemon_ennemi, pokemon_joueur, attaque_ennemi_index, false)
 		else:
 			if attaque_ennemi_index >= 0:
 				await _pokemon_attaque(pokemon_ennemi, pokemon_joueur, attaque_ennemi_index, false)
@@ -293,6 +304,8 @@ func _executer_tour() -> void:
 		if not msg_statut.is_empty():
 			emit_signal("message_affiche", msg_statut)
 			await get_tree().create_timer(1.0).timeout
+			if not (pokemon_joueur.statut in ["gel", "sommeil"] or (pokemon_joueur.statut == "paralysie" and "ne peut pas" in msg_statut)):
+				await _pokemon_attaque(pokemon_joueur, pokemon_ennemi, attaque_joueur_index, true)
 		else:
 			await _pokemon_attaque(pokemon_joueur, pokemon_ennemi, attaque_joueur_index, true)
 
@@ -463,13 +476,16 @@ func _distribuer_exp() -> void:
 # Trouver un Pokémon vivant dans l'équipe du joueur
 func _trouver_remplacant_joueur() -> int:
 	for i in range(PlayerData.equipe.size()):
+		if i == index_pokemon_joueur:
+			continue
 		var p_data := PlayerData.equipe[i]
-		if p_data.get("pv_actuels", 0) > 0 and p_data.get("espece_id", "") != pokemon_joueur.espece_id:
+		if p_data.get("pv_actuels", 0) > 0:
 			return i
 	return -1
 
 # Appeler depuis l'UI après la sélection du Pokémon remplaçant
 func joueur_change_pokemon(index_equipe: int) -> void:
+	index_pokemon_joueur = index_equipe
 	var p_data := PlayerData.equipe[index_equipe]
 	pokemon_joueur = Pokemon.from_dict(p_data)
 	emit_signal("pokemon_change", true)
