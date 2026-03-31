@@ -7,13 +7,22 @@
     "dialogue_defaite": "Quoi ?! Impossible !",
     "recompense": 175,
     "equipe_bulbizarre": [
-      {"espece_id": "004", "niveau": 5}
+      {
+        "espece_id": "004",
+        "niveau": 5
+      }
     ],
     "equipe_salameche": [
-      {"espece_id": "007", "niveau": 5}
+      {
+        "espece_id": "007",
+        "niveau": 5
+      }
     ],
     "equipe_carapuce": [
-      {"espece_id": "001", "niveau": 5}
+      {
+        "espece_id": "001",
+        "niveau": 5
+      }
     ]
   },
   "insectomane_foret_01": {
@@ -24,8 +33,14 @@
     "dialogue_defaite": "Oh non, mes insectes...",
     "recompense": 60,
     "equipe": [
-      {"espece_id": "010", "niveau": 6},
-      {"espece_id": "010", "niveau": 6}
+      {
+        "espece_id": "010",
+        "niveau": 6
+      },
+      {
+        "espece_id": "010",
+        "niveau": 6
+      }
     ]
   },
   "insectomane_foret_02": {
@@ -36,8 +51,14 @@
     "dialogue_defaite": "Je m'améliorerai !",
     "recompense": 70,
     "equipe": [
-      {"espece_id": "013", "niveau": 7},
-      {"espece_id": "010", "niveau": 7}
+      {
+        "espece_id": "013",
+        "niveau": 7
+      },
+      {
+        "espece_id": "010",
+        "niveau": 7
+      }
     ]
   },
   "insectomane_foret_03": {
@@ -48,9 +69,18 @@
     "dialogue_defaite": "Tu es costaud...",
     "recompense": 80,
     "equipe": [
-      {"espece_id": "011", "niveau": 7},
-      {"espece_id": "014", "niveau": 7},
-      {"espece_id": "011", "niveau": 7}
+      {
+        "espece_id": "011",
+        "niveau": 7
+      },
+      {
+        "espece_id": "014",
+        "niveau": 7
+      },
+      {
+        "espece_id": "011",
+        "niveau": 7
+      }
     ]
   },
   "insectomane_foret_04": {
@@ -61,8 +91,14 @@
     "dialogue_defaite": "Aïe aïe aïe...",
     "recompense": 90,
     "equipe": [
-      {"espece_id": "013", "niveau": 9},
-      {"espece_id": "013", "niveau": 9}
+      {
+        "espece_id": "013",
+        "niveau": 9
+      },
+      {
+        "espece_id": "013",
+        "niveau": 9
+      }
     ]
   },
   "gamin_route2_01": {
@@ -73,8 +109,14 @@
     "dialogue_defaite": "Mes shorts ne m'ont pas protégé...",
     "recompense": 80,
     "equipe": [
-      {"espece_id": "019", "niveau": 6},
-      {"espece_id": "016", "niveau": 8}
+      {
+        "espece_id": "019",
+        "niveau": 6
+      },
+      {
+        "espece_id": "016",
+        "niveau": 8
+      }
     ]
   },
   "apprenti_arene_01": {
@@ -85,8 +127,14 @@
     "dialogue_defaite": "Pierre est bien plus fort que moi...",
     "recompense": 140,
     "equipe": [
-      {"espece_id": "074", "niveau": 10},
-      {"espece_id": "027", "niveau": 10}
+      {
+        "espece_id": "074",
+        "niveau": 10
+      },
+      {
+        "espece_id": "027",
+        "niveau": 10
+      }
     ]
   },
   "champion_pierre": {
@@ -97,8 +145,14 @@
     "dialogue_defaite": "Incroyable ! Ta stratégie m'a impressionné.\nTu mérites le Badge Roche !",
     "recompense": 1386,
     "equipe": [
-      {"espece_id": "074", "niveau": 12},
-      {"espece_id": "095", "niveau": 14}
+      {
+        "espece_id": "074",
+        "niveau": 12
+      },
+      {
+        "espece_id": "095",
+        "niveau": 14
+      }
     ],
     "badge": 0,
     "ct_recompense": "ct_tomberoche"
@@ -111,8 +165,14 @@
     "dialogue_defaite": "Tu t'en sors bien...",
     "recompense": 280,
     "equipe": [
-      {"espece_id": "074", "niveau": 10},
-      {"espece_id": "074", "niveau": 10}
+      {
+        "espece_id": "074",
+        "niveau": 10
+      },
+      {
+        "espece_id": "074",
+        "niveau": 10
+      }
     ]
   },
   "montagnard_selenite_02": {
@@ -123,8 +183,14 @@
     "dialogue_defaite": "Tu es costaud, toi.",
     "recompense": 350,
     "equipe": [
-      {"espece_id": "074", "niveau": 11},
-      {"espece_id": "095", "niveau": 11}
+      {
+        "espece_id": "074",
+        "niveau": 11
+      },
+      {
+        "espece_id": "095",
+        "niveau": 11
+      }
     ]
   },
   "rocket_selenite_01": {
@@ -135,8 +201,14 @@
     "dialogue_defaite": "Argh ! Tu vas le regretter !",
     "recompense": 390,
     "equipe": [
-      {"espece_id": "019", "niveau": 11},
-      {"espece_id": "041", "niveau": 11}
+      {
+        "espece_id": "019",
+        "niveau": 11
+      },
+      {
+        "espece_id": "041",
+        "niveau": 11
+      }
     ]
   },
   "rocket_selenite_02": {
@@ -147,8 +219,14 @@
     "dialogue_defaite": "Ce n'est pas fini !",
     "recompense": 390,
     "equipe": [
-      {"espece_id": "023", "niveau": 12},
-      {"espece_id": "019", "niveau": 12}
+      {
+        "espece_id": "023",
+        "niveau": 12
+      },
+      {
+        "espece_id": "019",
+        "niveau": 12
+      }
     ]
   },
   "pedro_selenite": {
@@ -159,9 +237,18 @@
     "dialogue_defaite": "Bon... choisis un fossile.\nMais tu ne peux en prendre qu'un seul !",
     "recompense": 485,
     "equipe": [
-      {"espece_id": "074", "niveau": 12},
-      {"espece_id": "100", "niveau": 12},
-      {"espece_id": "074", "niveau": 12}
+      {
+        "espece_id": "074",
+        "niveau": 12
+      },
+      {
+        "espece_id": "100",
+        "niveau": 12
+      },
+      {
+        "espece_id": "074",
+        "niveau": 12
+      }
     ]
   },
   "gamin_route3_01": {
@@ -172,8 +259,14 @@
     "dialogue_defaite": "Ouah, t'es fort !",
     "recompense": 176,
     "equipe": [
-      {"espece_id": "021", "niveau": 11},
-      {"espece_id": "023", "niveau": 11}
+      {
+        "espece_id": "021",
+        "niveau": 11
+      },
+      {
+        "espece_id": "023",
+        "niveau": 11
+      }
     ]
   },
   "gamin_route3_02": {
@@ -184,7 +277,10 @@
     "dialogue_defaite": "C'est pas grave, je m'entraînerai !",
     "recompense": 220,
     "equipe": [
-      {"espece_id": "027", "niveau": 14}
+      {
+        "espece_id": "027",
+        "niveau": 14
+      }
     ]
   },
   "pont_pepite_01": {
@@ -195,8 +291,14 @@
     "dialogue_defaite": "Bien joué !",
     "recompense": 288,
     "equipe": [
-      {"espece_id": "010", "niveau": 14},
-      {"espece_id": "016", "niveau": 14}
+      {
+        "espece_id": "010",
+        "niveau": 14
+      },
+      {
+        "espece_id": "016",
+        "niveau": 14
+      }
     ]
   },
   "pont_pepite_02": {
@@ -207,8 +309,14 @@
     "dialogue_defaite": "Pas mal...",
     "recompense": 288,
     "equipe": [
-      {"espece_id": "019", "niveau": 15},
-      {"espece_id": "013", "niveau": 15}
+      {
+        "espece_id": "019",
+        "niveau": 15
+      },
+      {
+        "espece_id": "013",
+        "niveau": 15
+      }
     ]
   },
   "pont_pepite_03": {
@@ -219,8 +327,14 @@
     "dialogue_defaite": "Tu es vraiment doué(e) !",
     "recompense": 288,
     "equipe": [
-      {"espece_id": "029", "niveau": 15},
-      {"espece_id": "032", "niveau": 15}
+      {
+        "espece_id": "029",
+        "niveau": 15
+      },
+      {
+        "espece_id": "032",
+        "niveau": 15
+      }
     ]
   },
   "pont_pepite_04": {
@@ -231,7 +345,10 @@
     "dialogue_defaite": "OK, tu peux passer.",
     "recompense": 288,
     "equipe": [
-      {"espece_id": "066", "niveau": 15}
+      {
+        "espece_id": "066",
+        "niveau": 15
+      }
     ]
   },
   "pont_pepite_05": {
@@ -242,7 +359,10 @@
     "dialogue_defaite": "Bravo ! Tu as vaincu les 5 !",
     "recompense": 288,
     "equipe": [
-      {"espece_id": "043", "niveau": 16}
+      {
+        "espece_id": "043",
+        "niveau": 16
+      }
     ]
   },
   "rocket_pont_pepite": {
@@ -253,8 +373,14 @@
     "dialogue_defaite": "Hmph ! Tant pis pour le recrutement !",
     "recompense": 520,
     "equipe": [
-      {"espece_id": "023", "niveau": 15},
-      {"espece_id": "041", "niveau": 15}
+      {
+        "espece_id": "023",
+        "niveau": 15
+      },
+      {
+        "espece_id": "041",
+        "niveau": 15
+      }
     ]
   },
   "rival_route24_001": {
@@ -266,22 +392,58 @@
     "recompense": 1040,
     "equipe_variantes": {
       "001": [
-        {"espece_id": "016", "niveau": 17},
-        {"espece_id": "019", "niveau": 15},
-        {"espece_id": "063", "niveau": 16},
-        {"espece_id": "005", "niveau": 18}
+        {
+          "espece_id": "016",
+          "niveau": 17
+        },
+        {
+          "espece_id": "019",
+          "niveau": 15
+        },
+        {
+          "espece_id": "063",
+          "niveau": 16
+        },
+        {
+          "espece_id": "005",
+          "niveau": 18
+        }
       ],
       "004": [
-        {"espece_id": "016", "niveau": 17},
-        {"espece_id": "019", "niveau": 15},
-        {"espece_id": "063", "niveau": 16},
-        {"espece_id": "008", "niveau": 18}
+        {
+          "espece_id": "016",
+          "niveau": 17
+        },
+        {
+          "espece_id": "019",
+          "niveau": 15
+        },
+        {
+          "espece_id": "063",
+          "niveau": 16
+        },
+        {
+          "espece_id": "008",
+          "niveau": 18
+        }
       ],
       "007": [
-        {"espece_id": "016", "niveau": 17},
-        {"espece_id": "019", "niveau": 15},
-        {"espece_id": "063", "niveau": 16},
-        {"espece_id": "002", "niveau": 18}
+        {
+          "espece_id": "016",
+          "niveau": 17
+        },
+        {
+          "espece_id": "019",
+          "niveau": 15
+        },
+        {
+          "espece_id": "063",
+          "niveau": 16
+        },
+        {
+          "espece_id": "002",
+          "niveau": 18
+        }
       ]
     }
   },
@@ -293,8 +455,14 @@
     "dialogue_defaite": "Belle combinaison d'attaques !",
     "recompense": 320,
     "equipe": [
-      {"espece_id": "060", "niveau": 16},
-      {"espece_id": "046", "niveau": 16}
+      {
+        "espece_id": "060",
+        "niveau": 16
+      },
+      {
+        "espece_id": "046",
+        "niveau": 16
+      }
     ]
   },
   "randonneur_route25_01": {
@@ -305,8 +473,14 @@
     "dialogue_defaite": "Tu devrais aller voir Bill. C'est un génie !",
     "recompense": 350,
     "equipe": [
-      {"espece_id": "066", "niveau": 17},
-      {"espece_id": "074", "niveau": 17}
+      {
+        "espece_id": "066",
+        "niveau": 17
+      },
+      {
+        "espece_id": "074",
+        "niveau": 17
+      }
     ]
   },
   "nageuse_arene_azuria_01": {
@@ -317,8 +491,14 @@
     "dialogue_defaite": "Tu maîtrises bien tes Pokémon.",
     "recompense": 380,
     "equipe": [
-      {"espece_id": "120", "niveau": 16},
-      {"espece_id": "118", "niveau": 16}
+      {
+        "espece_id": "120",
+        "niveau": 16
+      },
+      {
+        "espece_id": "118",
+        "niveau": 16
+      }
     ]
   },
   "nageur_arene_azuria_02": {
@@ -329,8 +509,14 @@
     "dialogue_defaite": "Tu as le niveau pour affronter Ondine.",
     "recompense": 380,
     "equipe": [
-      {"espece_id": "060", "niveau": 17},
-      {"espece_id": "098", "niveau": 17}
+      {
+        "espece_id": "060",
+        "niveau": 17
+      },
+      {
+        "espece_id": "098",
+        "niveau": 17
+      }
     ]
   },
   "champion_ondine": {
@@ -341,8 +527,14 @@
     "dialogue_defaite": "Wow ! Tu as réussi à vaincre mes Pokémon !\nTu mérites le Badge Cascade !",
     "recompense": 2079,
     "equipe": [
-      {"espece_id": "120", "niveau": 18},
-      {"espece_id": "121", "niveau": 21}
+      {
+        "espece_id": "120",
+        "niveau": 18
+      },
+      {
+        "espece_id": "121",
+        "niveau": 21
+      }
     ],
     "badge": 1,
     "ct_recompense": "ct_cascade"
@@ -355,9 +547,18 @@
     "dialogue_defaite": "Sacré combat !\nTu as neutralisé mon champ de force !",
     "recompense": 2394,
     "equipe": [
-      {"espece_id": "100", "niveau": 21},
-      {"espece_id": "025", "niveau": 18},
-      {"espece_id": "026", "niveau": 24}
+      {
+        "espece_id": "100",
+        "niveau": 21
+      },
+      {
+        "espece_id": "025",
+        "niveau": 18
+      },
+      {
+        "espece_id": "026",
+        "niveau": 24
+      }
     ],
     "badge": 2,
     "ct_recompense": "ct_tonnerre"
@@ -371,22 +572,58 @@
     "recompense": 950,
     "equipe_variantes": {
       "001": [
-        {"espece_id": "016", "niveau": 19},
-        {"espece_id": "019", "niveau": 16},
-        {"espece_id": "063", "niveau": 18},
-        {"espece_id": "004", "niveau": 20}
+        {
+          "espece_id": "016",
+          "niveau": 19
+        },
+        {
+          "espece_id": "019",
+          "niveau": 16
+        },
+        {
+          "espece_id": "063",
+          "niveau": 18
+        },
+        {
+          "espece_id": "004",
+          "niveau": 20
+        }
       ],
       "004": [
-        {"espece_id": "016", "niveau": 19},
-        {"espece_id": "019", "niveau": 16},
-        {"espece_id": "063", "niveau": 18},
-        {"espece_id": "007", "niveau": 20}
+        {
+          "espece_id": "016",
+          "niveau": 19
+        },
+        {
+          "espece_id": "019",
+          "niveau": 16
+        },
+        {
+          "espece_id": "063",
+          "niveau": 18
+        },
+        {
+          "espece_id": "007",
+          "niveau": 20
+        }
       ],
       "007": [
-        {"espece_id": "016", "niveau": 19},
-        {"espece_id": "019", "niveau": 16},
-        {"espece_id": "063", "niveau": 18},
-        {"espece_id": "001", "niveau": 20}
+        {
+          "espece_id": "016",
+          "niveau": 19
+        },
+        {
+          "espece_id": "019",
+          "niveau": 16
+        },
+        {
+          "espece_id": "063",
+          "niveau": 18
+        },
+        {
+          "espece_id": "001",
+          "niveau": 20
+        }
       ]
     }
   },
@@ -398,8 +635,14 @@
     "dialogue_defaite": "Tu es trop fort pour moi !",
     "recompense": 420,
     "equipe": [
-      {"espece_id": "066", "niveau": 18},
-      {"espece_id": "086", "niveau": 18}
+      {
+        "espece_id": "066",
+        "niveau": 18
+      },
+      {
+        "espece_id": "086",
+        "niveau": 18
+      }
     ]
   },
   "marin_ss_anne_02": {
@@ -410,8 +653,14 @@
     "dialogue_defaite": "Marin d'eau douce que je suis...",
     "recompense": 380,
     "equipe": [
-      {"espece_id": "060", "niveau": 17},
-      {"espece_id": "072", "niveau": 17}
+      {
+        "espece_id": "060",
+        "niveau": 17
+      },
+      {
+        "espece_id": "072",
+        "niveau": 17
+      }
     ]
   },
   "marin_ss_anne_03": {
@@ -422,7 +671,10 @@
     "dialogue_defaite": "Coulé !",
     "recompense": 450,
     "equipe": [
-      {"espece_id": "081", "niveau": 19}
+      {
+        "espece_id": "081",
+        "niveau": 19
+      }
     ]
   },
   "gentleman_ss_anne_01": {
@@ -433,8 +685,14 @@
     "dialogue_defaite": "Quelle élégance dans le combat !",
     "recompense": 1200,
     "equipe": [
-      {"espece_id": "058", "niveau": 18},
-      {"espece_id": "052", "niveau": 18}
+      {
+        "espece_id": "058",
+        "niveau": 18
+      },
+      {
+        "espece_id": "052",
+        "niveau": 18
+      }
     ]
   },
   "dresseur_route5_01": {
@@ -445,8 +703,14 @@
     "dialogue_defaite": "Zut, j'ai perdu...",
     "recompense": 340,
     "equipe": [
-      {"espece_id": "043", "niveau": 16},
-      {"espece_id": "096", "niveau": 16}
+      {
+        "espece_id": "043",
+        "niveau": 16
+      },
+      {
+        "espece_id": "096",
+        "niveau": 16
+      }
     ]
   },
   "dresseur_route5_02": {
@@ -457,7 +721,10 @@
     "dialogue_defaite": "Mes pauvres Pokémon...",
     "recompense": 320,
     "equipe": [
-      {"espece_id": "052", "niveau": 17}
+      {
+        "espece_id": "052",
+        "niveau": 17
+      }
     ]
   },
   "dresseur_route6_01": {
@@ -468,8 +735,14 @@
     "dialogue_defaite": "Pas mal...",
     "recompense": 360,
     "equipe": [
-      {"espece_id": "050", "niveau": 18},
-      {"espece_id": "021", "niveau": 17}
+      {
+        "espece_id": "050",
+        "niveau": 18
+      },
+      {
+        "espece_id": "021",
+        "niveau": 17
+      }
     ]
   },
   "dresseur_route6_02": {
@@ -480,8 +753,14 @@
     "dialogue_defaite": "Comment as-tu fait ?",
     "recompense": 340,
     "equipe": [
-      {"espece_id": "096", "niveau": 17},
-      {"espece_id": "063", "niveau": 17}
+      {
+        "espece_id": "096",
+        "niveau": 17
+      },
+      {
+        "espece_id": "063",
+        "niveau": 17
+      }
     ]
   },
   "dresseur_arene_carmin_01": {
@@ -492,8 +771,14 @@
     "dialogue_defaite": "Électrocuté...",
     "recompense": 400,
     "equipe": [
-      {"espece_id": "081", "niveau": 20},
-      {"espece_id": "100", "niveau": 20}
+      {
+        "espece_id": "081",
+        "niveau": 20
+      },
+      {
+        "espece_id": "100",
+        "niveau": 20
+      }
     ]
   },
   "capitaine_ss_anne": {
@@ -505,5 +790,432 @@
     "recompense": 0,
     "equipe": [],
     "cs_recompense": "cs_coupe"
+  },
+  "randonneur_route9_01": {
+    "id": "randonneur_route9_01",
+    "nom": "André",
+    "classe": "Randonneur",
+    "dialogue_avant": "La Route 9 est dangereuse ! Prépare-toi !",
+    "dialogue_defaite": "Tu es costaud, gamin !",
+    "recompense": 450,
+    "equipe": [
+      {
+        "espece_id": "074",
+        "niveau": 20
+      },
+      {
+        "espece_id": "095",
+        "niveau": 20
+      }
+    ]
+  },
+  "gamin_route9_01": {
+    "id": "gamin_route9_01",
+    "nom": "Julien",
+    "classe": "Gamin",
+    "dialogue_defaite": "Bon, il me faut encore du travail...",
+    "recompense": 380,
+    "equipe": [
+      {
+        "espece_id": "019",
+        "niveau": 19
+      },
+      {
+        "espece_id": "021",
+        "niveau": 19
+      },
+      {
+        "espece_id": "023",
+        "niveau": 19
+      }
+    ]
+  },
+  "dresseur_route9_02": {
+    "id": "dresseur_route9_02",
+    "nom": "Sophie",
+    "classe": "Dresseuse",
+    "dialogue_avant": "Mes Pokémon sont bien entraînés !",
+    "dialogue_defaite": "Oh... pas assez apparemment.",
+    "recompense": 420,
+    "equipe": [
+      {
+        "espece_id": "048",
+        "niveau": 20
+      },
+      {
+        "espece_id": "043",
+        "niveau": 22
+      }
+    ]
+  },
+  "randonneur_route9_02": {
+    "id": "randonneur_route9_02",
+    "nom": "Patrick",
+    "classe": "Randonneur",
+    "dialogue_avant": "Les montagnes renforcent le corps !",
+    "dialogue_defaite": "Bien joué, continue comme ça.",
+    "recompense": 480,
+    "equipe": [
+      {
+        "espece_id": "074",
+        "niveau": 21
+      },
+      {
+        "espece_id": "074",
+        "niveau": 21
+      },
+      {
+        "espece_id": "075",
+        "niveau": 21
+      }
+    ]
+  },
+  "randonneur_route10_01": {
+    "id": "randonneur_route10_01",
+    "nom": "Gérard",
+    "classe": "Randonneur",
+    "dialogue_avant": "Tu as traversé le Tunnel Roche ? Impressionnant.",
+    "dialogue_defaite": "Hé, tu es doué !",
+    "recompense": 400,
+    "equipe": [
+      {
+        "espece_id": "100",
+        "niveau": 22
+      },
+      {
+        "espece_id": "081",
+        "niveau": 22
+      }
+    ]
+  },
+  "scout_route10_01": {
+    "id": "scout_route10_01",
+    "nom": "Thomas",
+    "classe": "Scout",
+    "dialogue_avant": "Direction Lavanville ! Tu me bloques le passage !",
+    "dialogue_defaite": "Bon, tu peux passer...",
+    "recompense": 350,
+    "equipe": [
+      {
+        "espece_id": "021",
+        "niveau": 21
+      },
+      {
+        "espece_id": "023",
+        "niveau": 21
+      }
+    ]
+  },
+  "gamine_route8_01": {
+    "id": "gamine_route8_01",
+    "nom": "Clara",
+    "classe": "Gamine",
+    "dialogue_avant": "Mon Miaouss est le plus mignon !",
+    "dialogue_defaite": "Pauvre Miaouss...",
+    "recompense": 400,
+    "equipe": [
+      {
+        "espece_id": "052",
+        "niveau": 20
+      },
+      {
+        "espece_id": "052",
+        "niveau": 20
+      }
+    ]
+  },
+  "dresseur_route8_01": {
+    "id": "dresseur_route8_01",
+    "nom": "Marco",
+    "classe": "Motard",
+    "dialogue_avant": "Hé ! Tu veux te battre ?",
+    "dialogue_defaite": "Pas mal du tout !",
+    "recompense": 500,
+    "equipe": [
+      {
+        "espece_id": "109",
+        "niveau": 22
+      },
+      {
+        "espece_id": "088",
+        "niveau": 22
+      }
+    ]
+  },
+  "dresseur_route8_02": {
+    "id": "dresseur_route8_02",
+    "nom": "Victor",
+    "classe": "Gentleman",
+    "dialogue_avant": "Un dresseur distingué combat avec honneur.",
+    "dialogue_defaite": "Quelle mésaventure...",
+    "recompense": 600,
+    "equipe": [
+      {
+        "espece_id": "058",
+        "niveau": 23
+      },
+      {
+        "espece_id": "077",
+        "niveau": 23
+      }
+    ]
+  },
+  "gamine_route8_02": {
+    "id": "gamine_route8_02",
+    "nom": "Lucie",
+    "classe": "Gamine",
+    "dialogue_avant": "Je connais un raccourci souterrain !",
+    "dialogue_defaite": "Ah... tu es trop fort.",
+    "recompense": 380,
+    "equipe": [
+      {
+        "espece_id": "039",
+        "niveau": 21
+      },
+      {
+        "espece_id": "035",
+        "niveau": 21
+      }
+    ]
+  },
+  "randonneur_tunnel_roche_01": {
+    "id": "randonneur_tunnel_roche_01",
+    "nom": "Bernard",
+    "classe": "Randonneur",
+    "dialogue_avant": "Cette grotte est sombre et dangereuse !",
+    "recompense": 500,
+    "equipe": [
+      {
+        "espece_id": "074",
+        "niveau": 22
+      },
+      {
+        "espece_id": "095",
+        "niveau": 22
+      },
+      {
+        "espece_id": "066",
+        "niveau": 22
+      }
+    ]
+  },
+  "randonneur_tunnel_roche_02": {
+    "id": "randonneur_tunnel_roche_02",
+    "nom": "Charles",
+    "classe": "Randonneur",
+    "dialogue_defaite": "Au moins, toi tu sais te battre.",
+    "recompense": 520,
+    "equipe": [
+      {
+        "espece_id": "075",
+        "niveau": 23
+      },
+      {
+        "espece_id": "066",
+        "niveau": 23
+      }
+    ]
+  },
+  "rocket_tour_pokemon_01": {
+    "id": "rocket_tour_pokemon_01",
+    "nom": "",
+    "classe": "Sbire Rocket",
+    "dialogue_defaite": "Tch... je me souviendrai de toi.",
+    "recompense": 550,
+    "equipe": [
+      {
+        "espece_id": "109",
+        "niveau": 23
+      },
+      {
+        "espece_id": "041",
+        "niveau": 23
+      }
+    ]
+  },
+  "rocket_tour_pokemon_02": {
+    "id": "rocket_tour_pokemon_02",
+    "nom": "",
+    "classe": "Sbire Rocket",
+    "dialogue_avant": "La Team Rocket contrôle cette tour !",
+    "dialogue_defaite": "Impossible... un gamin...",
+    "recompense": 580,
+    "equipe": [
+      {
+        "espece_id": "109",
+        "niveau": 24
+      },
+      {
+        "espece_id": "088",
+        "niveau": 24
+      }
+    ]
+  },
+  "rocket_tour_pokemon_03": {
+    "id": "rocket_tour_pokemon_03",
+    "nom": "",
+    "classe": "Sbire Rocket",
+    "dialogue_defaite": "Le Chef ne sera pas content...",
+    "recompense": 600,
+    "equipe": [
+      {
+        "espece_id": "041",
+        "niveau": 24
+      },
+      {
+        "espece_id": "109",
+        "niveau": 24
+      },
+      {
+        "espece_id": "042",
+        "niveau": 24
+      }
+    ]
+  },
+  "rocket_repaire_01": {
+    "id": "rocket_repaire_01",
+    "nom": "",
+    "classe": "Sbire Rocket",
+    "dialogue_avant": "Comment as-tu trouvé notre repaire ?!",
+    "dialogue_defaite": "Arg !",
+    "recompense": 600,
+    "equipe": [
+      {
+        "espece_id": "019",
+        "niveau": 23
+      },
+      {
+        "espece_id": "019",
+        "niveau": 23
+      },
+      {
+        "espece_id": "020",
+        "niveau": 23
+      }
+    ]
+  },
+  "rocket_repaire_02": {
+    "id": "rocket_repaire_02",
+    "nom": "",
+    "classe": "Sbire Rocket",
+    "dialogue_avant": "Tu ne passeras pas !",
+    "dialogue_defaite": "Non... !",
+    "recompense": 620,
+    "equipe": [
+      {
+        "espece_id": "109",
+        "niveau": 25
+      },
+      {
+        "espece_id": "110",
+        "niveau": 25
+      }
+    ]
+  },
+  "rocket_repaire_03": {
+    "id": "rocket_repaire_03",
+    "nom": "",
+    "classe": "Sbire Rocket",
+    "dialogue_avant": "Le Chef est à l'étage ! Tu ne l'atteindras jamais !",
+    "dialogue_defaite": "Impossible...",
+    "recompense": 650,
+    "equipe": [
+      {
+        "espece_id": "088",
+        "niveau": 25
+      },
+      {
+        "espece_id": "109",
+        "niveau": 25
+      },
+      {
+        "espece_id": "024",
+        "niveau": 25
+      }
+    ]
+  },
+  "giovanni_repaire": {
+    "id": "giovanni_repaire",
+    "nom": "Giovanni",
+    "classe": "Boss Rocket",
+    "dialogue_avant": "Je suis Giovanni, le chef de la Team Rocket. Tu oses me défier ?",
+    "dialogue_defaite": "Hmm... Tu es fort. Mais ce n'est que le début. On se reverra...",
+    "recompense": 2000,
+    "equipe": [
+      {
+        "espece_id": "095",
+        "niveau": 25
+      },
+      {
+        "espece_id": "111",
+        "niveau": 24
+      },
+      {
+        "espece_id": "034",
+        "niveau": 29
+      }
+    ]
+  },
+  "dresseuse_arene_celadopole_01": {
+    "id": "dresseuse_arene_celadopole_01",
+    "nom": "Nathalie",
+    "classe": "Dresseuse",
+    "dialogue_avant": "Les Pokémon Plante sont les plus beaux !",
+    "dialogue_defaite": "Oh, mes belles plantes...",
+    "recompense": 500,
+    "equipe": [
+      {
+        "espece_id": "043",
+        "niveau": 24
+      },
+      {
+        "espece_id": "070",
+        "niveau": 24
+      }
+    ]
+  },
+  "dresseuse_arene_celadopole_02": {
+    "id": "dresseuse_arene_celadopole_02",
+    "nom": "Hélène",
+    "classe": "Dresseuse",
+    "dialogue_avant": "Notre championne est invincible !",
+    "dialogue_defaite": "C'est pas possible...",
+    "recompense": 520,
+    "equipe": [
+      {
+        "espece_id": "044",
+        "niveau": 25
+      },
+      {
+        "espece_id": "069",
+        "niveau": 25
+      },
+      {
+        "espece_id": "102",
+        "niveau": 25
+      }
+    ]
+  },
+  "champion_erika": {
+    "id": "champion_erika",
+    "nom": "Érika",
+    "classe": "Champion d'arène",
+    "dialogue_avant": "Bonjour. Je suis Érika, la championne de Céladopole. Les Pokémon Plante sont ma passion.",
+    "dialogue_defaite": "Oh... Tu es très talentueux. Voici le Badge Prisme.",
+    "recompense": 2900,
+    "equipe": [
+      {
+        "espece_id": "114",
+        "niveau": 24
+      },
+      {
+        "espece_id": "070",
+        "niveau": 26
+      },
+      {
+        "espece_id": "045",
+        "niveau": 29
+      }
+    ]
   }
 }

@@ -37,7 +37,17 @@ var flags: Dictionary = {
 	"ss_anne_termine": false,
 	"cs_coupe_obtenu": false,
 	"badge_foudre": false,
-	"arbre_coupe_route9": false
+	"arbre_coupe_route9": false,
+	"badge_prisme": false,
+	"scope_sylphe_obtenu": false,
+	"m_fuji_sauve": false,
+	"poke_flute_obtenu": false,
+	"tour_pokemon_terminee": false,
+	"giovanni_repaire_battu": false,
+	"repaire_rocket_termine": false,
+	"cle_ascenseur_obtenu": false,
+	"evoli_celadopole_recu": false,
+	"jeton_casino_recu": false
 }
 
 # --- État de jeu ---
