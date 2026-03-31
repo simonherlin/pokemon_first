@@ -1,0 +1,95 @@
+{
+  "id": "arene_azuria",
+  "nom": "Arène d'Azuria",
+  "largeur": 12,
+  "hauteur": 12,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/arene.ogg",
+  "connexions": [],
+  "warps": [
+    {"id": "sortie", "x": 6, "y": 11, "vers_map": "azuria_ville", "vers_warp": "arene_entree", "type": "porte"}
+  ],
+  "pnj": [
+    {
+      "id": "champion_ondine",
+      "x": 6, "y": 2,
+      "sprite": "pnj_champion_ondine",
+      "direction": "bas",
+      "equipe": [
+        {"espece_id": "120", "niveau": 18},
+        {"espece_id": "121", "niveau": 21}
+      ],
+      "recompense": 2079,
+      "dialogue_avant": ["Je suis ONDINE, la tomboyish mermaid !", "Je vais te montrer la puissance de l'eau !"],
+      "dialogue_apres": ["Pas mal ! Tu as gagné le BADGE CASCADE."],
+      "mobile": false,
+      "type": "champion"
+    },
+    {
+      "id": "dresseur_arene_azuria_01",
+      "x": 3, "y": 6,
+      "sprite": "pnj_nageuse",
+      "direction": "droite",
+      "equipe": [
+        {"espece_id": "120", "niveau": 16},
+        {"espece_id": "118", "niveau": 16}
+      ],
+      "recompense": 380,
+      "dialogue_avant": ["Tu veux affronter ONDINE ?", "Il faudra d'abord me battre !"],
+      "dialogue_apres": ["Tu es fort..."],
+      "mobile": false
+    },
+    {
+      "id": "dresseur_arene_azuria_02",
+      "x": 9, "y": 6,
+      "sprite": "pnj_nageur",
+      "direction": "gauche",
+      "equipe": [
+        {"espece_id": "060", "niveau": 17},
+        {"espece_id": "116", "niveau": 17}
+      ],
+      "recompense": 408,
+      "dialogue_avant": ["Les Pokémon Eau sont les meilleurs !", "Tu ne passeras pas !"],
+      "dialogue_apres": ["Impressionnant..."],
+      "mobile": false
+    },
+    {
+      "id": "pnj_arene_azuria_guide",
+      "x": 3, "y": 10,
+      "sprite": "pnj_homme",
+      "direction": "haut",
+      "dialogue": ["Ici c'est l'Arène d'Azuria.", "ONDINE utilise des Pokémon de type Eau.", "Les Pokémon Plante et Électrik\nsont très efficaces contre l'Eau !"],
+      "mobile": false
+    }
+  ],
+  "objets_sol": [],
+  "panneaux": [],
+  "tiles_sol": [
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 29, 29, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 29, 29, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 29, 29, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 29, 29, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 29, 29, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 29, 29, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 29, 29, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 29, 29, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 29, 29, 24, 24, 24, 24, 24]
+  ],
+  "tiles_objets": [
+    [25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25],
+    [25, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 25],
+    [25, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 25],
+    [25, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 25],
+    [25, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 25],
+    [25, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 25],
+    [25, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 25],
+    [25, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 25],
+    [25, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 25],
+    [25, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 25],
+    [25, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 25],
+    [25, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 25]
+  ]
+}

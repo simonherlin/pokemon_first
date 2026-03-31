@@ -19,6 +19,10 @@ var _badge_index: int = 0  # Index du badge (0 = Badge Roche)
 var _badge_flag: String = "badge_roche"
 var _champion_id: String = "champion_pierre"
 var _ct_recompense: String = "ct_tomberoche"
+var _badge_nom: String = "BADGE ROCHE"
+var _ct_nom: String = "CT TOMBEROCHE"
+var _ct_description: String = "TOMBEROCHE inflige des dégâts et peut\nréduire la Vitesse adverse."
+var _badge_desc: String = "Ce badge augmente l'Attaque de tes Pokémon."
 
 @onready var tilemap: TileMap = $TileMap
 @onready var entities: Node2D = $Entities
@@ -45,6 +49,19 @@ func _configurer_arene() -> void:
 			_badge_flag = "badge_roche"
 			_champion_id = "champion_pierre"
 			_ct_recompense = "ct_tomberoche"
+			_badge_nom = "BADGE ROCHE"
+			_ct_nom = "CT TOMBEROCHE"
+			_ct_description = "TOMBEROCHE inflige des dégâts et peut\nréduire la Vitesse adverse."
+			_badge_desc = "Ce badge augmente l'Attaque de tes Pokémon."
+		"arene_azuria":
+			_badge_index = 1
+			_badge_flag = "badge_cascade"
+			_champion_id = "champion_ondine"
+			_ct_recompense = "ct_cascade"
+			_badge_nom = "BADGE CASCADE"
+			_ct_nom = "CT CASCADE"
+			_ct_description = "CASCADE est une puissante attaque Eau."
+			_badge_desc = "Ce badge permet aux Pokémon jusqu'au N.30\nd'obéir sans condition."
 
 func recevoir_params(params: Dictionary) -> void:
 	carte_id = params.get("carte_id", carte_id)
@@ -172,14 +189,14 @@ func _sequence_badge() -> void:
 	# Marquer le champion comme battu
 	PlayerData.marquer_dresseur_battu(_champion_id)
 
-	# Dialogue de victoire
+	# Dialogue de victoire (dynamique selon l'arène)
 	var messages := [
 		"Bravo ! Tu m'as vaincu !",
-		"%s a obtenu le BADGE ROCHE !" % PlayerData.nom_joueur,
-		"Ce badge augmente l'Attaque de tes Pokémon.",
+		"%s a obtenu le %s !" % [PlayerData.nom_joueur, _badge_nom],
+		_badge_desc,
 		"Tiens, prends aussi cette CT.",
-		"%s a obtenu CT TOMBEROCHE !" % PlayerData.nom_joueur,
-		"TOMBEROCHE inflige des dégâts et peut\nréduire la Vitesse adverse.",
+		"%s a obtenu %s !" % [PlayerData.nom_joueur, _ct_nom],
+		_ct_description,
 		"Bonne chance pour la suite de ton aventure !"
 	]
 
