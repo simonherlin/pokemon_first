@@ -1,0 +1,50 @@
+{
+  "id": "boutique_carmin",
+  "nom": "Boutique Pokémon",
+  "largeur": 8,
+  "hauteur": 6,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/boutique.ogg",
+  "connexions": [],
+  "warps": [
+    {"id": "sortie", "x": 4, "y": 5, "vers_map": "carmin_sur_mer", "vers_warp": "boutique_entree", "type": "porte"}
+  ],
+  "pnj": [
+    {
+      "id": "vendeur_carmin",
+      "x": 4, "y": 1,
+      "sprite": "pnj_vendeur",
+      "direction": "bas",
+      "dialogue": ["Bonjour ! Que puis-je faire pour vous ?"],
+      "mobile": false,
+      "type": "vendeur",
+      "stock": ["poke_ball", "super_ball", "potion", "super_potion", "hyper_potion", "antidote", "anti_para", "total_soin", "rappel", "corde_sortie"]
+    },
+    {
+      "id": "pnj_boutique_carmin_01",
+      "x": 2, "y": 3,
+      "sprite": "pnj_homme",
+      "direction": "droite",
+      "dialogue": ["Les Pokémon Électrik sont faibles face au type Sol.", "Garde ça à l'esprit pour l'arène !"],
+      "mobile": false
+    }
+  ],
+  "objets_sol": [],
+  "panneaux": [],
+  "tiles_sol": [
+    [24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24]
+  ],
+  "tiles_objets": [
+    [-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,26,26,26,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1]
+  ]
+}
