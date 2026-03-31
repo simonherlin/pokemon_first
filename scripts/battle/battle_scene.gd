@@ -7,6 +7,7 @@ extends Node2D
 @onready var hud := $BattleHUD
 @onready var sprite_joueur: Sprite2D = $SpriteJoueur
 @onready var sprite_ennemi: Sprite2D = $SpriteEnnemi
+@onready var background: ColorRect = $Background
 
 # --- Labels HUD ---
 @onready var label_nom_joueur: Label = $BattleHUD/PanelJoueur/LabelNom
@@ -42,6 +43,11 @@ var _actions := ["attaque", "sac", "pokemon", "fuite"]
 func _ready() -> void:
 	menu_action.visible = false
 	menu_attaque.visible = false
+	# Charger le fond de combat
+	var bg_texture := load("res://assets/sprites/ui/battle_bg.png") as Texture2D
+	if bg_texture and background:
+		# Remplacer le ColorRect par un TextureRect ou colorer
+		background.color = Color(0.75, 0.85, 0.65, 1)
 
 func recevoir_params(params: Dictionary) -> void:
 	_type_combat = params.get("type_combat", "sauvage")
@@ -65,6 +71,29 @@ func recevoir_params(params: Dictionary) -> void:
 		_controller.demarrer_sauvage(pokemon_joueur, espece_id, niveau)
 	else:
 		_controller.demarrer_dresseur(pokemon_joueur, _dresseur_data)
+	
+	# Charger les sprites des Pokémon
+	_charger_sprites_pokemon()
+
+# Charger les textures front/back des Pokémon en combat
+func _charger_sprites_pokemon() -> void:
+	if not _controller:
+		return
+	# Sprite du joueur (dos)
+	if _controller.pokemon_joueur:
+		var back_path := "res://assets/sprites/pokemon/back/%s.png" % _controller.pokemon_joueur.espece_id
+		var back_tex := load(back_path) as Texture2D
+		if back_tex:
+			sprite_joueur.texture = back_tex
+			# Adapter l'échelle pour que ce soit visible (64×96 → agrandi ×2)
+			sprite_joueur.scale = Vector2(2.0, 2.0)
+	# Sprite de l'ennemi (face)
+	if _controller.pokemon_ennemi:
+		var front_path := "res://assets/sprites/pokemon/front/%s.png" % _controller.pokemon_ennemi.espece_id
+		var front_tex := load(front_path) as Texture2D
+		if front_tex:
+			sprite_ennemi.texture = front_tex
+			sprite_ennemi.scale = Vector2(1.5, 1.5)
 
 func _connecter_signaux() -> void:
 	if not _controller:

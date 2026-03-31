@@ -195,7 +195,7 @@ func joueur_tente_capture(ball_id: String) -> void:
 		emit_signal("message_affiche", "Tu n'as plus de %s !" % ball_id)
 		_changer_etat(Etat.CHOIX_ACTION)
 		return
-	var items_data := ItemsData.get_item(ball_id) if Engine.has_singleton("ItemsData") else {}
+	var items_data := ItemsData.get_item(ball_id)
 	var multi: float = 1.0
 	if not items_data.is_empty():
 		multi = items_data.get("effet", {}).get("multiplicateur", 1.0)
