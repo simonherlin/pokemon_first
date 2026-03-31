@@ -6,6 +6,7 @@ extends Node2D
 const TAILLE_TILE := 32
 const PLAYER_SCENE := preload("res://scenes/entities/player.tscn")
 const NPC_SCENE := preload("res://scenes/entities/npc.tscn")
+const CUT_TREE_SCENE := preload("res://scenes/entities/cut_tree.tscn")
 
 var carte_id: String = ""
 var carte_data: Dictionary = {}
@@ -26,6 +27,7 @@ func _ready() -> void:
 	_peindre_tilemap()
 	_instancier_joueur()
 	_instancier_pnj()
+	_instancier_arbres_coupables()
 	# Afficher le nom de la carte en haut
 	_afficher_nom_carte()
 	# Lancer la musique de la carte
@@ -73,6 +75,13 @@ func _instancier_pnj() -> void:
 		if npc.has_signal("soin_demande"):
 			npc.soin_demande.connect(_on_soin_demande)
 		entities.add_child(npc)
+
+func _instancier_arbres_coupables() -> void:
+	# Instancier les arbres coupables définis dans le JSON de la carte
+	for arbre_data in carte_data.get("arbres_coupables", []):
+		var arbre := CUT_TREE_SCENE.instantiate()
+		arbre.initialiser(arbre_data, carte_id)
+		entities.add_child(arbre)
 
 func _on_dialogue_demarre(lignes: Array) -> void:
 	if joueur:
