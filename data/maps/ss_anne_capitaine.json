@@ -1,0 +1,48 @@
+{
+  "id": "ss_anne_capitaine",
+  "nom": "S.S. Anne - Cabine du Capitaine",
+  "largeur": 8,
+  "hauteur": 6,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/ss_anne.ogg",
+  "connexions": [],
+  "warps": [
+    {"id": "sortie_pont", "x": 1, "y": 1, "vers_map": "ss_anne_pont", "vers_warp": "entree_capitaine", "type": "porte"}
+  ],
+  "zones_herbes": [],
+  "pnj": [
+    {
+      "id": "capitaine_ss_anne",
+      "x": 4, "y": 2,
+      "sprite": "pnj_capitaine",
+      "direction": "bas",
+      "dialogue": [
+        "Urp... J'ai un terrible mal de mer...",
+        "Oh, tu m'as aidé ! Merci beaucoup !",
+        "En récompense, prends cette CS01 COUPE !",
+        "Elle permet de couper les arbustes sur ton chemin !"
+      ],
+      "mobile": false,
+      "type": "capitaine",
+      "donne_cs": "cs_coupe"
+    }
+  ],
+  "objets_sol": [],
+  "panneaux": [],
+  "tiles_sol": [
+    [24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24]
+  ],
+  "tiles_objets": [
+    [25,25,25,25,25,25,25,25],
+    [-1,-1,25,-1,-1,25,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,30,-1,-1,-1,-1,30,-1],
+    [25,25,25,25,25,25,25,25]
+  ]
+}

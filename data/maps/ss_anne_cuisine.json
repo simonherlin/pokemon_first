@@ -1,0 +1,57 @@
+{
+  "id": "ss_anne_cuisine",
+  "nom": "S.S. Anne - Cuisine",
+  "largeur": 12,
+  "hauteur": 8,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/ss_anne.ogg",
+  "connexions": [],
+  "warps": [
+    {"id": "sortie_pont", "x": 1, "y": 4, "vers_map": "ss_anne_pont", "vers_warp": "entree_cuisine", "type": "porte"}
+  ],
+  "zones_herbes": [],
+  "pnj": [
+    {
+      "id": "marin_ss_anne_03",
+      "x": 6, "y": 3,
+      "sprite": "pnj_marin",
+      "direction": "bas",
+      "dialogue": [],
+      "mobile": false,
+      "dresseur": true,
+      "trainer_id": "marin_ss_anne_03"
+    },
+    {
+      "id": "pnj_cuisinier",
+      "x": 9, "y": 2,
+      "sprite": "pnj_homme",
+      "direction": "gauche",
+      "dialogue": ["Le repas sera bientôt prêt !", "Les Pokémon aussi ont le droit à un bon repas."],
+      "mobile": false
+    }
+  ],
+  "objets_sol": [
+    {"id": "obj_baie_ss", "x": 10, "y": 5, "item_id": "potion", "quantite": 2}
+  ],
+  "panneaux": [],
+  "tiles_sol": [
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24]
+  ],
+  "tiles_objets": [
+    [25,25,25,25,25,25,25,25,25,25,25,25],
+    [-1,-1,-1,-1,30,30,30,30,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,30,30,30,30,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [25,25,25,25,25,25,25,25,25,25,25,25]
+  ]
+}
