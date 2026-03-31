@@ -7,7 +7,7 @@
   "musique": "res://assets/audio/music/mont_selenite.ogg",
   "connexions": [],
   "warps": [
-    {"id": "entree_sud", "x": 10, "y": 19, "vers_map": "route_3", "vers_warp": "grotte_entree", "type": "grotte"}
+    {"id": "entree_sud", "x": 10, "y": 19, "vers_map": "route_3", "vers_warp": "grotte_entree", "type": "grotte"},
     {"id": "escalier_b1f", "x": 18, "y": 2, "vers_map": "mont_selenite_b1f", "vers_warp": "escalier_1f", "type": "escalier"}
   ],
   "pnj": [

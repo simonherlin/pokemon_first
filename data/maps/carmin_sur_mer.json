@@ -10,6 +10,11 @@
       "direction": "nord",
       "vers": "route_6",
       "decalage": 0
+    },
+    {
+      "direction": "ouest",
+      "vers": "route_7",
+      "decalage": 0
     }
   ],
   "warps": [

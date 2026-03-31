@@ -9,7 +9,9 @@
     {"direction": "sud", "vers": "jadielle_ville", "decalage": 0},
     {"direction": "nord", "vers": "foret_de_jade", "decalage": 0}
   ],
-  "warps": [],
+  "warps": [
+    {"id": "entree_grotte_taupiqueur_nord", "x": 5, "y": 23, "vers_map": "grotte_taupiqueur", "vers_warp": "sortie_nord", "type": "grotte"}
+  ],
   "zones_herbes": [
     {"x1": 3, "y1": 4, "x2": 8, "y2": 9, "table": "route_2"},
     {"x1": 12, "y1": 14, "x2": 17, "y2": 19, "table": "route_2"}
