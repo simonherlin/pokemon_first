@@ -7,7 +7,8 @@
   "musique": "res://assets/audio/music/azuria_ville.ogg",
   "connexions": [
     {"direction": "ouest", "vers": "route_4", "decalage": 0},
-    {"direction": "nord", "vers": "route_24", "decalage": 0}
+    {"direction": "nord", "vers": "route_24", "decalage": 0},
+    {"direction": "sud", "vers": "route_5", "decalage": 0}
   ],
   "warps": [
     {"id": "centre_pokemon_entree", "x": 5, "y": 5, "vers_map": "centre_pokemon_azuria", "vers_warp": "sortie", "type": "porte"},
