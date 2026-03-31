@@ -1,0 +1,45 @@
+{
+  "id": "centre_pokemon_jadielle",
+  "nom": "Centre Pokémon",
+  "largeur": 10,
+  "hauteur": 8,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/centre_pokemon.ogg",
+  "connexions": [],
+  "warps": [
+    {"id": "sortie", "x": 5, "y": 7, "vers_map": "jadielle_ville", "vers_warp": "centre_pokemon_entree", "type": "porte"}
+  ],
+  "pnj": [
+    {
+      "id": "infirmiere_joelle",
+      "x": 5, "y": 1,
+      "sprite": "pnj_infirmiere",
+      "direction": "bas",
+      "dialogue": ["Bienvenue au Centre Pokémon !", "Je vais soigner vos Pokémon.", "...Vos Pokémon sont maintenant en pleine forme !", "Revenez quand vous voulez !"],
+      "mobile": false,
+      "type": "infirmiere"
+    }
+  ],
+  "objets_sol": [],
+  "panneaux": [],
+  "tiles_sol": [
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24]
+  ],
+  "tiles_objets": [
+    [25, 25, 25, 25, 25, 25, 25, 25, 25, 25],
+    [25, 27, 26, 26, 26, 26, 26, 27, -1, 25],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [25, -1, -1, -1, -1, -1, -1, -1, -1, 25]
+  ]
+}

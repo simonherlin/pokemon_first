@@ -16,6 +16,8 @@ var recompense: int = 0
 var champ_vision: int = 3           # Cases devant le PNJ (dresseur)
 var direction_initiale: String = "bas"
 var mobile: bool = false
+var type_pnj: String = ""           # "", "infirmiere", "vendeur"
+var inventaire_boutique: Array = [] # IDs des items en vente (si type=vendeur)
 
 # --- Nœuds ---
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -27,6 +29,8 @@ var battu: bool = false
 
 signal dialogue_demarre(lignes: Array)
 signal combat_dresseur_demarre(npc_id: String, equipe: Array, recompense: int, nom: String)
+signal soin_demande()
+signal boutique_demandee(items: Array)
 
 func _ready() -> void:
 	battu = PlayerData.dresseur_est_battu(npc_id)
@@ -46,6 +50,8 @@ func initialiser_depuis_json(data: Dictionary) -> void:
 	recompense = data.get("recompense", 0)
 	mobile = data.get("mobile", false)
 	direction_initiale = data.get("direction", "bas")
+	type_pnj = data.get("type", "")
+	inventaire_boutique = data.get("inventaire_boutique", [])
 	battu = PlayerData.dresseur_est_battu(npc_id)
 	# Charger le sprite du PNJ
 	_charger_sprite(data.get("sprite", "pnj_homme"))
@@ -55,6 +61,15 @@ func interagir(joueur: Node) -> void:
 	# Tourner vers le joueur
 	var dir_vers_joueur := _direction_vers(joueur)
 	_appliquer_direction(dir_vers_joueur)
+
+	# PNJ spéciaux
+	match type_pnj:
+		"infirmiere":
+			_interagir_infirmiere(joueur)
+			return
+		"vendeur":
+			_interagir_vendeur(joueur)
+			return
 
 	if est_dresseur and not battu:
 		# Démarrer un combat
@@ -66,6 +81,35 @@ func interagir(joueur: Node) -> void:
 		if lignes.is_empty():
 			lignes = ["..."]
 		emit_signal("dialogue_demarre", lignes)
+
+# Infirmière : soigne toute l'équipe
+func _interagir_infirmiere(joueur: Node) -> void:
+	# Dialogue d'accueil
+	var lignes_soin := ["Bienvenue au Centre Pokémon !", "Je vais soigner vos Pokémon."]
+	emit_signal("dialogue_demarre", lignes_soin)
+	# Soigner tous les Pokémon de l'équipe
+	_soigner_equipe()
+	# Émettre le signal de soin (pour animations futures)
+	emit_signal("soin_demande")
+
+# Soigner tous les Pokémon du joueur
+func _soigner_equipe() -> void:
+	for i in range(PlayerData.equipe.size()):
+		var p: Dictionary = PlayerData.equipe[i]
+		# Restaurer les PV au max
+		p["pv_actuels"] = p.get("pv_max", p.get("pv_actuels", 1))
+		# Supprimer le statut
+		p["statut"] = ""
+		# Restaurer les PP de toutes les attaques
+		if p.has("attaques"):
+			for atk in p["attaques"]:
+				atk["pp_actuels"] = atk.get("pp_max", atk.get("pp_actuels", 0))
+		PlayerData.equipe[i] = p
+
+# Vendeur : affiche le dialogue puis ouvre la boutique
+func _interagir_vendeur(joueur: Node) -> void:
+	emit_signal("dialogue_demarre", dialogues if not dialogues.is_empty() else ["Bienvenue !"])
+	emit_signal("boutique_demandee", inventaire_boutique)
 
 # Vérifier si le joueur entre dans le champ de vision du dresseur
 func _verifier_champ_vision() -> void:

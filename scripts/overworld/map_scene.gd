@@ -68,6 +68,10 @@ func _instancier_pnj() -> void:
 		npc.initialiser_depuis_json(pnj_data)
 		if npc.has_signal("dialogue_demarre"):
 			npc.dialogue_demarre.connect(_on_dialogue_demarre)
+		if npc.has_signal("boutique_demandee"):
+			npc.boutique_demandee.connect(_on_boutique_demandee)
+		if npc.has_signal("soin_demande"):
+			npc.soin_demande.connect(_on_soin_demande)
 		entities.add_child(npc)
 
 func _on_dialogue_demarre(lignes: Array) -> void:
@@ -81,6 +85,30 @@ func _on_dialogue_demarre(lignes: Array) -> void:
 func _on_dialogue_termine() -> void:
 	if joueur:
 		joueur.set_peut_bouger(true)
+
+func _on_soin_demande() -> void:
+	# Petit délai pour laisser le dialogue s'afficher, puis message de confirmation
+	await get_tree().create_timer(0.5).timeout
+	dialog_box.afficher_dialogue(["...Vos Pokémon sont maintenant en pleine forme !", "Revenez quand vous voulez !"])
+
+func _on_boutique_demandee(items: Array) -> void:
+	# Attendre la fin du dialogue d'accueil, puis ouvrir la boutique
+	await get_tree().create_timer(0.5).timeout
+	_ouvrir_boutique(items)
+
+func _ouvrir_boutique(items: Array) -> void:
+	if joueur:
+		joueur.set_peut_bouger(false)
+	var scr = load("res://scripts/ui/shop_screen.gd")
+	var shop := CanvasLayer.new()
+	shop.set_script(scr)
+	shop.items_en_vente = items
+	add_child(shop)
+	shop.ecran_ferme.connect(func():
+		shop.queue_free()
+		if joueur:
+			joueur.set_peut_bouger(true)
+	)
 
 func _teleporter_sur_warp(warp_id: String) -> void:
 	for warp in carte_data.get("warps", []):
