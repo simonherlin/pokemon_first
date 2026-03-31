@@ -70,13 +70,8 @@ func verifier_rencontre(position_grille: Vector2i, joueur_node: Node) -> void:
 
 # Identifier si la case courante est dans une zone d'herbes
 func _obtenir_zone_herbe(position_grille: Vector2i, joueur_node: Node) -> String:
-	var tilemap := joueur_node.get_node_or_null("../TileMap")
-	if tilemap == null:
-		return ""
 	# Lire les données de la carte pour trouver les zones d'herbes
-	var carte_data := {}
-	if Engine.has_singleton("MapLoader"):
-		carte_data = MapLoader.get_carte(PlayerData.carte_actuelle)
+	var carte_data := MapLoader.get_carte(PlayerData.carte_actuelle)
 	for zone in carte_data.get("zones_herbes", []):
 		var x1: int = zone.get("x1", 0)
 		var y1: int = zone.get("y1", 0)

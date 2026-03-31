@@ -11,6 +11,7 @@ const VITESSE_SPRINT := 7.0    # tiles/seconde (avec Shift)
 # --- Nœuds ---
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var ray_interaction: RayCast2D = $RayInteraction
+@onready var camera: Camera2D = null
 
 # --- État ---
 var en_deplacement: bool = false
@@ -25,6 +26,16 @@ var vitesse_courante: float = VITESSE_MARCHE
 func _ready() -> void:
 	position = Vector2(position_grille) * TAILLE_TILE
 	cible_monde = position
+	# Créer une Camera2D qui suit le joueur
+	camera = Camera2D.new()
+	camera.position = Vector2(TAILLE_TILE / 2, TAILLE_TILE / 2)
+	camera.zoom = Vector2(1, 1)
+	camera.enabled = true
+	camera.position_smoothing_enabled = true
+	camera.position_smoothing_speed = 8.0
+	add_child(camera)
+	camera.make_current()
+	# Sauvegarder la position initiale
 	PlayerData.sauvegarder_position(PlayerData.carte_actuelle, position_grille.x, position_grille.y, "bas")
 	_mettre_a_jour_animation("bas", false)
 
@@ -100,13 +111,31 @@ func _arrivee_nouvelle_case() -> void:
 	EncounterSystem.verifier_rencontre(position_grille, self)
 
 func _case_accessible(cible: Vector2i) -> bool:
-	# Utiliser le TileMap pour vérifier les collisions
-	var tilemap := get_node_or_null("../TileMap")
-	if tilemap == null:
-		return true
-	# Vérifier la couche de collision (couche 1 = collision)
-	# On délègue au moteur Godot via le RayCast
-	var pos_monde_cible := Vector2(cible) * TAILLE_TILE + Vector2(TAILLE_TILE / 2, TAILLE_TILE / 2)
+	# Vérifier les limites de la carte (permet de sortir pour les connexions)
+	var carte_data := MapLoader.get_carte(PlayerData.carte_actuelle)
+	var largeur: int = carte_data.get("largeur", 20) if not carte_data.is_empty() else 20
+	var hauteur: int = carte_data.get("hauteur", 18) if not carte_data.is_empty() else 18
+	
+	# Permettre de sortir si une connexion existe dans cette direction
+	var a_connexion := false
+	for connexion in carte_data.get("connexions", []):
+		var dir: String = connexion.get("direction", "")
+		if dir == "nord" and cible.y < 0:
+			a_connexion = true
+		elif dir == "sud" and cible.y >= hauteur:
+			a_connexion = true
+		elif dir == "ouest" and cible.x < 0:
+			a_connexion = true
+		elif dir == "est" and cible.x >= largeur:
+			a_connexion = true
+	
+	if not a_connexion:
+		if cible.x < 0 or cible.x >= largeur or cible.y < 0 or cible.y >= hauteur:
+			return false
+	elif cible.x < -1 or cible.x > largeur or cible.y < -1 or cible.y > hauteur:
+		return false
+	
+	# Vérifier collision avec le TileMap via le RayCast
 	ray_interaction.target_position = Vector2(direction_actuelle) * TAILLE_TILE
 	ray_interaction.force_raycast_update()
 	if ray_interaction.is_colliding():
@@ -117,12 +146,35 @@ func _case_accessible(cible: Vector2i) -> bool:
 
 func _verifier_warp() -> bool:
 	# Chercher un warp à la position actuelle dans les données de la carte
-	var carte_data := MapLoader.get_carte(PlayerData.carte_actuelle) if Engine.has_singleton("MapLoader") else {}
+	var carte_data := MapLoader.get_carte(PlayerData.carte_actuelle)
 	if carte_data.is_empty():
 		return false
 	for warp in carte_data.get("warps", []):
 		if warp.get("x", -1) == position_grille.x and warp.get("y", -1) == position_grille.y:
 			_entrer_warp(warp)
+			return true
+	# Vérifier les connexions de carte (bord de la carte)
+	var largeur: int = carte_data.get("largeur", 20)
+	var hauteur: int = carte_data.get("hauteur", 18)
+	for connexion in carte_data.get("connexions", []):
+		var dir: String = connexion.get("direction", "")
+		var vers: String = connexion.get("vers", "")
+		var decalage: int = connexion.get("decalage", 0)
+		if dir == "nord" and position_grille.y < 0:
+			var vers_data := MapLoader.get_carte(vers)
+			var vers_h: int = vers_data.get("hauteur", 18) if not vers_data.is_empty() else 18
+			_changer_carte(vers, position_grille.x + decalage, vers_h - 1)
+			return true
+		elif dir == "sud" and position_grille.y >= hauteur:
+			_changer_carte(vers, position_grille.x + decalage, 0)
+			return true
+		elif dir == "ouest" and position_grille.x < 0:
+			var vers_data := MapLoader.get_carte(vers)
+			var vers_l: int = vers_data.get("largeur", 20) if not vers_data.is_empty() else 20
+			_changer_carte(vers, vers_l - 1, position_grille.y + decalage)
+			return true
+		elif dir == "est" and position_grille.x >= largeur:
+			_changer_carte(vers, 0, position_grille.y + decalage)
 			return true
 	return false
 
@@ -133,6 +185,13 @@ func _entrer_warp(warp: Dictionary) -> void:
 	SceneManager.charger_scene("res://scenes/maps/%s.tscn" % vers_map, {
 		"warp_entree": vers_warp,
 		"carte_id": vers_map
+	})
+
+func _changer_carte(vers_carte: String, x: int, y: int) -> void:
+	peut_bouger = false
+	PlayerData.sauvegarder_position(vers_carte, x, y, _vec_vers_direction(direction_actuelle))
+	SceneManager.charger_scene("res://scenes/maps/%s.tscn" % vers_carte, {
+		"carte_id": vers_carte
 	})
 
 func _interagir() -> void:
