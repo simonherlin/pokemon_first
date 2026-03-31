@@ -1,0 +1,124 @@
+extends CharacterBody2D
+
+# NPCController — Contrôleur de PNJ (personnage non-joueur)
+# Gère les dialogues, les combats de dresseurs, la détection du joueur
+
+# --- Constantes ---
+const TAILLE_TILE := 32
+
+# --- Données du PNJ (chargées depuis la carte JSON) ---
+var npc_id: String = ""
+var dialogues: Array = []           # Liste de lignes de dialogue
+var dialogue_apres: Array = []       # Dialogue après avoir été battu (dresseur)
+var est_dresseur: bool = false
+var equipe_dresseur: Array = []      # Liste de {espece_id, niveau}
+var recompense: int = 0
+var champ_vision: int = 3           # Cases devant le PNJ (dresseur)
+var direction_initiale: String = "bas"
+var mobile: bool = false
+
+# --- Nœuds ---
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var ray_vision: RayCast2D = $RayVision
+
+# --- État ---
+var joueur_detecte: bool = false
+var battu: bool = false
+
+signal dialogue_demarre(lignes: Array)
+signal combat_dresseur_demarre(npc_id: String, equipe: Array, recompense: int, nom: String)
+
+func _ready() -> void:
+	battu = PlayerData.dresseur_est_battu(npc_id)
+	_appliquer_direction(direction_initiale)
+
+func _process(_delta: float) -> void:
+	if est_dresseur and not battu:
+		_verifier_champ_vision()
+
+# Initialiser depuis les données JSON de la carte
+func initialiser_depuis_json(data: Dictionary) -> void:
+	npc_id = data.get("id", "")
+	dialogues = data.get("dialogue", data.get("dialogue_avant", []))
+	dialogue_apres = data.get("dialogue_apres", [])
+	est_dresseur = data.has("equipe")
+	equipe_dresseur = data.get("equipe", [])
+	recompense = data.get("recompense", 0)
+	mobile = data.get("mobile", false)
+	direction_initiale = data.get("direction", "bas")
+	battu = PlayerData.dresseur_est_battu(npc_id)
+
+# Interaction déclenché par le joueur (touche A face au PNJ)
+func interagir(joueur: Node) -> void:
+	# Tourner vers le joueur
+	var dir_vers_joueur := _direction_vers(joueur)
+	_appliquer_direction(dir_vers_joueur)
+
+	if est_dresseur and not battu:
+		# Démarrer un combat
+		emit_signal("combat_dresseur_demarre", npc_id, equipe_dresseur, recompense, npc_id)
+		_demarrer_combat(joueur)
+	else:
+		# Dialogue simple
+		var lignes := dialogue_apres if (est_dresseur and battu) else dialogues
+		if lignes.is_empty():
+			lignes = ["..."]
+		emit_signal("dialogue_demarre", lignes)
+
+# Vérifier si le joueur entre dans le champ de vision du dresseur
+func _verifier_champ_vision() -> void:
+	if ray_vision == null:
+		return
+	ray_vision.target_position = _direction_vers_vec(direction_initiale) * TAILLE_TILE * champ_vision
+	ray_vision.force_raycast_update()
+	if ray_vision.is_colliding():
+		var collider = ray_vision.get_collider()
+		if collider and collider.is_in_group("joueur") and not joueur_detecte:
+			joueur_detecte = true
+			_reagir_joueur_vu(collider)
+
+func _reagir_joueur_vu(joueur: Node) -> void:
+	# Exclamation mark (TODO: anim) puis dialoguer/combattre
+	_demarrer_combat(joueur)
+
+func _demarrer_combat(joueur: Node) -> void:
+	if joueur.has_method("set_peut_bouger"):
+		joueur.set_peut_bouger(false)
+	# Construire les données du dresseur pour BattleController
+	var dresseur_data := {
+		"id": npc_id,
+		"nom": npc_id,  # Sera remplacé par le nom JSON si disponible
+		"equipe": equipe_dresseur,
+		"recompense": recompense
+	}
+	# Charger de la scène de combat
+	SceneManager.charger_scene("res://scenes/battle/battle_scene.tscn", {
+		"type_combat": "dresseur",
+		"dresseur_data": dresseur_data,
+		"pokemon_joueur_index": 0,
+		"carte_retour": PlayerData.carte_actuelle
+	})
+
+# Calculer la direction pour faire face au joueur
+func _direction_vers(cible: Node) -> String:
+	var delta := cible.position - position
+	if abs(delta.x) > abs(delta.y):
+		return "droite" if delta.x > 0 else "gauche"
+	return "bas" if delta.y > 0 else "haut"
+
+func _direction_vers_vec(dir: String) -> Vector2:
+	match dir:
+		"haut":    return Vector2(0, -1)
+		"bas":     return Vector2(0, 1)
+		"gauche":  return Vector2(-1, 0)
+		"droite":  return Vector2(1, 0)
+	return Vector2(0, 1)
+
+func _appliquer_direction(dir: String) -> void:
+	direction_initiale = dir
+	if sprite and sprite.sprite_frames:
+		var anim := dir + "_idle"
+		if sprite.sprite_frames.has_animation(anim):
+			sprite.play(anim)
+		elif sprite.sprite_frames.has_animation(dir):
+			sprite.play(dir)

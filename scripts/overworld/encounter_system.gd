@@ -1,0 +1,115 @@
+extends Node
+
+# EncounterSystem — Système de rencontres Pokémon sauvages dans les herbes
+# Se déclenche à chaque pas dans les zones d'herbes hautes
+
+const CHEMIN_JSON := "res://data/encounter_tables.json"
+const TAUX_RENCONTRE_BASE := 0.10  # 10% de chance par pas dans les herbes
+
+var _tables: Dictionary = {}
+var _charge: bool = false
+
+func _ready() -> void:
+	_charger_tables()
+
+func _charger_tables() -> void:
+	if _charge:
+		return
+	if not FileAccess.file_exists(CHEMIN_JSON):
+		push_error("EncounterSystem: encounter_tables.json introuvable")
+		return
+	var fichier := FileAccess.open(CHEMIN_JSON, FileAccess.READ)
+	var data = JSON.parse_string(fichier.get_as_text())
+	fichier.close()
+	if data == null:
+		push_error("EncounterSystem: JSON invalide")
+		return
+	_tables = data
+	_charge = true
+
+# Vérifier si une rencontre se déclenche à cette position
+func verifier_rencontre(position_grille: Vector2i, joueur_node: Node) -> void:
+	# Vérifier si la case est une herbe haute
+	var zone_id := _obtenir_zone_herbe(position_grille, joueur_node)
+	if zone_id.is_empty():
+		return
+
+	# Taux de rencontre
+	if randf() > TAUX_RENCONTRE_BASE:
+		return
+
+	# Choisir le Pokémon selon la table
+	var pokemon_data := _choisir_pokemon(zone_id)
+	if pokemon_data.is_empty():
+		return
+
+	# Déclencher le combat
+	var espece_id: String = pokemon_data.get("pokemon_id", "019")
+	var niveau_min: int = pokemon_data.get("niveau_min", 2)
+	var niveau_max: int = pokemon_data.get("niveau_max", 5)
+	var niveau := randi_range(niveau_min, niveau_max)
+
+	# Passer en mode combat
+	if joueur_node.has_method("set_peut_bouger"):
+		joueur_node.set_peut_bouger(false)
+
+	# Obtenir le Pokémon de tête de l'équipe joueur
+	if PlayerData.equipe.is_empty():
+		push_warning("EncounterSystem: équipe du joueur vide !")
+		return
+	var premier_pokemon := Pokemon.from_dict(PlayerData.equipe[0])
+
+	# Charger la scène de combat avec les paramètres
+	SceneManager.charger_scene("res://scenes/battle/battle_scene.tscn", {
+		"type_combat": "sauvage",
+		"espece_id": espece_id,
+		"niveau": niveau,
+		"pokemon_joueur_index": 0,
+		"carte_retour": PlayerData.carte_actuelle
+	})
+
+# Identifier si la case courante est dans une zone d'herbes
+func _obtenir_zone_herbe(position_grille: Vector2i, joueur_node: Node) -> String:
+	var tilemap := joueur_node.get_node_or_null("../TileMap")
+	if tilemap == null:
+		return ""
+	# Lire les données de la carte pour trouver les zones d'herbes
+	var carte_data := {}
+	if Engine.has_singleton("MapLoader"):
+		carte_data = MapLoader.get_carte(PlayerData.carte_actuelle)
+	for zone in carte_data.get("zones_herbes", []):
+		var x1: int = zone.get("x1", 0)
+		var y1: int = zone.get("y1", 0)
+		var x2: int = zone.get("x2", 0)
+		var y2: int = zone.get("y2", 0)
+		if position_grille.x >= x1 and position_grille.x <= x2 and \
+		   position_grille.y >= y1 and position_grille.y <= y2:
+			return zone.get("table", "")
+	return ""
+
+# Choisir un Pokémon depuis la table de rencontres (tirage pondéré)
+func _choisir_pokemon(zone_id: String) -> Dictionary:
+	if not _charge:
+		_charger_tables()
+	var table: Dictionary = _tables.get(zone_id, {})
+	if table.is_empty():
+		return {}
+	var herbes: Array = table.get("herbes", [])
+	if herbes.is_empty():
+		return {}
+
+	# Tirage pondéré
+	var total_taux := 0
+	for entree in herbes:
+		total_taux += entree.get("taux", 0)
+	var tirage := randi() % maxi(1, total_taux)
+	var cumul := 0
+	for entree in herbes:
+		cumul += entree.get("taux", 0)
+		if tirage < cumul:
+			return entree
+	return herbes[herbes.size() - 1]
+
+# Obtenir toutes les zones pour le débogage
+func get_zones() -> Array:
+	return _tables.keys()
