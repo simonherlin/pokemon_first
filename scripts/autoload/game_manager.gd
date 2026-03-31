@@ -24,7 +24,14 @@ var flags: Dictionary = {
 	"rival_labo_battu": false,
 	"vieil_homme_vu": false,
 	"premier_pokemon_recu": false,
-	"badge_roche": false
+	"badge_roche": false,
+	"badge_cascade": false,
+	"mont_selenite_termine": false,
+	"fossile_mont_selenite_pris": false,
+	"rival_route24_battu": false,
+	"pont_pepite_termine": false,
+	"bill_rencontre": false,
+	"bill_pc_active": false
 }
 
 # --- État de jeu ---

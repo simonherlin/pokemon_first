@@ -187,5 +187,61 @@
     "description": "Fait évoluer certain Pokémon la nuit.",
     "effet": {"type_effet": "pierre_evolution", "pierre": "pierre_lune"},
     "utilisable_combat": false
+  },
+  "pierre_plante": {
+    "id": "pierre_plante", "nom": "Pierre Plante", "nom_en": "Leaf Stone",
+    "categorie": "objets", "prix": 2100,
+    "description": "Fait évoluer certains Pokémon de type Plante.",
+    "effet": {"type_effet": "pierre_evolution", "pierre": "pierre_plante"},
+    "utilisable_combat": false
+  },
+  "fossile_dome": {
+    "id": "fossile_dome", "nom": "Fossile Dôme", "nom_en": "Dome Fossil",
+    "categorie": "objets_cles", "prix": 0,
+    "description": "Un fossile d'un ancien Pokémon. Semble provenir d'une carapace.",
+    "effet": null,
+    "utilisable_combat": false
+  },
+  "fossile_helix": {
+    "id": "fossile_helix", "nom": "Fossile Nautile", "nom_en": "Helix Fossil",
+    "categorie": "objets_cles", "prix": 0,
+    "description": "Un fossile d'un ancien Pokémon. Semble provenir d'une coquille.",
+    "effet": null,
+    "utilisable_combat": false
+  },
+  "pepite": {
+    "id": "pepite", "nom": "Pépite", "nom_en": "Nugget",
+    "categorie": "objets", "prix": 5000,
+    "description": "Une pépite d'or pur. Peut être vendue à bon prix.",
+    "effet": null,
+    "utilisable_combat": false
+  },
+  "ct_cascade": {
+    "id": "ct_cascade", "nom": "CT Cascade", "nom_en": "TM Waterfall",
+    "categorie": "ct_cs", "prix": 0,
+    "description": "Attaque puissante de type Eau. Peut aussi être utilisée hors combat.",
+    "effet": {"type_effet": "ct", "attaque_id": "cascade"},
+    "utilisable_combat": false
+  },
+  "elixir": {
+    "id": "elixir", "nom": "Élixir", "nom_en": "Elixir",
+    "categorie": "objets", "prix": 0,
+    "description": "Restaure 10 PP de toutes les attaques d'un Pokémon.",
+    "effet": {"type_effet": "restaure_pp_toutes", "montant": 10},
+    "utilisable_combat": true
+  },
+  "huile": {
+    "id": "huile", "nom": "Huile", "nom_en": "Ether",
+    "categorie": "objets", "prix": 0,
+    "description": "Restaure 10 PP d'une attaque d'un Pokémon.",
+    "effet": {"type_effet": "restaure_pp", "montant": 10},
+    "utilisable_combat": true
+  },
+  "corde_sortie": {
+    "id": "corde_sortie", "nom": "Corde Sortie", "nom_en": "Escape Rope",
+    "categorie": "objets", "prix": 550,
+    "description": "Permet de fuir instantanément d'une grotte ou d'un donjon.",
+    "effet": {"type_effet": "fuite_donjon"},
+    "utilisable_combat": false
   }
 }

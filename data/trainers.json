@@ -102,5 +102,249 @@
     ],
     "badge": 0,
     "ct_recompense": "ct_tomberoche"
+  },
+  "montagnard_selenite_01": {
+    "id": "montagnard_selenite_01",
+    "nom": "Marc",
+    "classe": "Montagnard",
+    "dialogue_avant": "Ces grottes sont dangereuses pour les novices !",
+    "dialogue_defaite": "Tu t'en sors bien...",
+    "recompense": 280,
+    "equipe": [
+      {"espece_id": "074", "niveau": 10},
+      {"espece_id": "074", "niveau": 10}
+    ]
+  },
+  "montagnard_selenite_02": {
+    "id": "montagnard_selenite_02",
+    "nom": "Thierry",
+    "classe": "Montagnard",
+    "dialogue_avant": "J'ai trouvé plein de fossiles ici !",
+    "dialogue_defaite": "Tu es costaud, toi.",
+    "recompense": 350,
+    "equipe": [
+      {"espece_id": "074", "niveau": 11},
+      {"espece_id": "095", "niveau": 11}
+    ]
+  },
+  "rocket_selenite_01": {
+    "id": "rocket_selenite_01",
+    "nom": "Sbire",
+    "classe": "Team Rocket",
+    "dialogue_avant": "Dégage de là, gamin !\nCes fossiles nous appartiennent !",
+    "dialogue_defaite": "Argh ! Tu vas le regretter !",
+    "recompense": 390,
+    "equipe": [
+      {"espece_id": "019", "niveau": 11},
+      {"espece_id": "041", "niveau": 11}
+    ]
+  },
+  "rocket_selenite_02": {
+    "id": "rocket_selenite_02",
+    "nom": "Sbire",
+    "classe": "Team Rocket",
+    "dialogue_avant": "La Team Rocket prendra le contrôle de tous\nles Pokémon rares !",
+    "dialogue_defaite": "Ce n'est pas fini !",
+    "recompense": 390,
+    "equipe": [
+      {"espece_id": "023", "niveau": 12},
+      {"espece_id": "019", "niveau": 12}
+    ]
+  },
+  "pedro_selenite": {
+    "id": "pedro_selenite",
+    "nom": "Pedro",
+    "classe": "Super Nerd",
+    "dialogue_avant": "J'étudie les fossiles ! Tu ne les auras pas !",
+    "dialogue_defaite": "Bon... choisis un fossile.\nMais tu ne peux en prendre qu'un seul !",
+    "recompense": 485,
+    "equipe": [
+      {"espece_id": "074", "niveau": 12},
+      {"espece_id": "100", "niveau": 12},
+      {"espece_id": "074", "niveau": 12}
+    ]
+  },
+  "gamin_route3_01": {
+    "id": "gamin_route3_01",
+    "nom": "Luc",
+    "classe": "Gamin",
+    "dialogue_avant": "Hé ! Tu viens d'Argenta ?",
+    "dialogue_defaite": "Ouah, t'es fort !",
+    "recompense": 176,
+    "equipe": [
+      {"espece_id": "021", "niveau": 11},
+      {"espece_id": "023", "niveau": 11}
+    ]
+  },
+  "gamin_route3_02": {
+    "id": "gamin_route3_02",
+    "nom": "Émile",
+    "classe": "Gamin",
+    "dialogue_avant": "Un combat Pokémon ! Allez !",
+    "dialogue_defaite": "C'est pas grave, je m'entraînerai !",
+    "recompense": 220,
+    "equipe": [
+      {"espece_id": "027", "niveau": 14}
+    ]
+  },
+  "pont_pepite_01": {
+    "id": "pont_pepite_01",
+    "nom": "Kévin",
+    "classe": "Gamin",
+    "dialogue_avant": "Tu veux traverser le Pont Pépite ?\nBats-moi d'abord !",
+    "dialogue_defaite": "Bien joué !",
+    "recompense": 288,
+    "equipe": [
+      {"espece_id": "010", "niveau": 14},
+      {"espece_id": "016", "niveau": 14}
+    ]
+  },
+  "pont_pepite_02": {
+    "id": "pont_pepite_02",
+    "nom": "Ali",
+    "classe": "Gamin",
+    "dialogue_avant": "Le deuxième dresseur, c'est moi !",
+    "dialogue_defaite": "Pas mal...",
+    "recompense": 288,
+    "equipe": [
+      {"espece_id": "019", "niveau": 15},
+      {"espece_id": "013", "niveau": 15}
+    ]
+  },
+  "pont_pepite_03": {
+    "id": "pont_pepite_03",
+    "nom": "Marie",
+    "classe": "Fillette",
+    "dialogue_avant": "Je ne te laisserai pas passer !",
+    "dialogue_defaite": "Tu es vraiment doué(e) !",
+    "recompense": 288,
+    "equipe": [
+      {"espece_id": "029", "niveau": 15},
+      {"espece_id": "032", "niveau": 15}
+    ]
+  },
+  "pont_pepite_04": {
+    "id": "pont_pepite_04",
+    "nom": "Guillaume",
+    "classe": "Campeur",
+    "dialogue_avant": "Plus qu'un adversaire après moi !",
+    "dialogue_defaite": "OK, tu peux passer.",
+    "recompense": 288,
+    "equipe": [
+      {"espece_id": "066", "niveau": 15}
+    ]
+  },
+  "pont_pepite_05": {
+    "id": "pont_pepite_05",
+    "nom": "Joséphine",
+    "classe": "Fillette",
+    "dialogue_avant": "Je suis la dernière ! Montre ta force !",
+    "dialogue_defaite": "Bravo ! Tu as vaincu les 5 !",
+    "recompense": 288,
+    "equipe": [
+      {"espece_id": "043", "niveau": 16}
+    ]
+  },
+  "rocket_pont_pepite": {
+    "id": "rocket_pont_pepite",
+    "nom": "Sbire Rocket",
+    "classe": "Team Rocket",
+    "dialogue_avant": "Bravo pour le Pont Pépite ! Tiens, une PÉPITE.\n...Hé, tu veux rejoindre la Team Rocket ?",
+    "dialogue_defaite": "Hmph ! Tant pis pour le recrutement !",
+    "recompense": 520,
+    "equipe": [
+      {"espece_id": "023", "niveau": 15},
+      {"espece_id": "041", "niveau": 15}
+    ]
+  },
+  "rival_route24_001": {
+    "id": "rival_route24_001",
+    "nom": "Rival",
+    "classe": "Rival",
+    "dialogue_avant": "Tiens, tiens ! On se retrouve !\nVoyons si tu t'es amélioré !",
+    "dialogue_defaite": "Pas mal... mais la prochaine fois\nje ne perdrai pas !",
+    "recompense": 1040,
+    "equipe_variantes": {
+      "001": [
+        {"espece_id": "016", "niveau": 17},
+        {"espece_id": "019", "niveau": 15},
+        {"espece_id": "063", "niveau": 16},
+        {"espece_id": "005", "niveau": 18}
+      ],
+      "004": [
+        {"espece_id": "016", "niveau": 17},
+        {"espece_id": "019", "niveau": 15},
+        {"espece_id": "063", "niveau": 16},
+        {"espece_id": "008", "niveau": 18}
+      ],
+      "007": [
+        {"espece_id": "016", "niveau": 17},
+        {"espece_id": "019", "niveau": 15},
+        {"espece_id": "063", "niveau": 16},
+        {"espece_id": "002", "niveau": 18}
+      ]
+    }
+  },
+  "nageur_route25_01": {
+    "id": "nageur_route25_01",
+    "nom": "Florian",
+    "classe": "Campeur",
+    "dialogue_avant": "La nature ici est magnifique !",
+    "dialogue_defaite": "Belle combinaison d'attaques !",
+    "recompense": 320,
+    "equipe": [
+      {"espece_id": "060", "niveau": 16},
+      {"espece_id": "046", "niveau": 16}
+    ]
+  },
+  "randonneur_route25_01": {
+    "id": "randonneur_route25_01",
+    "nom": "Bertrand",
+    "classe": "Randonneur",
+    "dialogue_avant": "Je connais un gars bizarre au bout du chemin.\nIl s'appelle Bill.",
+    "dialogue_defaite": "Tu devrais aller voir Bill. C'est un génie !",
+    "recompense": 350,
+    "equipe": [
+      {"espece_id": "066", "niveau": 17},
+      {"espece_id": "074", "niveau": 17}
+    ]
+  },
+  "nageuse_arene_azuria_01": {
+    "id": "nageuse_arene_azuria_01",
+    "nom": "Diana",
+    "classe": "Nageuse",
+    "dialogue_avant": "L'eau est un élément puissant !",
+    "dialogue_defaite": "Tu maîtrises bien tes Pokémon.",
+    "recompense": 380,
+    "equipe": [
+      {"espece_id": "120", "niveau": 16},
+      {"espece_id": "118", "niveau": 16}
+    ]
+  },
+  "nageur_arene_azuria_02": {
+    "id": "nageur_arene_azuria_02",
+    "nom": "Cédric",
+    "classe": "Nageur",
+    "dialogue_avant": "Ondine est la plus forte dresseuse Eau !",
+    "dialogue_defaite": "Tu as le niveau pour affronter Ondine.",
+    "recompense": 380,
+    "equipe": [
+      {"espece_id": "060", "niveau": 17},
+      {"espece_id": "098", "niveau": 17}
+    ]
+  },
+  "champion_ondine": {
+    "id": "champion_ondine",
+    "nom": "Ondine",
+    "classe": "Champion d'Arène",
+    "dialogue_avant": "Je suis Ondine, la championne d'Azuria !\nMes Pokémon Eau te submergeront !",
+    "dialogue_defaite": "Wow ! Tu as réussi à vaincre mes Pokémon !\nTu mérites le Badge Cascade !",
+    "recompense": 2079,
+    "equipe": [
+      {"espece_id": "120", "niveau": 18},
+      {"espece_id": "121", "niveau": 21}
+    ],
+    "badge": 1,
+    "ct_recompense": "ct_cascade"
   }
 }

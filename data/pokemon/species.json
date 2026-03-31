@@ -713,5 +713,415 @@
     "groupe_exp": "lent", "taux_capture": 45, "exp_base": 189,
     "description_pokedex": "Extrêmement violent. Son apparition présage des catastrophes telles que des guerres ou des tsunamis.",
     "taille_m": 6.5, "poids_kg": 235.0
+  },
+  "037": {
+    "id": 37, "nom": "Goupix", "nom_en": "Vulpix",
+    "types": ["feu"],
+    "stats_base": {"pv": 38, "attaque": 41, "defense": 40, "special": 65, "vitesse": 65},
+    "evolution": {"methode": "pierre", "pierre": "pierre_feu", "vers": "038"},
+    "learnset": {"1": ["flammeche", "queue_fouet"], "16": ["vive_attaque"], "21": ["rugissement"]},
+    "groupe_exp": "moyen", "taux_capture": 190, "exp_base": 63,
+    "description_pokedex": "À sa naissance, il n'a qu'une seule queue blanche qui se divise en six queues au fil de sa croissance.",
+    "taille_m": 0.6, "poids_kg": 9.9
+  },
+  "038": {
+    "id": 38, "nom": "Feunard", "nom_en": "Ninetales",
+    "types": ["feu"],
+    "stats_base": {"pv": 73, "attaque": 76, "defense": 75, "special": 100, "vitesse": 100},
+    "evolution": null,
+    "learnset": {"1": ["flammeche", "vive_attaque", "rugissement", "lance_flamme"]},
+    "groupe_exp": "moyen", "taux_capture": 75, "exp_base": 178,
+    "description_pokedex": "Très intelligent et très rancunier. Attraper l'une de ses queues porterait malheur pendant 1000 ans.",
+    "taille_m": 1.1, "poids_kg": 19.9
+  },
+  "043": {
+    "id": 43, "nom": "Mystherbe", "nom_en": "Oddish",
+    "types": ["plante", "poison"],
+    "stats_base": {"pv": 45, "attaque": 50, "defense": 55, "special": 75, "vitesse": 30},
+    "evolution": {"methode": "niveau", "niveau": 21, "vers": "044"},
+    "learnset": {"1": ["vampigraine"], "15": ["poudre_toxik"], "17": ["poudre_dodo"], "24": ["fouet_lianes"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 255, "exp_base": 78,
+    "description_pokedex": "Ce Pokémon marche la nuit en semant des graines. On dit qu'il est la mauvaise herbe du monde Pokémon.",
+    "taille_m": 0.5, "poids_kg": 5.4
+  },
+  "044": {
+    "id": 44, "nom": "Ortide", "nom_en": "Gloom",
+    "types": ["plante", "poison"],
+    "stats_base": {"pv": 60, "attaque": 65, "defense": 70, "special": 85, "vitesse": 40},
+    "evolution": {"methode": "pierre", "pierre": "pierre_plante", "vers": "045"},
+    "learnset": {"1": ["vampigraine", "poudre_toxik"], "24": ["fouet_lianes"], "33": ["laser_plante"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 120, "exp_base": 132,
+    "description_pokedex": "Le liquide qui suinte de sa bouche n'est pas de la salive mais un nectar infiniment sucré.",
+    "taille_m": 0.8, "poids_kg": 8.6
+  },
+  "045": {
+    "id": 45, "nom": "Rafflesia", "nom_en": "Vileplume",
+    "types": ["plante", "poison"],
+    "stats_base": {"pv": 75, "attaque": 80, "defense": 85, "special": 100, "vitesse": 50},
+    "evolution": null,
+    "learnset": {"1": ["vampigraine", "poudre_toxik", "fouet_lianes", "laser_plante"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 184,
+    "description_pokedex": "Sa fleur géante possède les plus gros pétales du monde. Chaque pas libère un nuage de pollen toxique.",
+    "taille_m": 1.2, "poids_kg": 18.6
+  },
+  "046": {
+    "id": 46, "nom": "Paras", "nom_en": "Paras",
+    "types": ["insecte", "plante"],
+    "stats_base": {"pv": 35, "attaque": 70, "defense": 55, "special": 55, "vitesse": 25},
+    "evolution": {"methode": "niveau", "niveau": 24, "vers": "047"},
+    "learnset": {"1": ["griffe"], "13": ["poudre_dodo"], "20": ["vampigraine"], "27": ["tranche"]},
+    "groupe_exp": "moyen", "taux_capture": 190, "exp_base": 70,
+    "description_pokedex": "Des champignons parasites poussent sur son dos. Ils grandissent en absorbant les nutriments de leur hôte.",
+    "taille_m": 0.3, "poids_kg": 5.4
+  },
+  "047": {
+    "id": 47, "nom": "Parasect", "nom_en": "Parasect",
+    "types": ["insecte", "plante"],
+    "stats_base": {"pv": 60, "attaque": 95, "defense": 80, "special": 80, "vitesse": 30},
+    "evolution": null,
+    "learnset": {"1": ["griffe", "poudre_dodo", "vampigraine"], "30": ["tranche"]},
+    "groupe_exp": "moyen", "taux_capture": 75, "exp_base": 128,
+    "description_pokedex": "Le champignon parasite a pris le contrôle total. Il disperse des spores toxiques depuis son chapeau géant.",
+    "taille_m": 1.0, "poids_kg": 29.5
+  },
+  "054": {
+    "id": 54, "nom": "Psykokwak", "nom_en": "Psyduck",
+    "types": ["eau"],
+    "stats_base": {"pv": 50, "attaque": 52, "defense": 48, "special": 50, "vitesse": 55},
+    "evolution": {"methode": "niveau", "niveau": 33, "vers": "055"},
+    "learnset": {"1": ["griffe"], "28": ["confusion"], "31": ["surf"]},
+    "groupe_exp": "moyen", "taux_capture": 190, "exp_base": 80,
+    "description_pokedex": "Il souffre toujours d'affreux maux de tête. Quand la douleur est trop forte, il utilise ses pouvoirs psychiques.",
+    "taille_m": 0.8, "poids_kg": 19.6
+  },
+  "055": {
+    "id": 55, "nom": "Akwakwak", "nom_en": "Golduck",
+    "types": ["eau"],
+    "stats_base": {"pv": 80, "attaque": 82, "defense": 78, "special": 80, "vitesse": 85},
+    "evolution": null,
+    "learnset": {"1": ["griffe", "confusion", "surf"], "39": ["hydrocanon"]},
+    "groupe_exp": "moyen", "taux_capture": 75, "exp_base": 174,
+    "description_pokedex": "Souvent aperçu nageant dans les lacs au crépuscule. Son front brille d'un éclat mystérieux.",
+    "taille_m": 1.7, "poids_kg": 76.6
+  },
+  "060": {
+    "id": 60, "nom": "Ptitard", "nom_en": "Poliwag",
+    "types": ["eau"],
+    "stats_base": {"pv": 40, "attaque": 50, "defense": 40, "special": 40, "vitesse": 90},
+    "evolution": {"methode": "niveau", "niveau": 25, "vers": "061"},
+    "learnset": {"1": ["pistolet_a_o"], "16": ["bulles_d_o"], "25": ["surf"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 255, "exp_base": 77,
+    "description_pokedex": "La spirale sur son ventre est en fait un organe interne visible à travers sa peau fine.",
+    "taille_m": 0.6, "poids_kg": 12.4
+  },
+  "061": {
+    "id": 61, "nom": "Têtarte", "nom_en": "Poliwhirl",
+    "types": ["eau"],
+    "stats_base": {"pv": 65, "attaque": 65, "defense": 65, "special": 50, "vitesse": 90},
+    "evolution": {"methode": "pierre", "pierre": "pierre_eau", "vers": "062"},
+    "learnset": {"1": ["pistolet_a_o", "bulles_d_o"], "26": ["surf"], "33": ["hydrocanon"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 120, "exp_base": 131,
+    "description_pokedex": "La surface de son corps est toujours humide. Il préfère vivre hors de l'eau.",
+    "taille_m": 1.0, "poids_kg": 20.0
+  },
+  "062": {
+    "id": 62, "nom": "Tartard", "nom_en": "Poliwrath",
+    "types": ["eau", "combat"],
+    "stats_base": {"pv": 90, "attaque": 85, "defense": 95, "special": 70, "vitesse": 70},
+    "evolution": null,
+    "learnset": {"1": ["pistolet_a_o", "surf", "sacrifice"], "33": ["hydrocanon"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 185,
+    "description_pokedex": "Nageur expert, il peut traverser l'océan Pacifique en entier sans se fatiguer.",
+    "taille_m": 1.3, "poids_kg": 54.0
+  },
+  "063": {
+    "id": 63, "nom": "Abra", "nom_en": "Abra",
+    "types": ["psy"],
+    "stats_base": {"pv": 25, "attaque": 20, "defense": 15, "special": 105, "vitesse": 90},
+    "evolution": {"methode": "niveau", "niveau": 16, "vers": "064"},
+    "learnset": {"1": ["teleport"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 200, "exp_base": 73,
+    "description_pokedex": "Il dort 18 heures par jour. Il se téléporte quand il sent un danger, même en dormant.",
+    "taille_m": 0.9, "poids_kg": 19.5
+  },
+  "064": {
+    "id": 64, "nom": "Kadabra", "nom_en": "Kadabra",
+    "types": ["psy"],
+    "stats_base": {"pv": 40, "attaque": 35, "defense": 30, "special": 120, "vitesse": 105},
+    "evolution": {"methode": "niveau", "niveau": 37, "vers": "065"},
+    "learnset": {"1": ["teleport", "confusion"], "20": ["rafale_psy"], "27": ["paranormale"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 100, "exp_base": 145,
+    "description_pokedex": "Il amplifie ses ondes alpha quand il a mal à la tête. Seuls les esprits forts résistent à ses pouvoirs.",
+    "taille_m": 1.3, "poids_kg": 56.5
+  },
+  "065": {
+    "id": 65, "nom": "Alakazam", "nom_en": "Alakazam",
+    "types": ["psy"],
+    "stats_base": {"pv": 55, "attaque": 50, "defense": 45, "special": 135, "vitesse": 120},
+    "evolution": null,
+    "learnset": {"1": ["teleport", "confusion", "rafale_psy", "paranormale"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 50, "exp_base": 186,
+    "description_pokedex": "Son cerveau est plus puissant qu'un superordinateur. On dit que son QI dépasse les 5000.",
+    "taille_m": 1.5, "poids_kg": 48.0
+  },
+  "066": {
+    "id": 66, "nom": "Machoc", "nom_en": "Machop",
+    "types": ["combat"],
+    "stats_base": {"pv": 70, "attaque": 80, "defense": 50, "special": 35, "vitesse": 35},
+    "evolution": {"methode": "niveau", "niveau": 28, "vers": "067"},
+    "learnset": {"1": ["poing_karate"], "20": ["balayage"], "25": ["groz_yeux"], "32": ["sacrifice"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 180, "exp_base": 75,
+    "description_pokedex": "Il s'entraîne en soulevant un RACAILLOU. Certains s'entraînent en aidant les déménageurs.",
+    "taille_m": 0.8, "poids_kg": 19.5
+  },
+  "067": {
+    "id": 67, "nom": "Machopeur", "nom_en": "Machoke",
+    "types": ["combat"],
+    "stats_base": {"pv": 80, "attaque": 100, "defense": 70, "special": 50, "vitesse": 45},
+    "evolution": {"methode": "niveau", "niveau": 40, "vers": "068"},
+    "learnset": {"1": ["poing_karate", "balayage"], "32": ["sacrifice"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 90, "exp_base": 146,
+    "description_pokedex": "Sa ceinture sert à contenir sa puissance. Sans elle, il serait incontrôlable.",
+    "taille_m": 1.5, "poids_kg": 70.5
+  },
+  "068": {
+    "id": 68, "nom": "Mackogneur", "nom_en": "Machamp",
+    "types": ["combat"],
+    "stats_base": {"pv": 90, "attaque": 130, "defense": 80, "special": 65, "vitesse": 55},
+    "evolution": null,
+    "learnset": {"1": ["poing_karate", "balayage", "sacrifice"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 193,
+    "description_pokedex": "Il peut déplacer une montagne d'un seul bras. Ses quatre bras lui donnent un avantage décisif.",
+    "taille_m": 1.6, "poids_kg": 130.0
+  },
+  "069": {
+    "id": 69, "nom": "Chétiflor", "nom_en": "Bellsprout",
+    "types": ["plante", "poison"],
+    "stats_base": {"pv": 50, "attaque": 75, "defense": 35, "special": 70, "vitesse": 40},
+    "evolution": {"methode": "niveau", "niveau": 21, "vers": "070"},
+    "learnset": {"1": ["fouet_lianes"], "15": ["vampigraine"], "18": ["poudre_dodo"], "23": ["tranche"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 255, "exp_base": 84,
+    "description_pokedex": "Son corps mince et souple lui permet d'esquiver n'importe quelle attaque, aussi rapide soit-elle.",
+    "taille_m": 0.7, "poids_kg": 4.0
+  },
+  "070": {
+    "id": 70, "nom": "Boustiflor", "nom_en": "Weepinbell",
+    "types": ["plante", "poison"],
+    "stats_base": {"pv": 65, "attaque": 90, "defense": 50, "special": 85, "vitesse": 55},
+    "evolution": {"methode": "pierre", "pierre": "pierre_plante", "vers": "071"},
+    "learnset": {"1": ["fouet_lianes", "vampigraine"], "23": ["tranche"], "29": ["laser_plante"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 120, "exp_base": 151,
+    "description_pokedex": "Il crache un acide capable de dissoudre n'importe quoi. Il s'en sert pour immobiliser ses proies.",
+    "taille_m": 1.0, "poids_kg": 6.4
+  },
+  "071": {
+    "id": 71, "nom": "Empiflor", "nom_en": "Victreebel",
+    "types": ["plante", "poison"],
+    "stats_base": {"pv": 80, "attaque": 105, "defense": 65, "special": 100, "vitesse": 70},
+    "evolution": null,
+    "learnset": {"1": ["fouet_lianes", "vampigraine", "tranche", "laser_plante"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 191,
+    "description_pokedex": "On dit que dans la jungle, on peut entendre les cris de ceux qui se sont fait piéger par ses lianes.",
+    "taille_m": 1.7, "poids_kg": 15.5
+  },
+  "072": {
+    "id": 72, "nom": "Tentacool", "nom_en": "Tentacool",
+    "types": ["eau", "poison"],
+    "stats_base": {"pv": 40, "attaque": 40, "defense": 35, "special": 100, "vitesse": 70},
+    "evolution": {"methode": "niveau", "niveau": 30, "vers": "073"},
+    "learnset": {"1": ["dard_venin"], "7": ["ultrason"], "13": ["pistolet_a_o"], "25": ["surf"]},
+    "groupe_exp": "lent", "taux_capture": 190, "exp_base": 105,
+    "description_pokedex": "Son corps est presque entièrement composé d'eau. Il dérive dans les océans en absorbant la lumière.",
+    "taille_m": 0.9, "poids_kg": 45.5
+  },
+  "073": {
+    "id": 73, "nom": "Tentacruel", "nom_en": "Tentacruel",
+    "types": ["eau", "poison"],
+    "stats_base": {"pv": 80, "attaque": 70, "defense": 65, "special": 120, "vitesse": 100},
+    "evolution": null,
+    "learnset": {"1": ["dard_venin", "ultrason", "pistolet_a_o", "surf"]},
+    "groupe_exp": "lent", "taux_capture": 60, "exp_base": 205,
+    "description_pokedex": "Ses 80 tentacules peuvent s'étirer et se contracter librement. Ils injectent du poison au contact.",
+    "taille_m": 1.6, "poids_kg": 55.0
+  },
+  "076": {
+    "id": 76, "nom": "Grolem", "nom_en": "Golem",
+    "types": ["roche", "sol"],
+    "stats_base": {"pv": 80, "attaque": 110, "defense": 130, "special": 55, "vitesse": 45},
+    "evolution": null,
+    "learnset": {"1": ["charge", "tomberoche", "seisme"], "36": ["explosion_roc"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 177,
+    "description_pokedex": "Son corps est recouvert d'une carapace de pierre. Il se déplace en roulant du haut des montagnes.",
+    "taille_m": 1.4, "poids_kg": 300.0
+  },
+  "079": {
+    "id": 79, "nom": "Ramoloss", "nom_en": "Slowpoke",
+    "types": ["eau", "psy"],
+    "stats_base": {"pv": 90, "attaque": 65, "defense": 65, "special": 40, "vitesse": 15},
+    "evolution": {"methode": "niveau", "niveau": 37, "vers": "080"},
+    "learnset": {"1": ["confusion"], "18": ["pistolet_a_o"], "22": ["groz_yeux"], "33": ["surf"]},
+    "groupe_exp": "moyen", "taux_capture": 190, "exp_base": 99,
+    "description_pokedex": "Incroyablement lent et paresseux. Il a mis 5 secondes à réagir quand on lui mordilla la queue.",
+    "taille_m": 1.2, "poids_kg": 36.0
+  },
+  "080": {
+    "id": 80, "nom": "Flagadoss", "nom_en": "Slowbro",
+    "types": ["eau", "psy"],
+    "stats_base": {"pv": 95, "attaque": 75, "defense": 110, "special": 80, "vitesse": 30},
+    "evolution": null,
+    "learnset": {"1": ["confusion", "pistolet_a_o", "surf"], "37": ["paranormale"]},
+    "groupe_exp": "moyen", "taux_capture": 75, "exp_base": 164,
+    "description_pokedex": "Un KOKIYAS s'est accroché à sa queue quand il pêchait. C'est ce qui l'a fait évoluer.",
+    "taille_m": 1.6, "poids_kg": 78.5
+  },
+  "092": {
+    "id": 92, "nom": "Fantominus", "nom_en": "Gastly",
+    "types": ["spectre", "poison"],
+    "stats_base": {"pv": 30, "attaque": 35, "defense": 30, "special": 100, "vitesse": 80},
+    "evolution": {"methode": "niveau", "niveau": 25, "vers": "093"},
+    "learnset": {"1": ["lechouille", "ombre_nocturne"], "20": ["ultrason"], "27": ["devoreve"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 190, "exp_base": 95,
+    "description_pokedex": "Un corps composé de gaz empoisonné. Il peut renverser un éléphant en 2 secondes.",
+    "taille_m": 1.3, "poids_kg": 0.1
+  },
+  "093": {
+    "id": 93, "nom": "Spectrum", "nom_en": "Haunter",
+    "types": ["spectre", "poison"],
+    "stats_base": {"pv": 45, "attaque": 50, "defense": 45, "special": 115, "vitesse": 95},
+    "evolution": {"methode": "niveau", "niveau": 38, "vers": "094"},
+    "learnset": {"1": ["lechouille", "ombre_nocturne", "ultrason"], "29": ["devoreve"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 90, "exp_base": 126,
+    "description_pokedex": "S'il vous lèche, vous tremblerez de tout votre corps jusqu'à en mourir.",
+    "taille_m": 1.6, "poids_kg": 0.1
+  },
+  "094": {
+    "id": 94, "nom": "Ectoplasma", "nom_en": "Gengar",
+    "types": ["spectre", "poison"],
+    "stats_base": {"pv": 60, "attaque": 65, "defense": 60, "special": 130, "vitesse": 110},
+    "evolution": null,
+    "learnset": {"1": ["lechouille", "ombre_nocturne", "ultrason", "devoreve"]},
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 190,
+    "description_pokedex": "La nuit, votre ombre peut bouger toute seule et vous sourire. C'est un ECTOPLASMA.",
+    "taille_m": 1.5, "poids_kg": 40.5
+  },
+  "098": {
+    "id": 98, "nom": "Krabby", "nom_en": "Krabby",
+    "types": ["eau"],
+    "stats_base": {"pv": 30, "attaque": 105, "defense": 90, "special": 25, "vitesse": 50},
+    "evolution": {"methode": "niveau", "niveau": 28, "vers": "099"},
+    "learnset": {"1": ["pistolet_a_o", "groz_yeux"], "20": ["griffe"], "25": ["crabe_marteau"]},
+    "groupe_exp": "moyen", "taux_capture": 225, "exp_base": 115,
+    "description_pokedex": "Ses pinces sont des armes redoutables. Elles repoussent si elles se cassent au combat.",
+    "taille_m": 0.4, "poids_kg": 6.5
+  },
+  "099": {
+    "id": 99, "nom": "Krabboss", "nom_en": "Kingler",
+    "types": ["eau"],
+    "stats_base": {"pv": 55, "attaque": 130, "defense": 115, "special": 50, "vitesse": 75},
+    "evolution": null,
+    "learnset": {"1": ["pistolet_a_o", "griffe", "crabe_marteau"], "33": ["surf"]},
+    "groupe_exp": "moyen", "taux_capture": 60, "exp_base": 206,
+    "description_pokedex": "Sa pince surdimensionnée a une force de 10 000 ch. Cependant, son poids la rend dure à manier.",
+    "taille_m": 1.3, "poids_kg": 60.0
+  },
+  "100": {
+    "id": 100, "nom": "Voltorbe", "nom_en": "Voltorb",
+    "types": ["electrik"],
+    "stats_base": {"pv": 40, "attaque": 30, "defense": 50, "special": 55, "vitesse": 100},
+    "evolution": {"methode": "niveau", "niveau": 30, "vers": "101"},
+    "learnset": {"1": ["charge"], "17": ["eclair"], "22": ["onde_choc"], "29": ["tonnerre"]},
+    "groupe_exp": "moyen", "taux_capture": 190, "exp_base": 103,
+    "description_pokedex": "On le confond souvent avec une Poké Ball. Il explose au moindre choc.",
+    "taille_m": 0.5, "poids_kg": 10.4
+  },
+  "101": {
+    "id": 101, "nom": "Électrode", "nom_en": "Electrode",
+    "types": ["electrik"],
+    "stats_base": {"pv": 60, "attaque": 50, "defense": 70, "special": 80, "vitesse": 140},
+    "evolution": null,
+    "learnset": {"1": ["charge", "eclair", "tonnerre"], "37": ["foudre"]},
+    "groupe_exp": "moyen", "taux_capture": 60, "exp_base": 150,
+    "description_pokedex": "Il emmagasine de l'énergie électrique sous haute pression. Il explose au moindre stimulus.",
+    "taille_m": 1.2, "poids_kg": 66.6
+  },
+  "118": {
+    "id": 118, "nom": "Poissirène", "nom_en": "Goldeen",
+    "types": ["eau"],
+    "stats_base": {"pv": 45, "attaque": 67, "defense": 60, "special": 50, "vitesse": 63},
+    "evolution": {"methode": "niveau", "niveau": 33, "vers": "119"},
+    "learnset": {"1": ["griffe", "queue_fouet"], "19": ["pistolet_a_o"], "24": ["surf"]},
+    "groupe_exp": "moyen", "taux_capture": 225, "exp_base": 111,
+    "description_pokedex": "Sa nageoire caudale ondule avec élégance comme un voile de mariée.",
+    "taille_m": 0.6, "poids_kg": 15.0
+  },
+  "119": {
+    "id": 119, "nom": "Poissoroy", "nom_en": "Seaking",
+    "types": ["eau"],
+    "stats_base": {"pv": 80, "attaque": 92, "defense": 65, "special": 80, "vitesse": 68},
+    "evolution": null,
+    "learnset": {"1": ["griffe", "pistolet_a_o", "surf"], "39": ["hydrocanon"]},
+    "groupe_exp": "moyen", "taux_capture": 60, "exp_base": 170,
+    "description_pokedex": "À l'automne, on peut les voir nager contre le courant des rivières pour pondre leurs œufs.",
+    "taille_m": 1.3, "poids_kg": 39.0
+  },
+  "120": {
+    "id": 120, "nom": "Stari", "nom_en": "Staryu",
+    "types": ["eau"],
+    "stats_base": {"pv": 30, "attaque": 45, "defense": 55, "special": 70, "vitesse": 85},
+    "evolution": {"methode": "pierre", "pierre": "pierre_eau", "vers": "121"},
+    "learnset": {"1": ["charge"], "17": ["pistolet_a_o"], "22": ["vive_attaque"], "27": ["surf"]},
+    "groupe_exp": "lent", "taux_capture": 225, "exp_base": 106,
+    "description_pokedex": "Même si son corps est détruit, il peut se régénérer s'il reste le noyau central intact.",
+    "taille_m": 0.8, "poids_kg": 34.5
+  },
+  "121": {
+    "id": 121, "nom": "Staross", "nom_en": "Starmie",
+    "types": ["eau", "psy"],
+    "stats_base": {"pv": 60, "attaque": 75, "defense": 85, "special": 100, "vitesse": 115},
+    "evolution": null,
+    "learnset": {"1": ["pistolet_a_o", "vive_attaque", "surf", "confusion"]},
+    "groupe_exp": "lent", "taux_capture": 60, "exp_base": 207,
+    "description_pokedex": "Son noyau central brille de toutes les couleurs de l'arc-en-ciel. On dit qu'il capte des signaux de l'espace.",
+    "taille_m": 1.1, "poids_kg": 80.0
+  },
+  "138": {
+    "id": 138, "nom": "Amonita", "nom_en": "Omanyte",
+    "types": ["roche", "eau"],
+    "stats_base": {"pv": 35, "attaque": 40, "defense": 100, "special": 90, "vitesse": 35},
+    "evolution": {"methode": "niveau", "niveau": 40, "vers": "139"},
+    "learnset": {"1": ["pistolet_a_o"], "34": ["surf"], "39": ["hydrocanon"]},
+    "groupe_exp": "moyen", "taux_capture": 45, "exp_base": 120,
+    "description_pokedex": "Reconstitué à partir d'un fossile. Il vivait autrefois au fond de la mer.",
+    "taille_m": 0.4, "poids_kg": 7.5
+  },
+  "139": {
+    "id": 139, "nom": "Amonistar", "nom_en": "Omastar",
+    "types": ["roche", "eau"],
+    "stats_base": {"pv": 70, "attaque": 60, "defense": 125, "special": 115, "vitesse": 55},
+    "evolution": null,
+    "learnset": {"1": ["pistolet_a_o", "surf"], "44": ["hydrocanon"]},
+    "groupe_exp": "moyen", "taux_capture": 45, "exp_base": 199,
+    "description_pokedex": "Ses tentacules sont développées pour attraper ses proies. On dit qu'il a disparu car sa coquille est devenue trop lourde.",
+    "taille_m": 1.0, "poids_kg": 35.0
+  },
+  "140": {
+    "id": 140, "nom": "Kabuto", "nom_en": "Kabuto",
+    "types": ["roche", "eau"],
+    "stats_base": {"pv": 30, "attaque": 80, "defense": 90, "special": 45, "vitesse": 55},
+    "evolution": {"methode": "niveau", "niveau": 40, "vers": "141"},
+    "learnset": {"1": ["griffe"], "34": ["tranche"], "39": ["surf"]},
+    "groupe_exp": "moyen", "taux_capture": 45, "exp_base": 119,
+    "description_pokedex": "Un Pokémon reconstitué à partir d'un fossile. Il se protège grâce à sa carapace dure.",
+    "taille_m": 0.5, "poids_kg": 11.5
+  },
+  "141": {
+    "id": 141, "nom": "Kabutops", "nom_en": "Kabutops",
+    "types": ["roche", "eau"],
+    "stats_base": {"pv": 60, "attaque": 115, "defense": 105, "special": 70, "vitesse": 80},
+    "evolution": null,
+    "learnset": {"1": ["griffe", "tranche", "surf"]},
+    "groupe_exp": "moyen", "taux_capture": 45, "exp_base": 201,
+    "description_pokedex": "Ses bras tranchants comme des lames sont capables de couper n'importe quoi.",
+    "taille_m": 1.3, "poids_kg": 40.5
   }
 }

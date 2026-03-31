@@ -399,5 +399,75 @@
     "id": "ct_tomberoche", "nom": "CT Tomberoche", "nom_en": "TM Rock Throw",
     "type": "roche", "categorie": "physique",
     "puissance": 50, "precision": 90, "pp": 15, "priorite": 0, "effet": null
+  },
+  "cascade": {
+    "id": "cascade", "nom": "Cascade", "nom_en": "Waterfall",
+    "type": "eau", "categorie": "physique",
+    "puissance": 80, "precision": 100, "pp": 15, "priorite": 0, "effet": null
+  },
+  "bulles_d_o": {
+    "id": "bulles_d_o", "nom": "Bulles d'O", "nom_en": "Bubble Beam",
+    "type": "eau", "categorie": "special",
+    "puissance": 65, "precision": 100, "pp": 20, "priorite": 0,
+    "effet": {"type_effet": "stat", "stat": "vitesse", "cible": "ennemi", "modificateur": -1, "probabilite": 10}
+  },
+  "bulles": {
+    "id": "bulles", "nom": "Bulles", "nom_en": "Bubble",
+    "type": "eau", "categorie": "special",
+    "puissance": 20, "precision": 100, "pp": 30, "priorite": 0,
+    "effet": {"type_effet": "stat", "stat": "vitesse", "cible": "ennemi", "modificateur": -1, "probabilite": 10}
+  },
+  "teleport": {
+    "id": "teleport", "nom": "Téléport", "nom_en": "Teleport",
+    "type": "psy", "categorie": "statut",
+    "puissance": 0, "precision": 100, "pp": 20, "priorite": 0,
+    "effet": {"type_effet": "fuite"}
+  },
+  "hypnose": {
+    "id": "hypnose", "nom": "Hypnose", "nom_en": "Hypnosis",
+    "type": "psy", "categorie": "statut",
+    "puissance": 0, "precision": 60, "pp": 20, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "sommeil", "probabilite": 100}
+  },
+  "laser_glace": {
+    "id": "laser_glace", "nom": "Laser Glace", "nom_en": "Ice Beam",
+    "type": "glace", "categorie": "special",
+    "puissance": 95, "precision": 100, "pp": 10, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "gel", "probabilite": 10}
+  },
+  "onde_folie": {
+    "id": "onde_folie", "nom": "Onde Folie", "nom_en": "Confuse Ray",
+    "type": "spectre", "categorie": "statut",
+    "puissance": 0, "precision": 100, "pp": 10, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "confusion", "probabilite": 100}
+  },
+  "plaquage": {
+    "id": "plaquage", "nom": "Plaquage", "nom_en": "Body Slam",
+    "type": "normal", "categorie": "physique",
+    "puissance": 85, "precision": 100, "pp": 15, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "paralysie", "probabilite": 30}
+  },
+  "double_pied": {
+    "id": "double_pied", "nom": "Double Pied", "nom_en": "Double Kick",
+    "type": "combat", "categorie": "physique",
+    "puissance": 30, "precision": 100, "pp": 30, "priorite": 0,
+    "effet": {"type_effet": "multi_frappe", "coups": 2}
+  },
+  "acide": {
+    "id": "acide", "nom": "Acide", "nom_en": "Acid",
+    "type": "poison", "categorie": "special",
+    "puissance": 40, "precision": 100, "pp": 30, "priorite": 0,
+    "effet": {"type_effet": "stat", "stat": "defense", "cible": "ennemi", "modificateur": -1, "probabilite": 10}
+  },
+  "mega_sangsue": {
+    "id": "mega_sangsue", "nom": "Méga-Sangsue", "nom_en": "Mega Drain",
+    "type": "plante", "categorie": "special",
+    "puissance": 40, "precision": 100, "pp": 10, "priorite": 0,
+    "effet": {"type_effet": "drain", "pourcentage": 50}
+  },
+  "ct_cascade": {
+    "id": "ct_cascade", "nom": "CT Cascade", "nom_en": "TM Waterfall",
+    "type": "eau", "categorie": "physique",
+    "puissance": 80, "precision": 100, "pp": 15, "priorite": 0, "effet": null
   }
 }
