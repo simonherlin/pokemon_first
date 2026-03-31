@@ -1,0 +1,421 @@
+{
+  "001": {
+    "id": 1, "nom": "Bulbizarre", "nom_en": "Bulbasaur",
+    "types": ["plante", "poison"],
+    "stats_base": {"pv": 45, "attaque": 49, "defense": 49, "special": 65, "vitesse": 45},
+    "evolution": {"methode": "niveau", "niveau": 16, "vers": "002"},
+    "learnset": {
+      "1": ["charge", "rugissement"],
+      "7": ["vampigraine"],
+      "13": ["fouet_lianes"],
+      "20": ["poudre_toxik"],
+      "22": ["poudre_dodo"],
+      "29": ["tranche"],
+      "38": ["jackpot"],
+      "44": ["laser_plante"],
+      "46": ["synthese"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 64,
+    "description_pokedex": "Une étrange graine est plantée sur son dos. Elle absorbe les rayons du soleil et grossit peu à peu.",
+    "taille_m": 0.7, "poids_kg": 6.9
+  },
+  "002": {
+    "id": 2, "nom": "Herbizarre", "nom_en": "Ivysaur",
+    "types": ["plante", "poison"],
+    "stats_base": {"pv": 60, "attaque": 62, "defense": 63, "special": 80, "vitesse": 60},
+    "evolution": {"methode": "niveau", "niveau": 32, "vers": "003"},
+    "learnset": {
+      "1": ["charge", "rugissement", "vampigraine"],
+      "13": ["fouet_lianes"],
+      "20": ["poudre_toxik"],
+      "22": ["poudre_dodo"],
+      "29": ["tranche"],
+      "38": ["jackpot"],
+      "44": ["laser_plante"],
+      "46": ["synthese"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 141,
+    "description_pokedex": "Quand le bulbe de son dos gonfle, il dégage une agréable odeur florale.",
+    "taille_m": 1.0, "poids_kg": 13.0
+  },
+  "003": {
+    "id": 3, "nom": "Florizarre", "nom_en": "Venusaur",
+    "types": ["plante", "poison"],
+    "stats_base": {"pv": 80, "attaque": 82, "defense": 83, "special": 100, "vitesse": 80},
+    "evolution": null,
+    "learnset": {
+      "1": ["charge", "rugissement", "vampigraine", "fouet_lianes"],
+      "22": ["poudre_toxik"],
+      "30": ["poudre_dodo"],
+      "43": ["tranche"],
+      "55": ["jackpot"],
+      "65": ["laser_plante"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 208,
+    "description_pokedex": "La plante fleurit sur son dos. L'arôme de cette fleur apaise les esprits.",
+    "taille_m": 2.0, "poids_kg": 100.0
+  },
+  "004": {
+    "id": 4, "nom": "Salamèche", "nom_en": "Charmander",
+    "types": ["feu"],
+    "stats_base": {"pv": 39, "attaque": 52, "defense": 43, "special": 50, "vitesse": 65},
+    "evolution": {"methode": "niveau", "niveau": 16, "vers": "005"},
+    "learnset": {
+      "1": ["griffe", "rugissement"],
+      "9": ["flammèche"],
+      "15": ["groz_yeux"],
+      "22": ["tranche"],
+      "30": ["ronflements"],
+      "38": ["lance_flamme"],
+      "46": ["deflagration"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 65,
+    "description_pokedex": "La flamme qui brûle au bout de sa queue est un indicateur de sa vitalité.",
+    "taille_m": 0.6, "poids_kg": 8.5
+  },
+  "005": {
+    "id": 5, "nom": "Reptincel", "nom_en": "Charmeleon",
+    "types": ["feu"],
+    "stats_base": {"pv": 58, "attaque": 64, "defense": 58, "special": 65, "vitesse": 80},
+    "evolution": {"methode": "niveau", "niveau": 36, "vers": "006"},
+    "learnset": {
+      "1": ["griffe", "rugissement", "flammèche"],
+      "22": ["tranche"],
+      "33": ["ronflements"],
+      "46": ["lance_flamme"],
+      "61": ["deflagration"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 142,
+    "description_pokedex": "Très brutal, il adore combattre. Si l'adversaire est faible, il s'énerve et se bat plus fort.",
+    "taille_m": 1.1, "poids_kg": 19.0
+  },
+  "006": {
+    "id": 6, "nom": "Dracaufeu", "nom_en": "Charizard",
+    "types": ["feu", "vol"],
+    "stats_base": {"pv": 78, "attaque": 84, "defense": 78, "special": 109, "vitesse": 100},
+    "evolution": null,
+    "learnset": {
+      "1": ["griffe", "rugissement", "flammèche", "tranche"],
+      "33": ["ronflements"],
+      "36": ["lance_flamme"],
+      "46": ["aile_dacier"],
+      "61": ["deflagration"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 209,
+    "description_pokedex": "Il crache des flammes si chaudes qu'elles font fondre n'importe quoi. Ses ailes lui permettent de voler.",
+    "taille_m": 1.7, "poids_kg": 90.5
+  },
+  "007": {
+    "id": 7, "nom": "Carapuce", "nom_en": "Squirtle",
+    "types": ["eau"],
+    "stats_base": {"pv": 44, "attaque": 48, "defense": 65, "special": 50, "vitesse": 43},
+    "evolution": {"methode": "niveau", "niveau": 16, "vers": "008"},
+    "learnset": {
+      "1": ["charge", "queue_fouet"],
+      "7": ["pistolet_a_o"],
+      "13": ["morsure"],
+      "22": ["repli"],
+      "28": ["crabe_marteau"],
+      "35": ["jackpot"],
+      "40": ["ballonnade"],
+      "46": ["surf"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 66,
+    "description_pokedex": "Sa carapace est dure comme du roc. Il l'utilise comme bouclier, et aussi pour faire des ricochets.",
+    "taille_m": 0.5, "poids_kg": 9.0
+  },
+  "008": {
+    "id": 8, "nom": "Carabaffe", "nom_en": "Wartortle",
+    "types": ["eau"],
+    "stats_base": {"pv": 59, "attaque": 63, "defense": 80, "special": 65, "vitesse": 58},
+    "evolution": {"methode": "niveau", "niveau": 36, "vers": "009"},
+    "learnset": {
+      "1": ["charge", "queue_fouet", "pistolet_a_o"],
+      "13": ["morsure"],
+      "22": ["repli"],
+      "28": ["crabe_marteau"],
+      "35": ["jackpot"],
+      "40": ["ballonnade"],
+      "46": ["surf"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 143,
+    "description_pokedex": "Sa queue touffue symbolise sa longévité. Elle est très prisée comme talisman.",
+    "taille_m": 1.0, "poids_kg": 22.5
+  },
+  "009": {
+    "id": 9, "nom": "Tortank", "nom_en": "Blastoise",
+    "types": ["eau"],
+    "stats_base": {"pv": 79, "attaque": 83, "defense": 100, "special": 85, "vitesse": 78},
+    "evolution": null,
+    "learnset": {
+      "1": ["charge", "queue_fouet", "pistolet_a_o", "morsure"],
+      "22": ["repli"],
+      "28": ["crabe_marteau"],
+      "35": ["jackpot"],
+      "40": ["ballonnade"],
+      "46": ["surf"],
+      "52": ["hydrocanon"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 210,
+    "description_pokedex": "Les jets d'eau qu'il propulse sont si puissants qu'ils peuvent percer des plaques d'acier épaisses.",
+    "taille_m": 1.6, "poids_kg": 85.5
+  },
+  "010": {
+    "id": 10, "nom": "Chenipan", "nom_en": "Caterpie",
+    "types": ["insecte"],
+    "stats_base": {"pv": 45, "attaque": 30, "defense": 35, "special": 20, "vitesse": 45},
+    "evolution": {"methode": "niveau", "niveau": 7, "vers": "011"},
+    "learnset": {
+      "1": ["charge", "fil_vénin"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 255, "exp_base": 53,
+    "description_pokedex": "Il peut escalader n'importe quelle surface verticale grâce aux crampons de ses pattes.",
+    "taille_m": 0.3, "poids_kg": 2.9
+  },
+  "011": {
+    "id": 11, "nom": "Chrysacier", "nom_en": "Metapod",
+    "types": ["insecte"],
+    "stats_base": {"pv": 50, "attaque": 20, "defense": 55, "special": 25, "vitesse": 30},
+    "evolution": {"methode": "niveau", "niveau": 10, "vers": "012"},
+    "learnset": {
+      "1": ["armure"],
+      "7": ["armure"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 120, "exp_base": 72,
+    "description_pokedex": "Sa carapace est si dure qu'elle peut résister à un coup de marteau. Il attend patiemment son évolution.",
+    "taille_m": 0.7, "poids_kg": 9.9
+  },
+  "012": {
+    "id": 12, "nom": "Papilusion", "nom_en": "Butterfree",
+    "types": ["insecte", "vol"],
+    "stats_base": {"pv": 60, "attaque": 45, "defense": 50, "special": 80, "vitesse": 70},
+    "evolution": null,
+    "learnset": {
+      "1": ["confusion"],
+      "10": ["poudre_dodo"],
+      "13": ["poudre_toxik"],
+      "14": ["rafale_psy"],
+      "15": ["jackpot"],
+      "16": ["paranormale"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 45, "exp_base": 160,
+    "description_pokedex": "Ses grandes ailes sont couvertes d'écailles venimeuses. Il peut libérer différentes poudres.",
+    "taille_m": 1.1, "poids_kg": 32.0
+  },
+  "013": {
+    "id": 13, "nom": "Aspicot", "nom_en": "Weedle",
+    "types": ["insecte", "poison"],
+    "stats_base": {"pv": 40, "attaque": 35, "defense": 30, "special": 20, "vitesse": 50},
+    "evolution": {"methode": "niveau", "niveau": 7, "vers": "014"},
+    "learnset": {
+      "1": ["dard_venin", "fil_vénin"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 255, "exp_base": 52,
+    "description_pokedex": "Il a un dard venimeux de 2 cm sur la tête et un autre à l'arrière du corps.",
+    "taille_m": 0.3, "poids_kg": 3.2
+  },
+  "014": {
+    "id": 14, "nom": "Coconfort", "nom_en": "Kakuna",
+    "types": ["insecte", "poison"],
+    "stats_base": {"pv": 45, "attaque": 25, "defense": 50, "special": 25, "vitesse": 35},
+    "evolution": {"methode": "niveau", "niveau": 10, "vers": "015"},
+    "learnset": {
+      "1": ["armure"],
+      "7": ["armure"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 120, "exp_base": 71,
+    "description_pokedex": "Il reste quasi immobile jusqu'à son évolution. Intérieur, ses cellules se restructurent.",
+    "taille_m": 0.6, "poids_kg": 10.0
+  },
+  "015": {
+    "id": 15, "nom": "Dardargnan", "nom_en": "Beedrill",
+    "types": ["insecte", "poison"],
+    "stats_base": {"pv": 65, "attaque": 90, "defense": 40, "special": 45, "vitesse": 75},
+    "evolution": null,
+    "learnset": {
+      "1": ["dard_venin", "fil_vénin"],
+      "10": ["furie"],
+      "15": ["taillade"],
+      "30": ["agrippage"],
+      "35": ["jackpot"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 45, "exp_base": 159,
+    "description_pokedex": "Extrêmement territorial. En essaim, il attaque tout ce qui s'approche de sa ruche.",
+    "taille_m": 1.0, "poids_kg": 29.5
+  },
+  "016": {
+    "id": 16, "nom": "Roucool", "nom_en": "Pidgey",
+    "types": ["normal", "vol"],
+    "stats_base": {"pv": 40, "attaque": 45, "defense": 40, "special": 35, "vitesse": 56},
+    "evolution": {"methode": "niveau", "niveau": 18, "vers": "017"},
+    "learnset": {
+      "1": ["charge", "coup_de_boue"],
+      "5": ["tornade"],
+      "12": ["groz_yeux"],
+      "19": ["aile_dacier"],
+      "28": ["tourbillon"],
+      "36": ["ouragan"],
+      "44": ["brise_ciel"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 255, "exp_base": 55,
+    "description_pokedex": "Très commun. Il se lève au lever du soleil et vole dans les champs à la recherche de nourriture.",
+    "taille_m": 0.3, "poids_kg": 1.8
+  },
+  "017": {
+    "id": 17, "nom": "Roucoups", "nom_en": "Pidgeotto",
+    "types": ["normal", "vol"],
+    "stats_base": {"pv": 63, "attaque": 60, "defense": 55, "special": 50, "vitesse": 71},
+    "evolution": {"methode": "niveau", "niveau": 36, "vers": "018"},
+    "learnset": {
+      "1": ["charge", "coup_de_boue", "tornade"],
+      "21": ["groz_yeux"],
+      "31": ["aile_dacier"],
+      "40": ["tourbillon"],
+      "49": ["ouragan"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 120, "exp_base": 113,
+    "description_pokedex": "Il patrouille un territoire de 100 km². Il attaque tout intrus sans hésiter.",
+    "taille_m": 1.1, "poids_kg": 30.0
+  },
+  "018": {
+    "id": 18, "nom": "Roucarnage", "nom_en": "Pidgeot",
+    "types": ["normal", "vol"],
+    "stats_base": {"pv": 83, "attaque": 80, "defense": 75, "special": 70, "vitesse": 101},
+    "evolution": null,
+    "learnset": {
+      "1": ["charge", "coup_de_boue", "tornade", "groz_yeux"],
+      "36": ["aile_dacier"],
+      "44": ["tourbillon"],
+      "54": ["ouragan"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 172,
+    "description_pokedex": "Ses ailes puissantes lui permettent d'atteindre Mach 2. Son plumage brillant est magnifique.",
+    "taille_m": 1.5, "poids_kg": 39.5
+  },
+  "019": {
+    "id": 19, "nom": "Rattata", "nom_en": "Rattata",
+    "types": ["normal"],
+    "stats_base": {"pv": 30, "attaque": 56, "defense": 35, "special": 25, "vitesse": 72},
+    "evolution": {"methode": "niveau", "niveau": 20, "vers": "020"},
+    "learnset": {
+      "1": ["charge", "queue_fouet"],
+      "7": ["morsure"],
+      "14": ["jackpot"],
+      "23": ["super_croc"],
+      "34": ["coup_bas"],
+      "44": ["hyper_croc"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 255, "exp_base": 57,
+    "description_pokedex": "Très commun dans les herbes hautes. Il grignote n'importe quoi avec ses longues dents.",
+    "taille_m": 0.3, "poids_kg": 3.5
+  },
+  "020": {
+    "id": 20, "nom": "Rattatac", "nom_en": "Raticate",
+    "types": ["normal"],
+    "stats_base": {"pv": 55, "attaque": 81, "defense": 60, "special": 50, "vitesse": 97},
+    "evolution": null,
+    "learnset": {
+      "1": ["charge", "queue_fouet", "morsure"],
+      "14": ["jackpot"],
+      "27": ["super_croc"],
+      "41": ["coup_bas"],
+      "54": ["hyper_croc"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 90, "exp_base": 116,
+    "description_pokedex": "Ses énormes dents repoussent rapidement si elles sont brisées. Il peut tout ronger.",
+    "taille_m": 0.7, "poids_kg": 18.5
+  },
+  "025": {
+    "id": 25, "nom": "Pikachu", "nom_en": "Pikachu",
+    "types": ["electrik"],
+    "stats_base": {"pv": 35, "attaque": 55, "defense": 30, "special": 50, "vitesse": 90},
+    "evolution": {"methode": "pierre", "pierre": "pierre_foudre", "vers": "026"},
+    "learnset": {
+      "1": ["charge", "groz_yeux"],
+      "9": ["éclair"],
+      "16": ["vive_attaque"],
+      "26": ["tonnerre"],
+      "33": ["jackpot"],
+      "41": ["tranche"],
+      "43": ["foudre"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 190, "exp_base": 82,
+    "description_pokedex": "Il stocke de l'électricité dans ses poches du visage. Il en libère quand il est en danger.",
+    "taille_m": 0.4, "poids_kg": 6.0
+  },
+  "026": {
+    "id": 26, "nom": "Raichu", "nom_en": "Raichu",
+    "types": ["electrik"],
+    "stats_base": {"pv": 60, "attaque": 90, "defense": 55, "special": 90, "vitesse": 110},
+    "evolution": null,
+    "learnset": {
+      "1": ["charge", "groz_yeux", "éclair", "vive_attaque", "tonnerre"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 75, "exp_base": 122,
+    "description_pokedex": "Son corps ne peut contenir son énergie électrique. Il doit se décharger régulièrement.",
+    "taille_m": 0.8, "poids_kg": 30.0
+  },
+  "074": {
+    "id": 74, "nom": "Racaillou", "nom_en": "Geodude",
+    "types": ["roche", "sol"],
+    "stats_base": {"pv": 40, "attaque": 80, "defense": 100, "special": 30, "vitesse": 20},
+    "evolution": {"methode": "niveau", "niveau": 25, "vers": "075"},
+    "learnset": {
+      "1": ["charge", "defense_curl"],
+      "11": ["tomberoche"],
+      "16": ["séisme"],
+      "21": ["explosion_roc"],
+      "26": ["avalanche"],
+      "31": ["eboulement"],
+      "36": ["deflagration"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 255, "exp_base": 86,
+    "description_pokedex": "Commun dans les cols montagneux. Inerte dans des rochers, il surprend les randonneurs.",
+    "taille_m": 0.4, "poids_kg": 20.0
+  },
+  "095": {
+    "id": 95, "nom": "Onix", "nom_en": "Onix",
+    "types": ["roche", "sol"],
+    "stats_base": {"pv": 35, "attaque": 45, "defense": 160, "special": 30, "vitesse": 70},
+    "evolution": null,
+    "learnset": {
+      "1": ["charge", "coup_de_boue"],
+      "9": ["tomberoche"],
+      "14": ["armure"],
+      "19": ["eboulement"],
+      "24": ["force"],
+      "29": ["eboulement"],
+      "34": ["craquement"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 108,
+    "description_pokedex": "Il creuse en tournant dans le sol à 80 km/h. Il laisse des tunnels derrière lui.",
+    "taille_m": 8.8, "poids_kg": 210.0
+  },
+  "129": {
+    "id": 129, "nom": "Magicarpe", "nom_en": "Magikarp",
+    "types": ["eau"],
+    "stats_base": {"pv": 20, "attaque": 10, "defense": 55, "special": 20, "vitesse": 80},
+    "evolution": {"methode": "niveau", "niveau": 20, "vers": "130"},
+    "learnset": {
+      "1": ["eclaboussure"],
+      "15": ["vive_attaque"]
+    },
+    "groupe_exp": "lent", "taux_capture": 255, "exp_base": 20,
+    "description_pokedex": "Considéré comme inutile par les dresseurs inexpérimentés. Il cache pourtant un grand potentiel.",
+    "taille_m": 0.9, "poids_kg": 10.0
+  },
+  "130": {
+    "id": 130, "nom": "Léviator", "nom_en": "Gyarados",
+    "types": ["eau", "vol"],
+    "stats_base": {"pv": 95, "attaque": 125, "defense": 79, "special": 100, "vitesse": 81},
+    "evolution": null,
+    "learnset": {
+      "1": ["morsure", "dragon_rage", "hyper_faisceau"],
+      "20": ["surf"],
+      "25": ["blizzard"]
+    },
+    "groupe_exp": "lent", "taux_capture": 45, "exp_base": 189,
+    "description_pokedex": "Extrêmement violent. Son apparition présage des catastrophes telles que des guerres ou des tsunamis.",
+    "taille_m": 6.5, "poids_kg": 235.0
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "route_1": {
+    "zone_id": "route_1",
+    "nom": "Route 1",
+    "herbes": [
+      {"pokemon_id": "016", "taux": 45, "niveau_min": 2, "niveau_max": 4},
+      {"pokemon_id": "019", "taux": 45, "niveau_min": 2, "niveau_max": 4},
+      {"pokemon_id": "016", "taux": 10, "niveau_min": 4, "niveau_max": 5}
+    ]
+  },
+  "route_2": {
+    "zone_id": "route_2",
+    "nom": "Route 2",
+    "herbes": [
+      {"pokemon_id": "016", "taux": 35, "niveau_min": 3, "niveau_max": 5},
+      {"pokemon_id": "019", "taux": 35, "niveau_min": 3, "niveau_max": 5},
+      {"pokemon_id": "010", "taux": 15, "niveau_min": 3, "niveau_max": 4},
+      {"pokemon_id": "013", "taux": 15, "niveau_min": 3, "niveau_max": 4}
+    ]
+  },
+  "foret_de_jade": {
+    "zone_id": "foret_de_jade",
+    "nom": "Forêt de Jade",
+    "herbes": [
+      {"pokemon_id": "010", "taux": 20, "niveau_min": 3, "niveau_max": 5},
+      {"pokemon_id": "011", "taux": 5,  "niveau_min": 7, "niveau_max": 9},
+      {"pokemon_id": "013", "taux": 20, "niveau_min": 3, "niveau_max": 5},
+      {"pokemon_id": "014", "taux": 5,  "niveau_min": 7, "niveau_max": 9},
+      {"pokemon_id": "016", "taux": 20, "niveau_min": 3, "niveau_max": 6},
+      {"pokemon_id": "019", "taux": 20, "niveau_min": 3, "niveau_max": 5},
+      {"pokemon_id": "025", "taux": 5,  "niveau_min": 4, "niveau_max": 7},
+      {"pokemon_id": "012", "taux": 5,  "niveau_min": 9, "niveau_max": 12}
+    ]
+  },
+  "route_3": {
+    "zone_id": "route_3",
+    "nom": "Route 3",
+    "herbes": [
+      {"pokemon_id": "016", "taux": 20, "niveau_min": 6, "niveau_max": 9},
+      {"pokemon_id": "019", "taux": 20, "niveau_min": 6, "niveau_max": 9},
+      {"pokemon_id": "021", "taux": 30, "niveau_min": 7, "niveau_max": 10},
+      {"pokemon_id": "023", "taux": 10, "niveau_min": 6, "niveau_max": 9},
+      {"pokemon_id": "027", "taux": 20, "niveau_min": 6, "niveau_max": 9}
+    ]
+  },
+  "mont_lunaire": {
+    "zone_id": "mont_lunaire",
+    "nom": "Mont Lunaire",
+    "herbes": [
+      {"pokemon_id": "035", "taux": 15, "niveau_min": 8, "niveau_max": 12},
+      {"pokemon_id": "039", "taux": 15, "niveau_min": 8, "niveau_max": 12},
+      {"pokemon_id": "041", "taux": 35, "niveau_min": 9, "niveau_max": 13},
+      {"pokemon_id": "074", "taux": 20, "niveau_min": 8, "niveau_max": 12},
+      {"pokemon_id": "075", "taux": 15, "niveau_min": 11, "niveau_max": 14}
+    ]
+  }
+}

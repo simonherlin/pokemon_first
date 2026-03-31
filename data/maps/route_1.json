@@ -1,0 +1,39 @@
+{
+  "id": "route_1",
+  "nom": "Route 1",
+  "largeur": 20,
+  "hauteur": 30,
+  "tileset": "res://assets/sprites/tilesets/tileset_route.png",
+  "musique": "res://assets/audio/music/route_1.ogg",
+  "connexions": [
+    {"direction": "sud", "vers": "bourg_palette", "decalage": 0},
+    {"direction": "nord", "vers": "jadielle_ville", "decalage": 0}
+  ],
+  "warps": [],
+  "zones_herbes": [
+    {"x1": 3, "y1": 5,  "x2": 16, "y2": 10, "table": "route_1"},
+    {"x1": 3, "y1": 15, "x2": 16, "y2": 22, "table": "route_1"}
+  ],
+  "pnj": [
+    {
+      "id": "pnj_dresseur_route1_01",
+      "x": 9, "y": 12,
+      "sprite": "dresseur_gamin",
+      "direction": "gauche",
+      "dialogue_avant": ["Je vais te battre !"],
+      "dialogue_apres": ["Tu es plus fort que je ne pensais..."],
+      "equipe": [
+        {"espece_id": "019", "niveau": 5}
+      ],
+      "recompense": 100,
+      "battu": false,
+      "mobile": false
+    }
+  ],
+  "objets_sol": [
+    {"id": "obj_potion_01", "x": 6, "y": 8, "item_id": "potion", "ramasse": false}
+  ],
+  "panneaux": [
+    {"x": 9, "y": 2, "texte": "JADIELLE VILLE →\nAttention aux Pokémon sauvages dans les herbes !"}
+  ]
+}

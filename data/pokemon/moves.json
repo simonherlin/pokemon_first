@@ -1,0 +1,334 @@
+{
+  "charge": {
+    "id": "charge", "nom": "Charge", "nom_en": "Tackle",
+    "type": "normal", "categorie": "physique",
+    "puissance": 35, "precision": 95, "pp": 35, "priorite": 0, "effet": null
+  },
+  "griffe": {
+    "id": "griffe", "nom": "Griffe", "nom_en": "Scratch",
+    "type": "normal", "categorie": "physique",
+    "puissance": 40, "precision": 100, "pp": 35, "priorite": 0, "effet": null
+  },
+  "rugissement": {
+    "id": "rugissement", "nom": "Rugissement", "nom_en": "Growl",
+    "type": "normal", "categorie": "statut",
+    "puissance": 0, "precision": 100, "pp": 40, "priorite": 0,
+    "effet": {"type_effet": "modif_stat", "stat": "attaque", "cible": "ennemi", "stages": -1}
+  },
+  "queue_fouet": {
+    "id": "queue_fouet", "nom": "Queue-Fouet", "nom_en": "Tail Whip",
+    "type": "normal", "categorie": "statut",
+    "puissance": 0, "precision": 100, "pp": 30, "priorite": 0,
+    "effet": {"type_effet": "modif_stat", "stat": "defense", "cible": "ennemi", "stages": -1}
+  },
+  "vampigraine": {
+    "id": "vampigraine", "nom": "Vampigraine", "nom_en": "Leech Seed",
+    "type": "plante", "categorie": "statut",
+    "puissance": 0, "precision": 90, "pp": 10, "priorite": 0,
+    "effet": {"type_effet": "vampigraine"}
+  },
+  "fouet_lianes": {
+    "id": "fouet_lianes", "nom": "Fouet Lianes", "nom_en": "Vine Whip",
+    "type": "plante", "categorie": "physique",
+    "puissance": 45, "precision": 100, "pp": 25, "priorite": 0, "effet": null
+  },
+  "poudre_toxik": {
+    "id": "poudre_toxik", "nom": "Poudre Toxik", "nom_en": "Poison Powder",
+    "type": "poison", "categorie": "statut",
+    "puissance": 0, "precision": 75, "pp": 35, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "poison", "probabilite": 100}
+  },
+  "poudre_dodo": {
+    "id": "poudre_dodo", "nom": "Poudre Dodo", "nom_en": "Sleep Powder",
+    "type": "plante", "categorie": "statut",
+    "puissance": 0, "precision": 75, "pp": 15, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "sommeil", "probabilite": 100}
+  },
+  "tranche": {
+    "id": "tranche", "nom": "Tranche", "nom_en": "Slash",
+    "type": "normal", "categorie": "physique",
+    "puissance": 70, "precision": 100, "pp": 20, "priorite": 0,
+    "effet": {"type_effet": "critique_eleve"}
+  },
+  "jackpot": {
+    "id": "jackpot", "nom": "Jackpot", "nom_en": "Pay Day",
+    "type": "normal", "categorie": "physique",
+    "puissance": 40, "precision": 100, "pp": 20, "priorite": 0,
+    "effet": {"type_effet": "argent"}
+  },
+  "laser_plante": {
+    "id": "laser_plante", "nom": "Laser Plante", "nom_en": "Solar Beam",
+    "type": "plante", "categorie": "special",
+    "puissance": 120, "precision": 100, "pp": 10, "priorite": 0,
+    "effet": {"type_effet": "deux_tours", "tour_1": "chargement"}
+  },
+  "synthese": {
+    "id": "synthese", "nom": "Synthèse", "nom_en": "Synthesis",
+    "type": "plante", "categorie": "statut",
+    "puissance": 0, "precision": 100, "pp": 5, "priorite": 0,
+    "effet": {"type_effet": "soin_pv", "pourcentage": 50}
+  },
+  "flammèche": {
+    "id": "flammèche", "nom": "Flammèche", "nom_en": "Ember",
+    "type": "feu", "categorie": "special",
+    "puissance": 40, "precision": 100, "pp": 25, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "brulure", "probabilite": 10}
+  },
+  "lance_flamme": {
+    "id": "lance_flamme", "nom": "Lance-Flamme", "nom_en": "Flamethrower",
+    "type": "feu", "categorie": "special",
+    "puissance": 95, "precision": 100, "pp": 15, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "brulure", "probabilite": 10}
+  },
+  "deflagration": {
+    "id": "deflagration", "nom": "Déflagration", "nom_en": "Fire Blast",
+    "type": "feu", "categorie": "special",
+    "puissance": 120, "precision": 85, "pp": 5, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "brulure", "probabilite": 30}
+  },
+  "ronflements": {
+    "id": "ronflements", "nom": "Ronflements", "nom_en": "Snore",
+    "type": "normal", "categorie": "special",
+    "puissance": 50, "precision": 100, "pp": 15, "priorite": 0, "effet": null
+  },
+  "pistolet_a_o": {
+    "id": "pistolet_a_o", "nom": "Pistolet à O", "nom_en": "Water Gun",
+    "type": "eau", "categorie": "special",
+    "puissance": 40, "precision": 100, "pp": 25, "priorite": 0, "effet": null
+  },
+  "surf": {
+    "id": "surf", "nom": "Surf", "nom_en": "Surf",
+    "type": "eau", "categorie": "special",
+    "puissance": 95, "precision": 100, "pp": 15, "priorite": 0, "effet": null
+  },
+  "hydrocanon": {
+    "id": "hydrocanon", "nom": "Hydrocanon", "nom_en": "Hydro Pump",
+    "type": "eau", "categorie": "special",
+    "puissance": 120, "precision": 80, "pp": 5, "priorite": 0, "effet": null
+  },
+  "morsure": {
+    "id": "morsure", "nom": "Morsure", "nom_en": "Bite",
+    "type": "normal", "categorie": "physique",
+    "puissance": 60, "precision": 100, "pp": 25, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "peur", "probabilite": 30}
+  },
+  "repli": {
+    "id": "repli", "nom": "Repli", "nom_en": "Withdraw",
+    "type": "eau", "categorie": "statut",
+    "puissance": 0, "precision": 100, "pp": 40, "priorite": 0,
+    "effet": {"type_effet": "modif_stat", "stat": "defense", "cible": "lanceur", "stages": 1}
+  },
+  "crabe_marteau": {
+    "id": "crabe_marteau", "nom": "Crabe Marteau", "nom_en": "Crabhammer",
+    "type": "eau", "categorie": "physique",
+    "puissance": 90, "precision": 85, "pp": 10, "priorite": 0,
+    "effet": {"type_effet": "critique_eleve"}
+  },
+  "ballonnade": {
+    "id": "ballonnade", "nom": "Ballonnade", "nom_en": "Bubble Beam",
+    "type": "eau", "categorie": "special",
+    "puissance": 65, "precision": 100, "pp": 20, "priorite": 0,
+    "effet": {"type_effet": "modif_stat", "stat": "vitesse", "cible": "ennemi", "stages": -1, "probabilite": 33}
+  },
+  "fil_vénin": {
+    "id": "fil_vénin", "nom": "Fil Vénin", "nom_en": "String Shot",
+    "type": "insecte", "categorie": "statut",
+    "puissance": 0, "precision": 95, "pp": 40, "priorite": 0,
+    "effet": {"type_effet": "modif_stat", "stat": "vitesse", "cible": "ennemi", "stages": -1}
+  },
+  "armure": {
+    "id": "armure", "nom": "Armure", "nom_en": "Harden",
+    "type": "normal", "categorie": "statut",
+    "puissance": 0, "precision": 100, "pp": 30, "priorite": 0,
+    "effet": {"type_effet": "modif_stat", "stat": "defense", "cible": "lanceur", "stages": 1}
+  },
+  "confusion": {
+    "id": "confusion", "nom": "Choc Mental", "nom_en": "Confusion",
+    "type": "psy", "categorie": "special",
+    "puissance": 50, "precision": 100, "pp": 25, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "confusion", "probabilite": 10}
+  },
+  "rafale_psy": {
+    "id": "rafale_psy", "nom": "Rafale Psy", "nom_en": "Psybeam",
+    "type": "psy", "categorie": "special",
+    "puissance": 65, "precision": 100, "pp": 20, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "confusion", "probabilite": 10}
+  },
+  "paranormale": {
+    "id": "paranormale", "nom": "Paranormale", "nom_en": "Psywave",
+    "type": "psy", "categorie": "special",
+    "puissance": 0, "precision": 80, "pp": 15, "priorite": 0,
+    "effet": {"type_effet": "degats_variables"}
+  },
+  "dard_venin": {
+    "id": "dard_venin", "nom": "Dard-Venin", "nom_en": "Poison Sting",
+    "type": "poison", "categorie": "physique",
+    "puissance": 15, "precision": 100, "pp": 35, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "poison", "probabilite": 30}
+  },
+  "furie": {
+    "id": "furie", "nom": "Furie", "nom_en": "Fury Attack",
+    "type": "normal", "categorie": "physique",
+    "puissance": 15, "precision": 85, "pp": 20, "priorite": 0,
+    "effet": {"type_effet": "multi_coups", "min": 2, "max": 5}
+  },
+  "taillade": {
+    "id": "taillade", "nom": "Taillade", "nom_en": "Cut",
+    "type": "normal", "categorie": "physique",
+    "puissance": 50, "precision": 95, "pp": 30, "priorite": 0, "effet": null
+  },
+  "agrippage": {
+    "id": "agrippage", "nom": "Agrippage", "nom_en": "Pin Missile",
+    "type": "insecte", "categorie": "physique",
+    "puissance": 14, "precision": 85, "pp": 20, "priorite": 0,
+    "effet": {"type_effet": "multi_coups", "min": 2, "max": 5}
+  },
+  "tornade": {
+    "id": "tornade", "nom": "Tornade", "nom_en": "Gust",
+    "type": "normal", "categorie": "special",
+    "puissance": 40, "precision": 100, "pp": 35, "priorite": 0, "effet": null
+  },
+  "groz_yeux": {
+    "id": "groz_yeux", "nom": "Groz Yeux", "nom_en": "Growl",
+    "type": "normal", "categorie": "statut",
+    "puissance": 0, "precision": 100, "pp": 40, "priorite": 0,
+    "effet": {"type_effet": "modif_stat", "stat": "attaque", "cible": "ennemi", "stages": -1}
+  },
+  "aile_dacier": {
+    "id": "aile_dacier", "nom": "Aile d'Acier", "nom_en": "Wing Attack",
+    "type": "vol", "categorie": "physique",
+    "puissance": 60, "precision": 100, "pp": 35, "priorite": 0, "effet": null
+  },
+  "tourbillon": {
+    "id": "tourbillon", "nom": "Tourbillon", "nom_en": "Whirlwind",
+    "type": "normal", "categorie": "statut",
+    "puissance": 0, "precision": 85, "pp": 20, "priorite": -6,
+    "effet": {"type_effet": "fuite_forcee"}
+  },
+  "ouragan": {
+    "id": "ouragan", "nom": "Ouragan", "nom_en": "Hurricane",
+    "type": "vol", "categorie": "special",
+    "puissance": 110, "precision": 70, "pp": 10, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "confusion", "probabilite": 30}
+  },
+  "brise_ciel": {
+    "id": "brise_ciel", "nom": "Brise-Ciel", "nom_en": "Sky Attack",
+    "type": "vol", "categorie": "physique",
+    "puissance": 140, "precision": 90, "pp": 5, "priorite": 0,
+    "effet": {"type_effet": "deux_tours"}
+  },
+  "coup_de_boue": {
+    "id": "coup_de_boue", "nom": "Coup de Boue", "nom_en": "Sand Attack",
+    "type": "sol", "categorie": "statut",
+    "puissance": 0, "precision": 100, "pp": 15, "priorite": 0,
+    "effet": {"type_effet": "modif_stat", "stat": "precision", "cible": "ennemi", "stages": -1}
+  },
+  "super_croc": {
+    "id": "super_croc", "nom": "Super-Croc", "nom_en": "Super Fang",
+    "type": "normal", "categorie": "physique",
+    "puissance": 0, "precision": 90, "pp": 10, "priorite": 0,
+    "effet": {"type_effet": "demi_pv"}
+  },
+  "coup_bas": {
+    "id": "coup_bas", "nom": "Coup Bas", "nom_en": "Quick Attack",
+    "type": "normal", "categorie": "physique",
+    "puissance": 40, "precision": 100, "pp": 30, "priorite": 1, "effet": null
+  },
+  "hyper_croc": {
+    "id": "hyper_croc", "nom": "Hyper Croc", "nom_en": "Hyper Fang",
+    "type": "normal", "categorie": "physique",
+    "puissance": 80, "precision": 90, "pp": 15, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "peur", "probabilite": 10}
+  },
+  "éclair": {
+    "id": "éclair", "nom": "Éclair", "nom_en": "Thundershock",
+    "type": "electrik", "categorie": "special",
+    "puissance": 40, "precision": 100, "pp": 30, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "paralysie", "probabilite": 10}
+  },
+  "tonnerre": {
+    "id": "tonnerre", "nom": "Tonnerre", "nom_en": "Thunderbolt",
+    "type": "electrik", "categorie": "special",
+    "puissance": 95, "precision": 100, "pp": 15, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "paralysie", "probabilite": 10}
+  },
+  "foudre": {
+    "id": "foudre", "nom": "Foudre", "nom_en": "Thunder",
+    "type": "electrik", "categorie": "special",
+    "puissance": 120, "precision": 70, "pp": 10, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "paralysie", "probabilite": 30}
+  },
+  "vive_attaque": {
+    "id": "vive_attaque", "nom": "Vive-Attaque", "nom_en": "Quick Attack",
+    "type": "normal", "categorie": "physique",
+    "puissance": 40, "precision": 100, "pp": 30, "priorite": 1, "effet": null
+  },
+  "tomberoche": {
+    "id": "tomberoche", "nom": "Tomberoche", "nom_en": "Rock Throw",
+    "type": "roche", "categorie": "physique",
+    "puissance": 50, "precision": 90, "pp": 15, "priorite": 0, "effet": null
+  },
+  "séisme": {
+    "id": "séisme", "nom": "Séisme", "nom_en": "Earthquake",
+    "type": "sol", "categorie": "physique",
+    "puissance": 100, "precision": 100, "pp": 10, "priorite": 0, "effet": null
+  },
+  "explosion_roc": {
+    "id": "explosion_roc", "nom": "Explosion-Roc", "nom_en": "Rock Slide",
+    "type": "roche", "categorie": "physique",
+    "puissance": 75, "precision": 90, "pp": 10, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "peur", "probabilite": 30}
+  },
+  "avalanche": {
+    "id": "avalanche", "nom": "Avalanche", "nom_en": "Rollout",
+    "type": "roche", "categorie": "physique",
+    "puissance": 30, "precision": 90, "pp": 20, "priorite": 0,
+    "effet": {"type_effet": "puissance_croissante"}
+  },
+  "eboulement": {
+    "id": "eboulement", "nom": "Éboulement", "nom_en": "Dig",
+    "type": "sol", "categorie": "physique",
+    "puissance": 100, "precision": 100, "pp": 10, "priorite": 0,
+    "effet": {"type_effet": "deux_tours", "tour_1": "plongee"}
+  },
+  "force": {
+    "id": "force", "nom": "Force", "nom_en": "Strength",
+    "type": "normal", "categorie": "physique",
+    "puissance": 80, "precision": 100, "pp": 15, "priorite": 0, "effet": null
+  },
+  "craquement": {
+    "id": "craquement", "nom": "Craquement", "nom_en": "Bind",
+    "type": "normal", "categorie": "physique",
+    "puissance": 15, "precision": 75, "pp": 20, "priorite": 0,
+    "effet": {"type_effet": "immobilisation", "duree_min": 2, "duree_max": 5}
+  },
+  "dragon_rage": {
+    "id": "dragon_rage", "nom": "Draco-Rage", "nom_en": "Dragon Rage",
+    "type": "dragon", "categorie": "special",
+    "puissance": 0, "precision": 100, "pp": 10, "priorite": 0,
+    "effet": {"type_effet": "degats_fixes", "valeur": 40}
+  },
+  "hyper_faisceau": {
+    "id": "hyper_faisceau", "nom": "Hyper Faisceau", "nom_en": "Hyper Beam",
+    "type": "normal", "categorie": "special",
+    "puissance": 150, "precision": 90, "pp": 5, "priorite": 0,
+    "effet": {"type_effet": "recharge"}
+  },
+  "blizzard": {
+    "id": "blizzard", "nom": "Blizzard", "nom_en": "Blizzard",
+    "type": "glace", "categorie": "special",
+    "puissance": 120, "precision": 90, "pp": 5, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "gel", "probabilite": 10}
+  },
+  "eclaboussure": {
+    "id": "eclaboussure", "nom": "Éclaboussure", "nom_en": "Splash",
+    "type": "normal", "categorie": "statut",
+    "puissance": 0, "precision": 100, "pp": 40, "priorite": 0, "effet": null
+  },
+  "defense_curl": {
+    "id": "defense_curl", "nom": "Défense Curl", "nom_en": "Defense Curl",
+    "type": "normal", "categorie": "statut",
+    "puissance": 0, "precision": 100, "pp": 40, "priorite": 0,
+    "effet": {"type_effet": "modif_stat", "stat": "defense", "cible": "lanceur", "stages": 1}
+  }
+}

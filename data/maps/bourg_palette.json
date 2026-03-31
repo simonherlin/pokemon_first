@@ -1,0 +1,38 @@
+{
+  "id": "bourg_palette",
+  "nom": "Bourg Palette",
+  "largeur": 20,
+  "hauteur": 18,
+  "tileset": "res://assets/sprites/tilesets/tileset_ville.png",
+  "musique": "res://assets/audio/music/bourg_palette.ogg",
+  "connexions": [
+    {"direction": "nord", "vers": "route_1", "decalage": 0}
+  ],
+  "warps": [
+    {"id": "maison_joueur_entree",  "x": 7,  "y": 13, "vers_map": "maison_joueur",     "vers_warp": "sortie",       "type": "porte"},
+    {"id": "maison_rival_entree",   "x": 13, "y": 13, "vers_map": "maison_rival",      "vers_warp": "sortie",       "type": "porte"},
+    {"id": "laboratoire_entree",    "x": 10, "y": 16, "vers_map": "laboratoire_chen",  "vers_warp": "sortie",       "type": "porte"}
+  ],
+  "pnj": [
+    {
+      "id": "pnj_homme_01",
+      "x": 5, "y": 10,
+      "sprite": "homme_01",
+      "direction": "bas",
+      "dialogue": ["Bourg Palette. Une petite ville tranquille.", "D'ici partent de grands aventuriers !"],
+      "mobile": false
+    },
+    {
+      "id": "pnj_femme_01",
+      "x": 15, "y": 8,
+      "sprite": "femme_01",
+      "direction": "gauche",
+      "dialogue": ["Les Pokémon sauvages vivent dans les hautes herbes.", "Ne t'aventure pas sans les tiens !"],
+      "mobile": false
+    }
+  ],
+  "objets_sol": [],
+  "panneaux": [
+    {"x": 11, "y": 12, "texte": "BOURG PALETTE\n— Une ville aux bords de l'aventure —"}
+  ]
+}
