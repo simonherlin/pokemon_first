@@ -1,0 +1,200 @@
+[gd_scene load_steps=2 format=3 uid="uid://battle_scene"]
+
+[ext_resource type="Script" path="res://scripts/battle/battle_scene.gd" id="1"]
+
+[node name="BattleScene" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 480.0
+offset_bottom = 320.0
+color = Color(0.85, 0.9, 0.85, 1)
+
+[node name="SpriteEnnemi" type="Sprite2D" parent="."]
+position = Vector2(340, 80)
+
+[node name="SpriteJoueur" type="Sprite2D" parent="."]
+position = Vector2(120, 180)
+
+[node name="BattleHUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="PanelEnnemi" type="PanelContainer" parent="BattleHUD"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 65.0
+
+[node name="LabelNom" type="Label" parent="BattleHUD/PanelEnnemi"]
+layout_mode = 2
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 100.0
+offset_bottom = 18.0
+text = "ENNEMI"
+theme_override_font_sizes/font_size = 10
+
+[node name="LabelNiveau" type="Label" parent="BattleHUD/PanelEnnemi"]
+layout_mode = 2
+offset_left = 120.0
+offset_top = 3.0
+offset_right = 195.0
+offset_bottom = 18.0
+text = "N.5"
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 10
+
+[node name="BarrePV" type="ProgressBar" parent="BattleHUD/PanelEnnemi"]
+layout_mode = 2
+offset_left = 5.0
+offset_top = 22.0
+offset_right = 195.0
+offset_bottom = 32.0
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="LabelStatut" type="Label" parent="BattleHUD/PanelEnnemi"]
+layout_mode = 2
+offset_left = 5.0
+offset_top = 35.0
+offset_right = 50.0
+offset_bottom = 50.0
+text = ""
+theme_override_font_sizes/font_size = 8
+
+[node name="PanelJoueur" type="PanelContainer" parent="BattleHUD"]
+layout_mode = 1
+offset_left = 260.0
+offset_top = 140.0
+offset_right = 470.0
+offset_bottom = 210.0
+
+[node name="LabelNom" type="Label" parent="BattleHUD/PanelJoueur"]
+layout_mode = 2
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 100.0
+offset_bottom = 18.0
+text = "JOUEUR"
+theme_override_font_sizes/font_size = 10
+
+[node name="LabelNiveau" type="Label" parent="BattleHUD/PanelJoueur"]
+layout_mode = 2
+offset_left = 130.0
+offset_top = 3.0
+offset_right = 205.0
+offset_bottom = 18.0
+text = "N.5"
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 10
+
+[node name="BarrePV" type="ProgressBar" parent="BattleHUD/PanelJoueur"]
+layout_mode = 2
+offset_left = 5.0
+offset_top = 22.0
+offset_right = 205.0
+offset_bottom = 32.0
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="LabelPV" type="Label" parent="BattleHUD/PanelJoueur"]
+layout_mode = 2
+offset_left = 120.0
+offset_top = 35.0
+offset_right = 205.0
+offset_bottom = 50.0
+text = "20/20"
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="LabelStatut" type="Label" parent="BattleHUD/PanelJoueur"]
+layout_mode = 2
+offset_left = 5.0
+offset_top = 35.0
+offset_right = 50.0
+offset_bottom = 50.0
+text = ""
+theme_override_font_sizes/font_size = 8
+
+[node name="PanelMessage" type="PanelContainer" parent="BattleHUD"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 225.0
+offset_right = 470.0
+offset_bottom = 310.0
+
+[node name="LabelMessage" type="RichTextLabel" parent="BattleHUD/PanelMessage"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 452.0
+offset_bottom = 80.0
+text = "Que faire ?"
+theme_override_font_sizes/normal_font_size = 10
+
+[node name="MenuAction" type="VBoxContainer" parent="BattleHUD"]
+layout_mode = 1
+offset_left = 340.0
+offset_top = 225.0
+offset_right = 470.0
+offset_bottom = 310.0
+visible = false
+theme_override_constants/separation = 4
+
+[node name="LabelAttaque" type="Label" parent="BattleHUD/MenuAction"]
+layout_mode = 2
+text = "▶ Attaque"
+theme_override_font_sizes/font_size = 10
+
+[node name="LabelSac" type="Label" parent="BattleHUD/MenuAction"]
+layout_mode = 2
+text = "  Sac"
+theme_override_font_sizes/font_size = 10
+
+[node name="LabelPokemon" type="Label" parent="BattleHUD/MenuAction"]
+layout_mode = 2
+text = "  Pokémon"
+theme_override_font_sizes/font_size = 10
+
+[node name="LabelFuite" type="Label" parent="BattleHUD/MenuAction"]
+layout_mode = 2
+text = "  Fuite"
+theme_override_font_sizes/font_size = 10
+
+[node name="MenuAttaque" type="VBoxContainer" parent="BattleHUD"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 225.0
+offset_right = 330.0
+offset_bottom = 310.0
+visible = false
+theme_override_constants/separation = 4
+
+[node name="LabelAttaque1" type="Label" parent="BattleHUD/MenuAttaque"]
+layout_mode = 2
+text = "Attaque 1"
+theme_override_font_sizes/font_size = 10
+
+[node name="LabelAttaque2" type="Label" parent="BattleHUD/MenuAttaque"]
+layout_mode = 2
+text = "Attaque 2"
+theme_override_font_sizes/font_size = 10
+
+[node name="LabelAttaque3" type="Label" parent="BattleHUD/MenuAttaque"]
+layout_mode = 2
+text = "Attaque 3"
+theme_override_font_sizes/font_size = 10
+
+[node name="LabelAttaque4" type="Label" parent="BattleHUD/MenuAttaque"]
+layout_mode = 2
+text = "Attaque 4"
+theme_override_font_sizes/font_size = 10
