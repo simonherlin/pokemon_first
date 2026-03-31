@@ -29,16 +29,8 @@ func _mettre_a_jour_curseur() -> void:
 func _selectionner() -> void:
 	match _options[_index]:
 		"nouvelle":
-			GameManager.nouvelle_partie()
-			PlayerData.nouvelle_partie("Red")
-			# Donner un Pokémon de départ pour le test (Bulbizarre N.5)
-			var starter := SpeciesData.creer_pokemon("001", 5)
-			if starter:
-				PlayerData.ajouter_pokemon(starter.to_dict())
-			# Donner quelques items de départ
-			PlayerData.ajouter_item("potion", 5)
-			PlayerData.ajouter_item("pokeball", 5)
-			SceneManager.charger_scene("res://scenes/maps/bourg_palette.tscn")
+			# Lancer la séquence d'introduction du Prof. Chen
+			SceneManager.charger_scene("res://scenes/ui/intro_scene.tscn")
 		"continuer":
 			if SaveManager.slot_existe(0):
 				SaveManager.charger(0)

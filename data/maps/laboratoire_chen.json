@@ -1,0 +1,58 @@
+{
+  "id": "laboratoire_chen",
+  "nom": "Laboratoire du Prof. Chen",
+  "largeur": 10,
+  "hauteur": 10,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/laboratoire_chen.ogg",
+  "connexions": [],
+  "warps": [
+    {"id": "sortie", "x": 5, "y": 9, "vers_map": "bourg_palette", "vers_warp": "laboratoire_entree", "type": "porte"}
+  ],
+  "pnj": [
+    {
+      "id": "prof_chen",
+      "x": 5, "y": 2,
+      "sprite": "pnj_chen",
+      "direction": "bas",
+      "dialogue": ["Je suis le PROF. CHEN.", "Je fais des recherches sur les POKÉMON."],
+      "mobile": false,
+      "type": "special"
+    },
+    {
+      "id": "rival_labo",
+      "x": 7, "y": 3,
+      "sprite": "pnj_rival",
+      "direction": "gauche",
+      "dialogue": ["Hé ! Il est où le vieux ?", "Je veux mon POKÉMON !"],
+      "mobile": false,
+      "type": "special"
+    }
+  ],
+  "objets_sol": [],
+  "panneaux": [],
+  "tiles_sol": [
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24]
+  ],
+  "tiles_objets": [
+    [25, 25, 25, 25, 25, 25, 25, 25, 25, 25],
+    [25, 27, 26, 26, 26, 26, 26, 27, -1, 25],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, 30, 30, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, 30, 30, -1, -1, 30, 30, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [25, -1, -1, -1, -1, -1, -1, -1, -1, 25]
+  ]
+}
