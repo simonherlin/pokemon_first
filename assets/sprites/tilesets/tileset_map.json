@@ -1,0 +1,258 @@
+{
+  "tile_0": {
+    "name": "herbe",
+    "pattern": "plain",
+    "atlas_x": 0,
+    "atlas_y": 0,
+    "col": 0,
+    "row": 0
+  },
+  "tile_1": {
+    "name": "herbe_haute",
+    "pattern": "grass_pattern",
+    "atlas_x": 32,
+    "atlas_y": 0,
+    "col": 1,
+    "row": 0
+  },
+  "tile_2": {
+    "name": "chemin",
+    "pattern": "plain",
+    "atlas_x": 64,
+    "atlas_y": 0,
+    "col": 2,
+    "row": 0
+  },
+  "tile_3": {
+    "name": "sable",
+    "pattern": "plain",
+    "atlas_x": 96,
+    "atlas_y": 0,
+    "col": 3,
+    "row": 0
+  },
+  "tile_4": {
+    "name": "eau",
+    "pattern": "water_pattern",
+    "atlas_x": 128,
+    "atlas_y": 0,
+    "col": 4,
+    "row": 0
+  },
+  "tile_5": {
+    "name": "fleur",
+    "pattern": "flower_pattern",
+    "atlas_x": 160,
+    "atlas_y": 0,
+    "col": 5,
+    "row": 0
+  },
+  "tile_6": {
+    "name": "noir",
+    "pattern": "plain",
+    "atlas_x": 192,
+    "atlas_y": 0,
+    "col": 6,
+    "row": 0
+  },
+  "tile_7": {
+    "name": "noir",
+    "pattern": "plain",
+    "atlas_x": 224,
+    "atlas_y": 0,
+    "col": 7,
+    "row": 0
+  },
+  "tile_8": {
+    "name": "arbre_haut",
+    "pattern": "tree_top",
+    "atlas_x": 0,
+    "atlas_y": 32,
+    "col": 0,
+    "row": 1
+  },
+  "tile_9": {
+    "name": "arbre_bas",
+    "pattern": "tree_trunk",
+    "atlas_x": 32,
+    "atlas_y": 32,
+    "col": 1,
+    "row": 1
+  },
+  "tile_10": {
+    "name": "arbre_haut",
+    "pattern": "tree_top_r",
+    "atlas_x": 64,
+    "atlas_y": 32,
+    "col": 2,
+    "row": 1
+  },
+  "tile_11": {
+    "name": "arbre_bas",
+    "pattern": "tree_trunk_r",
+    "atlas_x": 96,
+    "atlas_y": 32,
+    "col": 3,
+    "row": 1
+  },
+  "tile_12": {
+    "name": "fence",
+    "pattern": "fence_h",
+    "atlas_x": 128,
+    "atlas_y": 32,
+    "col": 4,
+    "row": 1
+  },
+  "tile_13": {
+    "name": "fence",
+    "pattern": "fence_v",
+    "atlas_x": 160,
+    "atlas_y": 32,
+    "col": 5,
+    "row": 1
+  },
+  "tile_14": {
+    "name": "herbe",
+    "pattern": "bush",
+    "atlas_x": 192,
+    "atlas_y": 32,
+    "col": 6,
+    "row": 1
+  },
+  "tile_15": {
+    "name": "herbe_haute",
+    "pattern": "tall_grass",
+    "atlas_x": 224,
+    "atlas_y": 32,
+    "col": 7,
+    "row": 1
+  },
+  "tile_16": {
+    "name": "maison_toit",
+    "pattern": "roof_l",
+    "atlas_x": 0,
+    "atlas_y": 64,
+    "col": 0,
+    "row": 2
+  },
+  "tile_17": {
+    "name": "maison_toit",
+    "pattern": "roof_m",
+    "atlas_x": 32,
+    "atlas_y": 64,
+    "col": 1,
+    "row": 2
+  },
+  "tile_18": {
+    "name": "maison_toit",
+    "pattern": "roof_r",
+    "atlas_x": 64,
+    "atlas_y": 64,
+    "col": 2,
+    "row": 2
+  },
+  "tile_19": {
+    "name": "maison_mur",
+    "pattern": "wall_l",
+    "atlas_x": 96,
+    "atlas_y": 64,
+    "col": 3,
+    "row": 2
+  },
+  "tile_20": {
+    "name": "maison_mur",
+    "pattern": "wall_m",
+    "atlas_x": 128,
+    "atlas_y": 64,
+    "col": 4,
+    "row": 2
+  },
+  "tile_21": {
+    "name": "maison_mur",
+    "pattern": "wall_r",
+    "atlas_x": 160,
+    "atlas_y": 64,
+    "col": 5,
+    "row": 2
+  },
+  "tile_22": {
+    "name": "maison_porte",
+    "pattern": "door",
+    "atlas_x": 192,
+    "atlas_y": 64,
+    "col": 6,
+    "row": 2
+  },
+  "tile_23": {
+    "name": "maison_mur",
+    "pattern": "window",
+    "atlas_x": 224,
+    "atlas_y": 64,
+    "col": 7,
+    "row": 2
+  },
+  "tile_24": {
+    "name": "interieur_sol",
+    "pattern": "plain",
+    "atlas_x": 0,
+    "atlas_y": 96,
+    "col": 0,
+    "row": 3
+  },
+  "tile_25": {
+    "name": "interieur_mur",
+    "pattern": "plain",
+    "atlas_x": 32,
+    "atlas_y": 96,
+    "col": 1,
+    "row": 3
+  },
+  "tile_26": {
+    "name": "comptoir",
+    "pattern": "plain",
+    "atlas_x": 64,
+    "atlas_y": 96,
+    "col": 2,
+    "row": 3
+  },
+  "tile_27": {
+    "name": "machine_soin",
+    "pattern": "machine",
+    "atlas_x": 96,
+    "atlas_y": 96,
+    "col": 3,
+    "row": 3
+  },
+  "tile_28": {
+    "name": "etagere",
+    "pattern": "shelf",
+    "atlas_x": 128,
+    "atlas_y": 96,
+    "col": 4,
+    "row": 3
+  },
+  "tile_29": {
+    "name": "tapis_rouge",
+    "pattern": "carpet",
+    "atlas_x": 160,
+    "atlas_y": 96,
+    "col": 5,
+    "row": 3
+  },
+  "tile_30": {
+    "name": "interieur_sol",
+    "pattern": "tile_pattern",
+    "atlas_x": 192,
+    "atlas_y": 96,
+    "col": 6,
+    "row": 3
+  },
+  "tile_31": {
+    "name": "interieur_mur",
+    "pattern": "wall_pattern",
+    "atlas_x": 224,
+    "atlas_y": 96,
+    "col": 7,
+    "row": 3
+  }
+}
