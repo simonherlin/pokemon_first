@@ -9,6 +9,7 @@ builds/
 # ─── Copilot / Agents (local uniquement — non publié sur GitHub) ────────────
 .github/copilot-instructions.md
 .github/prompts/
+.github/agents/
 
 # ─── OS ─────────────────────────────────────────────────────────────────────
 .DS_Store

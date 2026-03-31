@@ -23,6 +23,15 @@ PlayerData="*res://scripts/autoload/player_data.gd"
 SceneManager="*res://scripts/autoload/scene_manager.gd"
 AudioManager="*res://scripts/autoload/audio_manager.gd"
 SaveManager="*res://scripts/autoload/save_manager.gd"
+SpeciesData="*res://scripts/pokemon/species_data.gd"
+MoveData="*res://scripts/pokemon/move_data.gd"
+EncounterSystem="*res://scripts/overworld/encounter_system.gd"
+BattleCalculator="*res://scripts/battle/battle_calculator.gd"
+MoveEffects="*res://scripts/battle/move_effects.gd"
+AIController="*res://scripts/battle/ai_controller.gd"
+BattleController="*res://scripts/battle/battle_controller.gd"
+MapLoader="*res://scripts/overworld/map_loader.gd"
+ItemsData="*res://scripts/autoload/items_data.gd"
 
 [display]
 
