@@ -1,0 +1,191 @@
+{
+  "id": "route_24",
+  "nom": "Route 24",
+  "largeur": 10,
+  "hauteur": 30,
+  "tileset": "outdoor",
+  "musique": "res://assets/audio/music/route_1.ogg",
+  "connexions": [
+    {"direction": "sud", "vers": "azuria_ville", "decalage": 0},
+    {"direction": "nord", "vers": "route_25", "decalage": 0}
+  ],
+  "warps": [],
+  "zones_herbes": [
+    {"x1": 1, "y1": 20, "x2": 4, "y2": 26, "table": "route_24"},
+    {"x1": 6, "y1": 22, "x2": 9, "y2": 28, "table": "route_24"}
+  ],
+  "pnj": [
+    {
+      "id": "rival_route24_001",
+      "x": 5, "y": 27,
+      "sprite": "pnj_rival",
+      "direction": "haut",
+      "equipe": [
+        {"espece_id": "016", "niveau": 17},
+        {"espece_id": "019", "niveau": 15},
+        {"espece_id": "063", "niveau": 16},
+        {"espece_id": "004", "niveau": 18}
+      ],
+      "recompense": 630,
+      "dialogue_avant": ["Tiens, tiens...", "Tu es arrivé jusqu'ici ?", "Voyons si tu as progressé !"],
+      "dialogue_apres": ["Grr... Ce n'est pas fini !", "Je serai encore plus fort la prochaine fois !"],
+      "mobile": false,
+      "flag_battu": "rival_route24_battu"
+    },
+    {
+      "id": "pont_pepite_01",
+      "x": 5, "y": 22,
+      "sprite": "pnj_gamin",
+      "direction": "bas",
+      "equipe": [
+        {"espece_id": "021", "niveau": 14},
+        {"espece_id": "019", "niveau": 14}
+      ],
+      "recompense": 280,
+      "dialogue_avant": ["Tu oses traverser le Pont Pépite ?", "Alors prépare-toi !"],
+      "dialogue_apres": ["Pas mal du tout !"],
+      "mobile": false
+    },
+    {
+      "id": "pont_pepite_02",
+      "x": 5, "y": 18,
+      "sprite": "pnj_gamin",
+      "direction": "bas",
+      "equipe": [
+        {"espece_id": "043", "niveau": 15}
+      ],
+      "recompense": 315,
+      "dialogue_avant": ["Je suis le deuxième !", "Tu ne passeras pas !"],
+      "dialogue_apres": ["Tu es costaud..."],
+      "mobile": false
+    },
+    {
+      "id": "pont_pepite_03",
+      "x": 5, "y": 14,
+      "sprite": "pnj_gamin",
+      "direction": "bas",
+      "equipe": [
+        {"espece_id": "046", "niveau": 14},
+        {"espece_id": "010", "niveau": 14}
+      ],
+      "recompense": 280,
+      "dialogue_avant": ["Numéro 3 !", "Tu tiens encore ?"],
+      "dialogue_apres": ["Ouah, tu es fort !"],
+      "mobile": false
+    },
+    {
+      "id": "pont_pepite_04",
+      "x": 5, "y": 10,
+      "sprite": "pnj_gamine",
+      "direction": "bas",
+      "equipe": [
+        {"espece_id": "060", "niveau": 15},
+        {"espece_id": "054", "niveau": 15}
+      ],
+      "recompense": 315,
+      "dialogue_avant": ["Plus qu'un après moi !", "Mais je ne te laisserai pas passer !"],
+      "dialogue_apres": ["Snif... tu es trop fort."],
+      "mobile": false
+    },
+    {
+      "id": "pont_pepite_05",
+      "x": 5, "y": 6,
+      "sprite": "pnj_gamin",
+      "direction": "bas",
+      "equipe": [
+        {"espece_id": "066", "niveau": 15},
+        {"espece_id": "074", "niveau": 15}
+      ],
+      "recompense": 315,
+      "dialogue_avant": ["Je suis le dernier du Pont Pépite !", "Si tu me bats, tu auras ta récompense !"],
+      "dialogue_apres": ["Tu as réussi le Pont Pépite !"],
+      "mobile": false
+    },
+    {
+      "id": "rocket_pont_pepite",
+      "x": 5, "y": 2,
+      "sprite": "pnj_rocket",
+      "direction": "bas",
+      "equipe": [
+        {"espece_id": "019", "niveau": 15},
+        {"espece_id": "023", "niveau": 15}
+      ],
+      "recompense": 600,
+      "dialogue_avant": ["Félicitations pour le Pont Pépite !", "Tiens, voilà une PÉPITE en cadeau !", "Hé hé... En fait, j'ai un autre cadeau.", "Rejoins la Team Rocket !", "Non ? Alors je vais devoir te convaincre !"],
+      "dialogue_apres": ["Grr... Tu le regretteras !"],
+      "mobile": false,
+      "item_recompense": "pepite"
+    }
+  ],
+  "objets_sol": [
+    {"id": "obj_ct_r24", "x": 2, "y": 8, "item_id": "potion", "quantite": 1}
+  ],
+  "panneaux": [
+    {"x": 8, "y": 28, "texte": "ROUTE 24 — PONT PÉPITE\nBattez les 5 dresseurs\npour gagner un prix !"},
+    {"x": 8, "y": 1, "texte": "ROUTE 25 ↑"}
+  ],
+  "tiles_sol": [
+    [0, 0, 0, 0, 2, 2, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 0, 0, 0, 0],
+    [0, 0, 0, 2, 2, 2, 2, 0, 0, 0],
+    [0, 0, 0, 2, 3, 3, 2, 0, 0, 0],
+    [0, 0, 0, 2, 3, 3, 2, 0, 0, 0],
+    [0, 0, 0, 2, 3, 3, 2, 0, 0, 0],
+    [0, 0, 0, 2, 3, 3, 2, 0, 0, 0],
+    [0, 0, 0, 2, 3, 3, 2, 0, 0, 0],
+    [0, 0, 0, 2, 3, 3, 2, 0, 0, 0],
+    [0, 0, 0, 2, 3, 3, 2, 0, 0, 0],
+    [0, 0, 0, 2, 3, 3, 2, 0, 0, 0],
+    [0, 0, 0, 2, 3, 3, 2, 0, 0, 0],
+    [0, 0, 0, 2, 3, 3, 2, 0, 0, 0],
+    [0, 0, 0, 2, 3, 3, 2, 0, 0, 0],
+    [0, 0, 0, 2, 3, 3, 2, 0, 0, 0],
+    [0, 0, 0, 2, 3, 3, 2, 0, 0, 0],
+    [0, 0, 0, 2, 3, 3, 2, 0, 0, 0],
+    [0, 0, 0, 2, 3, 3, 2, 0, 0, 0],
+    [0, 0, 0, 2, 3, 3, 2, 0, 0, 0],
+    [0, 1, 1, 2, 2, 2, 2, 0, 0, 0],
+    [0, 1, 1, 0, 0, 0, 1, 1, 0, 0],
+    [0, 1, 1, 0, 0, 0, 1, 1, 0, 0],
+    [0, 1, 1, 0, 0, 0, 1, 1, 0, 0],
+    [0, 1, 1, 0, 0, 0, 1, 1, 0, 0],
+    [0, 0, 0, 0, 2, 2, 1, 1, 1, 0],
+    [0, 0, 0, 0, 2, 2, 1, 1, 1, 0],
+    [0, 0, 0, 0, 2, 2, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 0, 0, 0, 0]
+  ],
+  "tiles_objets": [
+    [ 8, 10,  8, 10, -1, -1, 10,  8, 10,  8],
+    [ 9, 11,  9, 11, -1, -1, 11,  9, 11,  9],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "maison_bill",
+  "nom": "Maison de Bill",
+  "largeur": 10,
+  "hauteur": 8,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/maison_interieur.ogg",
+  "connexions": [],
+  "warps": [
+    {"id": "sortie", "x": 5, "y": 7, "vers_map": "route_25", "vers_warp": "maison_bill_entree", "type": "porte"}
+  ],
+  "pnj": [
+    {
+      "id": "pnj_bill",
+      "x": 5, "y": 2,
+      "sprite": "pnj_homme",
+      "direction": "bas",
+      "dialogue": ["Salut ! Je suis BILL !", "J'ai créé le système de Stockage\nde Pokémon !", "Mon système permet de stocker les\nPokémon au-delà des 6 de ton équipe.", "Je vais activer ton accès au PC.", "C'est fait ! Tu peux maintenant\nutiliser le PC dans les Centres Pokémon.", "Tiens, voilà un cadeau pour toi.", "Un billet pour l'Océane !", "Ça te servira sûrement plus tard."],
+      "mobile": false,
+      "type": "bill",
+      "flag_rencontre": "bill_rencontre",
+      "flag_pc": "bill_pc_active"
+    },
+    {
+      "id": "pnj_bill_pc",
+      "x": 8, "y": 1,
+      "sprite": "pnj_homme",
+      "direction": "bas",
+      "dialogue": ["C'est le PC de BILL.", "Il contient des données sur les Pokémon."],
+      "mobile": false,
+      "type": "panneau"
+    }
+  ],
+  "objets_sol": [],
+  "panneaux": [],
+  "tiles_sol": [
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24],
+    [24, 24, 24, 24, 29, 29, 24, 24, 24, 24]
+  ],
+  "tiles_objets": [
+    [25, 25, 25, 25, 25, 25, 25, 25, 25, 25],
+    [25, 30, -1, -1, -1, -1, -1, -1, 30, 25],
+    [25, -1, -1, -1, -1, -1, -1, -1, -1, 25],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, 30, -1, -1, -1, -1, -1, 30, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [25, -1, -1, -1, -1, -1, -1, -1, -1, 25]
+  ]
+}

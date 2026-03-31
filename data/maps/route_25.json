@@ -1,0 +1,92 @@
+{
+  "id": "route_25",
+  "nom": "Route 25",
+  "largeur": 20,
+  "hauteur": 12,
+  "tileset": "outdoor",
+  "musique": "res://assets/audio/music/route_1.ogg",
+  "connexions": [
+    {"direction": "sud", "vers": "route_24", "decalage": 0}
+  ],
+  "warps": [
+    {"id": "maison_bill_entree", "x": 18, "y": 3, "vers_map": "maison_bill", "vers_warp": "sortie", "type": "porte"}
+  ],
+  "zones_herbes": [
+    {"x1": 3, "y1": 3, "x2": 8, "y2": 7, "table": "route_25"},
+    {"x1": 12, "y1": 5, "x2": 16, "y2": 9, "table": "route_25"}
+  ],
+  "pnj": [
+    {
+      "id": "dresseur_route25_01",
+      "x": 7, "y": 5,
+      "sprite": "pnj_randonneur",
+      "direction": "droite",
+      "equipe": [
+        {"espece_id": "074", "niveau": 16},
+        {"espece_id": "027", "niveau": 16}
+      ],
+      "recompense": 380,
+      "dialogue_avant": ["Hé ! Tu vas chez BILL ?", "Pas si vite !"],
+      "dialogue_apres": ["Vas-y, il habite au bout du chemin."],
+      "mobile": false
+    },
+    {
+      "id": "dresseur_route25_02",
+      "x": 14, "y": 7,
+      "sprite": "pnj_gamine",
+      "direction": "gauche",
+      "equipe": [
+        {"espece_id": "043", "niveau": 16},
+        {"espece_id": "069", "niveau": 16}
+      ],
+      "recompense": 380,
+      "dialogue_avant": ["Les Pokémon Plante sont les plus beaux !", "Je vais te le prouver !"],
+      "dialogue_apres": ["Bon, tu as gagné..."],
+      "mobile": false
+    },
+    {
+      "id": "pnj_route25_guide",
+      "x": 15, "y": 3,
+      "sprite": "pnj_homme",
+      "direction": "droite",
+      "dialogue": ["La maison de BILL est juste devant.", "C'est un génie des Pokémon !"],
+      "mobile": false
+    }
+  ],
+  "objets_sol": [
+    {"id": "obj_super_potion_r25", "x": 10, "y": 8, "item_id": "super_potion", "quantite": 1},
+    {"id": "obj_elixir_r25", "x": 2, "y": 6, "item_id": "elixir", "quantite": 1}
+  ],
+  "panneaux": [
+    {"x": 1, "y": 10, "texte": "ROUTE 25\nMaison de BILL →"},
+    {"x": 17, "y": 2, "texte": "Résidence de BILL\nSpécialiste Pokémon"}
+  ],
+  "tiles_sol": [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 1, 2, 1, 1, 0, 0, 2, 2, 0, 1, 1, 1, 1, 2, 0, 0, 0],
+    [0, 0, 0, 1, 2, 1, 1, 0, 0, 2, 2, 0, 1, 1, 1, 1, 2, 0, 0, 0],
+    [0, 0, 0, 1, 2, 1, 1, 0, 0, 2, 2, 0, 1, 1, 1, 1, 2, 0, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  ],
+  "tiles_objets": [
+    [ 8, 10,  8, 10,  8, 10,  8, 10,  8, 10,  8, 10,  8, 10,  8, 10,  8, 10,  8, 10],
+    [ 9, 11,  9, 11,  9, 11,  9, 11,  9, 11,  9, 11,  9, 11,  9, 11,  9, 11,  9, 11],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 16, 17, 18],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 19, 23, 21],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 19, 22, 21],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+  ]
+}
