@@ -20,6 +20,14 @@
       "vers_map": "grotte_taupiqueur",
       "vers_warp": "sortie_sud",
       "type": "grotte"
+    },
+    {
+      "id": "entree_tunnel_est",
+      "x": 3,
+      "y": 7,
+      "vers_map": "tunnel_souterrain_2",
+      "vers_warp": "sortie_ouest",
+      "type": "porte"
     }
   ],
   "zones_herbes": [
