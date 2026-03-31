@@ -215,3 +215,6 @@ func nouvelle_partie(nom: String) -> void:
 	pokedex_capture = []
 	dresseurs_battus = []
 	objets_ramasses = []
+	boites = []
+	for _i in range(MAX_BOITES):
+		boites.append([])

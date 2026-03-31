@@ -8,7 +8,7 @@
   "connexions": [],
   "warps": [
     {"id": "escalier_b1f", "x": 1, "y": 2, "vers_map": "mont_selenite_b1f", "vers_warp": "escalier_b2f", "type": "escalier"},
-    {"id": "sortie_route4", "x": 18, "y": 14, "vers_map": "route_4", "vers_warp": "grotte_sortie", "type": "escalier"}
+    {"id": "sortie_route4", "x": 18, "y": 14, "vers_map": "route_4", "vers_warp": "grotte_sortie", "type": "grotte"}
   ],
   "pnj": [
     {

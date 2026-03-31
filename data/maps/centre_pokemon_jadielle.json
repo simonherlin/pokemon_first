@@ -18,6 +18,15 @@
       "dialogue": ["Bienvenue au Centre Pokémon !", "Je vais soigner vos Pokémon.", "...Vos Pokémon sont maintenant en pleine forme !", "Revenez quand vous voulez !"],
       "mobile": false,
       "type": "infirmiere"
+    },
+    {
+      "id": "pc_jadielle",
+      "x": 1, "y": 1,
+      "sprite": "pnj_pc",
+      "direction": "bas",
+      "dialogue": ["Il y a un PC ici.", "Voulez-vous l'utiliser ?"],
+      "mobile": false,
+      "type": "pc"
     }
   ],
   "objets_sol": [],
