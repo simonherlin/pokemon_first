@@ -26,6 +26,15 @@
       "direction": "gauche",
       "dialogue": ["Pierre est un champion très dur.", "Ses Pokémon Roche sont résistants\naux attaques Normales."],
       "mobile": false
+    },
+    {
+      "id": "pc_argenta",
+      "x": 1, "y": 1,
+      "sprite": "pnj_pc",
+      "direction": "bas",
+      "dialogue": ["Il y a un PC ici.", "Voulez-vous l'utiliser ?"],
+      "mobile": false,
+      "type": "pc"
     }
   ],
   "objets_sol": [],

@@ -79,6 +79,49 @@ func retirer_pokemon(index: int) -> Dictionary:
 	emit_signal("equipe_modifiee")
 	return pokemon
 
+# --- Boîtes PC ---
+func deposer_pokemon(index_equipe: int, boite_index: int = -1) -> bool:
+	# Impossible de déposer si un seul Pokémon reste
+	if equipe.size() <= 1:
+		return false
+	if index_equipe < 0 or index_equipe >= equipe.size():
+		return false
+	# Trouver la première boîte avec de la place si non spécifié
+	if boite_index < 0:
+		boite_index = _trouver_boite_libre()
+	if boite_index < 0 or boite_index >= MAX_BOITES:
+		return false
+	if boites[boite_index].size() >= MAX_BOITE_TAILLE:
+		return false
+	var pokemon = equipe.pop_at(index_equipe)
+	boites[boite_index].append(pokemon)
+	emit_signal("equipe_modifiee")
+	return true
+
+func retirer_boite_pokemon(boite_index: int, index_pokemon: int) -> bool:
+	if equipe.size() >= MAX_EQUIPE:
+		return false
+	if boite_index < 0 or boite_index >= MAX_BOITES:
+		return false
+	if index_pokemon < 0 or index_pokemon >= boites[boite_index].size():
+		return false
+	var pokemon = boites[boite_index].pop_at(index_pokemon)
+	equipe.append(pokemon)
+	emit_signal("equipe_modifiee")
+	return true
+
+func _trouver_boite_libre() -> int:
+	for i in range(MAX_BOITES):
+		if boites[i].size() < MAX_BOITE_TAILLE:
+			return i
+	return -1
+
+func compter_pokemon_boites() -> int:
+	var total := 0
+	for boite in boites:
+		total += boite.size()
+	return total
+
 func pokemon_equipe_vivant() -> Array:
 	var vivants := []
 	for p in equipe:

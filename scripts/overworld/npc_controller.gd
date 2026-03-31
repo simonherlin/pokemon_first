@@ -16,7 +16,7 @@ var recompense: int = 0
 var champ_vision: int = 3           # Cases devant le PNJ (dresseur)
 var direction_initiale: String = "bas"
 var mobile: bool = false
-var type_pnj: String = ""           # "", "infirmiere", "vendeur"
+var type_pnj: String = ""           # "", "infirmiere", "vendeur", "pc"
 var inventaire_boutique: Array = [] # IDs des items en vente (si type=vendeur)
 
 # --- Nœuds ---
@@ -70,6 +70,9 @@ func interagir(joueur: Node) -> void:
 		"vendeur":
 			_interagir_vendeur(joueur)
 			return
+		"pc":
+			_interagir_pc(joueur)
+			return
 
 	if est_dresseur and not battu:
 		# Démarrer un combat
@@ -110,7 +113,21 @@ func _soigner_equipe() -> void:
 func _interagir_vendeur(joueur: Node) -> void:
 	emit_signal("dialogue_demarre", dialogues if not dialogues.is_empty() else ["Bienvenue !"])
 	emit_signal("boutique_demandee", inventaire_boutique)
-
+# PC : ouvre le système de stockage Pokémon de Bill
+func _interagir_pc(joueur: Node) -> void:
+	if not GameManager.get_flag("bill_pc_active"):
+		emit_signal("dialogue_demarre", ["Le PC s'allume...", "Mais le système de stockage\nn'est pas encore activé."])
+		return
+	# Ouvrir l'écran PC
+	if joueur.has_method("set_peut_bouger"):
+		joueur.set_peut_bouger(false)
+	var pc_scene = preload("res://scenes/ui/pc_screen.tscn")
+	var pc_ecran = pc_scene.instantiate()
+	get_tree().current_scene.add_child(pc_ecran)
+	pc_ecran.pc_ferme.connect(func():
+		if joueur.has_method("set_peut_bouger"):
+			joueur.set_peut_bouger(true)
+	)
 # Vérifier si le joueur entre dans le champ de vision du dresseur
 func _verifier_champ_vision() -> void:
 	if ray_vision == null:
