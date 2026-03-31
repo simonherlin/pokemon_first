@@ -62,6 +62,15 @@ func _configurer_arene() -> void:
 			_ct_nom = "CT CASCADE"
 			_ct_description = "CASCADE est une puissante attaque Eau."
 			_badge_desc = "Ce badge permet aux Pokémon jusqu'au N.30\nd'obéir sans condition."
+		"arene_carmin":
+			_badge_index = 2
+			_badge_flag = "badge_foudre"
+			_champion_id = "champion_major_bob"
+			_ct_recompense = "ct_tonnerre"
+			_badge_nom = "BADGE FOUDRE"
+			_ct_nom = "CT TONNERRE"
+			_ct_description = "TONNERRE est une puissante attaque Électrik\nqui peut paralyser l'adversaire."
+			_badge_desc = "Ce badge permet d'utiliser COUPE\nhors des combats."
 
 func recevoir_params(params: Dictionary) -> void:
 	carte_id = params.get("carte_id", carte_id)

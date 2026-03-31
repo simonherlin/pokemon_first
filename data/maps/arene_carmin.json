@@ -1,0 +1,97 @@
+{
+  "id": "arene_carmin",
+  "nom": "Arène de Carmin sur Mer",
+  "largeur": 12,
+  "hauteur": 12,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/arene.ogg",
+  "connexions": [],
+  "warps": [
+    {"id": "sortie", "x": 6, "y": 11, "vers_map": "carmin_sur_mer", "vers_warp": "arene_entree", "type": "porte"}
+  ],
+  "pnj": [
+    {
+      "id": "champion_major_bob",
+      "x": 6, "y": 2,
+      "sprite": "pnj_champion_bob",
+      "direction": "bas",
+      "equipe": [
+        {"espece_id": "100", "niveau": 21},
+        {"espece_id": "025", "niveau": 18},
+        {"espece_id": "026", "niveau": 24}
+      ],
+      "recompense": 2394,
+      "dialogue_avant": [
+        "Je suis le Major Bob !",
+        "Mes Pokémon Électrik vont te terrasser !"
+      ],
+      "dialogue_apres": [
+        "Tonnerre de Brest !",
+        "Tu as survécu à la foudre !"
+      ],
+      "mobile": false,
+      "type": "champion"
+    },
+    {
+      "id": "dresseur_arene_carmin_01",
+      "x": 4, "y": 6,
+      "sprite": "pnj_marin",
+      "direction": "droite",
+      "equipe": [
+        {"espece_id": "081", "niveau": 20},
+        {"espece_id": "100", "niveau": 20}
+      ],
+      "recompense": 400,
+      "dialogue_avant": [
+        "Tu veux affronter le Major Bob ?",
+        "D'abord tu dois me battre !"
+      ],
+      "dialogue_apres": [
+        "Bien joué..."
+      ],
+      "mobile": false
+    },
+    {
+      "id": "pnj_arene_carmin_guide",
+      "x": 2, "y": 9,
+      "sprite": "pnj_homme",
+      "direction": "droite",
+      "dialogue": [
+        "Bienvenue dans l'Arène de Carmin !",
+        "Le Major Bob utilise des Pokémon Électrik.",
+        "Les Pokémon de type Sol sont immunisés\ncontre les attaques Électrik !"
+      ],
+      "mobile": false
+    }
+  ],
+  "objets_sol": [],
+  "panneaux": [],
+  "tiles_sol": [
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24],
+    [24,24,24,24,24,24,24,24,24,24,24,24]
+  ],
+  "tiles_objets": [
+    [25,25,25,25,25,25,25,25,25,25,25,25],
+    [-1,-1,-1,-1,-1,31,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,25,25,25,25,25,25,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,25,25,25,25,25,25,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [25,25,25,25,25,25,-1,25,25,25,25,25]
+  ]
+}
