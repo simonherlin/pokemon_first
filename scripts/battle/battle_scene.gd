@@ -104,6 +104,8 @@ func _connecter_signaux() -> void:
 	_controller.pv_mis_a_jour.connect(_on_pv_mis_a_jour)
 	_controller.statut_mis_a_jour.connect(_on_statut_mis_a_jour)
 	_controller.combat_termine.connect(_on_combat_termine)
+	_controller.evolution_proposee.connect(_on_evolution_proposee)
+	_controller.attaque_a_apprendre.connect(_on_attaque_a_apprendre)
 
 func _on_message(texte: String) -> void:
 	label_message.text = texte
@@ -152,9 +154,13 @@ func _on_combat_termine(victoire: bool) -> void:
 		_controller.pv_mis_a_jour.disconnect(_on_pv_mis_a_jour)
 		_controller.statut_mis_a_jour.disconnect(_on_statut_mis_a_jour)
 		_controller.combat_termine.disconnect(_on_combat_termine)
+		if _controller.evolution_proposee.is_connected(_on_evolution_proposee):
+			_controller.evolution_proposee.disconnect(_on_evolution_proposee)
+		if _controller.attaque_a_apprendre.is_connected(_on_attaque_a_apprendre):
+			_controller.attaque_a_apprendre.disconnect(_on_attaque_a_apprendre)
 	# Sauvegarder l'état des PV dans l'équipe
 	if _controller.pokemon_joueur:
-		PlayerData.equipe[0] = _controller.pokemon_joueur.to_dict()
+		PlayerData.equipe[_controller.index_pokemon_joueur] = _controller.pokemon_joueur.to_dict()
 	# Retour à la carte
 	await get_tree().create_timer(2.0).timeout
 	SceneManager.charger_scene("res://scenes/maps/%s.tscn" % _carte_retour, {
@@ -261,3 +267,27 @@ func _abreger_statut(statut: String) -> String:
 		"poison", "poison_grave": return "PSN"
 		"sommeil": return "SOM"
 	return ""
+
+# --- Gestion des évolutions ---
+func _on_evolution_proposee(pokemon: Pokemon, vers_id: String) -> void:
+	var evo_screen := load("res://scripts/ui/evolution_screen.gd").new()
+	evo_screen.pokemon = pokemon
+	evo_screen.vers_id = vers_id
+	add_child(evo_screen)
+	evo_screen.evolution_terminee.connect(func(accepte: bool):
+		_controller.confirmer_evolution(accepte)
+		# Recharger le sprite si évolué
+		if accepte:
+			_charger_sprites_pokemon()
+			_afficher_info_pokemon()
+	)
+
+# --- Gestion de l'apprentissage d'attaques ---
+func _on_attaque_a_apprendre(pokemon: Pokemon, move_id: String) -> void:
+	var learn_screen := load("res://scripts/ui/move_learn_screen.gd").new()
+	learn_screen.pokemon = pokemon
+	learn_screen.move_id = move_id
+	add_child(learn_screen)
+	learn_screen.choix_fait.connect(func(index_remplacement: int):
+		_controller.confirmer_apprentissage(index_remplacement)
+	)

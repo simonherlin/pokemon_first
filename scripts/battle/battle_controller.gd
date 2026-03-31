@@ -70,6 +70,12 @@ signal pokemon_change(joueur: bool)
 signal capture_reussie(pokemon: Pokemon)
 signal niveau_gagne(pokemon: Pokemon, nouveau_niveau: int)
 signal evolution_proposee(pokemon: Pokemon, vers_id: String)
+signal attaque_a_apprendre(pokemon: Pokemon, move_id: String)
+signal attaque_apprise(pokemon: Pokemon, move_id: String)
+
+# --- État pour apprentissage d'attaque ---
+var _attente_apprentissage: bool = false
+var _move_en_attente: String = ""
 
 # ----------------------------------------------------------------
 # Démarrer un combat sauvage
@@ -468,10 +474,44 @@ func _distribuer_exp() -> void:
 		emit_signal("niveau_gagne", pokemon_joueur, niv)
 		emit_signal("pv_mis_a_jour", true, pokemon_joueur.pv_actuels, pokemon_joueur.pv_max)
 		await get_tree().create_timer(1.0).timeout
+		# Vérifier attaques à apprendre
+		var espece_data := SpeciesData.get_espece(pokemon_joueur.espece_id)
+		var nouvelles_attaques := pokemon_joueur.attaques_a_apprendre(espece_data)
+		for move_id in nouvelles_attaques:
+			# Vérifier si déjà connue
+			var deja_connue := false
+			for a in pokemon_joueur.attaques:
+				if a.get("id", "") == move_id:
+					deja_connue = true
+					break
+			if deja_connue:
+				continue
+			var move_data := MoveData.get_move(move_id)
+			var move_nom: String = move_data.get("nom", move_id) if move_data else move_id
+			if pokemon_joueur.attaques.size() < Pokemon.MAX_ATTAQUES:
+				# Place libre — apprentissage automatique
+				pokemon_joueur.apprendre_attaque(move_id)
+				emit_signal("message_affiche", "%s apprend %s !" % [pokemon_joueur.surnom, move_nom])
+				emit_signal("attaque_apprise", pokemon_joueur, move_id)
+				await get_tree().create_timer(1.2).timeout
+			else:
+				# 4 attaques déjà — proposer le remplacement
+				emit_signal("message_affiche", "%s veut apprendre %s, mais il connaît déjà 4 attaques." % [pokemon_joueur.surnom, move_nom])
+				await get_tree().create_timer(1.5).timeout
+				_attente_apprentissage = true
+				_move_en_attente = move_id
+				emit_signal("attaque_a_apprendre", pokemon_joueur, move_id)
+				# Attendre que l'UI réponde via confirmer_apprentissage()
+				while _attente_apprentissage:
+					await get_tree().create_timer(0.1).timeout
 		# Vérifier évolution
 		var vers := SpeciesData.peut_evoluer_niveau(pokemon_joueur.espece_id, niv)
 		if not vers.is_empty():
 			emit_signal("evolution_proposee", pokemon_joueur, vers)
+			# Attendre un peu pour l'UI d'évolution
+			await get_tree().create_timer(0.5).timeout
+	# Mettre à jour l'équipe du joueur
+	PlayerData.equipe[index_pokemon_joueur] = pokemon_joueur.to_dict()
 
 # Trouver un Pokémon vivant dans l'équipe du joueur
 func _trouver_remplacant_joueur() -> int:
@@ -492,3 +532,42 @@ func joueur_change_pokemon(index_equipe: int) -> void:
 	emit_signal("pv_mis_a_jour", true, pokemon_joueur.pv_actuels, pokemon_joueur.pv_max)
 	emit_signal("message_affiche", "Vas-y, %s !" % pokemon_joueur.surnom)
 	_changer_etat(Etat.CHOIX_ACTION)
+
+# --- Gestion apprentissage d'attaque ---
+# Appeler depuis l'UI : index_remplacement = 0-3 pour remplacer, -1 pour abandonner
+func confirmer_apprentissage(index_remplacement: int) -> void:
+	if not _attente_apprentissage:
+		return
+	if index_remplacement >= 0 and index_remplacement < Pokemon.MAX_ATTAQUES:
+		var move_data := MoveData.get_move(_move_en_attente)
+		var move_nom: String = move_data.get("nom", _move_en_attente) if move_data else _move_en_attente
+		var ancienne := pokemon_joueur.attaques[index_remplacement]
+		var anc_data := MoveData.get_move(ancienne.get("id", ""))
+		var anc_nom: String = anc_data.get("nom", "???") if anc_data else "???"
+		pokemon_joueur.apprendre_attaque(_move_en_attente, index_remplacement)
+		emit_signal("message_affiche", "1, 2, 3 et... Hop !\n%s oublie %s et apprend %s !" % [pokemon_joueur.surnom, anc_nom, move_nom])
+	else:
+		var move_data := MoveData.get_move(_move_en_attente)
+		var move_nom: String = move_data.get("nom", _move_en_attente) if move_data else _move_en_attente
+		emit_signal("message_affiche", "%s n'apprend pas %s." % [pokemon_joueur.surnom, move_nom])
+	_move_en_attente = ""
+	_attente_apprentissage = false
+
+# --- Gestion évolution ---
+# Appeler depuis l'UI après confirmation d'évolution
+func confirmer_evolution(accepte: bool) -> void:
+	if not accepte:
+		emit_signal("message_affiche", "%s n'évolue pas." % pokemon_joueur.surnom)
+		return
+	var vers := SpeciesData.peut_evoluer_niveau(pokemon_joueur.espece_id, pokemon_joueur.niveau)
+	if vers.is_empty():
+		return
+	var ancien_nom := pokemon_joueur.surnom
+	SpeciesData.evoluer(pokemon_joueur)
+	emit_signal("message_affiche", "Félicitations ! %s évolue en %s !" % [ancien_nom, pokemon_joueur.surnom])
+	emit_signal("pv_mis_a_jour", true, pokemon_joueur.pv_actuels, pokemon_joueur.pv_max)
+	# Enregistrer dans le Pokédex
+	PlayerData.enregistrer_vu(pokemon_joueur.espece_id)
+	PlayerData.enregistrer_capture(pokemon_joueur.espece_id)
+	# Mettre à jour l'équipe
+	PlayerData.equipe[index_pokemon_joueur] = pokemon_joueur.to_dict()
