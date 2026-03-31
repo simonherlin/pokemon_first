@@ -325,6 +325,70 @@
     "description_pokedex": "Ses énormes dents repoussent rapidement si elles sont brisées. Il peut tout ronger.",
     "taille_m": 0.7, "poids_kg": 18.5
   },
+  "021": {
+    "id": 21, "nom": "Piafabec", "nom_en": "Spearow",
+    "types": ["normal", "vol"],
+    "stats_base": {"pv": 40, "attaque": 60, "defense": 30, "special": 31, "vitesse": 70},
+    "evolution": {"methode": "niveau", "niveau": 20, "vers": "022"},
+    "learnset": {
+      "1": ["griffe", "rugissement"],
+      "9": ["groz_yeux"],
+      "15": ["furie"],
+      "22": ["bec_vrille"],
+      "29": ["aile_dacier"],
+      "36": ["brise_ciel"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 255, "exp_base": 58,
+    "description_pokedex": "Il chasse les insectes dans les hautes herbes. Ses petites ailes lui permettent de voler très vite.",
+    "taille_m": 0.3, "poids_kg": 2.0
+  },
+  "022": {
+    "id": 22, "nom": "Rapasdepic", "nom_en": "Fearow",
+    "types": ["normal", "vol"],
+    "stats_base": {"pv": 65, "attaque": 90, "defense": 65, "special": 61, "vitesse": 100},
+    "evolution": null,
+    "learnset": {
+      "1": ["griffe", "rugissement", "groz_yeux", "furie"],
+      "25": ["bec_vrille"],
+      "34": ["aile_dacier"],
+      "43": ["brise_ciel"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 90, "exp_base": 162,
+    "description_pokedex": "Avec son long bec, il attrape les insectes dans le sol. Il survole les champs en quête de nourriture.",
+    "taille_m": 1.2, "poids_kg": 38.0
+  },
+  "023": {
+    "id": 23, "nom": "Abo", "nom_en": "Ekans",
+    "types": ["poison"],
+    "stats_base": {"pv": 35, "attaque": 60, "defense": 44, "special": 40, "vitesse": 55},
+    "evolution": {"methode": "niveau", "niveau": 22, "vers": "024"},
+    "learnset": {
+      "1": ["craquement", "groz_yeux"],
+      "10": ["dard_venin"],
+      "17": ["morsure"],
+      "24": ["groz_yeux"],
+      "31": ["poudre_toxik"],
+      "38": ["craquement"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 255, "exp_base": 62,
+    "description_pokedex": "Il se déplace silencieusement et avale les oeufs de Roucool et de Piafabec tout entiers.",
+    "taille_m": 2.0, "poids_kg": 6.9
+  },
+  "024": {
+    "id": 24, "nom": "Arbok", "nom_en": "Arbok",
+    "types": ["poison"],
+    "stats_base": {"pv": 60, "attaque": 85, "defense": 69, "special": 65, "vitesse": 80},
+    "evolution": null,
+    "learnset": {
+      "1": ["craquement", "groz_yeux", "dard_venin", "morsure"],
+      "27": ["poudre_toxik"],
+      "36": ["craquement"],
+      "47": ["tranche"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 90, "exp_base": 147,
+    "description_pokedex": "Son motif sur le ventre terrifie ses proies. Chaque motif est unique selon les régions.",
+    "taille_m": 3.5, "poids_kg": 65.0
+  },
   "025": {
     "id": 25, "nom": "Pikachu", "nom_en": "Pikachu",
     "types": ["electrik"],
@@ -354,6 +418,238 @@
     "groupe_exp": "moyen", "taux_capture": 75, "exp_base": 122,
     "description_pokedex": "Son corps ne peut contenir son énergie électrique. Il doit se décharger régulièrement.",
     "taille_m": 0.8, "poids_kg": 30.0
+  },
+  "027": {
+    "id": 27, "nom": "Sabelette", "nom_en": "Sandshrew",
+    "types": ["sol"],
+    "stats_base": {"pv": 50, "attaque": 75, "defense": 85, "special": 30, "vitesse": 40},
+    "evolution": {"methode": "niveau", "niveau": 22, "vers": "028"},
+    "learnset": {
+      "1": ["griffe", "coup_de_boue"],
+      "10": ["tranche"],
+      "17": ["dard_venin"],
+      "24": ["séisme"],
+      "31": ["furie"],
+      "38": ["tranche"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 255, "exp_base": 93,
+    "description_pokedex": "Il s'enroule en boule pour se protéger. Ses griffes lui permettent de creuser dans le sable.",
+    "taille_m": 0.6, "poids_kg": 12.0
+  },
+  "028": {
+    "id": 28, "nom": "Sablaireau", "nom_en": "Sandslash",
+    "types": ["sol"],
+    "stats_base": {"pv": 75, "attaque": 100, "defense": 110, "special": 55, "vitesse": 65},
+    "evolution": null,
+    "learnset": {
+      "1": ["griffe", "coup_de_boue", "tranche"],
+      "24": ["séisme"],
+      "33": ["furie"],
+      "44": ["eboulement"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 90, "exp_base": 163,
+    "description_pokedex": "Ses piquants dorsaux sont des poils durcis. Il se roule pour piquer ses ennemis.",
+    "taille_m": 1.0, "poids_kg": 29.5
+  },
+  "029": {
+    "id": 29, "nom": "Nidoran♀", "nom_en": "Nidoran F",
+    "types": ["poison"],
+    "stats_base": {"pv": 55, "attaque": 47, "defense": 52, "special": 40, "vitesse": 41},
+    "evolution": {"methode": "niveau", "niveau": 16, "vers": "030"},
+    "learnset": {
+      "1": ["charge", "rugissement"],
+      "8": ["griffe"],
+      "14": ["dard_venin"],
+      "21": ["queue_fouet"],
+      "29": ["morsure"],
+      "36": ["furie"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 235, "exp_base": 59,
+    "description_pokedex": "Bien que petite, cette Nidoran femelle est dotée de piquants venimeux qui protègent son corps.",
+    "taille_m": 0.4, "poids_kg": 7.0
+  },
+  "030": {
+    "id": 30, "nom": "Nidorina", "nom_en": "Nidorina",
+    "types": ["poison"],
+    "stats_base": {"pv": 70, "attaque": 62, "defense": 67, "special": 55, "vitesse": 56},
+    "evolution": {"methode": "pierre", "pierre": "pierre_lune", "vers": "031"},
+    "learnset": {
+      "1": ["charge", "rugissement", "griffe"],
+      "14": ["dard_venin"],
+      "23": ["queue_fouet"],
+      "32": ["morsure"],
+      "41": ["furie"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 120, "exp_base": 117,
+    "description_pokedex": "Elle utilise ses piquants venimeux quand elle se sent menacée. Ses cornes sont légèrement recourbées.",
+    "taille_m": 0.8, "poids_kg": 20.0
+  },
+  "031": {
+    "id": 31, "nom": "Nidoqueen", "nom_en": "Nidoqueen",
+    "types": ["poison", "sol"],
+    "stats_base": {"pv": 90, "attaque": 82, "defense": 87, "special": 75, "vitesse": 76},
+    "evolution": null,
+    "learnset": {
+      "1": ["charge", "griffe", "dard_venin", "morsure"],
+      "23": ["séisme"],
+      "32": ["tranche"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 194,
+    "description_pokedex": "Son corps est recouvert d'écailles dures comme la pierre. Elle protège férocement ses petits.",
+    "taille_m": 1.3, "poids_kg": 60.0
+  },
+  "032": {
+    "id": 32, "nom": "Nidoran♂", "nom_en": "Nidoran M",
+    "types": ["poison"],
+    "stats_base": {"pv": 46, "attaque": 57, "defense": 40, "special": 40, "vitesse": 50},
+    "evolution": {"methode": "niveau", "niveau": 16, "vers": "033"},
+    "learnset": {
+      "1": ["groz_yeux", "charge"],
+      "8": ["griffe"],
+      "14": ["dard_venin"],
+      "21": ["furie"],
+      "29": ["morsure"],
+      "36": ["tranche"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 235, "exp_base": 60,
+    "description_pokedex": "Petit mais attentif au danger, ses grandes oreilles détectent le moindre son dans les environs.",
+    "taille_m": 0.5, "poids_kg": 9.0
+  },
+  "033": {
+    "id": 33, "nom": "Nidorino", "nom_en": "Nidorino",
+    "types": ["poison"],
+    "stats_base": {"pv": 61, "attaque": 72, "defense": 57, "special": 55, "vitesse": 65},
+    "evolution": {"methode": "pierre", "pierre": "pierre_lune", "vers": "034"},
+    "learnset": {
+      "1": ["groz_yeux", "charge", "griffe"],
+      "14": ["dard_venin"],
+      "23": ["furie"],
+      "32": ["morsure"],
+      "41": ["tranche"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 120, "exp_base": 118,
+    "description_pokedex": "Sa corne est plus puissante que celle de Nidoran mâle. Elle contient un poison très puissant.",
+    "taille_m": 0.9, "poids_kg": 19.5
+  },
+  "034": {
+    "id": 34, "nom": "Nidoking", "nom_en": "Nidoking",
+    "types": ["poison", "sol"],
+    "stats_base": {"pv": 81, "attaque": 92, "defense": 77, "special": 75, "vitesse": 85},
+    "evolution": null,
+    "learnset": {
+      "1": ["charge", "griffe", "dard_venin", "morsure"],
+      "23": ["séisme"],
+      "32": ["tranche"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 45, "exp_base": 195,
+    "description_pokedex": "Sa queue puissante peut briser un poteau téléphonique. Quand il est en colère, rien ne l'arrête.",
+    "taille_m": 1.4, "poids_kg": 62.0
+  },
+  "035": {
+    "id": 35, "nom": "Mélofée", "nom_en": "Clefairy",
+    "types": ["normal"],
+    "stats_base": {"pv": 70, "attaque": 45, "defense": 48, "special": 60, "vitesse": 35},
+    "evolution": {"methode": "pierre", "pierre": "pierre_lune", "vers": "036"},
+    "learnset": {
+      "1": ["charge", "rugissement"],
+      "13": ["groz_yeux"],
+      "18": ["tranche"],
+      "24": ["jackpot"],
+      "31": ["rafale_psy"],
+      "39": ["hyper_faisceau"]
+    },
+    "groupe_exp": "rapide", "taux_capture": 150, "exp_base": 68,
+    "description_pokedex": "On le voit rarement. Il serait originaire de la montagne et apparaîtrait les nuits de pleine lune.",
+    "taille_m": 0.6, "poids_kg": 7.5
+  },
+  "036": {
+    "id": 36, "nom": "Mélodelfe", "nom_en": "Clefable",
+    "types": ["normal"],
+    "stats_base": {"pv": 95, "attaque": 70, "defense": 73, "special": 85, "vitesse": 60},
+    "evolution": null,
+    "learnset": {
+      "1": ["charge", "rugissement", "groz_yeux", "tranche"]
+    },
+    "groupe_exp": "rapide", "taux_capture": 25, "exp_base": 129,
+    "description_pokedex": "Très rare, il vit dans les montagnes isolées. Son ouïe fine lui permet de détecter les moindres sons.",
+    "taille_m": 1.3, "poids_kg": 40.0
+  },
+  "039": {
+    "id": 39, "nom": "Rondoudou", "nom_en": "Jigglypuff",
+    "types": ["normal"],
+    "stats_base": {"pv": 115, "attaque": 45, "defense": 20, "special": 25, "vitesse": 20},
+    "evolution": {"methode": "pierre", "pierre": "pierre_lune", "vers": "040"},
+    "learnset": {
+      "1": ["charge"],
+      "9": ["rugissement"],
+      "14": ["defense_curl"],
+      "19": ["jackpot"],
+      "24": ["poudre_dodo"],
+      "29": ["tranche"],
+      "34": ["hyper_faisceau"]
+    },
+    "groupe_exp": "rapide", "taux_capture": 170, "exp_base": 76,
+    "description_pokedex": "Sa berceuse magique endort tous ceux qui l'entendent chanter. Il se gonfle pour paraître plus gros.",
+    "taille_m": 0.5, "poids_kg": 5.5
+  },
+  "040": {
+    "id": 40, "nom": "Grodoudou", "nom_en": "Wigglytuff",
+    "types": ["normal"],
+    "stats_base": {"pv": 140, "attaque": 70, "defense": 45, "special": 50, "vitesse": 45},
+    "evolution": null,
+    "learnset": {
+      "1": ["charge", "rugissement", "defense_curl", "jackpot"]
+    },
+    "groupe_exp": "rapide", "taux_capture": 50, "exp_base": 109,
+    "description_pokedex": "Sa fourrure très fine est si douce que quiconque la touche ne peut s'empêcher de la caresser.",
+    "taille_m": 1.0, "poids_kg": 12.0
+  },
+  "041": {
+    "id": 41, "nom": "Nosferapti", "nom_en": "Zubat",
+    "types": ["poison", "vol"],
+    "stats_base": {"pv": 40, "attaque": 45, "defense": 35, "special": 40, "vitesse": 55},
+    "evolution": {"methode": "niveau", "niveau": 22, "vers": "042"},
+    "learnset": {
+      "1": ["vampigraine", "groz_yeux"],
+      "10": ["morsure"],
+      "15": ["tornade"],
+      "21": ["confusion"],
+      "28": ["aile_dacier"],
+      "36": ["tranche"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 255, "exp_base": 54,
+    "description_pokedex": "Il vit dans les grottes obscures. Ses ultrasonic lui permettent de se repérer sans yeux.",
+    "taille_m": 0.8, "poids_kg": 7.5
+  },
+  "042": {
+    "id": 42, "nom": "Nosferalto", "nom_en": "Golbat",
+    "types": ["poison", "vol"],
+    "stats_base": {"pv": 75, "attaque": 80, "defense": 70, "special": 75, "vitesse": 90},
+    "evolution": null,
+    "learnset": {
+      "1": ["vampigraine", "groz_yeux", "morsure", "tornade"],
+      "21": ["confusion"],
+      "32": ["aile_dacier"],
+      "43": ["tranche"]
+    },
+    "groupe_exp": "moyen", "taux_capture": 90, "exp_base": 171,
+    "description_pokedex": "Une fois qu'il mord, il ne lâche pas sa proie. Il aspire jusqu'à 300 ml de sang par attaque.",
+    "taille_m": 1.6, "poids_kg": 55.0
+  },
+  "075": {
+    "id": 75, "nom": "Gravalanch", "nom_en": "Graveler",
+    "types": ["roche", "sol"],
+    "stats_base": {"pv": 55, "attaque": 95, "defense": 115, "special": 45, "vitesse": 35},
+    "evolution": null,
+    "learnset": {
+      "1": ["charge", "defense_curl", "tomberoche"],
+      "21": ["explosion_roc"],
+      "29": ["séisme"],
+      "36": ["eboulement"]
+    },
+    "groupe_exp": "lent_moyen", "taux_capture": 120, "exp_base": 134,
+    "description_pokedex": "Il dévale les pentes en roulant. Il écrase tout sur son passage sans pouvoir s'arrêter.",
+    "taille_m": 1.0, "poids_kg": 105.0
   },
   "074": {
     "id": 74, "nom": "Racaillou", "nom_en": "Geodude",

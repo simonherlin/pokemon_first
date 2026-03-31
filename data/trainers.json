@@ -1,0 +1,106 @@
+{
+  "rival_labo_001": {
+    "id": "rival_labo_001",
+    "nom": "",
+    "classe": "Rival",
+    "dialogue_avant": "Mon Pokémon est plus fort que le tien !",
+    "dialogue_defaite": "Quoi ?! Impossible !",
+    "recompense": 175,
+    "equipe_bulbizarre": [
+      {"espece_id": "004", "niveau": 5}
+    ],
+    "equipe_salameche": [
+      {"espece_id": "007", "niveau": 5}
+    ],
+    "equipe_carapuce": [
+      {"espece_id": "001", "niveau": 5}
+    ]
+  },
+  "insectomane_foret_01": {
+    "id": "insectomane_foret_01",
+    "nom": "Jérôme",
+    "classe": "Insectomane",
+    "dialogue_avant": "Mes Pokémon Insecte sont les meilleurs !",
+    "dialogue_defaite": "Oh non, mes insectes...",
+    "recompense": 60,
+    "equipe": [
+      {"espece_id": "010", "niveau": 6},
+      {"espece_id": "010", "niveau": 6}
+    ]
+  },
+  "insectomane_foret_02": {
+    "id": "insectomane_foret_02",
+    "nom": "Rémi",
+    "classe": "Insectomane",
+    "dialogue_avant": "Les insectes sont puissants, tu vas voir !",
+    "dialogue_defaite": "Je m'améliorerai !",
+    "recompense": 70,
+    "equipe": [
+      {"espece_id": "013", "niveau": 7},
+      {"espece_id": "010", "niveau": 7}
+    ]
+  },
+  "insectomane_foret_03": {
+    "id": "insectomane_foret_03",
+    "nom": "Lucas",
+    "classe": "Insectomane",
+    "dialogue_avant": "Tu oses entrer dans ma forêt ?",
+    "dialogue_defaite": "Tu es costaud...",
+    "recompense": 80,
+    "equipe": [
+      {"espece_id": "011", "niveau": 7},
+      {"espece_id": "014", "niveau": 7},
+      {"espece_id": "011", "niveau": 7}
+    ]
+  },
+  "insectomane_foret_04": {
+    "id": "insectomane_foret_04",
+    "nom": "Damien",
+    "classe": "Insectomane",
+    "dialogue_avant": "Mes Aspicot sont les plus venimeux !",
+    "dialogue_defaite": "Aïe aïe aïe...",
+    "recompense": 90,
+    "equipe": [
+      {"espece_id": "013", "niveau": 9},
+      {"espece_id": "013", "niveau": 9}
+    ]
+  },
+  "gamin_route2_01": {
+    "id": "gamin_route2_01",
+    "nom": "Arnaud",
+    "classe": "Gamin",
+    "dialogue_avant": "J'adore les shorts ! Ils sont confortables et faciles à porter !",
+    "dialogue_defaite": "Mes shorts ne m'ont pas protégé...",
+    "recompense": 80,
+    "equipe": [
+      {"espece_id": "019", "niveau": 6},
+      {"espece_id": "016", "niveau": 8}
+    ]
+  },
+  "apprenti_arene_01": {
+    "id": "apprenti_arene_01",
+    "nom": "Didier",
+    "classe": "Montagnard",
+    "dialogue_avant": "Tu veux défier Pierre ? Tu dois d'abord me battre !",
+    "dialogue_defaite": "Pierre est bien plus fort que moi...",
+    "recompense": 140,
+    "equipe": [
+      {"espece_id": "074", "niveau": 10},
+      {"espece_id": "027", "niveau": 10}
+    ]
+  },
+  "champion_pierre": {
+    "id": "champion_pierre",
+    "nom": "Pierre",
+    "classe": "Champion d'Arène",
+    "dialogue_avant": "Je suis Pierre, le champion d'Argenta !\nMes Pokémon Roche sont solides comme la pierre.\nMontrons ce que tu vaux !",
+    "dialogue_defaite": "Incroyable ! Ta stratégie m'a impressionné.\nTu mérites le Badge Roche !",
+    "recompense": 1386,
+    "equipe": [
+      {"espece_id": "074", "niveau": 12},
+      {"espece_id": "095", "niveau": 14}
+    ],
+    "badge": 0,
+    "ct_recompense": "ct_tomberoche"
+  }
+}

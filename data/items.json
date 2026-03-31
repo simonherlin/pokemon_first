@@ -153,6 +153,13 @@
     "effet": {"type_effet": "apprendre_attaque", "attaque_id": "force"},
     "utilisable_combat": false
   },
+  "ct_tomberoche": {
+    "id": "ct_tomberoche", "nom": "CT Tomberoche", "nom_en": "TM Rock Throw",
+    "categorie": "ct_cs", "prix": 0,
+    "description": "CT qui apprend l'attaque Tomberoche. Récompense de l'arène d'Argenta.",
+    "effet": {"type_effet": "apprendre_attaque", "attaque_id": "tomberoche"},
+    "utilisable_combat": false
+  },
   "pierre_feu": {
     "id": "pierre_feu", "nom": "Pierre Feu", "nom_en": "Fire Stone",
     "categorie": "objets", "prix": 2100,

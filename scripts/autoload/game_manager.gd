@@ -18,7 +18,13 @@ var flags: Dictionary = {
 	"pokedex_recu": false,
 	"rival_nomme": false,
 	"fossile_choisi": "",
-	"mewtwo_vaincu": false
+	"mewtwo_vaincu": false,
+	"starter_choisi": "",
+	"intro_terminee": false,
+	"rival_labo_battu": false,
+	"vieil_homme_vu": false,
+	"premier_pokemon_recu": false,
+	"badge_roche": false
 }
 
 # --- État de jeu ---
@@ -81,7 +87,13 @@ func nouvelle_partie() -> void:
 		"pokedex_recu": false,
 		"rival_nomme": false,
 		"fossile_choisi": "",
-		"mewtwo_vaincu": false
+		"mewtwo_vaincu": false,
+		"starter_choisi": "",
+		"intro_terminee": false,
+		"rival_labo_battu": false,
+		"vieil_homme_vu": false,
+		"premier_pokemon_recu": false,
+		"badge_roche": false
 	}
 	temps_jeu_secondes = 0
 	partie_en_cours = true

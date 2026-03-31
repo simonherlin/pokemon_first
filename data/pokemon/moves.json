@@ -330,5 +330,74 @@
     "type": "normal", "categorie": "statut",
     "puissance": 0, "precision": 100, "pp": 40, "priorite": 0,
     "effet": {"type_effet": "modif_stat", "stat": "defense", "cible": "lanceur", "stages": 1}
+  },
+  "bec_vrille": {
+    "id": "bec_vrille", "nom": "Bec Vrille", "nom_en": "Drill Peck",
+    "type": "vol", "categorie": "physique",
+    "puissance": 80, "precision": 100, "pp": 20, "priorite": 0, "effet": null
+  },
+  "poing_karate": {
+    "id": "poing_karate", "nom": "Poing Karaté", "nom_en": "Karate Chop",
+    "type": "combat", "categorie": "physique",
+    "puissance": 50, "precision": 100, "pp": 25, "priorite": 0,
+    "effet": {"type_effet": "critique_eleve"}
+  },
+  "balayage": {
+    "id": "balayage", "nom": "Balayage", "nom_en": "Low Kick",
+    "type": "combat", "categorie": "physique",
+    "puissance": 50, "precision": 100, "pp": 20, "priorite": 0, "effet": null
+  },
+  "sacrifice": {
+    "id": "sacrifice", "nom": "Sacrifice", "nom_en": "Submission",
+    "type": "combat", "categorie": "physique",
+    "puissance": 80, "precision": 80, "pp": 25, "priorite": 0,
+    "effet": {"type_effet": "recul", "pourcentage": 25}
+  },
+  "ombre_nocturne": {
+    "id": "ombre_nocturne", "nom": "Ombre Nocturne", "nom_en": "Night Shade",
+    "type": "spectre", "categorie": "special",
+    "puissance": 0, "precision": 100, "pp": 15, "priorite": 0,
+    "effet": {"type_effet": "degats_niveau"}
+  },
+  "lechouille": {
+    "id": "lechouille", "nom": "Léchouille", "nom_en": "Lick",
+    "type": "spectre", "categorie": "physique",
+    "puissance": 20, "precision": 100, "pp": 30, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "paralysie", "probabilite": 30}
+  },
+  "devoreve": {
+    "id": "devoreve", "nom": "Dévorêve", "nom_en": "Dream Eater",
+    "type": "psy", "categorie": "special",
+    "puissance": 100, "precision": 100, "pp": 15, "priorite": 0,
+    "effet": {"type_effet": "absorb_pv", "pourcentage": 50}
+  },
+  "onde_choc": {
+    "id": "onde_choc", "nom": "Onde Choc", "nom_en": "Thunder Wave",
+    "type": "electrik", "categorie": "statut",
+    "puissance": 0, "precision": 100, "pp": 20, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "paralysie", "probabilite": 100}
+  },
+  "berceuse": {
+    "id": "berceuse", "nom": "Berceuse", "nom_en": "Sing",
+    "type": "normal", "categorie": "statut",
+    "puissance": 0, "precision": 55, "pp": 15, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "sommeil", "probabilite": 100}
+  },
+  "choc_mental": {
+    "id": "choc_mental", "nom": "Choc Mental", "nom_en": "Confusion",
+    "type": "psy", "categorie": "special",
+    "puissance": 50, "precision": 100, "pp": 25, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "confusion", "probabilite": 10}
+  },
+  "ultrason": {
+    "id": "ultrason", "nom": "Ultrason", "nom_en": "Supersonic",
+    "type": "normal", "categorie": "statut",
+    "puissance": 0, "precision": 55, "pp": 20, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "confusion", "probabilite": 100}
+  },
+  "ct_tomberoche": {
+    "id": "ct_tomberoche", "nom": "CT Tomberoche", "nom_en": "TM Rock Throw",
+    "type": "roche", "categorie": "physique",
+    "puissance": 50, "precision": 90, "pp": 15, "priorite": 0, "effet": null
   }
 }
