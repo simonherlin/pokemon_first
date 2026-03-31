@@ -1,0 +1,35 @@
+# ─── Godot 4 ───────────────────────────────────────────────────────────────
+.godot/
+*.uid
+
+# Exports Godot
+export/
+builds/
+
+# ─── Copilot / Agents (local uniquement — non publié sur GitHub) ────────────
+.github/copilot-instructions.md
+.github/prompts/
+
+# ─── OS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+
+# ─── Éditeurs ────────────────────────────────────────────────────────────────
+.vscode/settings.json
+*.swp
+*.swo
+.idea/
+
+# ─── Sauvegardes de jeu (développement) ─────────────────────────────────────
+saves/
+
+# ─── Assets sources (non nécessaires dans le repo) ───────────────────────────
+# Décommenter si vous ne voulez pas versionner les fichiers sources Aseprite
+# *.aseprite
+
+# ─── Temporaire ──────────────────────────────────────────────────────────────
+/tmp/
+*.tmp
+*.bak
