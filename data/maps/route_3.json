@@ -9,7 +9,9 @@
     {"direction": "sud", "vers": "foret_de_jade", "decalage": 0},
     {"direction": "nord", "vers": "argenta_ville", "decalage": 0}
   ],
-  "warps": [],
+  "warps": [
+    {"id": "grotte_entree", "x": 17, "y": 3, "vers_map": "mont_selenite_1f", "vers_warp": "entree_sud", "type": "grotte"}
+  ],
   "zones_herbes": [
     {"x1": 3, "y1": 4, "x2": 8, "y2": 8, "table": "route_3"},
     {"x1": 12, "y1": 10, "x2": 17, "y2": 15, "table": "route_3"}
