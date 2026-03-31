@@ -1,0 +1,210 @@
+{
+  "id": "grand_magasin_1f",
+  "nom": "Grand Magasin 1F",
+  "largeur": 12,
+  "hauteur": 10,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/boutique.ogg",
+  "connexions": [],
+  "warps": [
+    {
+      "id": "sortie",
+      "x": 6,
+      "y": 9,
+      "vers_map": "celadopole",
+      "vers_warp": "grand_magasin_entree",
+      "type": "porte"
+    },
+    {
+      "id": "escalier_haut",
+      "x": 10,
+      "y": 1,
+      "vers_map": "grand_magasin_2f",
+      "vers_warp": "escalier_bas",
+      "type": "escalier"
+    }
+  ],
+  "pnj": [
+    {
+      "id": "vendeur_gm_1f",
+      "x": 8,
+      "y": 2,
+      "sprite": "pnj_vendeur",
+      "direction": "bas",
+      "dialogue": [
+        "Bienvenue au Grand Magasin !",
+        "Au 1er étage, nous vendons\ndes objets de base.",
+        "Les étages supérieurs proposent\ndes articles plus rares !"
+      ],
+      "mobile": false,
+      "type": "vendeur"
+    },
+    {
+      "id": "pnj_gm_1f_01",
+      "x": 3,
+      "y": 5,
+      "sprite": "pnj_femme",
+      "direction": "droite",
+      "dialogue": [
+        "Ce magasin a tout pour les dresseurs !",
+        "Montez aux étages supérieurs\npour les CT et les Pierres."
+      ],
+      "mobile": false
+    }
+  ],
+  "objets_sol": [],
+  "panneaux": [
+    {
+      "x": 3,
+      "y": 1,
+      "texte": "ACCUEIL — 1F"
+    },
+    {
+      "x": 10,
+      "y": 0,
+      "texte": "↑ ÉTAGES SUPÉRIEURS"
+    }
+  ],
+  "tile_data": [
+    [
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      26,
+      26,
+      26,
+      26,
+      24,
+      26,
+      26,
+      26,
+      26,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ]
+  ]
+}

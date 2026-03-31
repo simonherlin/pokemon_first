@@ -1,0 +1,250 @@
+{
+  "id": "casino_celadopole",
+  "nom": "Casino de Céladopole",
+  "largeur": 14,
+  "hauteur": 10,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/casino.ogg",
+  "connexions": [],
+  "warps": [
+    {
+      "id": "sortie",
+      "x": 7,
+      "y": 9,
+      "vers_map": "celadopole",
+      "vers_warp": "casino_entree",
+      "type": "porte"
+    },
+    {
+      "id": "escalier_repaire",
+      "x": 12,
+      "y": 8,
+      "vers_map": "repaire_rocket_b1f",
+      "vers_warp": "escalier_casino",
+      "type": "escalier"
+    }
+  ],
+  "pnj": [
+    {
+      "id": "vendeur_casino",
+      "x": 2,
+      "y": 1,
+      "sprite": "pnj_vendeur",
+      "direction": "bas",
+      "dialogue": [
+        "Bienvenue au Casino !",
+        "Échangez vos jetons contre\nde super lots !"
+      ],
+      "mobile": false,
+      "type": "vendeur"
+    },
+    {
+      "id": "pnj_casino_01",
+      "x": 4,
+      "y": 4,
+      "sprite": "pnj_homme",
+      "direction": "droite",
+      "dialogue": [
+        "J'ai déjà dépensé toutes mes économies...",
+        "Ces machines sont addictives !"
+      ],
+      "mobile": false
+    },
+    {
+      "id": "pnj_casino_02",
+      "x": 10,
+      "y": 6,
+      "sprite": "pnj_homme",
+      "direction": "gauche",
+      "dialogue": [
+        "Hé, tu connais le Repaire Rocket ?",
+        "Il paraît qu'il y a une entrée secrète\nquelque part dans ce bâtiment..."
+      ],
+      "mobile": false
+    },
+    {
+      "id": "rocket_casino",
+      "x": 12,
+      "y": 7,
+      "sprite": "pnj_rocket",
+      "direction": "haut",
+      "dialogue": [
+        "... Ne touche pas à cette affiche !",
+        "Il n'y a rien derrière, compris ?!"
+      ],
+      "mobile": false
+    }
+  ],
+  "objets_sol": [
+    {
+      "id": "obj_jeton_casino_01",
+      "x": 7,
+      "y": 4,
+      "item_id": "jeton_casino",
+      "quantite": 20
+    }
+  ],
+  "panneaux": [],
+  "tile_data": [
+    [
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+    ],
+    [
+      25,
+      26,
+      26,
+      26,
+      26,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      30,
+      30,
+      24,
+      30,
+      30,
+      24,
+      30,
+      30,
+      24,
+      30,
+      30,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      30,
+      30,
+      24,
+      30,
+      30,
+      24,
+      30,
+      30,
+      24,
+      30,
+      30,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      30,
+      30,
+      24,
+      30,
+      30,
+      24,
+      30,
+      30,
+      24,
+      30,
+      30,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ]
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "id": "grand_magasin_2f",
+  "nom": "Grand Magasin 2F",
+  "largeur": 12,
+  "hauteur": 10,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/boutique.ogg",
+  "connexions": [],
+  "warps": [
+    {
+      "id": "escalier_bas",
+      "x": 10,
+      "y": 8,
+      "vers_map": "grand_magasin_1f",
+      "vers_warp": "escalier_haut",
+      "type": "escalier"
+    }
+  ],
+  "pnj": [
+    {
+      "id": "vendeur_gm_2f_ct",
+      "x": 3,
+      "y": 2,
+      "sprite": "pnj_vendeur",
+      "direction": "bas",
+      "dialogue": [
+        "Bienvenue au rayon CT !",
+        "Nous avons un large choix\nde Capsules Techniques."
+      ],
+      "mobile": false,
+      "type": "vendeur"
+    },
+    {
+      "id": "vendeur_gm_2f_pierres",
+      "x": 8,
+      "y": 2,
+      "sprite": "pnj_vendeur",
+      "direction": "bas",
+      "dialogue": [
+        "Ici, nous vendons des Pierres d'évolution !",
+        "Pierre Feu, Pierre Eau, Pierre Foudre..."
+      ],
+      "mobile": false,
+      "type": "vendeur"
+    },
+    {
+      "id": "pnj_gm_2f_01",
+      "x": 5,
+      "y": 7,
+      "sprite": "pnj_homme",
+      "direction": "haut",
+      "dialogue": [
+        "Les Pierres d'évolution sont précieuses.",
+        "Certains Pokémon ne peuvent évoluer\nque grâce à elles !"
+      ],
+      "mobile": false
+    }
+  ],
+  "objets_sol": [],
+  "panneaux": [
+    {
+      "x": 3,
+      "y": 1,
+      "texte": "RAYON CT"
+    },
+    {
+      "x": 8,
+      "y": 1,
+      "texte": "PIERRES & OBJETS RARES"
+    }
+  ],
+  "tile_data": [
+    [
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      26,
+      26,
+      26,
+      26,
+      24,
+      26,
+      26,
+      26,
+      26,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ]
+  ]
+}

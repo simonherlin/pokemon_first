@@ -1,0 +1,160 @@
+{
+  "id": "centre_pokemon_celadopole",
+  "nom": "Centre Pokémon",
+  "largeur": 10,
+  "hauteur": 8,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/centre_pokemon.ogg",
+  "connexions": [],
+  "warps": [
+    {
+      "id": "sortie",
+      "x": 5,
+      "y": 7,
+      "vers_map": "celadopole",
+      "vers_warp": "centre_pokemon_entree",
+      "type": "porte"
+    }
+  ],
+  "pnj": [
+    {
+      "id": "infirmiere_celadopole",
+      "x": 5,
+      "y": 1,
+      "sprite": "pnj_infirmiere",
+      "direction": "bas",
+      "dialogue": [
+        "Bienvenue au Centre Pokémon !",
+        "Je vais soigner vos Pokémon.",
+        "...Vos Pokémon sont maintenant en pleine forme !",
+        "Revenez quand vous voulez !"
+      ],
+      "mobile": false,
+      "type": "infirmiere"
+    },
+    {
+      "id": "pc_celadopole",
+      "x": 1,
+      "y": 1,
+      "sprite": "pc",
+      "direction": "bas",
+      "dialogue": [
+        "Le PC est allumé."
+      ],
+      "mobile": false,
+      "type": "pc"
+    },
+    {
+      "id": "pnj_centre_celadopole_01",
+      "x": 3,
+      "y": 4,
+      "sprite": "pnj_homme",
+      "direction": "droite",
+      "dialogue": [
+        "ÉRIKA utilise des Pokémon Plante.",
+        "Le Feu ou la Glace devrait\nêtre efficace contre elle."
+      ],
+      "mobile": false
+    }
+  ],
+  "objets_sol": [],
+  "panneaux": [],
+  "tile_data": [
+    [
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      26,
+      26,
+      26,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      30,
+      24,
+      24,
+      24,
+      24,
+      30,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ]
+  ]
+}
