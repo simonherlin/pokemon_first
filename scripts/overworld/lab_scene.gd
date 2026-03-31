@@ -250,9 +250,6 @@ func _fin_cutscene() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("action_menu") and not _menu_ouvert and not _cutscene_active:
 		_ouvrir_menu()
-	# Gérer les warps
-	if joueur and not _cutscene_active:
-		_verifier_warps()
 
 func _ouvrir_menu() -> void:
 	if _menu_ouvert or SceneManager.est_en_transition():
@@ -271,17 +268,3 @@ func _on_menu_ferme() -> void:
 	_start_menu = null
 	if joueur:
 		joueur.set_peut_bouger(true)
-
-func _verifier_warps() -> void:
-	var pos := joueur.position_grille
-	for warp in carte_data.get("warps", []):
-		if warp.get("x", -1) == pos.x and warp.get("y", -1) == pos.y:
-			var vers_map: String = warp.get("vers_map", "")
-			var vers_warp: String = warp.get("vers_warp", "")
-			if not vers_map.is_empty():
-				joueur.set_peut_bouger(false)
-				SceneManager.charger_scene("res://scenes/maps/%s.tscn" % vers_map, {
-					"carte_id": vers_map,
-					"warp_entree": vers_warp
-				})
-			break
