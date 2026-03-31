@@ -346,5 +346,164 @@
     ],
     "badge": 1,
     "ct_recompense": "ct_cascade"
+  },
+  "champion_major_bob": {
+    "id": "champion_major_bob",
+    "nom": "Major Bob",
+    "classe": "Champion d'Arène",
+    "dialogue_avant": "Je suis le Major Bob !\nL'électricité est l'arme ultime !",
+    "dialogue_defaite": "Sacré combat !\nTu as neutralisé mon champ de force !",
+    "recompense": 2394,
+    "equipe": [
+      {"espece_id": "100", "niveau": 21},
+      {"espece_id": "025", "niveau": 18},
+      {"espece_id": "026", "niveau": 24}
+    ],
+    "badge": 2,
+    "ct_recompense": "ct_tonnerre"
+  },
+  "rival_ss_anne_001": {
+    "id": "rival_ss_anne_001",
+    "nom": "Rival",
+    "classe": "Dresseur Pokémon",
+    "dialogue_avant": "Tiens ! On se retrouve ici ?\nTu dois être plus faible que moi maintenant !",
+    "dialogue_defaite": "Impossible ! J'ai encore perdu !",
+    "recompense": 950,
+    "equipe_variantes": {
+      "001": [
+        {"espece_id": "016", "niveau": 19},
+        {"espece_id": "019", "niveau": 16},
+        {"espece_id": "063", "niveau": 18},
+        {"espece_id": "004", "niveau": 20}
+      ],
+      "004": [
+        {"espece_id": "016", "niveau": 19},
+        {"espece_id": "019", "niveau": 16},
+        {"espece_id": "063", "niveau": 18},
+        {"espece_id": "007", "niveau": 20}
+      ],
+      "007": [
+        {"espece_id": "016", "niveau": 19},
+        {"espece_id": "019", "niveau": 16},
+        {"espece_id": "063", "niveau": 18},
+        {"espece_id": "001", "niveau": 20}
+      ]
+    }
+  },
+  "marin_ss_anne_01": {
+    "id": "marin_ss_anne_01",
+    "nom": "Marin Max",
+    "classe": "Marin",
+    "dialogue_avant": "Tous à bord ! Combattons !",
+    "dialogue_defaite": "Tu es trop fort pour moi !",
+    "recompense": 420,
+    "equipe": [
+      {"espece_id": "066", "niveau": 18},
+      {"espece_id": "086", "niveau": 18}
+    ]
+  },
+  "marin_ss_anne_02": {
+    "id": "marin_ss_anne_02",
+    "nom": "Marin Jules",
+    "classe": "Marin",
+    "dialogue_avant": "Prêt pour le combat naval ?",
+    "dialogue_defaite": "Marin d'eau douce que je suis...",
+    "recompense": 380,
+    "equipe": [
+      {"espece_id": "060", "niveau": 17},
+      {"espece_id": "072", "niveau": 17}
+    ]
+  },
+  "marin_ss_anne_03": {
+    "id": "marin_ss_anne_03",
+    "nom": "Marin Pierre",
+    "classe": "Marin",
+    "dialogue_avant": "En garde, moussaillon !",
+    "dialogue_defaite": "Coulé !",
+    "recompense": 450,
+    "equipe": [
+      {"espece_id": "081", "niveau": 19}
+    ]
+  },
+  "gentleman_ss_anne_01": {
+    "id": "gentleman_ss_anne_01",
+    "nom": "Gentleman Arthur",
+    "classe": "Gentleman",
+    "dialogue_avant": "Un duel entre gens de bonne famille ?",
+    "dialogue_defaite": "Quelle élégance dans le combat !",
+    "recompense": 1200,
+    "equipe": [
+      {"espece_id": "058", "niveau": 18},
+      {"espece_id": "052", "niveau": 18}
+    ]
+  },
+  "dresseur_route5_01": {
+    "id": "dresseur_route5_01",
+    "nom": "Gamin Léo",
+    "classe": "Gamin",
+    "dialogue_avant": "Hé ! Tu veux te battre ?",
+    "dialogue_defaite": "Zut, j'ai perdu...",
+    "recompense": 340,
+    "equipe": [
+      {"espece_id": "043", "niveau": 16},
+      {"espece_id": "096", "niveau": 16}
+    ]
+  },
+  "dresseur_route5_02": {
+    "id": "dresseur_route5_02",
+    "nom": "Gamine Lise",
+    "classe": "Gamine",
+    "dialogue_avant": "Mes Pokémon sont adorables\net forts !",
+    "dialogue_defaite": "Mes pauvres Pokémon...",
+    "recompense": 320,
+    "equipe": [
+      {"espece_id": "052", "niveau": 17}
+    ]
+  },
+  "dresseur_route6_01": {
+    "id": "dresseur_route6_01",
+    "nom": "Gamin Paul",
+    "classe": "Gamin",
+    "dialogue_avant": "C'est la Route 6 ! Battons-nous !",
+    "dialogue_defaite": "Pas mal...",
+    "recompense": 360,
+    "equipe": [
+      {"espece_id": "050", "niveau": 18},
+      {"espece_id": "021", "niveau": 17}
+    ]
+  },
+  "dresseur_route6_02": {
+    "id": "dresseur_route6_02",
+    "nom": "Gamine Marie",
+    "classe": "Gamine",
+    "dialogue_avant": "Les Pokémon Psy sont les meilleurs !",
+    "dialogue_defaite": "Comment as-tu fait ?",
+    "recompense": 340,
+    "equipe": [
+      {"espece_id": "096", "niveau": 17},
+      {"espece_id": "063", "niveau": 17}
+    ]
+  },
+  "dresseur_arene_carmin_01": {
+    "id": "dresseur_arene_carmin_01",
+    "nom": "Marin Greg",
+    "classe": "Marin",
+    "dialogue_avant": "Le Major Bob m'a tout appris !",
+    "dialogue_defaite": "Électrocuté...",
+    "recompense": 400,
+    "equipe": [
+      {"espece_id": "081", "niveau": 20},
+      {"espece_id": "100", "niveau": 20}
+    ]
+  },
+  "capitaine_ss_anne": {
+    "id": "capitaine_ss_anne",
+    "nom": "Capitaine",
+    "classe": "Capitaine",
+    "dialogue_avant": "Urp... J'ai le mal de mer...",
+    "dialogue_defaite": "Merci de m'avoir aidé !\nPrends cette CS COUPE comme récompense !",
+    "recompense": 0,
+    "equipe": [],
+    "cs_recompense": "cs_coupe"
   }
 }

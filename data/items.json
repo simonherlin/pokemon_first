@@ -243,5 +243,47 @@
     "description": "Permet de fuir instantanément d'une grotte ou d'un donjon.",
     "effet": {"type_effet": "fuite_donjon"},
     "utilisable_combat": false
+  },
+  "cs_coupe": {
+    "id": "cs_coupe", "nom": "CS01 Coupe", "nom_en": "HM01 Cut",
+    "categorie": "ct_cs", "prix": 0,
+    "description": "Apprend l'attaque Coupe à un Pokémon. Utilisable hors combat pour couper les arbustes.",
+    "effet": {"type_effet": "cs", "attaque_id": "coupe"},
+    "utilisable_combat": false
+  },
+  "ct_tonnerre": {
+    "id": "ct_tonnerre", "nom": "CT Tonnerre", "nom_en": "TM24 Thunderbolt",
+    "categorie": "ct_cs", "prix": 0,
+    "description": "Apprend l'attaque Tonnerre à un Pokémon.",
+    "effet": {"type_effet": "ct", "attaque_id": "tonnerre"},
+    "utilisable_combat": false
+  },
+  "ticket_oceane": {
+    "id": "ticket_oceane", "nom": "Ticket Océane", "nom_en": "S.S. Ticket",
+    "categorie": "objets_cles", "prix": 0,
+    "description": "Un billet pour embarquer sur l'Océane, le luxueux navire de Carmin sur Mer.",
+    "effet": null,
+    "utilisable_combat": false
+  },
+  "total_soin": {
+    "id": "total_soin", "nom": "Total Soin", "nom_en": "Full Heal",
+    "categorie": "objets", "prix": 600,
+    "description": "Soigne tous les problèmes de statut d'un seul Pokémon.",
+    "effet": {"type_effet": "guerir_statut", "statut": "tous"},
+    "utilisable_combat": true
+  },
+  "hyper_potion": {
+    "id": "hyper_potion", "nom": "Hyper Potion", "nom_en": "Hyper Potion",
+    "categorie": "objets", "prix": 1200,
+    "description": "Restaure 200 PV d'un seul Pokémon.",
+    "effet": {"type_effet": "soin", "montant": 200},
+    "utilisable_combat": true
+  },
+  "pierre_foudre": {
+    "id": "pierre_foudre", "nom": "Pierre Foudre", "nom_en": "Thunder Stone",
+    "categorie": "objets", "prix": 2100,
+    "description": "Une pierre qui fait évoluer certains Pokémon de type Électrik.",
+    "effet": {"type_effet": "evolution_pierre", "type_pierre": "pierre_foudre"},
+    "utilisable_combat": false
   }
 }

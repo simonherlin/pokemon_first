@@ -100,5 +100,36 @@
       {"pokemon_id": "054", "taux": 10, "niveau_min": 12, "niveau_max": 15},
       {"pokemon_id": "079", "taux": 10, "niveau_min": 13, "niveau_max": 15}
     ]
+  },
+  "route_5": {
+    "zone_id": "route_5",
+    "nom": "Route 5",
+    "herbes": [
+      {"pokemon_id": "043", "taux": 25, "niveau_min": 13, "niveau_max": 17},
+      {"pokemon_id": "052", "taux": 25, "niveau_min": 13, "niveau_max": 17},
+      {"pokemon_id": "016", "taux": 20, "niveau_min": 13, "niveau_max": 17},
+      {"pokemon_id": "056", "taux": 15, "niveau_min": 14, "niveau_max": 17},
+      {"pokemon_id": "063", "taux": 15, "niveau_min": 14, "niveau_max": 17}
+    ]
+  },
+  "route_6": {
+    "zone_id": "route_6",
+    "nom": "Route 6",
+    "herbes": [
+      {"pokemon_id": "043", "taux": 25, "niveau_min": 13, "niveau_max": 17},
+      {"pokemon_id": "052", "taux": 25, "niveau_min": 13, "niveau_max": 17},
+      {"pokemon_id": "016", "taux": 20, "niveau_min": 13, "niveau_max": 17},
+      {"pokemon_id": "096", "taux": 15, "niveau_min": 14, "niveau_max": 17},
+      {"pokemon_id": "050", "taux": 15, "niveau_min": 14, "niveau_max": 17}
+    ]
+  },
+  "grotte_taupiqueur": {
+    "zone_id": "grotte_taupiqueur",
+    "nom": "Grotte Taupiqueur",
+    "herbes": [
+      {"pokemon_id": "050", "taux": 50, "niveau_min": 18, "niveau_max": 22},
+      {"pokemon_id": "051", "taux": 20, "niveau_min": 22, "niveau_max": 26},
+      {"pokemon_id": "050", "taux": 30, "niveau_min": 22, "niveau_max": 26}
+    ]
   }
 }

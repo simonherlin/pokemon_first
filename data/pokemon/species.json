@@ -1123,5 +1123,185 @@
     "groupe_exp": "moyen", "taux_capture": 45, "exp_base": 201,
     "description_pokedex": "Ses bras tranchants comme des lames sont capables de couper n'importe quoi.",
     "taille_m": 1.3, "poids_kg": 40.5
+  },
+  "025": {
+    "id": 25, "nom": "Pikachu", "nom_en": "Pikachu",
+    "types": ["electrik"],
+    "stats_base": {"pv": 35, "attaque": 55, "defense": 30, "special": 50, "vitesse": 90},
+    "evolution": {"methode": "pierre", "pierre": "pierre_foudre", "vers": "026"},
+    "learnset": {"1": ["eclair", "rugissement"], "6": ["vive_attaque"], "8": ["onde_de_choc"], "11": ["cage_eclair"], "20": ["tonnerre"], "26": ["mimi_queue"], "33": ["fatal_foudre"]},
+    "groupe_exp": "moyen", "taux_capture": 190, "exp_base": 82,
+    "description_pokedex": "Quand plusieurs de ces Pokémon se réunissent, ils provoquent de formidables orages.",
+    "taille_m": 0.4, "poids_kg": 6.0
+  },
+  "026": {
+    "id": 26, "nom": "Raichu", "nom_en": "Raichu",
+    "types": ["electrik"],
+    "stats_base": {"pv": 60, "attaque": 90, "defense": 55, "special": 90, "vitesse": 100},
+    "evolution": null,
+    "learnset": {"1": ["eclair", "tonnerre", "vive_attaque"]},
+    "groupe_exp": "moyen", "taux_capture": 75, "exp_base": 122,
+    "description_pokedex": "Sa longue queue sert de prise de terre pour le protéger de sa propre électricité.",
+    "taille_m": 0.8, "poids_kg": 30.0
+  },
+  "050": {
+    "id": 50, "nom": "Taupiqueur", "nom_en": "Diglett",
+    "types": ["sol"],
+    "stats_base": {"pv": 10, "attaque": 55, "defense": 25, "special": 35, "vitesse": 95},
+    "evolution": {"methode": "niveau", "niveau": 26, "vers": "051"},
+    "learnset": {"1": ["griffe"], "15": ["tunnel"], "19": ["jet_de_sable"], "24": ["tranche"], "31": ["seisme"]},
+    "groupe_exp": "moyen", "taux_capture": 255, "exp_base": 81,
+    "description_pokedex": "Il vit environ un mètre sous terre. Il se nourrit de racines et apparaît rarement à la surface.",
+    "taille_m": 0.2, "poids_kg": 0.8
+  },
+  "051": {
+    "id": 51, "nom": "Triopikeur", "nom_en": "Dugtrio",
+    "types": ["sol"],
+    "stats_base": {"pv": 35, "attaque": 80, "defense": 50, "special": 50, "vitesse": 120},
+    "evolution": null,
+    "learnset": {"1": ["griffe", "tunnel"], "24": ["tranche"], "31": ["seisme"]},
+    "groupe_exp": "moyen", "taux_capture": 50, "exp_base": 153,
+    "description_pokedex": "Un trio de Taupiqueur. Il creuse des tunnels à 100 km/h déclenchant des tremblements de terre.",
+    "taille_m": 0.7, "poids_kg": 33.3
+  },
+  "052": {
+    "id": 52, "nom": "Miaouss", "nom_en": "Meowth",
+    "types": ["normal"],
+    "stats_base": {"pv": 40, "attaque": 45, "defense": 35, "special": 40, "vitesse": 90},
+    "evolution": {"methode": "niveau", "niveau": 28, "vers": "053"},
+    "learnset": {"1": ["griffe", "rugissement"], "12": ["morsure"], "17": ["jackpot"], "24": ["tranche"]},
+    "groupe_exp": "moyen", "taux_capture": 255, "exp_base": 69,
+    "description_pokedex": "Il adore les objets ronds et brillants. Il ne peut pas s'empêcher de les voler.",
+    "taille_m": 0.4, "poids_kg": 4.2
+  },
+  "053": {
+    "id": 53, "nom": "Persian", "nom_en": "Persian",
+    "types": ["normal"],
+    "stats_base": {"pv": 65, "attaque": 70, "defense": 60, "special": 65, "vitesse": 115},
+    "evolution": null,
+    "learnset": {"1": ["griffe", "morsure", "tranche"]},
+    "groupe_exp": "moyen", "taux_capture": 90, "exp_base": 148,
+    "description_pokedex": "Bien que richement élevé, il est sauvage de nature. Il griffera quiconque l'approche.",
+    "taille_m": 1.0, "poids_kg": 32.0
+  },
+  "081": {
+    "id": 81, "nom": "Magnéti", "nom_en": "Magnemite",
+    "types": ["electrik"],
+    "stats_base": {"pv": 25, "attaque": 35, "defense": 70, "special": 95, "vitesse": 45},
+    "evolution": {"methode": "niveau", "niveau": 30, "vers": "082"},
+    "learnset": {"1": ["charge"], "21": ["eclair"], "25": ["ultrason"], "29": ["onde_de_choc"], "35": ["tonnerre"]},
+    "groupe_exp": "moyen", "taux_capture": 190, "exp_base": 89,
+    "description_pokedex": "Il utilise des ondes électromagnétiques pour flotter. Il apparaît quand il y a de l'électricité.",
+    "taille_m": 0.3, "poids_kg": 6.0
+  },
+  "082": {
+    "id": 82, "nom": "Magnéton", "nom_en": "Magneton",
+    "types": ["electrik"],
+    "stats_base": {"pv": 50, "attaque": 60, "defense": 95, "special": 120, "vitesse": 70},
+    "evolution": null,
+    "learnset": {"1": ["charge", "eclair", "tonnerre"]},
+    "groupe_exp": "moyen", "taux_capture": 60, "exp_base": 161,
+    "description_pokedex": "Formé par la liaison de 3 Magnéti. Il génère de puissantes ondes radio.",
+    "taille_m": 1.0, "poids_kg": 60.0
+  },
+  "084": {
+    "id": 84, "nom": "Doduo", "nom_en": "Doduo",
+    "types": ["normal", "vol"],
+    "stats_base": {"pv": 35, "attaque": 85, "defense": 45, "special": 35, "vitesse": 75},
+    "evolution": {"methode": "niveau", "niveau": 31, "vers": "085"},
+    "learnset": {"1": ["picpic"], "20": ["furie"], "24": ["bec_vrille"], "30": ["hate"], "36": ["trempette"]},
+    "groupe_exp": "moyen", "taux_capture": 190, "exp_base": 96,
+    "description_pokedex": "Un oiseau qui a du mal à voler. Il peut cependant courir très vite.",
+    "taille_m": 1.4, "poids_kg": 39.2
+  },
+  "085": {
+    "id": 85, "nom": "Dodrio", "nom_en": "Dodrio",
+    "types": ["normal", "vol"],
+    "stats_base": {"pv": 60, "attaque": 110, "defense": 70, "special": 60, "vitesse": 100},
+    "evolution": null,
+    "learnset": {"1": ["picpic", "bec_vrille", "furie"]},
+    "groupe_exp": "moyen", "taux_capture": 45, "exp_base": 158,
+    "description_pokedex": "Utilise ses trois cerveaux pour élaborer des plans complexes. Ses trois têtes expriment la joie, la tristesse et la colère.",
+    "taille_m": 1.8, "poids_kg": 85.2
+  },
+  "086": {
+    "id": 86, "nom": "Otaria", "nom_en": "Seel",
+    "types": ["eau"],
+    "stats_base": {"pv": 65, "attaque": 45, "defense": 55, "special": 70, "vitesse": 45},
+    "evolution": {"methode": "niveau", "niveau": 34, "vers": "087"},
+    "learnset": {"1": ["charge"], "16": ["pistolet_a_o"], "21": ["aurora"], "26": ["repos"], "31": ["laser_glace"]},
+    "groupe_exp": "moyen", "taux_capture": 190, "exp_base": 100,
+    "description_pokedex": "Bien qu'il préfère les climats froids, sa fourrure blanche le protège du froid.",
+    "taille_m": 1.1, "poids_kg": 90.0
+  },
+  "087": {
+    "id": 87, "nom": "Lamantine", "nom_en": "Dewgong",
+    "types": ["eau", "glace"],
+    "stats_base": {"pv": 90, "attaque": 70, "defense": 80, "special": 95, "vitesse": 70},
+    "evolution": null,
+    "learnset": {"1": ["pistolet_a_o", "aurora", "laser_glace"]},
+    "groupe_exp": "moyen", "taux_capture": 75, "exp_base": 176,
+    "description_pokedex": "Son corps entier est d'un blanc pur. Il peut nager dans les eaux les plus glacées.",
+    "taille_m": 1.7, "poids_kg": 120.0
+  },
+  "088": {
+    "id": 88, "nom": "Tadmorv", "nom_en": "Grimer",
+    "types": ["poison"],
+    "stats_base": {"pv": 80, "attaque": 80, "defense": 50, "special": 40, "vitesse": 25},
+    "evolution": {"methode": "niveau", "niveau": 38, "vers": "089"},
+    "learnset": {"1": ["ecras_face", "detritus"], "30": ["acide"], "33": ["bombe_beurk"], "37": ["devoreve"]},
+    "groupe_exp": "moyen", "taux_capture": 190, "exp_base": 90,
+    "description_pokedex": "Né de la boue polluée. Il adorait jouer dans les canalisations de la ville.",
+    "taille_m": 0.9, "poids_kg": 30.0
+  },
+  "089": {
+    "id": 89, "nom": "Grotadmorv", "nom_en": "Muk",
+    "types": ["poison"],
+    "stats_base": {"pv": 105, "attaque": 105, "defense": 75, "special": 65, "vitesse": 50},
+    "evolution": null,
+    "learnset": {"1": ["ecras_face", "detritus", "acide", "bombe_beurk"]},
+    "groupe_exp": "moyen", "taux_capture": 75, "exp_base": 157,
+    "description_pokedex": "Il sent tellement mauvais qu'il peut faire évanouir les gens. Même ses empreintes sont toxiques.",
+    "taille_m": 1.2, "poids_kg": 30.0
+  },
+  "096": {
+    "id": 96, "nom": "Soporifik", "nom_en": "Drowzee",
+    "types": ["psy"],
+    "stats_base": {"pv": 60, "attaque": 48, "defense": 45, "special": 90, "vitesse": 42},
+    "evolution": {"methode": "niveau", "niveau": 26, "vers": "097"},
+    "learnset": {"1": ["ecras_face", "hypnose"], "12": ["choc_mental"], "17": ["entrave"], "24": ["psyko"]},
+    "groupe_exp": "moyen", "taux_capture": 190, "exp_base": 102,
+    "description_pokedex": "Met ses ennemis à dormir puis mange leurs rêves. Il se nourrit d'énergie onirique.",
+    "taille_m": 1.0, "poids_kg": 32.4
+  },
+  "097": {
+    "id": 97, "nom": "Hypnomade", "nom_en": "Hypno",
+    "types": ["psy"],
+    "stats_base": {"pv": 85, "attaque": 73, "defense": 70, "special": 115, "vitesse": 67},
+    "evolution": null,
+    "learnset": {"1": ["ecras_face", "hypnose", "choc_mental", "psyko"]},
+    "groupe_exp": "moyen", "taux_capture": 75, "exp_base": 165,
+    "description_pokedex": "Lorsqu'il est à la recherche de proies, il balance son pendule devant lui.",
+    "taille_m": 1.6, "poids_kg": 75.6
+  },
+  "083": {
+    "id": 83, "nom": "Canarticho", "nom_en": "Farfetch'd",
+    "types": ["normal", "vol"],
+    "stats_base": {"pv": 52, "attaque": 65, "defense": 55, "special": 58, "vitesse": 60},
+    "evolution": null,
+    "learnset": {"1": ["picpic", "jet_de_sable"], "7": ["griffe"], "15": ["coupe"], "23": ["tranche"], "31": ["hate"]},
+    "groupe_exp": "moyen", "taux_capture": 45, "exp_base": 94,
+    "description_pokedex": "Il tient toujours un poireau. On dit que certains sont meilleurs que d'autres.",
+    "taille_m": 0.8, "poids_kg": 15.0
+  },
+  "095": {
+    "id": 95, "nom": "Onix", "nom_en": "Onix",
+    "types": ["roche", "sol"],
+    "stats_base": {"pv": 35, "attaque": 45, "defense": 160, "special": 30, "vitesse": 70},
+    "evolution": null,
+    "learnset": {"1": ["charge", "grincement"], "15": ["lier"], "19": ["tomberoche"], "25": ["tunnel"], "33": ["seisme"]},
+    "groupe_exp": "moyen", "taux_capture": 45, "exp_base": 108,
+    "description_pokedex": "En creusant des tunnels, il absorbe les matériaux durs pour rendre son corps plus solide.",
+    "taille_m": 8.8, "poids_kg": 210.0
   }
 }

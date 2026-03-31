@@ -469,5 +469,98 @@
     "id": "ct_cascade", "nom": "CT Cascade", "nom_en": "TM Waterfall",
     "type": "eau", "categorie": "physique",
     "puissance": 80, "precision": 100, "pp": 15, "priorite": 0, "effet": null
+  },
+  "tonnerre": {
+    "id": "tonnerre", "nom": "Tonnerre", "nom_en": "Thunderbolt",
+    "type": "electrik", "categorie": "special",
+    "puissance": 95, "precision": 100, "pp": 15, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "paralysie", "probabilite": 10}
+  },
+  "fatal_foudre": {
+    "id": "fatal_foudre", "nom": "Fatal-Foudre", "nom_en": "Thunder",
+    "type": "electrik", "categorie": "special",
+    "puissance": 120, "precision": 70, "pp": 10, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "paralysie", "probabilite": 30}
+  },
+  "cage_eclair": {
+    "id": "cage_eclair", "nom": "Cage-Éclair", "nom_en": "Thunder Wave",
+    "type": "electrik", "categorie": "special",
+    "puissance": 0, "precision": 100, "pp": 20, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "paralysie", "probabilite": 100}
+  },
+  "coupe": {
+    "id": "coupe", "nom": "Coupe", "nom_en": "Cut",
+    "type": "normal", "categorie": "physique",
+    "puissance": 50, "precision": 95, "pp": 30, "priorite": 0, "effet": null,
+    "cs": true
+  },
+  "souplesse": {
+    "id": "souplesse", "nom": "Souplesse", "nom_en": "Slam",
+    "type": "normal", "categorie": "physique",
+    "puissance": 80, "precision": 75, "pp": 20, "priorite": 0, "effet": null
+  },
+  "morsure": {
+    "id": "morsure", "nom": "Morsure", "nom_en": "Bite",
+    "type": "normal", "categorie": "physique",
+    "puissance": 60, "precision": 100, "pp": 25, "priorite": 0,
+    "effet": {"type_effet": "flinch", "probabilite": 30}
+  },
+  "tunnel": {
+    "id": "tunnel", "nom": "Tunnel", "nom_en": "Dig",
+    "type": "sol", "categorie": "physique",
+    "puissance": 100, "precision": 100, "pp": 10, "priorite": 0,
+    "effet": {"type_effet": "semi_invulnerable"}
+  },
+  "seisme": {
+    "id": "seisme", "nom": "Séisme", "nom_en": "Earthquake",
+    "type": "sol", "categorie": "physique",
+    "puissance": 100, "precision": 100, "pp": 10, "priorite": 0, "effet": null
+  },
+  "bec_vrille": {
+    "id": "bec_vrille", "nom": "Bec Vrille", "nom_en": "Drill Peck",
+    "type": "vol", "categorie": "physique",
+    "puissance": 80, "precision": 100, "pp": 20, "priorite": 0, "effet": null
+  },
+  "aurora": {
+    "id": "aurora", "nom": "Onde Boréale", "nom_en": "Aurora Beam",
+    "type": "glace", "categorie": "special",
+    "puissance": 65, "precision": 100, "pp": 20, "priorite": 0,
+    "effet": {"type_effet": "stat", "stat": "attaque", "cible": "ennemi", "modificateur": -1, "probabilite": 10}
+  },
+  "detritus": {
+    "id": "detritus", "nom": "Détritus", "nom_en": "Sludge",
+    "type": "poison", "categorie": "special",
+    "puissance": 65, "precision": 100, "pp": 20, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "poison", "probabilite": 30}
+  },
+  "bombe_beurk": {
+    "id": "bombe_beurk", "nom": "Bombe Beurk", "nom_en": "Sludge Bomb",
+    "type": "poison", "categorie": "special",
+    "puissance": 90, "precision": 100, "pp": 10, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "poison", "probabilite": 30}
+  },
+  "choc_mental": {
+    "id": "choc_mental", "nom": "Choc Mental", "nom_en": "Confusion",
+    "type": "psy", "categorie": "special",
+    "puissance": 50, "precision": 100, "pp": 25, "priorite": 0,
+    "effet": {"type_effet": "confusion", "probabilite": 10}
+  },
+  "psyko": {
+    "id": "psyko", "nom": "Psyko", "nom_en": "Psychic",
+    "type": "psy", "categorie": "special",
+    "puissance": 90, "precision": 100, "pp": 10, "priorite": 0,
+    "effet": {"type_effet": "stat", "stat": "special", "cible": "ennemi", "modificateur": -1, "probabilite": 33}
+  },
+  "jackpot": {
+    "id": "jackpot", "nom": "Jackpot", "nom_en": "Pay Day",
+    "type": "normal", "categorie": "physique",
+    "puissance": 40, "precision": 100, "pp": 20, "priorite": 0,
+    "effet": {"type_effet": "argent"}
+  },
+  "ct_tonnerre": {
+    "id": "ct_tonnerre", "nom": "CT Tonnerre", "nom_en": "TM Thunderbolt",
+    "type": "electrik", "categorie": "special",
+    "puissance": 95, "precision": 100, "pp": 15, "priorite": 0,
+    "effet": {"type_effet": "statut", "statut": "paralysie", "probabilite": 10}
   }
 }

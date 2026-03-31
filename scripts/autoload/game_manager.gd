@@ -31,7 +31,13 @@ var flags: Dictionary = {
 	"rival_route24_battu": false,
 	"pont_pepite_termine": false,
 	"bill_rencontre": false,
-	"bill_pc_active": false
+	"bill_pc_active": false,
+	"ticket_oceane_recu": false,
+	"rival_ss_anne_battu": false,
+	"ss_anne_termine": false,
+	"cs_coupe_obtenu": false,
+	"badge_foudre": false,
+	"arbre_coupe_route9": false
 }
 
 # --- État de jeu ---
