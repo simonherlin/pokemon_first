@@ -1,0 +1,221 @@
+{
+  "id": "repaire_rocket_b2f",
+  "nom": "Repaire Rocket B2F",
+  "largeur": 12,
+  "hauteur": 12,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/repaire_rocket.ogg",
+  "connexions": [],
+  "warps": [
+    {
+      "id": "escalier_b1f",
+      "x": 1,
+      "y": 2,
+      "vers_map": "repaire_rocket_b1f",
+      "vers_warp": "escalier_b2f",
+      "type": "escalier"
+    },
+    {
+      "id": "escalier_b3f",
+      "x": 10,
+      "y": 10,
+      "vers_map": "repaire_rocket_b3f",
+      "vers_warp": "escalier_b2f",
+      "type": "escalier"
+    }
+  ],
+  "pnj": [
+    {
+      "id": "rocket_repaire_b2f_01",
+      "x": 8,
+      "y": 3,
+      "sprite": "pnj_rocket",
+      "direction": "gauche",
+      "dialogue": [],
+      "mobile": false,
+      "dresseur": true,
+      "trainer_id": "rocket_repaire_03",
+      "portee_vue": 3
+    }
+  ],
+  "objets_sol": [
+    {
+      "id": "obj_huile_repaire",
+      "x": 3,
+      "y": 5,
+      "item_id": "huile",
+      "quantite": 1
+    }
+  ],
+  "panneaux": [],
+  "tile_data": [
+    [
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+    ],
+    [
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25,
+      24,
+      24,
+      24,
+      25,
+      25
+    ],
+    [
+      25,
+      24,
+      25,
+      25,
+      25,
+      24,
+      25,
+      24,
+      24,
+      24,
+      25,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25,
+      24,
+      24,
+      24,
+      25,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25,
+      25,
+      25,
+      25,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      25,
+      25,
+      25,
+      24,
+      25,
+      25,
+      25,
+      25,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      25,
+      25,
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+    ]
+  ]
+}

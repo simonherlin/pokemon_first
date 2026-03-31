@@ -71,6 +71,15 @@ func _configurer_arene() -> void:
 			_ct_nom = "CT TONNERRE"
 			_ct_description = "TONNERRE est une puissante attaque Électrik\nqui peut paralyser l'adversaire."
 			_badge_desc = "Ce badge permet d'utiliser COUPE\nhors des combats."
+		"arene_celadopole":
+			_badge_index = 3
+			_badge_flag = "badge_prisme"
+			_champion_id = "champion_erika"
+			_ct_recompense = "ct_mega_drain"
+			_badge_nom = "BADGE PRISME"
+			_ct_nom = "CT MÉGA-SANGSUE"
+			_ct_description = "MÉGA-SANGSUE absorbe la moitié des\ndégâts infligés pour restaurer vos PV."
+			_badge_desc = "Ce badge permet aux Pokémon jusqu'au N.50\nd'obéir sans condition."
 
 func recevoir_params(params: Dictionary) -> void:
 	carte_id = params.get("carte_id", carte_id)

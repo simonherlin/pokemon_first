@@ -1,0 +1,233 @@
+{
+  "id": "repaire_rocket_b1f",
+  "nom": "Repaire Rocket B1F",
+  "largeur": 12,
+  "hauteur": 12,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/repaire_rocket.ogg",
+  "connexions": [],
+  "warps": [
+    {
+      "id": "escalier_casino",
+      "x": 5,
+      "y": 2,
+      "vers_map": "casino_celadopole",
+      "vers_warp": "escalier_repaire",
+      "type": "escalier"
+    },
+    {
+      "id": "escalier_b2f",
+      "x": 10,
+      "y": 10,
+      "vers_map": "repaire_rocket_b2f",
+      "vers_warp": "escalier_b1f",
+      "type": "escalier"
+    }
+  ],
+  "pnj": [
+    {
+      "id": "rocket_repaire_b1f_01",
+      "x": 3,
+      "y": 5,
+      "sprite": "pnj_rocket",
+      "direction": "droite",
+      "dialogue": [],
+      "mobile": false,
+      "dresseur": true,
+      "trainer_id": "rocket_repaire_01",
+      "portee_vue": 3
+    },
+    {
+      "id": "rocket_repaire_b1f_02",
+      "x": 8,
+      "y": 8,
+      "sprite": "pnj_rocket",
+      "direction": "gauche",
+      "dialogue": [],
+      "mobile": false,
+      "dresseur": true,
+      "trainer_id": "rocket_repaire_02",
+      "portee_vue": 3
+    }
+  ],
+  "objets_sol": [
+    {
+      "id": "obj_super_potion_repaire",
+      "x": 2,
+      "y": 9,
+      "item_id": "super_potion",
+      "quantite": 1
+    }
+  ],
+  "panneaux": [],
+  "tile_data": [
+    [
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+    ],
+    [
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+    ],
+    [
+      25,
+      25,
+      25,
+      25,
+      25,
+      24,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+    ],
+    [
+      25,
+      25,
+      25,
+      25,
+      25,
+      24,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      25,
+      25,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      25,
+      25,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      25,
+      25,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      25,
+      25,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      25
+    ],
+    [
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+    ]
+  ]
+}
