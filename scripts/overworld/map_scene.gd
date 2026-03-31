@@ -1,7 +1,7 @@
 extends Node2D
 
 # MapScene — Script de base pour toutes les scènes de carte
-# Charge les données JSON, instancie joueur + PNJ, gère les dialogues et warps
+# Charge les données JSON, peint le TileMap, instancie joueur + PNJ
 
 const TAILLE_TILE := 32
 const PLAYER_SCENE := preload("res://scenes/entities/player.tscn")
@@ -21,11 +21,14 @@ func _ready() -> void:
 	if carte_id.is_empty():
 		carte_id = _deviner_carte_id()
 	_charger_carte()
+	_peindre_tilemap()
 	_instancier_joueur()
 	_instancier_pnj()
+	# Afficher le nom de la carte en haut
+	_afficher_nom_carte()
 	# Lancer la musique de la carte
 	var musique: String = carte_data.get("musique", "")
-	if not musique.is_empty():
+	if not musique.is_empty() and ResourceLoader.exists(musique):
 		AudioManager.jouer_musique(musique)
 	PlayerData.carte_actuelle = carte_id
 
@@ -42,6 +45,12 @@ func _charger_carte() -> void:
 	if carte_data.is_empty():
 		push_warning("MapScene: données de carte introuvables pour %s" % carte_id)
 
+func _peindre_tilemap() -> void:
+	# Utiliser le TileSetBuilder pour peindre les tiles depuis le JSON
+	if carte_data.is_empty():
+		return
+	TileSetBuilder.peindre_carte(tilemap, carte_data)
+
 func _instancier_joueur() -> void:
 	joueur = PLAYER_SCENE.instantiate()
 	var px: int = PlayerData.position_x
@@ -55,7 +64,8 @@ func _instancier_pnj() -> void:
 		var npc := NPC_SCENE.instantiate()
 		npc.position = Vector2(pnj_data.get("x", 0), pnj_data.get("y", 0)) * TAILLE_TILE
 		npc.initialiser_depuis_json(pnj_data)
-		npc.dialogue_demarre.connect(_on_dialogue_demarre)
+		if npc.has_signal("dialogue_demarre"):
+			npc.dialogue_demarre.connect(_on_dialogue_demarre)
 		entities.add_child(npc)
 
 func _on_dialogue_demarre(lignes: Array) -> void:
@@ -77,6 +87,31 @@ func _teleporter_sur_warp(warp_id: String) -> void:
 			var y: int = warp.get("y", 0)
 			joueur.teleporter(x, y + 1, "bas")  # Un tile sous le warp
 			return
+
+func _afficher_nom_carte() -> void:
+	var nom: String = carte_data.get("nom", carte_id)
+	if nom.is_empty():
+		return
+	# Créer un label temporaire pour afficher le nom de la zone
+	var label := Label.new()
+	label.text = nom
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.add_theme_color_override("font_color", Color.WHITE)
+	label.add_theme_color_override("font_shadow_color", Color.BLACK)
+	label.add_theme_constant_override("shadow_offset_x", 1)
+	label.add_theme_constant_override("shadow_offset_y", 1)
+	label.position = Vector2(160, 8)
+	label.z_index = 100
+	# Utiliser un CanvasLayer pour que ce soit au-dessus de tout
+	var canvas := CanvasLayer.new()
+	canvas.layer = 50
+	canvas.add_child(label)
+	add_child(canvas)
+	# Faire disparaître après 2 secondes
+	var tween := create_tween()
+	tween.tween_interval(2.0)
+	tween.tween_property(label, "modulate:a", 0.0, 0.5)
+	tween.tween_callback(canvas.queue_free)
 
 func _deviner_carte_id() -> String:
 	var nom_fichier := get_scene_file_path().get_file().get_basename()

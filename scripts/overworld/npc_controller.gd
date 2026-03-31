@@ -47,6 +47,8 @@ func initialiser_depuis_json(data: Dictionary) -> void:
 	mobile = data.get("mobile", false)
 	direction_initiale = data.get("direction", "bas")
 	battu = PlayerData.dresseur_est_battu(npc_id)
+	# Charger le sprite du PNJ
+	_charger_sprite(data.get("sprite", "pnj_homme"))
 
 # Interaction déclenché par le joueur (touche A face au PNJ)
 func interagir(joueur: Node) -> void:
@@ -122,3 +124,32 @@ func _appliquer_direction(dir: String) -> void:
 			sprite.play(anim)
 		elif sprite.sprite_frames.has_animation(dir):
 			sprite.play(dir)
+		elif sprite.sprite_frames.has_animation("default"):
+			sprite.play("default")
+
+# Charger le sprite du PNJ depuis le dossier characters
+func _charger_sprite(sprite_id: String) -> void:
+	var chemin := "res://assets/sprites/characters/%s_bas_0.png" % sprite_id
+	var texture := load(chemin) as Texture2D
+	if texture == null:
+		# Fallback : utiliser le sprite homme par défaut
+		texture = load("res://assets/sprites/characters/pnj_homme_bas_0.png") as Texture2D
+	if texture == null:
+		return
+	# Créer un SpriteFrames basique avec une seule frame
+	var frames := SpriteFrames.new()
+	frames.add_animation("default")
+	frames.set_animation_speed("default", 1.0)
+	frames.set_animation_loop("default", false)
+	frames.add_frame("default", texture)
+	# Ajouter les animations directionnelles (même texture pour le MVP)
+	for dir_name in ["bas_idle", "haut_idle", "gauche_idle", "droite_idle"]:
+		frames.add_animation(dir_name)
+		frames.set_animation_speed(dir_name, 1.0)
+		frames.set_animation_loop(dir_name, false)
+		frames.add_frame(dir_name, texture)
+	# Supprimer l'animation "default" auto-créée si elle est vide
+	if frames.has_animation("default") and frames.get_frame_count("default") == 0:
+		frames.remove_animation("default")
+	sprite.sprite_frames = frames
+	sprite.play("bas_idle")
