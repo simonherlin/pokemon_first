@@ -217,6 +217,11 @@ func _verifier_warp() -> bool:
 	return false
 
 func _entrer_warp(warp: Dictionary) -> void:
+	# Bloquer la sortie vers la salle suivante si le membre du Conseil 4 n'est pas battu
+	if warp.get("id", "") == "sortie_suivante":
+		var flag_requis := _get_flag_ligue_requis(PlayerData.carte_actuelle)
+		if not flag_requis.is_empty() and not GameManager.get_flag(flag_requis):
+			return  # Warp bloqué : vaincre le champion d'abord
 	peut_bouger = false
 	var vers_map: String = warp.get("vers_map", "")
 	var vers_warp: String = warp.get("vers_warp", "")
@@ -231,6 +236,15 @@ func _changer_carte(vers_carte: String, x: int, y: int) -> void:
 	SceneManager.charger_scene("res://scenes/maps/%s.tscn" % vers_carte, {
 		"carte_id": vers_carte
 	})
+
+## Retourne le flag requis pour débloquer le warp de sortie de la salle E4
+func _get_flag_ligue_requis(carte_id: String) -> String:
+	match carte_id:
+		"ligue_olga":   return "conseil_olga_battu"
+		"ligue_aldo":   return "conseil_aldo_battu"
+		"ligue_agatha": return "conseil_agatha_battu"
+		"ligue_peter":  return "conseil_peter_battu"
+	return ""
 
 ## Vérifier si le joueur est sur un téléporteur (puzzle arène Safrania)
 func _verifier_teleporteur() -> void:

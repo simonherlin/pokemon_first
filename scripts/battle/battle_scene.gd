@@ -221,6 +221,25 @@ func _on_combat_termine(victoire: bool) -> void:
 	# Sauvegarder l'état des PV dans l'équipe
 	if _controller.pokemon_joueur:
 		PlayerData.equipe[_controller.index_pokemon_joueur] = _controller.pokemon_joueur.to_dict()
+	# Défaite pendant le Conseil 4 → KO total → retour au Centre Pokémon du Plateau
+	if not victoire and GameManager.get_flag("ligue_en_cours"):
+		GameManager.set_flag("ligue_en_cours", false)
+		# Réinitialiser les flags E4 pour recommencer
+		GameManager.set_flag("conseil_olga_battu", false)
+		GameManager.set_flag("conseil_aldo_battu", false)
+		GameManager.set_flag("conseil_agatha_battu", false)
+		GameManager.set_flag("conseil_peter_battu", false)
+		# Soigner l'équipe et téléporter au Centre Pokémon
+		for i in range(PlayerData.equipe.size()):
+			var p := Pokemon.from_dict(PlayerData.equipe[i])
+			p.soigner_complet()
+			PlayerData.equipe[i] = p.to_dict()
+		await get_tree().create_timer(2.0).timeout
+		SceneManager.charger_scene("res://scenes/maps/map_scene.tscn", {
+			"carte_id": "centre_pokemon_plateau",
+			"warp_entree": "sortie"
+		})
+		return
 	# Vérifier si c'est la victoire contre le champion de la Ligue → crédits
 	if victoire and _carte_retour == "ligue_champion" and _params_retour.get("champion_battu", false):
 		GameManager.set_flag("champion_ligue_battu", true)

@@ -5,7 +5,7 @@ extends CanvasLayer
 
 signal menu_ferme()
 
-const OPTIONS := ["POKÉDEX", "POKÉMON", "SAC", "DRESSEUR", "SAUVEGARDER", "QUITTER"]
+const OPTIONS := ["POKÉDEX", "POKÉMON", "SAC", "CARTE", "DRESSEUR", "OPTIONS", "SAUVEGARDER", "QUITTER"]
 
 var _index: int = 0
 var _actif: bool = true
@@ -80,11 +80,15 @@ func _selectionner_option() -> void:
 			_ouvrir_sous_ecran("pokemon")
 		2:  # Sac
 			_ouvrir_sous_ecran("sac")
-		3:  # Dresseur
+		3:  # Carte
+			_ouvrir_sous_ecran("carte")
+		4:  # Dresseur
 			_ouvrir_sous_ecran("dresseur")
-		4:  # Sauvegarder
+		5:  # Options
+			_ouvrir_sous_ecran("options")
+		6:  # Sauvegarder
 			_ouvrir_sous_ecran("sauvegarder")
-		5:  # Quitter
+		7:  # Quitter
 			_fermer()
 
 func _ouvrir_sous_ecran(ecran: String) -> void:
@@ -96,8 +100,12 @@ func _ouvrir_sous_ecran(ecran: String) -> void:
 			script_path = "res://scripts/ui/pokemon_team_screen.gd"
 		"sac":
 			script_path = "res://scripts/ui/bag_screen.gd"
+		"carte":
+			script_path = "res://scripts/ui/town_map_screen.gd"
 		"dresseur":
 			script_path = "res://scripts/ui/player_card_screen.gd"
+		"options":
+			script_path = "res://scripts/ui/options_screen.gd"
 		"sauvegarder":
 			script_path = "res://scripts/ui/save_screen.gd"
 

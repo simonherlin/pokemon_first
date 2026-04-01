@@ -54,6 +54,9 @@ func _ready() -> void:
 	if not musique.is_empty() and ResourceLoader.exists(musique):
 		AudioManager.jouer_musique(musique)
 	PlayerData.carte_actuelle = carte_id
+	# Activer le flag ligue_en_cours si on entre dans une salle E4
+	if carte_id in ["ligue_olga", "ligue_aldo", "ligue_agatha", "ligue_peter", "ligue_champion"]:
+		GameManager.set_flag("ligue_en_cours", true)
 
 # Recevoir les paramètres du SceneManager (warp_entree, carte_id, etc.)
 func recevoir_params(params: Dictionary) -> void:
@@ -296,6 +299,9 @@ func _on_champion_battu() -> void:
 			GameManager.set_flag("conseil_agatha_battu", true)
 		"ligue_peter":
 			GameManager.set_flag("conseil_peter_battu", true)
+		"ligue_champion":
+			GameManager.set_flag("champion_ligue_battu", true)
+			GameManager.set_flag("ligue_en_cours", false)
 	# Marquer les dresseurs PNJ comme battus
 	for pnj_data in carte_data.get("pnj", []):
 		if pnj_data.get("type", "") == "champion":

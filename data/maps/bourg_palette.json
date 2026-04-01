@@ -54,6 +54,9 @@
         "Bourg Palette. Une petite ville tranquille.",
         "D'ici partent de grands aventuriers !"
       ],
+      "dialogue_conditions": [
+        {"flag": "champion_ligue_battu", "valeur": true, "dialogue": ["Tu es le nouveau Maître\nPokémon ?!", "Bourg Palette est fière de toi !"]}
+      ],
       "mobile": false
     },
     {

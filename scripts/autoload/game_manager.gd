@@ -88,6 +88,7 @@ var flags: Dictionary = {
 	"conseil_agatha_battu": false,
 	"conseil_peter_battu": false,
 	"champion_ligue_battu": false,
+	"ligue_en_cours": false,
 	"generique_vu": false,
 	"grotte_inconnue_ouverte": false,
 	"grotte_inconnue_terminee": false,

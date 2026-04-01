@@ -21,6 +21,7 @@ var inventaire_boutique: Array = [] # IDs des items en vente (si type=vendeur)
 var trainer_id: String = ""          # Référence vers trainers.json (si présent)
 var _trainer_nom: String = ""        # Nom du dresseur chargé depuis trainers.json
 var _trainer_classe: String = ""     # Classe du dresseur (pour choisir la musique de combat)
+var dialogue_conditions: Array = []  # Dialogues conditionnels [{flag, valeur, dialogue}]
 
 # --- Nœuds ---
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -56,6 +57,7 @@ func initialiser_depuis_json(data: Dictionary) -> void:
 	type_pnj = data.get("type", "")
 	inventaire_boutique = data.get("inventaire_boutique", [])
 	trainer_id = data.get("trainer_id", "")
+	dialogue_conditions = data.get("dialogue_conditions", [])
 	battu = PlayerData.dresseur_est_battu(npc_id)
 	# Charger le sprite du PNJ
 	_charger_sprite(data.get("sprite", "pnj_homme"))
@@ -80,14 +82,17 @@ func interagir(joueur: Node) -> void:
 		"pc":
 			_interagir_pc(joueur)
 			return
+		"nom_rater":
+			_interagir_nom_rater(joueur)
+			return
 
 	if est_dresseur and not battu:
 		# Démarrer un combat
 		emit_signal("combat_dresseur_demarre", npc_id, equipe_dresseur, recompense, npc_id)
 		_demarrer_combat(joueur)
 	else:
-		# Dialogue simple
-		var lignes := dialogue_apres if (est_dresseur and battu) else dialogues
+		# Dialogue simple — vérifier les conditions
+		var lignes := _obtenir_dialogue()
 		if lignes.is_empty():
 			lignes = ["..."]
 		emit_signal("dialogue_demarre", lignes)
@@ -122,6 +127,26 @@ func _soigner_equipe() -> void:
 func _interagir_vendeur(joueur: Node) -> void:
 	emit_signal("dialogue_demarre", dialogues if not dialogues.is_empty() else ["Bienvenue !"])
 	emit_signal("boutique_demandee", inventaire_boutique)
+
+# Obtenir le dialogue approprié selon les conditions et l'état du PNJ
+func _obtenir_dialogue() -> Array:
+	# Dresseur battu → dialogue après combat
+	if est_dresseur and battu and not dialogue_apres.is_empty():
+		return dialogue_apres
+	# Vérifier les dialogues conditionnels (le premier qui matche gagne)
+	for condition in dialogue_conditions:
+		var flag_cle: String = condition.get("flag", "")
+		var flag_valeur = condition.get("valeur", true)
+		if flag_cle.is_empty():
+			continue
+		var valeur_actuelle = GameManager.get_flag(flag_cle)
+		if valeur_actuelle == flag_valeur:
+			var dial: Array = condition.get("dialogue", [])
+			if not dial.is_empty():
+				return dial
+	# Dialogue par défaut
+	return dialogues
+
 # PC : ouvre le système de stockage Pokémon de Bill
 func _interagir_pc(joueur: Node) -> void:
 	if not GameManager.get_flag("bill_pc_active"):
@@ -137,6 +162,30 @@ func _interagir_pc(joueur: Node) -> void:
 		if joueur.has_method("set_peut_bouger"):
 			joueur.set_peut_bouger(true)
 	)
+
+# Juge des Noms : permet de renommer un Pokémon de l'équipe
+func _interagir_nom_rater(joueur: Node) -> void:
+	if PlayerData.equipe.is_empty():
+		emit_signal("dialogue_demarde", ["Tu n'as aucun Pokémon à renommer !"])
+		return
+	# Ouvrir l'écran de renommage
+	emit_signal("dialogue_demarre", ["Bonjour ! Je suis le Juge des Noms !", "Je peux renommer tes Pokémon.\nChoisis celui que tu veux renommer !"])
+	if joueur.has_method("set_peut_bouger"):
+		joueur.set_peut_bouger(false)
+	# Attendre un peu puis ouvrir l'écran de sélection + renommage
+	await get_tree().create_timer(1.5).timeout
+	var scr = load("res://scripts/ui/name_rater_screen.gd")
+	var ecran := CanvasLayer.new()
+	ecran.layer = 90
+	ecran.set_script(scr)
+	get_tree().current_scene.add_child(ecran)
+	ecran.ecran_ferme.connect(func():
+		ecran.queue_free()
+		if joueur.has_method("set_peut_bouger"):
+			joueur.set_peut_bouger(true)
+		emit_signal("dialogue_demarre", ["Quel nom magnifique ! Reviens quand tu veux !"])
+	)
+
 # Vérifier si le joueur entre dans le champ de vision du dresseur
 # === Équilibrage dynamique ===
 # Ajuste le niveau de l'équipe du dresseur en fonction du joueur
