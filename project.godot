@@ -33,6 +33,7 @@ BattleController="*res://scripts/battle/battle_controller.gd"
 MapLoader="*res://scripts/overworld/map_loader.gd"
 TileSetBuilder="*res://scripts/overworld/tileset_builder.gd"
 ItemsData="*res://scripts/autoload/items_data.gd"
+QuestManager="*res://scripts/autoload/quest_manager.gd"
 
 [display]
 

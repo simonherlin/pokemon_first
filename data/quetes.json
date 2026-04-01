@@ -1,0 +1,239 @@
+{
+  "principales": [
+    {
+      "id": "q_pokedex",
+      "nom": "Le Pokédex du Prof. Chen",
+      "description": "Le Prof. Chen t'a confié une mission : compléter le Pokédex ! Commence par lui livrer son Colis.",
+      "icone": "pokedex",
+      "etapes": [
+        {"description": "Livrer le Colis du Prof. Chen", "flag": "colis_chen_livre", "valeur": true},
+        {"description": "Recevoir le Pokédex", "flag": "pokedex_recu", "valeur": true}
+      ],
+      "prerequis": "intro_terminee"
+    },
+    {
+      "id": "q_badge_roche",
+      "nom": "Badge Roche — Pierre",
+      "description": "Affronte Pierre, le Champion d'Arène d'Argenta, pour obtenir le Badge Roche.",
+      "icone": "badge",
+      "etapes": [
+        {"description": "Traverser la Forêt de Jade", "flag": "pokedex_recu", "valeur": true},
+        {"description": "Vaincre Pierre à l'Arène d'Argenta", "flag": "badge_roche", "valeur": true}
+      ],
+      "prerequis": "pokedex_recu"
+    },
+    {
+      "id": "q_mont_selenite",
+      "nom": "Le Mont Sélénite",
+      "description": "Traverse le Mont Sélénite pour atteindre Azuria. Attention à la Team Rocket !",
+      "icone": "grotte",
+      "etapes": [
+        {"description": "Traverser le Mont Sélénite", "flag": "mont_selenite_termine", "valeur": true},
+        {"description": "Récupérer un Fossile", "flag": "fossile_mont_selenite_pris", "valeur": true}
+      ],
+      "prerequis": "badge_roche"
+    },
+    {
+      "id": "q_badge_cascade",
+      "nom": "Badge Cascade — Ondine",
+      "description": "Affronte Ondine, la Championne de l'Arène d'Azuria, pour obtenir le Badge Cascade.",
+      "icone": "badge",
+      "etapes": [
+        {"description": "Battre le Rival sur la Route 24", "flag": "rival_route24_battu", "valeur": true},
+        {"description": "Aider Bill dans sa maison", "flag": "bill_rencontre", "valeur": true},
+        {"description": "Vaincre Ondine à l'Arène d'Azuria", "flag": "badge_cascade", "valeur": true}
+      ],
+      "prerequis": "mont_selenite_termine"
+    },
+    {
+      "id": "q_ss_anne",
+      "nom": "Le SS Anne",
+      "description": "Monte à bord du SS Anne à Carmin-sur-Mer pour retrouver le Capitaine et obtenir CS01 Coupe.",
+      "icone": "bateau",
+      "etapes": [
+        {"description": "Obtenir le Ticket Océane", "flag": "ticket_oceane_recu", "valeur": true},
+        {"description": "Battre le Rival sur le SS Anne", "flag": "rival_ss_anne_battu", "valeur": true},
+        {"description": "Obtenir CS01 Coupe", "flag": "cs_coupe_obtenu", "valeur": true}
+      ],
+      "prerequis": "bill_rencontre"
+    },
+    {
+      "id": "q_badge_foudre",
+      "nom": "Badge Foudre — Major Bob",
+      "description": "Affronte le Major Bob à l'Arène de Carmin-sur-Mer pour obtenir le Badge Foudre.",
+      "icone": "badge",
+      "etapes": [
+        {"description": "Vaincre le Major Bob", "flag": "badge_foudre", "valeur": true}
+      ],
+      "prerequis": "cs_coupe_obtenu"
+    },
+    {
+      "id": "q_tour_pokemon",
+      "nom": "La Tour Pokémon",
+      "description": "L'esprit d'un Pokémon hante la Tour de Lavanville. Sauve M. Fuji des griffes de la Team Rocket !",
+      "icone": "tour",
+      "etapes": [
+        {"description": "Obtenir le Scope Sylphe", "flag": "scope_sylphe_obtenu", "valeur": true},
+        {"description": "Sauver M. Fuji", "flag": "m_fuji_sauve", "valeur": true},
+        {"description": "Recevoir la Poké Flûte", "flag": "poke_flute_obtenu", "valeur": true}
+      ],
+      "prerequis": "badge_foudre"
+    },
+    {
+      "id": "q_badge_prisme",
+      "nom": "Badge Prisme — Érika",
+      "description": "Affronte Érika, la Championne de l'Arène de Céladopole, pour obtenir le Badge Prisme.",
+      "icone": "badge",
+      "etapes": [
+        {"description": "Vaincre la Team Rocket au Repaire", "flag": "repaire_rocket_termine", "valeur": true},
+        {"description": "Vaincre Érika à l'Arène de Céladopole", "flag": "badge_prisme", "valeur": true}
+      ],
+      "prerequis": "badge_foudre"
+    },
+    {
+      "id": "q_badge_ame",
+      "nom": "Badge Âme — Morgane",
+      "description": "Libère Safrania de la Team Rocket et affronte Morgane à l'Arène de Safrania.",
+      "icone": "badge",
+      "etapes": [
+        {"description": "Libérer la Tour Sylphe", "flag": "tour_sylphe_terminee", "valeur": true},
+        {"description": "Vaincre Morgane à l'Arène de Safrania", "flag": "badge_ame", "valeur": true}
+      ],
+      "prerequis": "scope_sylphe_obtenu"
+    },
+    {
+      "id": "q_badge_marais",
+      "nom": "Badge Marais — Koga",
+      "description": "Affronte Koga, le Champion de l'Arène de Parmanie, pour obtenir le Badge Marais.",
+      "icone": "badge",
+      "etapes": [
+        {"description": "Visiter le Parc Safari", "flag": "parc_safari_visite", "valeur": true},
+        {"description": "Vaincre Koga à l'Arène de Parmanie", "flag": "badge_marais", "valeur": true}
+      ],
+      "prerequis": "poke_flute_obtenu"
+    },
+    {
+      "id": "q_badge_volcan",
+      "nom": "Badge Volcan — Auguste",
+      "description": "Explore le Manoir Pokémon et affronte Auguste à l'Arène de Cramois'Île.",
+      "icone": "badge",
+      "etapes": [
+        {"description": "Explorer le Manoir Pokémon", "flag": "manoir_pokemon_termine", "valeur": true},
+        {"description": "Obtenir la Clé de l'Arène", "flag": "cle_arene_cramoisile_obtenu", "valeur": true},
+        {"description": "Vaincre Auguste à l'Arène", "flag": "badge_volcan", "valeur": true}
+      ],
+      "prerequis": "cs_surf_obtenu"
+    },
+    {
+      "id": "q_badge_terre",
+      "nom": "Badge Terre — Giovanni",
+      "description": "Retourne à Jadielle pour affronter le mystérieux Champion de l'Arène… Giovanni !",
+      "icone": "badge",
+      "etapes": [
+        {"description": "Vaincre Giovanni à l'Arène de Jadielle", "flag": "badge_terre", "valeur": true}
+      ],
+      "prerequis": "badge_volcan"
+    },
+    {
+      "id": "q_ligue",
+      "nom": "La Ligue Pokémon",
+      "description": "L'ultime défi ! Traverse la Route Victoire et affronte le Conseil 4 puis le Champion.",
+      "icone": "ligue",
+      "etapes": [
+        {"description": "Traverser la Route Victoire", "flag": "route_victoire_terminee", "valeur": true},
+        {"description": "Vaincre le Conseil 4", "flag": "conseil_peter_battu", "valeur": true},
+        {"description": "Devenir le Champion de la Ligue", "flag": "champion_ligue_battu", "valeur": true}
+      ],
+      "prerequis": "badge_terre"
+    }
+  ],
+  "secondaires": [
+    {
+      "id": "q_dojo",
+      "nom": "Le Dojo de Safrania",
+      "description": "Le Maître du Dojo de Safrania te récompensera si tu bats tous ses élèves.",
+      "icone": "combat",
+      "etapes": [
+        {"description": "Vaincre le Maître du Dojo", "flag": "dojo_termine", "valeur": true},
+        {"description": "Choisir Tygnon ou Kicklee", "flag": "tygnon_ou_kicklee_choisi", "valeur_non_vide": true}
+      ],
+      "prerequis": "badge_prisme"
+    },
+    {
+      "id": "q_ronflex",
+      "nom": "Réveiller les Ronflex",
+      "description": "Deux énormes Ronflex bloquent les routes 12 et 16. Utilise la Poké Flûte pour les réveiller !",
+      "icone": "pokemon",
+      "etapes": [
+        {"description": "Réveiller le Ronflex de la Route 12", "flag": "ronflex_route12_battu", "valeur": true},
+        {"description": "Réveiller le Ronflex de la Route 16", "flag": "ronflex_route16_battu", "valeur": true}
+      ],
+      "prerequis": "poke_flute_obtenu"
+    },
+    {
+      "id": "q_legendaires",
+      "nom": "Les Oiseaux Légendaires",
+      "description": "Trois oiseaux légendaires se cachent dans Kanto. Sauras-tu tous les capturer ?",
+      "icone": "legendaire",
+      "etapes": [
+        {"description": "Capturer Artikodin aux Îles Écume", "flag": "artikodin_battu", "valeur": true},
+        {"description": "Capturer Électhor à la Centrale", "flag": "electhor_battu", "valeur": true},
+        {"description": "Capturer Sulfura sur la Route Victoire", "flag": "sulfura_battu", "valeur": true}
+      ],
+      "prerequis": "cs_surf_obtenu"
+    },
+    {
+      "id": "q_grotte_inconnue",
+      "nom": "La Grotte Inconnue",
+      "description": "Après avoir vaincu la Ligue, une grotte mystérieuse s'est ouverte près d'Azuria…",
+      "icone": "grotte",
+      "etapes": [
+        {"description": "Entrer dans la Grotte Inconnue", "flag": "grotte_inconnue_ouverte", "valeur": true},
+        {"description": "Vaincre ou capturer Mewtwo", "flag": "mewtwo_vaincu", "valeur": true}
+      ],
+      "prerequis": "champion_ligue_battu"
+    },
+    {
+      "id": "q_fossile",
+      "nom": "Ressusciter les Fossiles",
+      "description": "Le laboratoire de Cramois'Île peut ressusciter des Pokémon ancestraux à partir de fossiles.",
+      "icone": "science",
+      "etapes": [
+        {"description": "Choisir un Fossile au Mont Sélénite", "flag": "fossile_choisi", "valeur_non_vide": true},
+        {"description": "Trouver le Fossile Ambre au Manoir Pokémon", "flag": "fossile_ambre_obtenu", "valeur": true},
+        {"description": "Ressusciter Ptéra", "flag": "ptéra_ressuscite", "valeur": true}
+      ],
+      "prerequis": "fossile_mont_selenite_pris"
+    },
+    {
+      "id": "q_evoli",
+      "nom": "Le Cadeau de Céladopole",
+      "description": "Quelqu'un dans le Manoir de Céladopole a un Pokémon rare à t'offrir…",
+      "icone": "pokemon",
+      "etapes": [
+        {"description": "Recevoir Évoli à Céladopole", "flag": "evoli_celadopole_recu", "valeur": true}
+      ],
+      "prerequis": "badge_prisme"
+    },
+    {
+      "id": "q_lokhlass",
+      "nom": "Le Lokhlass de la Tour Sylphe",
+      "description": "Un employé reconnaissant de la SARL Sylphe t'offre un Pokémon rare après la libération.",
+      "icone": "pokemon",
+      "etapes": [
+        {"description": "Recevoir Lokhlass à la Tour Sylphe", "flag": "lokhlass_recu", "valeur": true}
+      ],
+      "prerequis": "tour_sylphe_terminee"
+    },
+    {
+      "id": "q_pokedex_complet",
+      "nom": "Pokédex complet !",
+      "description": "Capture les 151 Pokémon pour compléter le Pokédex du Prof. Chen.",
+      "icone": "pokedex",
+      "etapes": [
+        {"description": "Capturer les 151 espèces de Pokémon", "flag": "_special_pokedex_complet", "valeur": true}
+      ],
+      "prerequis": "pokedex_recu"
+    }
+  ]
+}
