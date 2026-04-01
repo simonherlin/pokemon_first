@@ -43,6 +43,9 @@ func recevoir_params(params: Dictionary) -> void:
 	var warp_id: String = params.get("warp_entree", "")
 	if not warp_id.is_empty() and joueur:
 		_teleporter_sur_warp(warp_id)
+	# Gérer le retour d'un combat champion (Conseil 4 / Ligue)
+	if params.get("champion_battu", false):
+		_on_champion_battu()
 
 func _charger_carte() -> void:
 	carte_data = MapLoader.get_carte(carte_id)
@@ -155,6 +158,25 @@ func _afficher_nom_carte() -> void:
 func _deviner_carte_id() -> String:
 	var nom_fichier := get_scene_file_path().get_file().get_basename()
 	return nom_fichier
+
+# --- Gestion victoire champion (Conseil 4 / Ligue) ---
+func _on_champion_battu() -> void:
+	# Marquer le dresseur comme battu et poser les flags correspondants
+	match carte_id:
+		"ligue_olga":
+			GameManager.set_flag("conseil_olga_battu", true)
+		"ligue_aldo":
+			GameManager.set_flag("conseil_aldo_battu", true)
+		"ligue_agatha":
+			GameManager.set_flag("conseil_agatha_battu", true)
+		"ligue_peter":
+			GameManager.set_flag("conseil_peter_battu", true)
+	# Marquer les dresseurs PNJ comme battus
+	for pnj_data in carte_data.get("pnj", []):
+		if pnj_data.get("type", "") == "champion":
+			var tid: String = pnj_data.get("trainer_id", pnj_data.get("id", ""))
+			PlayerData.marquer_dresseur_battu(tid)
+			PlayerData.marquer_dresseur_battu(pnj_data.get("id", ""))
 
 # --- Gestion du Start Menu ---
 func _process(_delta: float) -> void:

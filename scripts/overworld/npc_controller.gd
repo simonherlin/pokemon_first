@@ -16,8 +16,10 @@ var recompense: int = 0
 var champ_vision: int = 3           # Cases devant le PNJ (dresseur)
 var direction_initiale: String = "bas"
 var mobile: bool = false
-var type_pnj: String = ""           # "", "infirmiere", "vendeur", "pc"
+var type_pnj: String = ""           # "", "infirmiere", "vendeur", "pc", "champion"
 var inventaire_boutique: Array = [] # IDs des items en vente (si type=vendeur)
+var trainer_id: String = ""          # Référence vers trainers.json (si présent)
+var _trainer_nom: String = ""        # Nom du dresseur chargé depuis trainers.json
 
 # --- Nœuds ---
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -52,9 +54,13 @@ func initialiser_depuis_json(data: Dictionary) -> void:
 	direction_initiale = data.get("direction", "bas")
 	type_pnj = data.get("type", "")
 	inventaire_boutique = data.get("inventaire_boutique", [])
+	trainer_id = data.get("trainer_id", "")
 	battu = PlayerData.dresseur_est_battu(npc_id)
 	# Charger le sprite du PNJ
 	_charger_sprite(data.get("sprite", "pnj_homme"))
+	# Si trainer_id est défini, charger l'équipe depuis trainers.json
+	if not trainer_id.is_empty() and not est_dresseur:
+		_charger_trainer_data()
 
 # Interaction déclenché par le joueur (touche A face au PNJ)
 func interagir(joueur: Node) -> void:
@@ -150,17 +156,58 @@ func _demarrer_combat(joueur: Node) -> void:
 	# Construire les données du dresseur pour BattleController
 	var dresseur_data := {
 		"id": npc_id,
-		"nom": npc_id,  # Sera remplacé par le nom JSON si disponible
+		"nom": _trainer_nom if not _trainer_nom.is_empty() else npc_id,
 		"equipe": equipe_dresseur,
 		"recompense": recompense
 	}
-	# Charger de la scène de combat
-	SceneManager.charger_scene("res://scenes/battle/battle_scene.tscn", {
+	# Paramètres de combat
+	var params := {
 		"type_combat": "dresseur",
 		"dresseur_data": dresseur_data,
 		"pokemon_joueur_index": 0,
 		"carte_retour": PlayerData.carte_actuelle
-	})
+	}
+	# Si type champion, signaler pour le traitement post-victoire
+	if type_pnj == "champion":
+		params["champion_battu"] = true
+	# Charger de la scène de combat
+	SceneManager.charger_scene("res://scenes/battle/battle_scene.tscn", params)
+
+# Charger les données du dresseur depuis trainers.json via trainer_id
+func _charger_trainer_data() -> void:
+	var chemin := "res://data/trainers.json"
+	if not FileAccess.file_exists(chemin):
+		push_error("NPCController: trainers.json introuvable")
+		return
+	var fichier := FileAccess.open(chemin, FileAccess.READ)
+	var all_trainers = JSON.parse_string(fichier.get_as_text())
+	fichier.close()
+	if not all_trainers or not all_trainers.has(trainer_id):
+		push_error("NPCController: dresseur %s introuvable dans trainers.json" % trainer_id)
+		return
+	var trainer_raw: Dictionary = all_trainers[trainer_id]
+	# Construire l'équipe de Pokémon
+	var equipe_combat := []
+	for pkmn in trainer_raw.get("equipe", []):
+		var pokemon = SpeciesData.creer_pokemon(pkmn.get("espece_id", "019"), pkmn.get("niveau", 5))
+		if pokemon:
+			equipe_combat.append(pokemon.to_dict())
+	if not equipe_combat.is_empty():
+		equipe_dresseur = equipe_combat
+		est_dresseur = true
+	recompense = trainer_raw.get("recompense", 0)
+	_trainer_nom = trainer_raw.get("nom", trainer_id)
+	# Charger les dialogues du dresseur si pas définis dans la carte
+	if dialogues.is_empty():
+		var dial_avant: String = trainer_raw.get("dialogue_avant", "")
+		if not dial_avant.is_empty():
+			dialogues = [dial_avant]
+	if dialogue_apres.is_empty():
+		var dial_defaite: String = trainer_raw.get("dialogue_defaite", "")
+		if not dial_defaite.is_empty():
+			dialogue_apres = [dial_defaite]
+	# Mettre à jour le statut battu avec le trainer_id
+	battu = PlayerData.dresseur_est_battu(trainer_id) or PlayerData.dresseur_est_battu(npc_id)
 
 # Calculer la direction pour faire face au joueur
 func _direction_vers(cible: Node) -> String:

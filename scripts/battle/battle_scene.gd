@@ -165,6 +165,13 @@ func _on_combat_termine(victoire: bool) -> void:
 	# Sauvegarder l'état des PV dans l'équipe
 	if _controller.pokemon_joueur:
 		PlayerData.equipe[_controller.index_pokemon_joueur] = _controller.pokemon_joueur.to_dict()
+	# Vérifier si c'est la victoire contre le champion de la Ligue → crédits
+	if victoire and _carte_retour == "ligue_champion" and _params_retour.get("champion_battu", false):
+		GameManager.set_flag("champion_ligue_battu", true)
+		PlayerData.marquer_dresseur_battu("champion_rival_ligue")
+		await get_tree().create_timer(2.0).timeout
+		SceneManager.charger_scene("res://scenes/ui/credits_screen.tscn", {})
+		return
 	# Retour à la carte
 	await get_tree().create_timer(2.0).timeout
 	var retour_params := {"carte_id": _carte_retour}
