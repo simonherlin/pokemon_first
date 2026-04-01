@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://arene_jadielle"]
 
-[ext_resource type="Script" path="res://scripts/overworld/map_scene.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/overworld/gym_scene.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dialog_box" path="res://scenes/ui/dialog_box.tscn" id="2"]
 
 [node name="AreneJadielle" type="Node2D"]
