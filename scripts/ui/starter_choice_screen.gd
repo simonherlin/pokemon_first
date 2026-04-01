@@ -9,7 +9,8 @@ signal starter_choisi(espece_id: String)
 const STARTERS := [
 	{"id": "001", "nom": "Bulbizarre", "type": "Plante/Poison", "description": "Un Pokémon graine qui porte\nune bulbe sur son dos depuis\nsa naissance."},
 	{"id": "004", "nom": "Salamèche", "type": "Feu", "description": "La flamme au bout de sa queue\nindique son état de santé.\nElle brûle vivement quand il va bien."},
-	{"id": "007", "nom": "Carapuce", "type": "Eau", "description": "Sa carapace ne sert pas\nqu'à le protéger. Sa forme ronde\nréduit la résistance dans l'eau."}
+	{"id": "007", "nom": "Carapuce", "type": "Eau", "description": "Sa carapace ne sert pas\nqu'à le protéger. Sa forme ronde\nréduit la résistance dans l'eau."},
+	{"id": "151", "nom": "Mew", "type": "Psy", "description": "Un Pokémon très rare et mythique.\nOn dit qu'il possède le code\ngénétique de tous les Pokémon."}
 ]
 
 var _index: int = 0
@@ -40,11 +41,16 @@ func _creer_ui() -> void:
 	titre.add_theme_font_size_override("font_size", 16)
 	add_child(titre)
 
-	# Les 3 starters côte à côte
-	for i in range(3):
+	# Les 4 starters côte à côte (3 classiques + Mew)
+	var nb_starters := STARTERS.size()
+	var panel_largeur := 105
+	var espacement := 6
+	var total_w := nb_starters * panel_largeur + (nb_starters - 1) * espacement
+	var offset_x := (480 - total_w) / 2
+	for i in range(nb_starters):
 		var panel := Panel.new()
-		panel.position = Vector2(24 + i * 150, 50)
-		panel.size = Vector2(130, 100)
+		panel.position = Vector2(offset_x + i * (panel_largeur + espacement), 50)
+		panel.size = Vector2(panel_largeur, 100)
 		var style := StyleBoxFlat.new()
 		style.bg_color = Color(0.15, 0.2, 0.15, 0.9)
 		style.set_border_width_all(2)
@@ -56,28 +62,41 @@ func _creer_ui() -> void:
 
 		var nom := Label.new()
 		nom.text = STARTERS[i].nom
-		nom.position = Vector2(10, 8)
+		nom.position = Vector2(8, 8)
 		nom.add_theme_color_override("font_color", Color.WHITE)
-		nom.add_theme_font_size_override("font_size", 13)
+		nom.add_theme_font_size_override("font_size", 12)
 		panel.add_child(nom)
 		_labels_noms.append(nom)
 
 		var type_label := Label.new()
 		type_label.text = "Type: %s" % STARTERS[i].type
-		type_label.position = Vector2(10, 30)
+		type_label.position = Vector2(8, 28)
 		type_label.add_theme_color_override("font_color", Color(0.6, 0.8, 0.6))
-		type_label.add_theme_font_size_override("font_size", 10)
+		type_label.add_theme_font_size_override("font_size", 9)
 		panel.add_child(type_label)
 
-		# Sprite placeholder (carré coloré selon type)
-		var sprite_rect := ColorRect.new()
-		sprite_rect.position = Vector2(35, 55)
-		sprite_rect.size = Vector2(60, 40)
-		match i:
-			0: sprite_rect.color = Color(0.2, 0.6, 0.3, 0.8)  # Vert (Plante)
-			1: sprite_rect.color = Color(0.8, 0.3, 0.2, 0.8)  # Rouge (Feu)
-			2: sprite_rect.color = Color(0.2, 0.4, 0.8, 0.8)  # Bleu (Eau)
-		panel.add_child(sprite_rect)
+		# Sprite du Pokémon (image réelle depuis assets)
+		var sprite_path := "res://assets/sprites/pokemon/front/%s.png" % STARTERS[i].id
+		if ResourceLoader.exists(sprite_path):
+			var tex := load(sprite_path)
+			var sprite := TextureRect.new()
+			sprite.texture = tex
+			sprite.position = Vector2(22, 48)
+			sprite.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			sprite.custom_minimum_size = Vector2(60, 48)
+			sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+			panel.add_child(sprite)
+		else:
+			# Fallback : carré coloré
+			var sprite_rect := ColorRect.new()
+			sprite_rect.position = Vector2(22, 55)
+			sprite_rect.size = Vector2(60, 40)
+			match i:
+				0: sprite_rect.color = Color(0.2, 0.6, 0.3, 0.8)
+				1: sprite_rect.color = Color(0.8, 0.3, 0.2, 0.8)
+				2: sprite_rect.color = Color(0.2, 0.4, 0.8, 0.8)
+				3: sprite_rect.color = Color(0.8, 0.4, 0.8, 0.8)  # Rose (Psy)
+			panel.add_child(sprite_rect)
 
 	# Description en bas
 	var panel_desc := Panel.new()
@@ -118,7 +137,8 @@ func _creer_ui() -> void:
 	add_child(_label_instruction)
 
 func _mettre_a_jour_selection() -> void:
-	for i in range(3):
+	var nb := STARTERS.size()
+	for i in range(nb):
 		var panel: Panel = get_node("PanelStarter%d" % i)
 		var style: StyleBoxFlat = panel.get_theme_stylebox("panel").duplicate()
 		if i == _index:
@@ -143,11 +163,12 @@ func _process(_delta: float) -> void:
 		_gerer_selection()
 
 func _gerer_selection() -> void:
+	var nb := STARTERS.size()
 	if Input.is_action_just_pressed("action_gauche"):
-		_index = (_index - 1 + 3) % 3
+		_index = (_index - 1 + nb) % nb
 		_mettre_a_jour_selection()
 	elif Input.is_action_just_pressed("action_droite"):
-		_index = (_index + 1) % 3
+		_index = (_index + 1) % nb
 		_mettre_a_jour_selection()
 	elif Input.is_action_just_pressed("action_confirmer"):
 		_confirme = true

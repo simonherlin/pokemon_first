@@ -135,6 +135,54 @@ func _interagir_pc(joueur: Node) -> void:
 			joueur.set_peut_bouger(true)
 	)
 # Vérifier si le joueur entre dans le champ de vision du dresseur
+# === Équilibrage dynamique ===
+# Ajuste le niveau de l'équipe du dresseur en fonction du joueur
+func _equilibrer_equipe_dresseur(equipe_base: Array) -> Array:
+	if equipe_base.is_empty() or PlayerData.equipe.is_empty():
+		return equipe_base
+	# Calculer le niveau moyen du joueur
+	var total_joueur := 0
+	var count_joueur := 0
+	for poke in PlayerData.equipe:
+		var niv: int = poke.get("niveau", 0)
+		if niv > 0:
+			total_joueur += niv
+			count_joueur += 1
+	if count_joueur == 0:
+		return equipe_base
+	var avg_joueur := int(total_joueur / count_joueur)
+	# Calculer le niveau moyen du dresseur
+	var total_dresseur := 0
+	var count_dresseur := 0
+	for poke in equipe_base:
+		var niv: int = poke.get("niveau", 0)
+		if niv > 0:
+			total_dresseur += niv
+			count_dresseur += 1
+	if count_dresseur == 0:
+		return equipe_base
+	var avg_dresseur := int(total_dresseur / count_dresseur)
+	# Si le joueur est significativement plus fort (> 3 niveaux d'avance),
+	# on remonte les niveaux du dresseur proportionnellement
+	if avg_joueur <= avg_dresseur + 3:
+		return equipe_base
+	var boost := avg_joueur - avg_dresseur - 2  # On garde le joueur 2 niveaux au-dessus
+	var equipe_ajustee := []
+	for poke in equipe_base:
+		var copie := poke.duplicate(true)
+		var niv_base: int = copie.get("niveau", 5)
+		var nouveau_niv := mini(niv_base + boost, 100)
+		copie["niveau"] = nouveau_niv
+		# Recalculer les stats pour le nouveau niveau
+		var espece_id_poke: String = copie.get("espece_id", "")
+		if not espece_id_poke.is_empty():
+			var pokemon_recalcule = SpeciesData.creer_pokemon(espece_id_poke, nouveau_niv)
+			if pokemon_recalcule:
+				copie = pokemon_recalcule.to_dict()
+		equipe_ajustee.append(copie)
+	return equipe_ajustee
+
+# Vérifier si le joueur entre dans le champ de vision du dresseur
 func _verifier_champ_vision() -> void:
 	if ray_vision == null:
 		return
@@ -153,11 +201,13 @@ func _reagir_joueur_vu(joueur: Node) -> void:
 func _demarrer_combat(joueur: Node) -> void:
 	if joueur.has_method("set_peut_bouger"):
 		joueur.set_peut_bouger(false)
+	# === Équilibrage dynamique des dresseurs ===
+	var equipe_equilibree := _equilibrer_equipe_dresseur(equipe_dresseur)
 	# Construire les données du dresseur pour BattleController
 	var dresseur_data := {
 		"id": npc_id,
 		"nom": _trainer_nom if not _trainer_nom.is_empty() else npc_id,
-		"equipe": equipe_dresseur,
+		"equipe": equipe_equilibree,
 		"recompense": recompense
 	}
 	# Paramètres de combat

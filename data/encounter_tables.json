@@ -5,20 +5,20 @@
     "herbes": [
       {
         "pokemon_id": "016",
-        "taux": 45,
+        "taux": 40,
         "niveau_min": 2,
-        "niveau_max": 4
+        "niveau_max": 5
       },
       {
         "pokemon_id": "019",
-        "taux": 45,
+        "taux": 50,
         "niveau_min": 2,
         "niveau_max": 4
       },
       {
-        "pokemon_id": "016",
+        "pokemon_id": "025",
         "taux": 10,
-        "niveau_min": 4,
+        "niveau_min": 3,
         "niveau_max": 5
       }
     ]
@@ -29,13 +29,13 @@
     "herbes": [
       {
         "pokemon_id": "016",
-        "taux": 35,
+        "taux": 30,
         "niveau_min": 3,
         "niveau_max": 5
       },
       {
         "pokemon_id": "019",
-        "taux": 35,
+        "taux": 30,
         "niveau_min": 3,
         "niveau_max": 5
       },
@@ -43,13 +43,31 @@
         "pokemon_id": "010",
         "taux": 15,
         "niveau_min": 3,
-        "niveau_max": 4
+        "niveau_max": 5
       },
       {
         "pokemon_id": "013",
         "taux": 15,
         "niveau_min": 3,
-        "niveau_max": 4
+        "niveau_max": 5
+      },
+      {
+        "pokemon_id": "029",
+        "taux": 5,
+        "niveau_min": 4,
+        "niveau_max": 5
+      },
+      {
+        "pokemon_id": "032",
+        "taux": 5,
+        "niveau_min": 4,
+        "niveau_max": 5
+      },
+      {
+        "pokemon_id": "122",
+        "taux": 5,
+        "niveau_min": 8,
+        "niveau_max": 12
       }
     ]
   },
@@ -61,49 +79,55 @@
         "pokemon_id": "010",
         "taux": 20,
         "niveau_min": 3,
-        "niveau_max": 5
+        "niveau_max": 6
       },
       {
         "pokemon_id": "011",
         "taux": 5,
         "niveau_min": 7,
-        "niveau_max": 9
+        "niveau_max": 7
       },
       {
         "pokemon_id": "013",
         "taux": 20,
         "niveau_min": 3,
-        "niveau_max": 5
+        "niveau_max": 6
       },
       {
         "pokemon_id": "014",
         "taux": 5,
         "niveau_min": 7,
-        "niveau_max": 9
-      },
-      {
-        "pokemon_id": "016",
-        "taux": 20,
-        "niveau_min": 3,
-        "niveau_max": 6
-      },
-      {
-        "pokemon_id": "019",
-        "taux": 20,
-        "niveau_min": 3,
-        "niveau_max": 5
+        "niveau_max": 7
       },
       {
         "pokemon_id": "025",
         "taux": 5,
+        "niveau_min": 3,
+        "niveau_max": 5
+      },
+      {
+        "pokemon_id": "043",
+        "taux": 15,
         "niveau_min": 4,
-        "niveau_max": 7
+        "niveau_max": 6
+      },
+      {
+        "pokemon_id": "048",
+        "taux": 15,
+        "niveau_min": 4,
+        "niveau_max": 6
       },
       {
         "pokemon_id": "012",
         "taux": 5,
-        "niveau_min": 9,
-        "niveau_max": 12
+        "niveau_min": 7,
+        "niveau_max": 8
+      },
+      {
+        "pokemon_id": "046",
+        "taux": 10,
+        "niveau_min": 5,
+        "niveau_max": 7
       }
     ]
   },
@@ -112,112 +136,160 @@
     "nom": "Route 3",
     "herbes": [
       {
+        "pokemon_id": "021",
+        "taux": 30,
+        "niveau_min": 6,
+        "niveau_max": 8
+      },
+      {
         "pokemon_id": "016",
         "taux": 20,
         "niveau_min": 6,
-        "niveau_max": 9
+        "niveau_max": 8
       },
       {
-        "pokemon_id": "019",
-        "taux": 20,
+        "pokemon_id": "029",
+        "taux": 15,
         "niveau_min": 6,
-        "niveau_max": 9
+        "niveau_max": 8
       },
       {
-        "pokemon_id": "021",
-        "taux": 30,
+        "pokemon_id": "032",
+        "taux": 15,
+        "niveau_min": 6,
+        "niveau_max": 8
+      },
+      {
+        "pokemon_id": "039",
+        "taux": 10,
+        "niveau_min": 5,
+        "niveau_max": 8
+      },
+      {
+        "pokemon_id": "056",
+        "taux": 10,
+        "niveau_min": 7,
+        "niveau_max": 9
+      }
+    ]
+  },
+  "mont_selenite_1f": {
+    "zone_id": "mont_selenite_1f",
+    "nom": "Mont Sélénite 1F",
+    "cave": [
+      {
+        "pokemon_id": "041",
+        "taux": 40,
         "niveau_min": 7,
         "niveau_max": 10
       },
       {
-        "pokemon_id": "023",
-        "taux": 10,
-        "niveau_min": 6,
-        "niveau_max": 9
+        "pokemon_id": "074",
+        "taux": 20,
+        "niveau_min": 7,
+        "niveau_max": 10
       },
       {
-        "pokemon_id": "027",
-        "taux": 20,
-        "niveau_min": 6,
-        "niveau_max": 9
+        "pokemon_id": "046",
+        "taux": 15,
+        "niveau_min": 8,
+        "niveau_max": 10
+      },
+      {
+        "pokemon_id": "035",
+        "taux": 10,
+        "niveau_min": 8,
+        "niveau_max": 12
+      },
+      {
+        "pokemon_id": "066",
+        "taux": 10,
+        "niveau_min": 8,
+        "niveau_max": 10
+      },
+      {
+        "pokemon_id": "095",
+        "taux": 5,
+        "niveau_min": 9,
+        "niveau_max": 11
       }
     ]
   },
-  "mont_lunaire": {
-    "zone_id": "mont_lunaire",
-    "nom": "Mont Lunaire",
-    "herbes": [
-      {
-        "pokemon_id": "035",
-        "taux": 15,
-        "niveau_min": 8,
-        "niveau_max": 12
-      },
-      {
-        "pokemon_id": "039",
-        "taux": 15,
-        "niveau_min": 8,
-        "niveau_max": 12
-      },
+  "mont_selenite_b1f": {
+    "zone_id": "mont_selenite_b1f",
+    "nom": "Mont Sélénite B1F",
+    "cave": [
       {
         "pokemon_id": "041",
         "taux": 35,
-        "niveau_min": 9,
-        "niveau_max": 13
+        "niveau_min": 8,
+        "niveau_max": 12
       },
       {
         "pokemon_id": "074",
         "taux": 20,
-        "niveau_min": 8,
-        "niveau_max": 12
-      },
-      {
-        "pokemon_id": "075",
-        "taux": 15,
-        "niveau_min": 11,
-        "niveau_max": 14
-      }
-    ]
-  },
-  "mont_selenite": {
-    "zone_id": "mont_selenite",
-    "nom": "Mont Sélénite",
-    "herbes": [
-      {
-        "pokemon_id": "041",
-        "taux": 30,
-        "niveau_min": 8,
-        "niveau_max": 12
-      },
-      {
-        "pokemon_id": "035",
-        "taux": 10,
-        "niveau_min": 8,
-        "niveau_max": 12
-      },
-      {
-        "pokemon_id": "074",
-        "taux": 25,
         "niveau_min": 8,
         "niveau_max": 12
       },
       {
         "pokemon_id": "046",
         "taux": 15,
-        "niveau_min": 8,
+        "niveau_min": 9,
         "niveau_max": 12
       },
       {
-        "pokemon_id": "023",
-        "taux": 10,
+        "pokemon_id": "035",
+        "taux": 15,
         "niveau_min": 9,
-        "niveau_max": 11
+        "niveau_max": 12
       },
       {
-        "pokemon_id": "027",
+        "pokemon_id": "095",
         "taux": 10,
         "niveau_min": 9,
-        "niveau_max": 11
+        "niveau_max": 13
+      },
+      {
+        "pokemon_id": "066",
+        "taux": 5,
+        "niveau_min": 9,
+        "niveau_max": 12
+      }
+    ]
+  },
+  "mont_selenite_b2f": {
+    "zone_id": "mont_selenite_b2f",
+    "nom": "Mont Sélénite B2F",
+    "cave": [
+      {
+        "pokemon_id": "041",
+        "taux": 30,
+        "niveau_min": 9,
+        "niveau_max": 12
+      },
+      {
+        "pokemon_id": "074",
+        "taux": 25,
+        "niveau_min": 9,
+        "niveau_max": 12
+      },
+      {
+        "pokemon_id": "035",
+        "taux": 20,
+        "niveau_min": 9,
+        "niveau_max": 14
+      },
+      {
+        "pokemon_id": "095",
+        "taux": 15,
+        "niveau_min": 10,
+        "niveau_max": 13
+      },
+      {
+        "pokemon_id": "066",
+        "taux": 10,
+        "niveau_min": 9,
+        "niveau_max": 12
       }
     ]
   },
@@ -226,8 +298,14 @@
     "nom": "Route 4",
     "herbes": [
       {
-        "pokemon_id": "021",
+        "pokemon_id": "019",
         "taux": 30,
+        "niveau_min": 8,
+        "niveau_max": 12
+      },
+      {
+        "pokemon_id": "021",
+        "taux": 25,
         "niveau_min": 8,
         "niveau_max": 12
       },
@@ -239,20 +317,14 @@
       },
       {
         "pokemon_id": "027",
-        "taux": 20,
+        "taux": 15,
         "niveau_min": 8,
         "niveau_max": 12
       },
       {
-        "pokemon_id": "066",
-        "taux": 15,
-        "niveau_min": 9,
-        "niveau_max": 12
-      },
-      {
-        "pokemon_id": "054",
-        "taux": 15,
-        "niveau_min": 8,
+        "pokemon_id": "056",
+        "taux": 10,
+        "niveau_min": 10,
         "niveau_max": 12
       }
     ]
@@ -262,16 +334,16 @@
     "nom": "Route 24",
     "herbes": [
       {
-        "pokemon_id": "013",
-        "taux": 15,
-        "niveau_min": 12,
-        "niveau_max": 14
+        "pokemon_id": "010",
+        "taux": 10,
+        "niveau_min": 7,
+        "niveau_max": 12
       },
       {
-        "pokemon_id": "010",
-        "taux": 15,
-        "niveau_min": 12,
-        "niveau_max": 14
+        "pokemon_id": "013",
+        "taux": 10,
+        "niveau_min": 7,
+        "niveau_max": 12
       },
       {
         "pokemon_id": "043",
@@ -292,9 +364,9 @@
         "niveau_max": 14
       },
       {
-        "pokemon_id": "060",
-        "taux": 5,
-        "niveau_min": 10,
+        "pokemon_id": "016",
+        "taux": 15,
+        "niveau_min": 11,
         "niveau_max": 13
       }
     ]
@@ -316,28 +388,34 @@
         "niveau_max": 14
       },
       {
+        "pokemon_id": "010",
+        "taux": 10,
+        "niveau_min": 8,
+        "niveau_max": 12
+      },
+      {
+        "pokemon_id": "013",
+        "taux": 10,
+        "niveau_min": 8,
+        "niveau_max": 12
+      },
+      {
         "pokemon_id": "063",
-        "taux": 15,
+        "taux": 10,
         "niveau_min": 9,
         "niveau_max": 12
       },
       {
-        "pokemon_id": "046",
-        "taux": 15,
-        "niveau_min": 12,
+        "pokemon_id": "048",
+        "taux": 10,
+        "niveau_min": 13,
         "niveau_max": 14
       },
       {
-        "pokemon_id": "054",
+        "pokemon_id": "052",
         "taux": 10,
-        "niveau_min": 12,
-        "niveau_max": 15
-      },
-      {
-        "pokemon_id": "079",
-        "taux": 10,
-        "niveau_min": 13,
-        "niveau_max": 15
+        "niveau_min": 10,
+        "niveau_max": 14
       }
     ]
   },
@@ -349,31 +427,31 @@
         "pokemon_id": "043",
         "taux": 25,
         "niveau_min": 13,
-        "niveau_max": 17
+        "niveau_max": 16
       },
       {
-        "pokemon_id": "052",
+        "pokemon_id": "069",
         "taux": 25,
         "niveau_min": 13,
-        "niveau_max": 17
+        "niveau_max": 16
       },
       {
         "pokemon_id": "016",
         "taux": 20,
         "niveau_min": 13,
-        "niveau_max": 17
+        "niveau_max": 16
+      },
+      {
+        "pokemon_id": "052",
+        "taux": 15,
+        "niveau_min": 10,
+        "niveau_max": 16
       },
       {
         "pokemon_id": "056",
         "taux": 15,
         "niveau_min": 14,
-        "niveau_max": 17
-      },
-      {
-        "pokemon_id": "063",
-        "taux": 15,
-        "niveau_min": 14,
-        "niveau_max": 17
+        "niveau_max": 16
       }
     ]
   },
@@ -385,55 +463,113 @@
         "pokemon_id": "043",
         "taux": 25,
         "niveau_min": 13,
-        "niveau_max": 17
+        "niveau_max": 16
       },
       {
-        "pokemon_id": "052",
+        "pokemon_id": "069",
         "taux": 25,
         "niveau_min": 13,
-        "niveau_max": 17
+        "niveau_max": 16
       },
       {
         "pokemon_id": "016",
         "taux": 20,
         "niveau_min": 13,
-        "niveau_max": 17
+        "niveau_max": 16
       },
       {
-        "pokemon_id": "096",
+        "pokemon_id": "052",
         "taux": 15,
-        "niveau_min": 14,
-        "niveau_max": 17
+        "niveau_min": 10,
+        "niveau_max": 16
       },
       {
-        "pokemon_id": "050",
+        "pokemon_id": "056",
         "taux": 15,
         "niveau_min": 14,
-        "niveau_max": 17
+        "niveau_max": 16
+      }
+    ],
+    "surf": [
+      {
+        "pokemon_id": "054",
+        "taux": 50,
+        "niveau_min": 15,
+        "niveau_max": 25
+      },
+      {
+        "pokemon_id": "060",
+        "taux": 30,
+        "niveau_min": 15,
+        "niveau_max": 25
+      },
+      {
+        "pokemon_id": "118",
+        "taux": 20,
+        "niveau_min": 15,
+        "niveau_max": 25
+      }
+    ],
+    "peche": [
+      {
+        "pokemon_id": "129",
+        "taux": 60,
+        "niveau_min": 5,
+        "niveau_max": 15
+      },
+      {
+        "pokemon_id": "060",
+        "taux": 20,
+        "niveau_min": 10,
+        "niveau_max": 15
+      },
+      {
+        "pokemon_id": "118",
+        "taux": 20,
+        "niveau_min": 10,
+        "niveau_max": 15
       }
     ]
   },
-  "grotte_taupiqueur": {
-    "zone_id": "grotte_taupiqueur",
-    "nom": "Grotte Taupiqueur",
+  "route_7": {
+    "zone_id": "route_7",
+    "nom": "Route 7",
     "herbes": [
       {
-        "pokemon_id": "050",
-        "taux": 50,
-        "niveau_min": 18,
+        "pokemon_id": "016",
+        "taux": 15,
+        "niveau_min": 19,
         "niveau_max": 22
       },
       {
-        "pokemon_id": "051",
+        "pokemon_id": "037",
         "taux": 20,
-        "niveau_min": 22,
-        "niveau_max": 26
+        "niveau_min": 19,
+        "niveau_max": 22
       },
       {
-        "pokemon_id": "050",
-        "taux": 30,
-        "niveau_min": 22,
-        "niveau_max": 26
+        "pokemon_id": "058",
+        "taux": 20,
+        "niveau_min": 19,
+        "niveau_max": 22
+      },
+      {
+        "pokemon_id": "043",
+        "taux": 15,
+        "niveau_min": 19,
+        "niveau_max": 22
+      },
+      {
+        "pokemon_id": "069",
+        "taux": 15,
+        "niveau_min": 19,
+        "niveau_max": 22
+      },
+      {
+        "pokemon_id": "052",
+        "taux": 15,
+        "niveau_min": 17,
+        "niveau_max": 20
       }
     ]
   },
@@ -442,33 +578,105 @@
     "nom": "Route 8",
     "herbes": [
       {
-        "pokemon_id": "048",
-        "taux": 25,
-        "niveau_min": 18,
-        "niveau_max": 22
-      },
-      {
-        "pokemon_id": "052",
-        "taux": 25,
-        "niveau_min": 18,
-        "niveau_max": 22
-      },
-      {
-        "pokemon_id": "023",
+        "pokemon_id": "037",
         "taux": 20,
         "niveau_min": 18,
         "niveau_max": 22
       },
       {
-        "pokemon_id": "056",
+        "pokemon_id": "058",
+        "taux": 20,
+        "niveau_min": 18,
+        "niveau_max": 22
+      },
+      {
+        "pokemon_id": "023",
+        "taux": 15,
+        "niveau_min": 18,
+        "niveau_max": 22
+      },
+      {
+        "pokemon_id": "027",
+        "taux": 15,
+        "niveau_min": 18,
+        "niveau_max": 22
+      },
+      {
+        "pokemon_id": "096",
         "taux": 15,
         "niveau_min": 20,
         "niveau_max": 22
       },
       {
-        "pokemon_id": "058",
+        "pokemon_id": "092",
         "taux": 15,
+        "niveau_min": 20,
+        "niveau_max": 22
+      }
+    ]
+  },
+  "tunnel_souterrain": {
+    "zone_id": "tunnel_souterrain",
+    "nom": "Tunnel Souterrain",
+    "cave": [
+      {
+        "pokemon_id": "050",
+        "taux": 40,
+        "niveau_min": 15,
+        "niveau_max": 19
+      },
+      {
+        "pokemon_id": "074",
+        "taux": 25,
+        "niveau_min": 15,
+        "niveau_max": 17
+      },
+      {
+        "pokemon_id": "095",
+        "taux": 10,
+        "niveau_min": 13,
+        "niveau_max": 17
+      },
+      {
+        "pokemon_id": "066",
+        "taux": 15,
+        "niveau_min": 15,
+        "niveau_max": 17
+      },
+      {
+        "pokemon_id": "041",
+        "taux": 10,
+        "niveau_min": 15,
+        "niveau_max": 17
+      }
+    ]
+  },
+  "grotte_taupiqueur": {
+    "zone_id": "grotte_taupiqueur",
+    "nom": "Grotte Taupiqueur",
+    "cave": [
+      {
+        "pokemon_id": "050",
+        "taux": 60,
         "niveau_min": 18,
+        "niveau_max": 22
+      },
+      {
+        "pokemon_id": "051",
+        "taux": 20,
+        "niveau_min": 29,
+        "niveau_max": 31
+      },
+      {
+        "pokemon_id": "074",
+        "taux": 10,
+        "niveau_min": 18,
+        "niveau_max": 22
+      },
+      {
+        "pokemon_id": "095",
+        "taux": 10,
+        "niveau_min": 20,
         "niveau_max": 22
       }
     ]
@@ -478,34 +686,40 @@
     "nom": "Route 9",
     "herbes": [
       {
+        "pokemon_id": "019",
+        "taux": 20,
+        "niveau_min": 16,
+        "niveau_max": 20
+      },
+      {
         "pokemon_id": "021",
-        "taux": 30,
-        "niveau_min": 18,
-        "niveau_max": 22
+        "taux": 25,
+        "niveau_min": 16,
+        "niveau_max": 20
       },
       {
         "pokemon_id": "023",
         "taux": 20,
-        "niveau_min": 18,
-        "niveau_max": 22
+        "niveau_min": 16,
+        "niveau_max": 20
       },
       {
-        "pokemon_id": "019",
-        "taux": 20,
-        "niveau_min": 18,
-        "niveau_max": 22
+        "pokemon_id": "027",
+        "taux": 15,
+        "niveau_min": 16,
+        "niveau_max": 20
       },
       {
         "pokemon_id": "100",
-        "taux": 15,
-        "niveau_min": 18,
-        "niveau_max": 22
+        "taux": 10,
+        "niveau_min": 14,
+        "niveau_max": 17
       },
       {
-        "pokemon_id": "056",
-        "taux": 15,
-        "niveau_min": 20,
-        "niveau_max": 22
+        "pokemon_id": "081",
+        "taux": 10,
+        "niveau_min": 16,
+        "niveau_max": 20
       }
     ]
   },
@@ -516,768 +730,1562 @@
       {
         "pokemon_id": "100",
         "taux": 25,
-        "niveau_min": 20,
-        "niveau_max": 24
-      },
-      {
-        "pokemon_id": "021",
-        "taux": 25,
-        "niveau_min": 20,
-        "niveau_max": 24
+        "niveau_min": 14,
+        "niveau_max": 17
       },
       {
         "pokemon_id": "081",
         "taux": 20,
-        "niveau_min": 20,
-        "niveau_max": 24
+        "niveau_min": 16,
+        "niveau_max": 20
       },
       {
-        "pokemon_id": "029",
-        "taux": 15,
-        "niveau_min": 20,
-        "niveau_max": 24
+        "pokemon_id": "021",
+        "taux": 20,
+        "niveau_min": 16,
+        "niveau_max": 20
       },
       {
-        "pokemon_id": "032",
+        "pokemon_id": "023",
         "taux": 15,
-        "niveau_min": 20,
-        "niveau_max": 24
+        "niveau_min": 16,
+        "niveau_max": 20
+      },
+      {
+        "pokemon_id": "027",
+        "taux": 10,
+        "niveau_min": 16,
+        "niveau_max": 20
+      },
+      {
+        "pokemon_id": "019",
+        "taux": 10,
+        "niveau_min": 16,
+        "niveau_max": 20
       }
     ]
   },
-  "tunnel_roche": {
-    "zone_id": "tunnel_roche",
-    "nom": "Tunnel Roche",
-    "herbes": [
+  "tour_pokemon_1f": {
+    "zone_id": "tour_pokemon_1f",
+    "nom": "Tour Pokémon",
+    "cave": [
       {
-        "pokemon_id": "074",
-        "taux": 30,
+        "pokemon_id": "092",
+        "taux": 40,
         "niveau_min": 20,
         "niveau_max": 24
       },
       {
-        "pokemon_id": "066",
+        "pokemon_id": "093",
+        "taux": 20,
+        "niveau_min": 25,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "104",
         "taux": 25,
         "niveau_min": 20,
         "niveau_max": 24
       },
       {
         "pokemon_id": "041",
+        "taux": 15,
+        "niveau_min": 20,
+        "niveau_max": 24
+      }
+    ]
+  },
+  "route_11": {
+    "zone_id": "route_11",
+    "nom": "Route 11",
+    "herbes": [
+      {
+        "pokemon_id": "023",
+        "taux": 20,
+        "niveau_min": 18,
+        "niveau_max": 22
+      },
+      {
+        "pokemon_id": "096",
+        "taux": 20,
+        "niveau_min": 15,
+        "niveau_max": 20
+      },
+      {
+        "pokemon_id": "019",
+        "taux": 15,
+        "niveau_min": 18,
+        "niveau_max": 22
+      },
+      {
+        "pokemon_id": "016",
+        "taux": 15,
+        "niveau_min": 18,
+        "niveau_max": 22
+      },
+      {
+        "pokemon_id": "084",
+        "taux": 15,
+        "niveau_min": 20,
+        "niveau_max": 22
+      },
+      {
+        "pokemon_id": "088",
+        "taux": 15,
+        "niveau_min": 20,
+        "niveau_max": 22
+      }
+    ]
+  },
+  "route_12": {
+    "zone_id": "route_12",
+    "nom": "Route 12",
+    "herbes": [
+      {
+        "pokemon_id": "043",
+        "taux": 20,
+        "niveau_min": 24,
+        "niveau_max": 26
+      },
+      {
+        "pokemon_id": "069",
+        "taux": 20,
+        "niveau_min": 24,
+        "niveau_max": 26
+      },
+      {
+        "pokemon_id": "048",
+        "taux": 20,
+        "niveau_min": 24,
+        "niveau_max": 26
+      },
+      {
+        "pokemon_id": "016",
+        "taux": 15,
+        "niveau_min": 23,
+        "niveau_max": 25
+      },
+      {
+        "pokemon_id": "084",
+        "taux": 15,
+        "niveau_min": 25,
+        "niveau_max": 27
+      },
+      {
+        "pokemon_id": "114",
+        "taux": 10,
+        "niveau_min": 22,
+        "niveau_max": 26
+      }
+    ],
+    "surf": [
+      {
+        "pokemon_id": "072",
+        "taux": 50,
+        "niveau_min": 20,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "054",
+        "taux": 30,
+        "niveau_min": 20,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "129",
+        "taux": 20,
+        "niveau_min": 10,
+        "niveau_max": 25
+      }
+    ],
+    "peche": [
+      {
+        "pokemon_id": "129",
+        "taux": 40,
+        "niveau_min": 5,
+        "niveau_max": 15
+      },
+      {
+        "pokemon_id": "060",
+        "taux": 20,
+        "niveau_min": 15,
+        "niveau_max": 25
+      },
+      {
+        "pokemon_id": "098",
+        "taux": 20,
+        "niveau_min": 15,
+        "niveau_max": 25
+      },
+      {
+        "pokemon_id": "116",
+        "taux": 20,
+        "niveau_min": 15,
+        "niveau_max": 25
+      }
+    ],
+    "speciale": [
+      {
+        "pokemon_id": "143",
+        "taux": 100,
+        "niveau_min": 30,
+        "niveau_max": 30
+      }
+    ]
+  },
+  "route_13": {
+    "zone_id": "route_13",
+    "nom": "Route 13",
+    "herbes": [
+      {
+        "pokemon_id": "043",
+        "taux": 20,
+        "niveau_min": 24,
+        "niveau_max": 26
+      },
+      {
+        "pokemon_id": "069",
+        "taux": 20,
+        "niveau_min": 24,
+        "niveau_max": 26
+      },
+      {
+        "pokemon_id": "048",
+        "taux": 15,
+        "niveau_min": 24,
+        "niveau_max": 26
+      },
+      {
+        "pokemon_id": "084",
+        "taux": 15,
+        "niveau_min": 25,
+        "niveau_max": 27
+      },
+      {
+        "pokemon_id": "044",
+        "taux": 10,
+        "niveau_min": 28,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "070",
+        "taux": 10,
+        "niveau_min": 28,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "132",
+        "taux": 10,
+        "niveau_min": 25,
+        "niveau_max": 28
+      }
+    ]
+  },
+  "route_14": {
+    "zone_id": "route_14",
+    "nom": "Route 14",
+    "herbes": [
+      {
+        "pokemon_id": "043",
+        "taux": 15,
+        "niveau_min": 24,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "069",
+        "taux": 15,
+        "niveau_min": 24,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "044",
+        "taux": 10,
+        "niveau_min": 30,
+        "niveau_max": 32
+      },
+      {
+        "pokemon_id": "070",
+        "taux": 10,
+        "niveau_min": 30,
+        "niveau_max": 32
+      },
+      {
+        "pokemon_id": "048",
+        "taux": 15,
+        "niveau_min": 24,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "084",
+        "taux": 15,
+        "niveau_min": 26,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "132",
+        "taux": 10,
+        "niveau_min": 25,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "113",
+        "taux": 10,
+        "niveau_min": 26,
+        "niveau_max": 30
+      }
+    ]
+  },
+  "route_15": {
+    "zone_id": "route_15",
+    "nom": "Route 15",
+    "herbes": [
+      {
+        "pokemon_id": "043",
+        "taux": 15,
+        "niveau_min": 24,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "069",
+        "taux": 15,
+        "niveau_min": 24,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "044",
+        "taux": 10,
+        "niveau_min": 28,
+        "niveau_max": 32
+      },
+      {
+        "pokemon_id": "070",
+        "taux": 10,
+        "niveau_min": 28,
+        "niveau_max": 32
+      },
+      {
+        "pokemon_id": "048",
+        "taux": 15,
+        "niveau_min": 24,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "084",
+        "taux": 15,
+        "niveau_min": 26,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "132",
+        "taux": 10,
+        "niveau_min": 25,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "113",
+        "taux": 10,
+        "niveau_min": 26,
+        "niveau_max": 30
+      }
+    ]
+  },
+  "zone_safari_1": {
+    "zone_id": "zone_safari_1",
+    "nom": "Zone Safari — Entrée",
+    "herbes": [
+      {
+        "pokemon_id": "029",
+        "taux": 15,
+        "niveau_min": 22,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "032",
+        "taux": 15,
+        "niveau_min": 22,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "030",
+        "taux": 10,
+        "niveau_min": 31,
+        "niveau_max": 33
+      },
+      {
+        "pokemon_id": "033",
+        "taux": 10,
+        "niveau_min": 31,
+        "niveau_max": 33
+      },
+      {
+        "pokemon_id": "111",
+        "taux": 15,
+        "niveau_min": 25,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "102",
+        "taux": 10,
+        "niveau_min": 24,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "115",
+        "taux": 5,
+        "niveau_min": 28,
+        "niveau_max": 32
+      },
+      {
+        "pokemon_id": "128",
+        "taux": 5,
+        "niveau_min": 28,
+        "niveau_max": 32
+      },
+      {
+        "pokemon_id": "127",
+        "taux": 5,
+        "niveau_min": 23,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "123",
+        "taux": 5,
+        "niveau_min": 23,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "083",
+        "taux": 5,
+        "niveau_min": 28,
+        "niveau_max": 28
+      }
+    ],
+    "surf": [
+      {
+        "pokemon_id": "054",
+        "taux": 40,
+        "niveau_min": 20,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "079",
+        "taux": 30,
+        "niveau_min": 20,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "118",
+        "taux": 20,
+        "niveau_min": 20,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "147",
+        "taux": 10,
+        "niveau_min": 15,
+        "niveau_max": 25
+      }
+    ],
+    "peche": [
+      {
+        "pokemon_id": "129",
+        "taux": 40,
+        "niveau_min": 5,
+        "niveau_max": 15
+      },
+      {
+        "pokemon_id": "118",
+        "taux": 25,
+        "niveau_min": 20,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "060",
+        "taux": 20,
+        "niveau_min": 20,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "147",
+        "taux": 15,
+        "niveau_min": 15,
+        "niveau_max": 25
+      }
+    ]
+  },
+  "route_16": {
+    "zone_id": "route_16",
+    "nom": "Route 16",
+    "herbes": [
+      {
+        "pokemon_id": "019",
+        "taux": 15,
+        "niveau_min": 20,
+        "niveau_max": 22
+      },
+      {
+        "pokemon_id": "020",
+        "taux": 15,
+        "niveau_min": 25,
+        "niveau_max": 29
+      },
+      {
+        "pokemon_id": "084",
         "taux": 20,
         "niveau_min": 20,
         "niveau_max": 24
       },
       {
-        "pokemon_id": "095",
-        "taux": 10,
-        "niveau_min": 22,
+        "pokemon_id": "021",
+        "taux": 20,
+        "niveau_min": 20,
         "niveau_max": 24
       },
       {
-        "pokemon_id": "104",
+        "pokemon_id": "109",
+        "taux": 15,
+        "niveau_min": 20,
+        "niveau_max": 24
+      },
+      {
+        "pokemon_id": "088",
         "taux": 15,
         "niveau_min": 20,
         "niveau_max": 24
       }
-    ]
-  },
-  "tour_pokemon": {
-    "zone_id": "tour_pokemon",
-    "nom": "Tour Pokémon",
-    "herbes": [
+    ],
+    "speciale": [
       {
-        "pokemon_id": "092",
-        "taux": 45,
-        "niveau_min": 20,
-        "niveau_max": 25
-      },
-      {
-        "pokemon_id": "093",
-        "taux": 15,
-        "niveau_min": 23,
-        "niveau_max": 25
-      },
-      {
-        "pokemon_id": "104",
-        "taux": 40,
-        "niveau_min": 20,
-        "niveau_max": 25
-      }
-    ]
-  },
-  "route_12": {
-    "id": "route_12",
-    "pokemon": [
-      {
-        "espece_id": "043",
-        "niveau_min": 22,
-        "niveau_max": 26,
-        "taux": 30
-      },
-      {
-        "espece_id": "044",
-        "niveau_min": 24,
-        "niveau_max": 26,
-        "taux": 15
-      },
-      {
-        "espece_id": "048",
-        "niveau_min": 22,
-        "niveau_max": 26,
-        "taux": 20
-      },
-      {
-        "espece_id": "069",
-        "niveau_min": 22,
-        "niveau_max": 26,
-        "taux": 20
-      },
-      {
-        "espece_id": "016",
-        "niveau_min": 23,
-        "niveau_max": 27,
-        "taux": 15
-      }
-    ]
-  },
-  "route_13": {
-    "id": "route_13",
-    "pokemon": [
-      {
-        "espece_id": "043",
-        "niveau_min": 24,
-        "niveau_max": 26,
-        "taux": 25
-      },
-      {
-        "espece_id": "044",
-        "niveau_min": 24,
-        "niveau_max": 28,
-        "taux": 10
-      },
-      {
-        "espece_id": "048",
-        "niveau_min": 24,
-        "niveau_max": 26,
-        "taux": 25
-      },
-      {
-        "espece_id": "069",
-        "niveau_min": 24,
-        "niveau_max": 26,
-        "taux": 25
-      },
-      {
-        "espece_id": "132",
-        "niveau_min": 25,
-        "niveau_max": 25,
-        "taux": 15
-      }
-    ]
-  },
-  "route_14": {
-    "id": "route_14",
-    "pokemon": [
-      {
-        "espece_id": "043",
-        "niveau_min": 24,
-        "niveau_max": 28,
-        "taux": 20
-      },
-      {
-        "espece_id": "048",
-        "niveau_min": 24,
-        "niveau_max": 28,
-        "taux": 20
-      },
-      {
-        "espece_id": "069",
-        "niveau_min": 24,
-        "niveau_max": 28,
-        "taux": 20
-      },
-      {
-        "espece_id": "132",
-        "niveau_min": 23,
-        "niveau_max": 27,
-        "taux": 15
-      },
-      {
-        "espece_id": "044",
-        "niveau_min": 26,
-        "niveau_max": 30,
-        "taux": 15
-      },
-      {
-        "espece_id": "070",
-        "niveau_min": 26,
-        "niveau_max": 30,
-        "taux": 10
-      }
-    ]
-  },
-  "route_15": {
-    "id": "route_15",
-    "pokemon": [
-      {
-        "espece_id": "043",
-        "niveau_min": 24,
-        "niveau_max": 28,
-        "taux": 20
-      },
-      {
-        "espece_id": "048",
-        "niveau_min": 24,
-        "niveau_max": 28,
-        "taux": 20
-      },
-      {
-        "espece_id": "069",
-        "niveau_min": 24,
-        "niveau_max": 28,
-        "taux": 20
-      },
-      {
-        "espece_id": "132",
-        "niveau_min": 25,
-        "niveau_max": 27,
-        "taux": 15
-      },
-      {
-        "espece_id": "070",
-        "niveau_min": 26,
-        "niveau_max": 30,
-        "taux": 15
-      },
-      {
-        "espece_id": "049",
-        "niveau_min": 28,
-        "niveau_max": 32,
-        "taux": 10
-      }
-    ]
-  },
-  "route_16": {
-    "id": "route_16",
-    "pokemon": [
-      {
-        "espece_id": "019",
-        "niveau_min": 20,
-        "niveau_max": 24,
-        "taux": 30
-      },
-      {
-        "espece_id": "020",
-        "niveau_min": 22,
-        "niveau_max": 26,
-        "taux": 20
-      },
-      {
-        "espece_id": "084",
-        "niveau_min": 22,
-        "niveau_max": 26,
-        "taux": 20
-      },
-      {
-        "espece_id": "056",
-        "niveau_min": 22,
-        "niveau_max": 26,
-        "taux": 20
-      },
-      {
-        "espece_id": "021",
-        "niveau_min": 22,
-        "niveau_max": 26,
-        "taux": 10
+        "pokemon_id": "143",
+        "taux": 100,
+        "niveau_min": 30,
+        "niveau_max": 30
       }
     ]
   },
   "route_17": {
-    "id": "route_17",
-    "pokemon": [
+    "zone_id": "route_17",
+    "nom": "Route 17",
+    "herbes": [
       {
-        "espece_id": "019",
-        "niveau_min": 24,
-        "niveau_max": 28,
-        "taux": 20
+        "pokemon_id": "020",
+        "taux": 15,
+        "niveau_min": 25,
+        "niveau_max": 29
       },
       {
-        "espece_id": "020",
+        "pokemon_id": "022",
+        "taux": 10,
+        "niveau_min": 27,
+        "niveau_max": 29
+      },
+      {
+        "pokemon_id": "084",
+        "taux": 20,
+        "niveau_min": 24,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "109",
+        "taux": 20,
+        "niveau_min": 24,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "088",
+        "taux": 20,
+        "niveau_min": 24,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "077",
+        "taux": 15,
         "niveau_min": 26,
-        "niveau_max": 28,
-        "taux": 15
-      },
-      {
-        "espece_id": "084",
-        "niveau_min": 24,
-        "niveau_max": 28,
-        "taux": 20
-      },
-      {
-        "espece_id": "056",
-        "niveau_min": 24,
-        "niveau_max": 28,
-        "taux": 20
-      },
-      {
-        "espece_id": "077",
-        "niveau_min": 24,
-        "niveau_max": 28,
-        "taux": 15
-      },
-      {
-        "espece_id": "057",
-        "niveau_min": 28,
-        "niveau_max": 30,
-        "taux": 10
+        "niveau_max": 28
       }
     ]
   },
   "route_18": {
-    "id": "route_18",
-    "pokemon": [
+    "zone_id": "route_18",
+    "nom": "Route 18",
+    "herbes": [
       {
-        "espece_id": "084",
+        "pokemon_id": "020",
+        "taux": 15,
+        "niveau_min": 25,
+        "niveau_max": 29
+      },
+      {
+        "pokemon_id": "022",
+        "taux": 15,
+        "niveau_min": 27,
+        "niveau_max": 29
+      },
+      {
+        "pokemon_id": "084",
+        "taux": 20,
         "niveau_min": 24,
-        "niveau_max": 28,
-        "taux": 25
+        "niveau_max": 28
       },
       {
-        "espece_id": "020",
-        "niveau_min": 26,
-        "niveau_max": 28,
-        "taux": 20
-      },
-      {
-        "espece_id": "056",
+        "pokemon_id": "109",
+        "taux": 15,
         "niveau_min": 24,
-        "niveau_max": 28,
-        "taux": 20
+        "niveau_max": 28
       },
       {
-        "espece_id": "077",
-        "niveau_min": 26,
-        "niveau_max": 30,
-        "taux": 20
-      },
-      {
-        "espece_id": "057",
-        "niveau_min": 28,
-        "niveau_max": 30,
-        "taux": 15
-      }
-    ]
-  },
-  "parc_safari": {
-    "id": "parc_safari",
-    "pokemon": [
-      {
-        "espece_id": "111",
-        "niveau_min": 25,
-        "niveau_max": 30,
-        "taux": 15
-      },
-      {
-        "espece_id": "113",
-        "niveau_min": 26,
-        "niveau_max": 28,
-        "taux": 5
-      },
-      {
-        "espece_id": "115",
-        "niveau_min": 25,
-        "niveau_max": 28,
-        "taux": 5
-      },
-      {
-        "espece_id": "127",
-        "niveau_min": 25,
-        "niveau_max": 27,
-        "taux": 10
-      },
-      {
-        "espece_id": "128",
-        "niveau_min": 25,
-        "niveau_max": 28,
-        "taux": 5
-      },
-      {
-        "espece_id": "123",
-        "niveau_min": 25,
-        "niveau_max": 28,
-        "taux": 10
-      },
-      {
-        "espece_id": "048",
+        "pokemon_id": "088",
+        "taux": 15,
         "niveau_min": 24,
-        "niveau_max": 28,
-        "taux": 15
+        "niveau_max": 28
       },
       {
-        "espece_id": "102",
-        "niveau_min": 24,
-        "niveau_max": 28,
-        "taux": 15
-      },
-      {
-        "espece_id": "030",
+        "pokemon_id": "077",
+        "taux": 20,
         "niveau_min": 26,
-        "niveau_max": 30,
-        "taux": 10
-      },
-      {
-        "espece_id": "033",
-        "niveau_min": 26,
-        "niveau_max": 30,
-        "taux": 10
+        "niveau_max": 28
       }
     ]
   },
   "route_19": {
-    "id": "route_19",
+    "zone_id": "route_19",
     "nom": "Route 19",
-    "type": "eau",
-    "pokemon": [
+    "surf": [
       {
-        "espece_id": "072",
+        "pokemon_id": "072",
+        "taux": 60,
+        "niveau_min": 20,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "116",
+        "taux": 20,
+        "niveau_min": 20,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "090",
+        "taux": 15,
         "niveau_min": 25,
-        "niveau_max": 30,
-        "probabilite": 60
+        "niveau_max": 30
       },
       {
-        "espece_id": "090",
-        "niveau_min": 28,
-        "niveau_max": 33,
-        "probabilite": 30
+        "pokemon_id": "120",
+        "taux": 5,
+        "niveau_min": 25,
+        "niveau_max": 30
+      }
+    ],
+    "peche": [
+      {
+        "pokemon_id": "129",
+        "taux": 45,
+        "niveau_min": 5,
+        "niveau_max": 15
       },
       {
-        "espece_id": "117",
-        "niveau_min": 30,
-        "niveau_max": 35,
-        "probabilite": 10
+        "pokemon_id": "072",
+        "taux": 25,
+        "niveau_min": 15,
+        "niveau_max": 25
+      },
+      {
+        "pokemon_id": "116",
+        "taux": 20,
+        "niveau_min": 15,
+        "niveau_max": 25
+      },
+      {
+        "pokemon_id": "090",
+        "taux": 10,
+        "niveau_min": 20,
+        "niveau_max": 25
       }
     ]
   },
   "route_20": {
-    "id": "route_20",
+    "zone_id": "route_20",
     "nom": "Route 20",
-    "type": "eau",
-    "pokemon": [
+    "surf": [
       {
-        "espece_id": "072",
-        "niveau_min": 25,
-        "niveau_max": 30,
-        "probabilite": 50
+        "pokemon_id": "072",
+        "taux": 50,
+        "niveau_min": 20,
+        "niveau_max": 30
       },
       {
-        "espece_id": "073",
-        "niveau_min": 30,
-        "niveau_max": 35,
-        "probabilite": 30
+        "pokemon_id": "116",
+        "taux": 15,
+        "niveau_min": 20,
+        "niveau_max": 30
       },
       {
-        "espece_id": "116",
+        "pokemon_id": "090",
+        "taux": 10,
         "niveau_min": 25,
-        "niveau_max": 30,
-        "probabilite": 20
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "086",
+        "taux": 15,
+        "niveau_min": 25,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "120",
+        "taux": 10,
+        "niveau_min": 28,
+        "niveau_max": 30
+      }
+    ],
+    "peche": [
+      {
+        "pokemon_id": "129",
+        "taux": 40,
+        "niveau_min": 5,
+        "niveau_max": 15
+      },
+      {
+        "pokemon_id": "072",
+        "taux": 20,
+        "niveau_min": 15,
+        "niveau_max": 25
+      },
+      {
+        "pokemon_id": "098",
+        "taux": 20,
+        "niveau_min": 20,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "116",
+        "taux": 20,
+        "niveau_min": 20,
+        "niveau_max": 30
       }
     ]
   },
   "route_21": {
-    "id": "route_21",
+    "zone_id": "route_21",
     "nom": "Route 21",
-    "type": "eau",
-    "pokemon": [
+    "surf": [
       {
-        "espece_id": "072",
+        "pokemon_id": "072",
+        "taux": 50,
+        "niveau_min": 20,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "116",
+        "taux": 20,
+        "niveau_min": 20,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "090",
+        "taux": 15,
         "niveau_min": 25,
-        "niveau_max": 30,
-        "probabilite": 40
+        "niveau_max": 35
       },
       {
-        "espece_id": "073",
-        "niveau_min": 30,
-        "niveau_max": 35,
-        "probabilite": 30
-      },
-      {
-        "espece_id": "090",
+        "pokemon_id": "120",
+        "taux": 15,
         "niveau_min": 28,
-        "niveau_max": 33,
-        "probabilite": 20
+        "niveau_max": 35
+      }
+    ],
+    "herbes": [
+      {
+        "pokemon_id": "114",
+        "taux": 35,
+        "niveau_min": 28,
+        "niveau_max": 32
       },
       {
-        "espece_id": "117",
-        "niveau_min": 30,
-        "niveau_max": 35,
-        "probabilite": 10
+        "pokemon_id": "048",
+        "taux": 25,
+        "niveau_min": 24,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "019",
+        "taux": 20,
+        "niveau_min": 21,
+        "niveau_max": 23
+      },
+      {
+        "pokemon_id": "016",
+        "taux": 20,
+        "niveau_min": 21,
+        "niveau_max": 23
+      }
+    ],
+    "peche": [
+      {
+        "pokemon_id": "129",
+        "taux": 40,
+        "niveau_min": 5,
+        "niveau_max": 15
+      },
+      {
+        "pokemon_id": "072",
+        "taux": 20,
+        "niveau_min": 15,
+        "niveau_max": 25
+      },
+      {
+        "pokemon_id": "116",
+        "taux": 20,
+        "niveau_min": 20,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "090",
+        "taux": 20,
+        "niveau_min": 25,
+        "niveau_max": 30
       }
     ]
   },
-  "iles_ecume": {
-    "id": "iles_ecume",
-    "nom": "Îles Écume",
-    "type": "grotte_eau",
-    "pokemon": [
+  "iles_ecume_1f": {
+    "zone_id": "iles_ecume_1f",
+    "nom": "Îles Écume 1F",
+    "cave": [
       {
-        "espece_id": "086",
-        "niveau_min": 30,
-        "niveau_max": 35,
-        "probabilite": 30
+        "pokemon_id": "041",
+        "taux": 20,
+        "niveau_min": 26,
+        "niveau_max": 30
       },
       {
-        "espece_id": "087",
-        "niveau_min": 32,
-        "niveau_max": 37,
-        "probabilite": 20
-      },
-      {
-        "espece_id": "090",
-        "niveau_min": 30,
-        "niveau_max": 35,
-        "probabilite": 20
-      },
-      {
-        "espece_id": "091",
-        "niveau_min": 33,
-        "niveau_max": 38,
-        "probabilite": 15
-      },
-      {
-        "espece_id": "116",
+        "pokemon_id": "079",
+        "taux": 20,
         "niveau_min": 28,
-        "niveau_max": 33,
-        "probabilite": 15
+        "niveau_max": 32
+      },
+      {
+        "pokemon_id": "086",
+        "taux": 20,
+        "niveau_min": 30,
+        "niveau_max": 34
+      },
+      {
+        "pokemon_id": "090",
+        "taux": 15,
+        "niveau_min": 30,
+        "niveau_max": 34
+      },
+      {
+        "pokemon_id": "098",
+        "taux": 15,
+        "niveau_min": 28,
+        "niveau_max": 32
+      },
+      {
+        "pokemon_id": "120",
+        "taux": 10,
+        "niveau_min": 30,
+        "niveau_max": 32
+      }
+    ],
+    "surf": [
+      {
+        "pokemon_id": "086",
+        "taux": 30,
+        "niveau_min": 30,
+        "niveau_max": 36
+      },
+      {
+        "pokemon_id": "090",
+        "taux": 25,
+        "niveau_min": 30,
+        "niveau_max": 36
+      },
+      {
+        "pokemon_id": "072",
+        "taux": 25,
+        "niveau_min": 28,
+        "niveau_max": 34
+      },
+      {
+        "pokemon_id": "116",
+        "taux": 20,
+        "niveau_min": 28,
+        "niveau_max": 34
+      }
+    ],
+    "speciale": [
+      {
+        "pokemon_id": "144",
+        "taux": 100,
+        "niveau_min": 50,
+        "niveau_max": 50
       }
     ]
   },
   "centrale": {
-    "id": "centrale",
+    "zone_id": "centrale",
     "nom": "Centrale",
-    "type": "batiment",
-    "pokemon": [
+    "herbes": [
       {
-        "espece_id": "081",
-        "niveau_min": 25,
-        "niveau_max": 32,
-        "probabilite": 40
+        "pokemon_id": "100",
+        "taux": 25,
+        "niveau_min": 21,
+        "niveau_max": 24
       },
       {
-        "espece_id": "082",
-        "niveau_min": 30,
-        "niveau_max": 35,
-        "probabilite": 20
+        "pokemon_id": "081",
+        "taux": 25,
+        "niveau_min": 21,
+        "niveau_max": 24
       },
       {
-        "espece_id": "100",
-        "niveau_min": 25,
-        "niveau_max": 32,
-        "probabilite": 30
+        "pokemon_id": "082",
+        "taux": 5,
+        "niveau_min": 32,
+        "niveau_max": 35
       },
       {
-        "espece_id": "101",
-        "niveau_min": 30,
-        "niveau_max": 35,
-        "probabilite": 10
+        "pokemon_id": "101",
+        "taux": 5,
+        "niveau_min": 32,
+        "niveau_max": 35
+      },
+      {
+        "pokemon_id": "125",
+        "taux": 10,
+        "niveau_min": 33,
+        "niveau_max": 36
+      },
+      {
+        "pokemon_id": "025",
+        "taux": 15,
+        "niveau_min": 22,
+        "niveau_max": 25
+      },
+      {
+        "pokemon_id": "016",
+        "taux": 15,
+        "niveau_min": 20,
+        "niveau_max": 24
+      }
+    ],
+    "speciale": [
+      {
+        "pokemon_id": "145",
+        "taux": 100,
+        "niveau_min": 50,
+        "niveau_max": 50
       }
     ]
   },
-  "manoir_pokemon": {
-    "id": "manoir_pokemon",
-    "nom": "Manoir Pokémon",
-    "type": "batiment",
-    "pokemon": [
+  "manoir_pokemon_1f": {
+    "zone_id": "manoir_pokemon_1f",
+    "nom": "Manoir Pokémon 1F",
+    "cave": [
       {
-        "espece_id": "109",
-        "niveau_min": 30,
-        "niveau_max": 35,
-        "probabilite": 30
-      },
-      {
-        "espece_id": "110",
+        "pokemon_id": "058",
+        "taux": 25,
         "niveau_min": 32,
-        "niveau_max": 37,
-        "probabilite": 20
+        "niveau_max": 36
       },
       {
-        "espece_id": "058",
+        "pokemon_id": "077",
+        "taux": 20,
+        "niveau_min": 34,
+        "niveau_max": 36
+      },
+      {
+        "pokemon_id": "109",
+        "taux": 15,
         "niveau_min": 30,
-        "niveau_max": 35,
-        "probabilite": 30
+        "niveau_max": 35
       },
       {
-        "espece_id": "088",
-        "niveau_min": 28,
-        "niveau_max": 33,
-        "probabilite": 20
+        "pokemon_id": "088",
+        "taux": 15,
+        "niveau_min": 30,
+        "niveau_max": 35
+      },
+      {
+        "pokemon_id": "126",
+        "taux": 10,
+        "niveau_min": 34,
+        "niveau_max": 38
+      },
+      {
+        "pokemon_id": "132",
+        "taux": 15,
+        "niveau_min": 30,
+        "niveau_max": 36
       }
     ]
   },
   "route_22": {
-    "zone": "route_22",
-    "methode": "marche",
-    "pokemon": [
+    "zone_id": "route_22",
+    "nom": "Route 22",
+    "herbes": [
       {
-        "espece_id": "056",
-        "niveau_min": 28,
-        "niveau_max": 33,
-        "taux": 30
+        "pokemon_id": "019",
+        "taux": 20,
+        "niveau_min": 3,
+        "niveau_max": 5
       },
       {
-        "espece_id": "021",
-        "niveau_min": 28,
-        "niveau_max": 33,
-        "taux": 25
+        "pokemon_id": "029",
+        "taux": 20,
+        "niveau_min": 3,
+        "niveau_max": 6
       },
       {
-        "espece_id": "022",
-        "niveau_min": 32,
-        "niveau_max": 36,
-        "taux": 15
+        "pokemon_id": "032",
+        "taux": 20,
+        "niveau_min": 3,
+        "niveau_max": 6
       },
       {
-        "espece_id": "020",
-        "niveau_min": 30,
-        "niveau_max": 34,
-        "taux": 20
+        "pokemon_id": "056",
+        "taux": 20,
+        "niveau_min": 3,
+        "niveau_max": 5
       },
       {
-        "espece_id": "057",
-        "niveau_min": 34,
-        "niveau_max": 36,
-        "taux": 10
+        "pokemon_id": "021",
+        "taux": 20,
+        "niveau_min": 3,
+        "niveau_max": 5
       }
     ]
   },
   "route_23": {
-    "zone": "route_23",
-    "methode": "marche",
-    "pokemon": [
+    "zone_id": "route_23",
+    "nom": "Route 23",
+    "herbes": [
       {
-        "espece_id": "022",
-        "niveau_min": 34,
-        "niveau_max": 38,
-        "taux": 25
+        "pokemon_id": "021",
+        "taux": 15,
+        "niveau_min": 33,
+        "niveau_max": 39
       },
       {
-        "espece_id": "057",
+        "pokemon_id": "022",
+        "taux": 10,
         "niveau_min": 34,
-        "niveau_max": 40,
-        "taux": 20
+        "niveau_max": 39
       },
       {
-        "espece_id": "020",
-        "niveau_min": 34,
-        "niveau_max": 38,
-        "taux": 20
+        "pokemon_id": "023",
+        "taux": 15,
+        "niveau_min": 33,
+        "niveau_max": 39
       },
       {
-        "espece_id": "024",
+        "pokemon_id": "024",
+        "taux": 10,
         "niveau_min": 36,
-        "niveau_max": 40,
-        "taux": 15
+        "niveau_max": 41
       },
       {
-        "espece_id": "047",
-        "niveau_min": 36,
-        "niveau_max": 40,
-        "taux": 20
+        "pokemon_id": "027",
+        "taux": 15,
+        "niveau_min": 33,
+        "niveau_max": 39
+      },
+      {
+        "pokemon_id": "028",
+        "taux": 10,
+        "niveau_min": 38,
+        "niveau_max": 41
+      },
+      {
+        "pokemon_id": "056",
+        "taux": 15,
+        "niveau_min": 33,
+        "niveau_max": 39
+      },
+      {
+        "pokemon_id": "132",
+        "taux": 10,
+        "niveau_min": 33,
+        "niveau_max": 39
+      }
+    ],
+    "surf": [
+      {
+        "pokemon_id": "054",
+        "taux": 40,
+        "niveau_min": 30,
+        "niveau_max": 40
+      },
+      {
+        "pokemon_id": "060",
+        "taux": 30,
+        "niveau_min": 30,
+        "niveau_max": 40
+      },
+      {
+        "pokemon_id": "118",
+        "taux": 30,
+        "niveau_min": 30,
+        "niveau_max": 40
+      }
+    ],
+    "peche": [
+      {
+        "pokemon_id": "129",
+        "taux": 40,
+        "niveau_min": 15,
+        "niveau_max": 25
+      },
+      {
+        "pokemon_id": "060",
+        "taux": 30,
+        "niveau_min": 25,
+        "niveau_max": 35
+      },
+      {
+        "pokemon_id": "118",
+        "taux": 30,
+        "niveau_min": 25,
+        "niveau_max": 35
       }
     ]
   },
-  "route_victoire": {
-    "zone": "route_victoire",
-    "methode": "marche",
-    "pokemon": [
+  "route_victoire_1f": {
+    "zone_id": "route_victoire_1f",
+    "nom": "Route Victoire 1F",
+    "cave": [
       {
-        "espece_id": "095",
+        "pokemon_id": "041",
+        "taux": 15,
+        "niveau_min": 34,
+        "niveau_max": 40
+      },
+      {
+        "pokemon_id": "042",
+        "taux": 10,
+        "niveau_min": 38,
+        "niveau_max": 42
+      },
+      {
+        "pokemon_id": "074",
+        "taux": 15,
         "niveau_min": 36,
-        "niveau_max": 42,
-        "taux": 25
+        "niveau_max": 40
       },
       {
-        "espece_id": "067",
-        "niveau_min": 38,
-        "niveau_max": 44,
-        "taux": 20
-      },
-      {
-        "espece_id": "042",
-        "niveau_min": 38,
-        "niveau_max": 44,
-        "taux": 20
-      },
-      {
-        "espece_id": "075",
+        "pokemon_id": "075",
+        "taux": 10,
         "niveau_min": 40,
-        "niveau_max": 46,
-        "taux": 15
+        "niveau_max": 44
       },
       {
-        "espece_id": "105",
+        "pokemon_id": "095",
+        "taux": 15,
+        "niveau_min": 36,
+        "niveau_max": 42
+      },
+      {
+        "pokemon_id": "066",
+        "taux": 10,
+        "niveau_min": 36,
+        "niveau_max": 40
+      },
+      {
+        "pokemon_id": "067",
+        "taux": 10,
         "niveau_min": 40,
-        "niveau_max": 46,
-        "taux": 10
+        "niveau_max": 44
       },
       {
-        "espece_id": "076",
+        "pokemon_id": "077",
+        "taux": 15,
+        "niveau_min": 38,
+        "niveau_max": 42
+      }
+    ]
+  },
+  "route_victoire_2f": {
+    "zone_id": "route_victoire_2f",
+    "nom": "Route Victoire 2F",
+    "cave": [
+      {
+        "pokemon_id": "042",
+        "taux": 20,
+        "niveau_min": 38,
+        "niveau_max": 44
+      },
+      {
+        "pokemon_id": "075",
+        "taux": 15,
+        "niveau_min": 40,
+        "niveau_max": 46
+      },
+      {
+        "pokemon_id": "095",
+        "taux": 15,
+        "niveau_min": 40,
+        "niveau_max": 46
+      },
+      {
+        "pokemon_id": "067",
+        "taux": 15,
+        "niveau_min": 40,
+        "niveau_max": 46
+      },
+      {
+        "pokemon_id": "077",
+        "taux": 20,
+        "niveau_min": 40,
+        "niveau_max": 44
+      },
+      {
+        "pokemon_id": "078",
+        "taux": 5,
         "niveau_min": 44,
-        "niveau_max": 46,
-        "taux": 10
+        "niveau_max": 46
+      },
+      {
+        "pokemon_id": "126",
+        "taux": 10,
+        "niveau_min": 38,
+        "niveau_max": 42
+      }
+    ],
+    "speciale": [
+      {
+        "pokemon_id": "146",
+        "taux": 100,
+        "niveau_min": 50,
+        "niveau_max": 50
       }
     ]
   },
-  "grotte_inconnue": {
-    "zone": "grotte_inconnue",
-    "methode": "marche",
-    "pokemon": [
+  "route_victoire_3f": {
+    "zone_id": "route_victoire_3f",
+    "nom": "Route Victoire 3F",
+    "cave": [
       {
-        "espece_id": "064",
+        "pokemon_id": "042",
+        "taux": 25,
+        "niveau_min": 40,
+        "niveau_max": 46
+      },
+      {
+        "pokemon_id": "075",
+        "taux": 20,
+        "niveau_min": 42,
+        "niveau_max": 46
+      },
+      {
+        "pokemon_id": "095",
+        "taux": 20,
+        "niveau_min": 42,
+        "niveau_max": 46
+      },
+      {
+        "pokemon_id": "067",
+        "taux": 15,
+        "niveau_min": 42,
+        "niveau_max": 46
+      },
+      {
+        "pokemon_id": "078",
+        "taux": 10,
+        "niveau_min": 44,
+        "niveau_max": 48
+      },
+      {
+        "pokemon_id": "076",
+        "taux": 10,
         "niveau_min": 46,
-        "niveau_max": 55,
-        "taux": 20
-      },
+        "niveau_max": 48
+      }
+    ]
+  },
+  "grotte_inconnue_1f": {
+    "zone_id": "grotte_inconnue_1f",
+    "nom": "Grotte Inconnue 1F",
+    "cave": [
       {
-        "espece_id": "042",
+        "pokemon_id": "042",
+        "taux": 10,
         "niveau_min": 46,
-        "niveau_max": 55,
-        "taux": 15
+        "niveau_max": 52
       },
       {
-        "espece_id": "132",
+        "pokemon_id": "064",
+        "taux": 15,
         "niveau_min": 46,
-        "niveau_max": 55,
-        "taux": 15
+        "niveau_max": 52
       },
       {
-        "espece_id": "047",
-        "niveau_min": 48,
-        "niveau_max": 56,
-        "taux": 15
+        "pokemon_id": "067",
+        "taux": 15,
+        "niveau_min": 46,
+        "niveau_max": 52
       },
       {
-        "espece_id": "082",
-        "niveau_min": 48,
-        "niveau_max": 56,
-        "taux": 10
+        "pokemon_id": "075",
+        "taux": 10,
+        "niveau_min": 46,
+        "niveau_max": 52
       },
       {
-        "espece_id": "101",
-        "niveau_min": 48,
-        "niveau_max": 56,
-        "taux": 10
+        "pokemon_id": "097",
+        "taux": 10,
+        "niveau_min": 46,
+        "niveau_max": 52
       },
       {
-        "espece_id": "097",
+        "pokemon_id": "082",
+        "taux": 10,
+        "niveau_min": 46,
+        "niveau_max": 52
+      },
+      {
+        "pokemon_id": "101",
+        "taux": 5,
+        "niveau_min": 46,
+        "niveau_max": 52
+      },
+      {
+        "pokemon_id": "085",
+        "taux": 5,
+        "niveau_min": 46,
+        "niveau_max": 52
+      },
+      {
+        "pokemon_id": "132",
+        "taux": 10,
+        "niveau_min": 46,
+        "niveau_max": 52
+      },
+      {
+        "pokemon_id": "113",
+        "taux": 10,
+        "niveau_min": 46,
+        "niveau_max": 52
+      }
+    ],
+    "surf": [
+      {
+        "pokemon_id": "054",
+        "taux": 30,
+        "niveau_min": 40,
+        "niveau_max": 50
+      },
+      {
+        "pokemon_id": "055",
+        "taux": 20,
+        "niveau_min": 45,
+        "niveau_max": 55
+      },
+      {
+        "pokemon_id": "079",
+        "taux": 25,
+        "niveau_min": 40,
+        "niveau_max": 50
+      },
+      {
+        "pokemon_id": "080",
+        "taux": 15,
+        "niveau_min": 45,
+        "niveau_max": 55
+      },
+      {
+        "pokemon_id": "061",
+        "taux": 10,
+        "niveau_min": 40,
+        "niveau_max": 50
+      }
+    ]
+  },
+  "grotte_inconnue_b1f": {
+    "zone_id": "grotte_inconnue_b1f",
+    "nom": "Grotte Inconnue B1F",
+    "cave": [
+      {
+        "pokemon_id": "064",
+        "taux": 10,
         "niveau_min": 50,
-        "niveau_max": 58,
-        "taux": 10
+        "niveau_max": 60
       },
       {
-        "espece_id": "113",
+        "pokemon_id": "067",
+        "taux": 10,
+        "niveau_min": 50,
+        "niveau_max": 60
+      },
+      {
+        "pokemon_id": "097",
+        "taux": 10,
+        "niveau_min": 50,
+        "niveau_max": 60
+      },
+      {
+        "pokemon_id": "082",
+        "taux": 5,
+        "niveau_min": 50,
+        "niveau_max": 60
+      },
+      {
+        "pokemon_id": "101",
+        "taux": 5,
+        "niveau_min": 50,
+        "niveau_max": 60
+      },
+      {
+        "pokemon_id": "085",
+        "taux": 5,
+        "niveau_min": 50,
+        "niveau_max": 60
+      },
+      {
+        "pokemon_id": "132",
+        "taux": 10,
+        "niveau_min": 50,
+        "niveau_max": 60
+      },
+      {
+        "pokemon_id": "113",
+        "taux": 10,
+        "niveau_min": 50,
+        "niveau_max": 60
+      },
+      {
+        "pokemon_id": "124",
+        "taux": 10,
         "niveau_min": 52,
-        "niveau_max": 60,
-        "taux": 5
+        "niveau_max": 60
+      },
+      {
+        "pokemon_id": "108",
+        "taux": 10,
+        "niveau_min": 52,
+        "niveau_max": 60
+      },
+      {
+        "pokemon_id": "106",
+        "taux": 5,
+        "niveau_min": 52,
+        "niveau_max": 60
+      },
+      {
+        "pokemon_id": "107",
+        "taux": 5,
+        "niveau_min": 52,
+        "niveau_max": 60
+      },
+      {
+        "pokemon_id": "076",
+        "taux": 5,
+        "niveau_min": 52,
+        "niveau_max": 60
+      }
+    ],
+    "speciale": [
+      {
+        "pokemon_id": "150",
+        "taux": 100,
+        "niveau_min": 70,
+        "niveau_max": 70
+      }
+    ]
+  },
+  "bourg_palette": {
+    "zone_id": "bourg_palette",
+    "nom": "Bourg Palette",
+    "speciale": [
+      {
+        "pokemon_id": "001",
+        "taux": 34,
+        "niveau_min": 5,
+        "niveau_max": 5
+      },
+      {
+        "pokemon_id": "004",
+        "taux": 33,
+        "niveau_min": 5,
+        "niveau_max": 5
+      },
+      {
+        "pokemon_id": "007",
+        "taux": 33,
+        "niveau_min": 5,
+        "niveau_max": 5
+      }
+    ]
+  },
+  "celadopolis": {
+    "zone_id": "celadopolis",
+    "nom": "Céladopolis",
+    "speciale": [
+      {
+        "pokemon_id": "133",
+        "taux": 100,
+        "niveau_min": 25,
+        "niveau_max": 25
+      }
+    ]
+  },
+  "sylphe_sarl": {
+    "zone_id": "sylphe_sarl",
+    "nom": "Sylphe SARL",
+    "speciale": [
+      {
+        "pokemon_id": "131",
+        "taux": 100,
+        "niveau_min": 25,
+        "niveau_max": 25
+      }
+    ]
+  },
+  "casino_celadopolis": {
+    "zone_id": "casino_celadopolis",
+    "nom": "Casino de Céladopolis",
+    "speciale": [
+      {
+        "pokemon_id": "137",
+        "taux": 100,
+        "niveau_min": 26,
+        "niveau_max": 26
+      }
+    ]
+  },
+  "cramoisile_labo": {
+    "zone_id": "cramoisile_labo",
+    "nom": "Cramois'Île — Laboratoire",
+    "speciale": [
+      {
+        "pokemon_id": "138",
+        "taux": 34,
+        "niveau_min": 30,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "140",
+        "taux": 33,
+        "niveau_min": 30,
+        "niveau_max": 30
+      },
+      {
+        "pokemon_id": "142",
+        "taux": 33,
+        "niveau_min": 30,
+        "niveau_max": 30
+      }
+    ]
+  },
+  "carmin_sur_mer": {
+    "zone_id": "carmin_sur_mer",
+    "nom": "Carmin-sur-Mer",
+    "speciale": [
+      {
+        "pokemon_id": "151",
+        "taux": 100,
+        "niveau_min": 5,
+        "niveau_max": 5
       }
     ]
   }

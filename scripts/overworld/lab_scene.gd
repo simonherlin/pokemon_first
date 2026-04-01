@@ -106,7 +106,8 @@ func _lancer_sequence_starter() -> void:
 	# Dialogue du Prof. Chen
 	dialog_box.afficher_dialogue([
 		"PROF. CHEN : Ah, %s ! Te voilà enfin !" % PlayerData.nom_joueur,
-		"PROF. CHEN : J'ai ici trois POKÉMON pour toi.",
+		"PROF. CHEN : J'ai ici des POKÉMON pour toi.",
+		"PROF. CHEN : Il y a aussi un Pokémon très spécial...",
 		"PROF. CHEN : Choisis celui qui te plaît."
 	])
 	if not dialog_box.dialogue_termine.is_connected(_apres_dialogue_chen):
@@ -178,6 +179,8 @@ func _determiner_starter_rival() -> String:
 			return "007"
 		"007":  # Carapuce → rival prend Bulbizarre (plante > eau)
 			return "001"
+		"151":  # Mew (psy) → rival prend Salamèche (le plus polyvalent)
+			return "004"
 		_:
 			return "004"
 

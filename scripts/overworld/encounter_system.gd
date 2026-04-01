@@ -49,6 +49,18 @@ func verifier_rencontre(position_grille: Vector2i, joueur_node: Node) -> void:
 	var niveau_max: int = pokemon_data.get("niveau_max", 5)
 	var niveau := randi_range(niveau_min, niveau_max)
 
+	# === Équilibrage dynamique ===
+	# Les Pokémon sauvages s'adaptent au niveau du joueur
+	var avg_joueur := _calculer_niveau_moyen_equipe()
+	if avg_joueur > 0 and avg_joueur > niveau_max:
+		# Le sauvage monte au minimum à 85% du niveau moyen du joueur
+		var plancher := int(avg_joueur * 0.85)
+		niveau = maxi(niveau, plancher)
+		# Mais pas plus de 3 niveaux au-dessus du joueur
+		niveau = mini(niveau, avg_joueur + 3)
+		# Et jamais en-dessous de niveau_min d'origine
+		niveau = maxi(niveau, niveau_min)
+
 	# Passer en mode combat
 	if joueur_node.has_method("set_peut_bouger"):
 		joueur_node.set_peut_bouger(false)
@@ -108,3 +120,18 @@ func _choisir_pokemon(zone_id: String) -> Dictionary:
 # Obtenir toutes les zones pour le débogage
 func get_zones() -> Array:
 	return _tables.keys()
+
+# Calculer le niveau moyen de l'équipe du joueur
+func _calculer_niveau_moyen_equipe() -> int:
+	if PlayerData.equipe.is_empty():
+		return 0
+	var total := 0
+	var count := 0
+	for poke_dict in PlayerData.equipe:
+		var niv: int = poke_dict.get("niveau", 0)
+		if niv > 0:
+			total += niv
+			count += 1
+	if count == 0:
+		return 0
+	return int(total / count)
