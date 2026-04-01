@@ -155,25 +155,32 @@ func cacher_menus() -> void:
 func _gerer_menu_action() -> void:
 	if Input.is_action_just_pressed("action_haut"):
 		_index_action = (_index_action - 1 + _actions.size()) % _actions.size()
+		AudioManager.jouer_sfx("res://assets/audio/sfx/cursor_move.ogg")
 		_mettre_a_jour_curseur_action()
 	elif Input.is_action_just_pressed("action_bas"):
 		_index_action = (_index_action + 1) % _actions.size()
+		AudioManager.jouer_sfx("res://assets/audio/sfx/cursor_move.ogg")
 		_mettre_a_jour_curseur_action()
 	elif Input.is_action_just_pressed("action_confirmer"):
+		AudioManager.jouer_sfx("res://assets/audio/sfx/confirm.ogg")
 		cacher_menus()
 		emit_signal("action_selectionnee", _actions[_index_action].to_lower())
 
 func _gerer_menu_attaque() -> void:
 	if Input.is_action_just_pressed("action_haut"):
 		_index_attaque = (_index_attaque - 1 + _nb_attaques) % _nb_attaques
+		AudioManager.jouer_sfx("res://assets/audio/sfx/cursor_move.ogg")
 		_mettre_a_jour_curseur_attaque()
 	elif Input.is_action_just_pressed("action_bas"):
 		_index_attaque = (_index_attaque + 1) % _nb_attaques
+		AudioManager.jouer_sfx("res://assets/audio/sfx/cursor_move.ogg")
 		_mettre_a_jour_curseur_attaque()
 	elif Input.is_action_just_pressed("action_confirmer"):
+		AudioManager.jouer_sfx("res://assets/audio/sfx/confirm.ogg")
 		cacher_menus()
 		emit_signal("attaque_selectionnee", _index_attaque)
 	elif Input.is_action_just_pressed("action_annuler"):
+		AudioManager.jouer_sfx("res://assets/audio/sfx/cancel.ogg")
 		# Retour au menu action
 		afficher_menu_action()
 		emit_signal("retour_menu")

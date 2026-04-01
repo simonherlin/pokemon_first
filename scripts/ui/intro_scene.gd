@@ -41,10 +41,23 @@ var _noms_predefs_rival := ["Régis", "Blue", "Paul", "Hugo"]
 var _labels_predefs: Array[Label] = []
 var _index_predef: int = 0
 var _mode_predef: bool = true  # true = choix prédéfini, false = saisie libre
+var _typewriter_timer: float = 0.0
+var _typewriter_texte_complet: String = ""
+var _typewriter_index: int = 0
+var _typewriter_actif: bool = false
+var _label_pokeball: Label = null
+var _timer_pokeball: float = 0.0
 
 func _ready() -> void:
 	_creer_ui()
-	_afficher_dialogue()
+	# Fondu d'entrée depuis noir
+	modulate = Color(1, 1, 1, 0)
+	var tween_entree := create_tween()
+	tween_entree.tween_property(self, "modulate:a", 1.0, 1.0)
+	tween_entree.tween_callback(_demarrer_dialogue).set_delay(0.3)
+
+func _demarrer_dialogue() -> void:
+	_afficher_dialogue_typewriter()
 
 func _creer_ui() -> void:
 	# Fond sombre
@@ -89,6 +102,14 @@ func _creer_ui() -> void:
 	label_chen.add_theme_font_size_override("font_size", 16)
 	add_child(label_chen)
 
+	# Boule Pokéball décorative animée
+	_label_pokeball = Label.new()
+	_label_pokeball.text = "●"
+	_label_pokeball.position = Vector2(220, 60)
+	_label_pokeball.add_theme_font_size_override("font_size", 80)
+	_label_pokeball.add_theme_color_override("font_color", Color(0.8, 0.2, 0.2, 0.4))
+	add_child(_label_pokeball)
+
 	# Panel de choix de nom (initialement caché)
 	_panel_nom = Panel.new()
 	_panel_nom.position = Vector2(60, 50)
@@ -130,7 +151,38 @@ func _afficher_dialogue() -> void:
 	if _index_dialogue < _dialogues_chen.size():
 		_label_dialogue.text = _dialogues_chen[_index_dialogue]
 
-func _process(_delta: float) -> void:
+func _afficher_dialogue_typewriter() -> void:
+	if _index_dialogue < _dialogues_chen.size():
+		_typewriter_texte_complet = _dialogues_chen[_index_dialogue]
+		_typewriter_index = 0
+		_typewriter_actif = true
+		_typewriter_timer = 0.0
+		_label_dialogue.text = ""
+
+func _process(delta: float) -> void:
+	# Animer la Pokéball décorative
+	if _label_pokeball:
+		_timer_pokeball += delta
+		var pulse := 0.3 + sin(_timer_pokeball * 1.5) * 0.1
+		_label_pokeball.add_theme_color_override("font_color", Color(0.8, 0.2, 0.2, pulse))
+	# Typewriter
+	if _typewriter_actif:
+		_typewriter_timer += delta
+		var vitesse := 0.03
+		# Accélérer si le joueur maintient A
+		if Input.is_action_pressed("action_confirmer"):
+			vitesse = 0.005
+		if _typewriter_timer >= vitesse:
+			_typewriter_timer = 0.0
+			if _typewriter_index < _typewriter_texte_complet.length():
+				_typewriter_index += 1
+				_label_dialogue.text = _typewriter_texte_complet.substr(0, _typewriter_index)
+				# Son de texte toutes les 3 lettres
+				if _typewriter_index % 3 == 0:
+					AudioManager.jouer_sfx("res://assets/audio/sfx/text_advance.ogg")
+			else:
+				_typewriter_actif = false
+		return
 	match _phase:
 		Phase.DISCOURS_CHEN:
 			_gerer_discours()
@@ -143,9 +195,10 @@ func _process(_delta: float) -> void:
 
 func _gerer_discours() -> void:
 	if Input.is_action_just_pressed("action_confirmer"):
+		AudioManager.jouer_sfx("res://assets/audio/sfx/confirm.ogg")
 		_index_dialogue += 1
 		if _index_dialogue < _dialogues_chen.size():
-			_afficher_dialogue()
+			_afficher_dialogue_typewriter()
 		else:
 			# Passer au choix du nom
 			_phase = Phase.NOM_JOUEUR
@@ -178,18 +231,22 @@ func _gerer_choix_nom(est_joueur: bool) -> void:
 	if Input.is_action_just_pressed("action_haut"):
 		if _index_predef >= 2:
 			_index_predef -= 2
+			AudioManager.jouer_sfx("res://assets/audio/sfx/cursor_move.ogg")
 			_maj_curseur_nom()
 	elif Input.is_action_just_pressed("action_bas"):
 		if _index_predef + 2 < noms.size():
 			_index_predef += 2
+			AudioManager.jouer_sfx("res://assets/audio/sfx/cursor_move.ogg")
 			_maj_curseur_nom()
 	elif Input.is_action_just_pressed("action_gauche"):
 		if _index_predef % 2 > 0:
 			_index_predef -= 1
+			AudioManager.jouer_sfx("res://assets/audio/sfx/cursor_move.ogg")
 			_maj_curseur_nom()
 	elif Input.is_action_just_pressed("action_droite"):
 		if _index_predef % 2 < 1 and _index_predef + 1 < noms.size():
 			_index_predef += 1
+			AudioManager.jouer_sfx("res://assets/audio/sfx/cursor_move.ogg")
 			_maj_curseur_nom()
 	elif Input.is_action_just_pressed("action_confirmer"):
 		var nom_choisi: String = noms[_index_predef]
@@ -213,7 +270,11 @@ func _lancer_jeu() -> void:
 	_phase = Phase.TRANSITION
 	_label_dialogue.text = "%s ! Ton aventure POKÉMON commence maintenant !" % _nom_joueur
 	_label_instruction.text = ""
-	await get_tree().create_timer(2.0).timeout
+	AudioManager.jouer_sfx("res://assets/audio/sfx/confirm.ogg")
+	# Fondu de sortie
+	var tween_sortie := create_tween()
+	tween_sortie.tween_property(self, "modulate:a", 0.0, 1.5).set_delay(1.5)
+	await tween_sortie.finished
 
 	# Initialiser la partie
 	GameManager.nouvelle_partie()

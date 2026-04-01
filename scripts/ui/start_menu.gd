@@ -58,13 +58,17 @@ func _process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("action_haut"):
 		_index = (_index - 1 + OPTIONS.size()) % OPTIONS.size()
+		AudioManager.jouer_sfx("res://assets/audio/sfx/cursor_move.ogg")
 		_maj_curseur()
 	elif Input.is_action_just_pressed("action_bas"):
 		_index = (_index + 1) % OPTIONS.size()
+		AudioManager.jouer_sfx("res://assets/audio/sfx/cursor_move.ogg")
 		_maj_curseur()
 	elif Input.is_action_just_pressed("action_confirmer"):
+		AudioManager.jouer_sfx("res://assets/audio/sfx/confirm.ogg")
 		_selectionner_option()
 	elif Input.is_action_just_pressed("action_annuler") or Input.is_action_just_pressed("action_menu"):
+		AudioManager.jouer_sfx("res://assets/audio/sfx/cancel.ogg")
 		_fermer()
 
 func _maj_curseur() -> void:

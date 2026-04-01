@@ -87,10 +87,14 @@ func _afficher_prochaine_ligne() -> void:
 
 func _animer_texte(delta: float) -> void:
 	var vitesse := VITESSE_RAPIDE if Input.is_action_pressed("action_confirmer") else VITESSE_TEXTE
+	var ancien_nb := int(_index_char)
 	_index_char += vitesse * delta
 
 	var nb_chars := mini(int(_index_char), _texte_actuel.length())
 	label_texte.text = _texte_actuel.substr(0, nb_chars)
+	# Son de texte toutes les 3 lettres
+	if nb_chars > ancien_nb and nb_chars % 3 == 0 and nb_chars < _texte_actuel.length():
+		AudioManager.jouer_sfx("res://assets/audio/sfx/text_advance.ogg")
 
 	if nb_chars >= _texte_actuel.length():
 		_texte_complet = true
@@ -100,6 +104,7 @@ func _animer_texte(delta: float) -> void:
 
 func _gerer_attente_input() -> void:
 	if Input.is_action_just_pressed("action_confirmer"):
+		AudioManager.jouer_sfx("res://assets/audio/sfx/confirm.ogg")
 		_en_attente_input = false
 		if indicateur_suite:
 			indicateur_suite.visible = false
@@ -108,17 +113,21 @@ func _gerer_attente_input() -> void:
 func _gerer_choix() -> void:
 	if Input.is_action_just_pressed("action_haut"):
 		_choix_index = 0
+		AudioManager.jouer_sfx("res://assets/audio/sfx/cursor_move.ogg")
 		_mettre_a_jour_choix()
 	elif Input.is_action_just_pressed("action_bas"):
 		_choix_index = 1
+		AudioManager.jouer_sfx("res://assets/audio/sfx/cursor_move.ogg")
 		_mettre_a_jour_choix()
 	elif Input.is_action_just_pressed("action_confirmer"):
+		AudioManager.jouer_sfx("res://assets/audio/sfx/confirm.ogg")
 		_choix_actif = false
 		if panel_choix:
 			panel_choix.visible = false
 		emit_signal("choix_fait", _choix_index == 0)
 		_fermer()
 	elif Input.is_action_just_pressed("action_annuler"):
+		AudioManager.jouer_sfx("res://assets/audio/sfx/cancel.ogg")
 		_choix_actif = false
 		if panel_choix:
 			panel_choix.visible = false
