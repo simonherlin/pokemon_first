@@ -80,6 +80,24 @@ func _configurer_arene() -> void:
 			_ct_nom = "CT MÉGA-SANGSUE"
 			_ct_description = "MÉGA-SANGSUE absorbe la moitié des\ndégâts infligés pour restaurer vos PV."
 			_badge_desc = "Ce badge permet aux Pokémon jusqu'au N.50\nd'obéir sans condition."
+		"arene_parmanie":
+			_badge_index = 4
+			_badge_flag = "badge_ame"
+			_champion_id = "champion_koga"
+			_ct_recompense = "ct_toxik"
+			_badge_nom = "BADGE ÂME"
+			_ct_nom = "CT TOXIK"
+			_ct_description = "TOXIK empoisonne gravement l'adversaire.\nLes dégâts augmentent chaque tour."
+			_badge_desc = "Ce badge permet d'utiliser SURF\nhors des combats."
+		"arene_safrania":
+			_badge_index = 5
+			_badge_flag = "badge_marais"
+			_champion_id = "champion_morgane"
+			_ct_recompense = "ct_psyko"
+			_badge_nom = "BADGE MARAIS"
+			_ct_nom = "CT PSYKO"
+			_ct_description = "PSYKO est une puissante attaque Psy\nqui peut baisser le Spécial adverse."
+			_badge_desc = "Ce badge permet aux Pokémon jusqu'au N.70\nd'obéir sans condition."
 
 func recevoir_params(params: Dictionary) -> void:
 	carte_id = params.get("carte_id", carte_id)
