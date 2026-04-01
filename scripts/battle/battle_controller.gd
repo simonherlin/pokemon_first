@@ -89,6 +89,8 @@ signal niveau_gagne(pokemon: Pokemon, nouveau_niveau: int)
 signal evolution_proposee(pokemon: Pokemon, vers_id: String)
 signal attaque_a_apprendre(pokemon: Pokemon, move_id: String)
 signal attaque_apprise(pokemon: Pokemon, move_id: String)
+signal exp_gagnee(pokemon: Pokemon, montant: int, exp_avant: int, exp_apres: int, niveaux: Array)
+signal animation_capture(nb_secousses: int, succes: bool)
 
 # --- État pour apprentissage d'attaque ---
 var _attente_apprentissage: bool = false
@@ -234,7 +236,13 @@ func _resoudre_capture(ball_mult: float) -> void:
 	AudioManager.jouer_sfx(SFX_BALL_THROW)
 	emit_signal("message_affiche", "Tu lances la Ball...")
 	await get_tree().create_timer(1.0).timeout
-	var succes := BattleCalculator.calculer_capture(pokemon_ennemi, ball_mult)
+	var resultat := BattleCalculator.calculer_capture(pokemon_ennemi, ball_mult)
+	var nb_secousses: int = resultat.get("nb_secousses", 0)
+	var succes: bool = resultat.get("succes", false)
+	# Émettre le signal d'animation de capture avec les secousses
+	emit_signal("animation_capture", nb_secousses, succes)
+	# Attendre l'animation des secousses
+	await get_tree().create_timer(0.6 * nb_secousses + 0.5).timeout
 	if succes:
 		AudioManager.jouer_sfx(SFX_BALL_CLICK)
 		emit_signal("message_affiche", "Gotcha ! %s a été capturé !" % pokemon_ennemi.surnom)
@@ -502,8 +510,12 @@ func _distribuer_exp() -> void:
 	var exp := BattleCalculator.calculer_exp_gagne(pokemon_ennemi, type_combat == TypeCombat.SAUVAGE)
 	AudioManager.jouer_sfx(SFX_EXP)
 	emit_signal("message_affiche", "%s gagne %d points d'Expérience !" % [pokemon_joueur.surnom, exp])
+	var exp_avant := pokemon_joueur.exp
 	await get_tree().create_timer(0.8).timeout
 	var niveaux := pokemon_joueur.gagner_exp(exp)
+	var exp_apres := pokemon_joueur.exp
+	# Émettre le signal pour animer la barre d'EXP
+	emit_signal("exp_gagnee", pokemon_joueur, exp, exp_avant, exp_apres, niveaux)
 	for niv in niveaux:
 		AudioManager.jouer_sfx(SFX_LEVEL_UP)
 		emit_signal("message_affiche", "%s monte au niveau %d !" % [pokemon_joueur.surnom, niv])

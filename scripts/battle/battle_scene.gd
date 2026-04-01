@@ -22,6 +22,10 @@ extends Node2D
 @onready var barre_pv_ennemi: ProgressBar = $BattleHUD/PanelEnnemi/BarrePV
 @onready var label_statut_ennemi: Label = $BattleHUD/PanelEnnemi/LabelStatut
 
+@onready var label_capture: Label = $BattleHUD/PanelEnnemi/LabelCapture
+@onready var barre_exp: ProgressBar = $BattleHUD/PanelJoueur/BarreEXP
+@onready var label_exp: Label = $BattleHUD/PanelJoueur/LabelEXP
+
 @onready var label_message: RichTextLabel = $BattleHUD/PanelMessage/LabelMessage
 @onready var menu_action: VBoxContainer = $BattleHUD/MenuAction
 @onready var menu_attaque: VBoxContainer = $BattleHUD/MenuAttaque
@@ -55,6 +59,7 @@ var _pos_joueur_base: Vector2 = Vector2.ZERO
 var _pos_ennemi_base: Vector2 = Vector2.ZERO
 var _tween_pv_joueur: Tween = null
 var _tween_pv_ennemi: Tween = null
+var _tween_exp: Tween = null
 
 func _ready() -> void:
 	menu_action.visible = false
@@ -70,6 +75,19 @@ func _ready() -> void:
 		_pos_joueur_base = sprite_joueur.position
 	if sprite_ennemi:
 		_pos_ennemi_base = sprite_ennemi.position
+	# Initialiser le style de la barre d'EXP
+	if barre_exp:
+		var fill_style := StyleBoxFlat.new()
+		fill_style.bg_color = Color(0.3, 0.5, 1.0)
+		fill_style.set_corner_radius_all(2)
+		barre_exp.add_theme_stylebox_override("fill", fill_style)
+		var bg_style := StyleBoxFlat.new()
+		bg_style.bg_color = Color(0.15, 0.15, 0.2)
+		bg_style.set_corner_radius_all(2)
+		barre_exp.add_theme_stylebox_override("background", bg_style)
+	# Cacher l'indicateur de capture par défaut
+	if label_capture:
+		label_capture.visible = false
 
 func recevoir_params(params: Dictionary) -> void:
 	_type_combat = params.get("type_combat", "sauvage")
@@ -151,6 +169,8 @@ func _connecter_signaux() -> void:
 	_controller.attaque_a_apprendre.connect(_on_attaque_a_apprendre)
 	_controller.pokemon_change.connect(_on_pokemon_change)
 	_controller.animation_attaque.connect(_on_animation_attaque)
+	_controller.exp_gagnee.connect(_on_exp_gagnee)
+	_controller.animation_capture.connect(_on_animation_capture)
 
 func _on_message(texte: String) -> void:
 	label_message.text = texte
@@ -257,6 +277,10 @@ func _on_combat_termine(victoire: bool) -> void:
 			_controller.pokemon_change.disconnect(_on_pokemon_change)
 		if _controller.animation_attaque.is_connected(_on_animation_attaque):
 			_controller.animation_attaque.disconnect(_on_animation_attaque)
+		if _controller.exp_gagnee.is_connected(_on_exp_gagnee):
+			_controller.exp_gagnee.disconnect(_on_exp_gagnee)
+		if _controller.animation_capture.is_connected(_on_animation_capture):
+			_controller.animation_capture.disconnect(_on_animation_capture)
 	
 	# Jouer la musique de victoire ou arrêter la musique de combat
 	if victoire:
@@ -331,11 +355,13 @@ func _afficher_info_pokemon() -> void:
 		barre_pv_joueur.max_value = pj.pv_max
 		barre_pv_joueur.value = pj.pv_actuels
 		label_pv_joueur.text = "%d/%d" % [pj.pv_actuels, pj.pv_max]
+		_maj_barre_exp(pj)
 	if pe:
 		label_nom_ennemi.text = pe.surnom
 		label_niveau_ennemi.text = "N.%d" % pe.niveau
 		barre_pv_ennemi.max_value = pe.pv_max
 		barre_pv_ennemi.value = pe.pv_actuels
+		_maj_indicateur_capture(pe)
 
 func _process(_delta: float) -> void:
 	match _menu_actif:
@@ -819,4 +845,171 @@ func _animer_apparition(sprite: Sprite2D) -> void:
 	tween.tween_property(sprite, "scale", scale_finale, 0.4)\
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween.tween_property(sprite, "modulate:a", 1.0, 0.3)
+	await tween.finished
+
+# =============================================================================
+# BARRE D'EXP ANIMÉE
+# =============================================================================
+
+# Mettre à jour la barre d'EXP (sans animation)
+func _maj_barre_exp(pokemon: Pokemon) -> void:
+	if not barre_exp or not pokemon:
+		return
+	var info := pokemon.get_exp_info()
+	var exp_niv := info.get("exp_niv_actuel", 0)
+	var exp_next := info.get("exp_niv_suivant", 1)
+	var exp_act := info.get("exp_actuel", 0)
+	var range_exp := maxi(exp_next - exp_niv, 1)
+	barre_exp.max_value = range_exp
+	barre_exp.value = exp_act - exp_niv
+	# Couleur bleue pour EXP
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.3, 0.5, 1.0)
+	style.set_corner_radius_all(2)
+	barre_exp.add_theme_stylebox_override("fill", style)
+	var bg_style := StyleBoxFlat.new()
+	bg_style.bg_color = Color(0.15, 0.15, 0.2)
+	bg_style.set_corner_radius_all(2)
+	barre_exp.add_theme_stylebox_override("background", bg_style)
+
+# Callback quand de l'EXP est gagné — animer la barre
+func _on_exp_gagnee(pokemon: Pokemon, montant: int, exp_avant: int, exp_apres: int, niveaux: Array) -> void:
+	if not barre_exp or not pokemon:
+		return
+	# Animer le remplissage de la barre d'EXP
+	# Si des niveaux sont gagnés, on remplit la barre par étapes
+	if niveaux.is_empty():
+		# Pas de level-up : simple tween de remplissage
+		var info := pokemon.get_exp_info()
+		var exp_niv := info.get("exp_niv_actuel", 0)
+		var exp_next := info.get("exp_niv_suivant", 1)
+		var range_exp := maxi(exp_next - exp_niv, 1)
+		barre_exp.max_value = range_exp
+		if _tween_exp:
+			_tween_exp.kill()
+		_tween_exp = create_tween()
+		_tween_exp.tween_property(barre_exp, "value", float(exp_apres - exp_niv), 0.8)\
+			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	else:
+		# Level-up : remplir la barre → reset → remplir par étape
+		await _animer_exp_level_up(pokemon)
+
+# Animation d'EXP avec level-up : remplir → flash → reset
+func _animer_exp_level_up(pokemon: Pokemon) -> void:
+	# Remplir la barre complètement
+	if _tween_exp:
+		_tween_exp.kill()
+	_tween_exp = create_tween()
+	_tween_exp.tween_property(barre_exp, "value", barre_exp.max_value, 0.4)\
+		.set_ease(Tween.EASE_OUT)
+	await _tween_exp.finished
+	await get_tree().create_timer(0.2).timeout
+	# Mettre à jour pour le nouveau niveau
+	_maj_barre_exp(pokemon)
+
+# =============================================================================
+# INDICATEUR DE CAPTURE
+# =============================================================================
+
+# Afficher la difficulté de capture pour les combats sauvages
+func _maj_indicateur_capture(pokemon_ennemi_ref: Pokemon) -> void:
+	if not label_capture:
+		return
+	# N'afficher que pour les combats sauvages et si le joueur a un Pokédex
+	if _type_combat != "sauvage" or not GameManager.get_flag("pokedex_recu"):
+		label_capture.text = ""
+		label_capture.visible = false
+		return
+	# Vérifier si le joueur a déjà capturé cette espèce
+	if PlayerData.a_capture(pokemon_ennemi_ref.espece_id):
+		label_capture.text = "●"
+		label_capture.add_theme_color_override("font_color", Color(0.3, 0.8, 0.3))
+		label_capture.visible = true
+		return
+	# Afficher les étoiles de difficulté basées sur le taux de capture
+	var taux := BattleCalculator.get_taux_capture(pokemon_ennemi_ref.espece_id)
+	var etoiles := ""
+	var couleur := Color.WHITE
+	if taux >= 200:
+		etoiles = "★★★★★"
+		couleur = Color(0.3, 0.9, 0.3)  # Vert — très facile
+	elif taux >= 150:
+		etoiles = "★★★★☆"
+		couleur = Color(0.5, 0.8, 0.3)  # Vert clair
+	elif taux >= 100:
+		etoiles = "★★★☆☆"
+		couleur = Color(0.9, 0.8, 0.2)  # Jaune — moyen
+	elif taux >= 45:
+		etoiles = "★★☆☆☆"
+		couleur = Color(0.9, 0.5, 0.2)  # Orange — difficile
+	elif taux >= 3:
+		etoiles = "★☆☆☆☆"
+		couleur = Color(0.9, 0.2, 0.2)  # Rouge — très difficile
+	else:
+		etoiles = "☆☆☆☆☆"
+		couleur = Color(0.6, 0.1, 0.1)  # Rouge foncé — quasi impossible
+	label_capture.text = etoiles
+	label_capture.add_theme_color_override("font_color", couleur)
+	label_capture.visible = true
+
+# =============================================================================
+# ANIMATION DE CAPTURE (SECOUSSES DE BALL)
+# =============================================================================
+
+# Callback d'animation de capture : affiche les secousses de la Ball
+func _on_animation_capture(nb_secousses: int, succes: bool) -> void:
+	# Cacher le sprite ennemi quand la ball est lancée
+	if sprite_ennemi:
+		var tween_hide := create_tween()
+		tween_hide.tween_property(sprite_ennemi, "modulate:a", 0.0, 0.3)
+		await tween_hide.finished
+	# Créer un sprite de Ball au centre
+	var ball_sprite := Sprite2D.new()
+	ball_sprite.position = _pos_ennemi_base
+	# Utiliser un cercle coloré comme placeholder si pas de texture
+	var ball_tex := load("res://assets/sprites/ui/pokeball_item.png") as Texture2D
+	if ball_tex:
+		ball_sprite.texture = ball_tex
+		ball_sprite.scale = Vector2(1.5, 1.5)
+	else:
+		# Fallback : créer une représentation visuelle simple
+		var placeholder := ColorRect.new()
+		placeholder.color = Color(0.9, 0.2, 0.2)
+		placeholder.size = Vector2(16, 16)
+		placeholder.position = Vector2(-8, -8)
+		ball_sprite.add_child(placeholder)
+	add_child(ball_sprite)
+	# Animer les secousses
+	for i in range(nb_secousses):
+		await _secouer_ball(ball_sprite)
+		await get_tree().create_timer(0.2).timeout
+	if succes:
+		# Ball clique — petit flash blanc
+		var flash := ColorRect.new()
+		flash.color = Color(1, 1, 1, 0.4)
+		flash.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		flash.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		add_child(flash)
+		await get_tree().create_timer(0.15).timeout
+		flash.queue_free()
+	else:
+		# Ball s'ouvre — le Pokémon réapparaît
+		ball_sprite.queue_free()
+		if sprite_ennemi:
+			sprite_ennemi.modulate.a = 1.0
+			await _animer_apparition(sprite_ennemi)
+		return
+	ball_sprite.queue_free()
+
+# Animation d'une secousse de Ball (gauche-droite)
+func _secouer_ball(ball: Sprite2D) -> void:
+	if not ball or not is_instance_valid(ball):
+		return
+	var pos_base := ball.position
+	var tween := create_tween()
+	tween.tween_property(ball, "position:x", pos_base.x - 8, 0.07)
+	tween.tween_property(ball, "position:x", pos_base.x + 8, 0.14)
+	tween.tween_property(ball, "position:x", pos_base.x - 4, 0.1)
+	tween.tween_property(ball, "position:x", pos_base.x, 0.07)
+	AudioManager.jouer_sfx(BattleController.SFX_BALL_SHAKE)
 	await tween.finished

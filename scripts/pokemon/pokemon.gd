@@ -227,6 +227,17 @@ func _exp_pour_niveau(niv: int) -> int:
 		return GROUPES_EXP[groupe_exp].call(niv)
 	return int(pow(niv, 3))
 
+# Informations EXP pour la barre d'EXP animée
+func get_exp_info() -> Dictionary:
+	var exp_niv_actuel := _exp_pour_niveau(niveau)
+	var exp_niv_suivant := _exp_pour_niveau(mini(niveau + 1, NIVEAU_MAX))
+	return {
+		"exp_actuel": exp,
+		"exp_niv_actuel": exp_niv_actuel,
+		"exp_niv_suivant": exp_niv_suivant,
+		"niveau": niveau
+	}
+
 # EXP gagnée à la défaite de ce Pokémon (Gen 1)
 func exp_a_la_mort(sauvage: bool) -> int:
 	var exp_base: int = 64  # valeur par défaut

@@ -119,7 +119,7 @@ func attaque_touche(attaquant: Pokemon, defenseur: Pokemon, attaque: Dictionary)
 # ----------------------------------------------------------------
 # Formule de capture Gen 1
 # ----------------------------------------------------------------
-func calculer_capture(pokemon_sauvage: Pokemon, ball_mult: float) -> bool:
+func calculer_capture(pokemon_sauvage: Pokemon, ball_mult: float) -> Dictionary:
 	var taux_capture_espece: int = 45  # Valeur par défaut
 	# À récupérer depuis SpeciesData si disponible
 	var espece_data := SpeciesData.get_espece(pokemon_sauvage.espece_id)
@@ -138,11 +138,18 @@ func calculer_capture(pokemon_sauvage: Pokemon, ball_mult: float) -> bool:
 	var taux := int((3.0 * pv_max - 2.0 * pv_actuels) * taux_capture_espece * ball_mult * statut_bonus / (3.0 * pv_max))
 	taux = clampi(taux, 0, 255)
 
-	# 4 tests de secousse de la Ball
+	# 4 tests de secousse de la Ball — compter les secousses réussies
+	var nb_secousses := 0
 	for _i in range(4):
 		if randi() % 256 >= taux:
-			return false
-	return true
+			return {"succes": false, "nb_secousses": nb_secousses}
+		nb_secousses += 1
+	return {"succes": true, "nb_secousses": 3}
+
+# Obtenir le taux de capture brut d'un Pokémon (pour l'indicateur)
+func get_taux_capture(espece_id: String) -> int:
+	var espece_data := SpeciesData.get_espece(espece_id)
+	return espece_data.get("taux_capture", 45)
 
 # Calcul de l'EXP gagnée après un combat
 func calculer_exp_gagne(pokemon_vaincu: Pokemon, sauvage: bool) -> int:
