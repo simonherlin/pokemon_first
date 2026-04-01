@@ -1,4 +1,5 @@
 extends RefCounted
+class_name Pokemon
 
 # Pokemon — Représente un Pokémon en jeu (instance, pas une espèce)
 # Contient toutes les données d'un Pokémon individuel de l'équipe

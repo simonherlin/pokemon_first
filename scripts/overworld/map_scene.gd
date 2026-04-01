@@ -7,6 +7,7 @@ const TAILLE_TILE := 32
 const PLAYER_SCENE := preload("res://scenes/entities/player.tscn")
 const NPC_SCENE := preload("res://scenes/entities/npc.tscn")
 const CUT_TREE_SCENE := preload("res://scenes/entities/cut_tree.tscn")
+const BOULDER_SCENE_SCRIPT := preload("res://scripts/overworld/boulder_controller.gd")
 
 var carte_id: String = ""
 var carte_data: Dictionary = {}
@@ -28,6 +29,8 @@ func _ready() -> void:
 	_instancier_joueur()
 	_instancier_pnj()
 	_instancier_arbres_coupables()
+	_instancier_rochers()
+	_instancier_objets_sol()
 	# Afficher le nom de la carte en haut
 	_afficher_nom_carte()
 	# Lancer la musique de la carte
@@ -85,6 +88,76 @@ func _instancier_arbres_coupables() -> void:
 		var arbre := CUT_TREE_SCENE.instantiate()
 		arbre.initialiser(arbre_data, carte_id)
 		entities.add_child(arbre)
+
+func _instancier_rochers() -> void:
+	# Instancier les rochers poussables définis dans le JSON
+	for rocher_data in carte_data.get("rochers", []):
+		var rocher := StaticBody2D.new()
+		rocher.set_script(BOULDER_SCENE_SCRIPT)
+		rocher.initialiser(rocher_data, carte_id)
+		entities.add_child(rocher)
+
+func _instancier_objets_sol() -> void:
+	# Instancier les objets ramassables au sol
+	for obj_data in carte_data.get("objets_sol", []):
+		var obj_id: String = obj_data.get("id", "")
+		# Vérifier si déjà ramassé
+		if PlayerData.objet_est_ramasse("%s_%s" % [carte_id, obj_id]):
+			continue
+		var item_id: String = obj_data.get("item", "")
+		var x: int = obj_data.get("x", 0)
+		var y: int = obj_data.get("y", 0)
+		# Créer un nœud interactable pour l'objet
+		var obj_node := StaticBody2D.new()
+		obj_node.position = Vector2(x, y) * TAILLE_TILE
+		# Collision
+		var shape := RectangleShape2D.new()
+		shape.size = Vector2(TAILLE_TILE - 2, TAILLE_TILE - 2)
+		var col := CollisionShape2D.new()
+		col.shape = shape
+		col.position = Vector2(TAILLE_TILE / 2, TAILLE_TILE / 2)
+		obj_node.add_child(col)
+		# Sprite (petit cercle doré représentant une Poké Ball au sol)
+		var sprite_obj := ColorRect.new()
+		sprite_obj.color = Color(1.0, 0.85, 0.2)
+		sprite_obj.size = Vector2(12, 12)
+		sprite_obj.position = Vector2(10, 10)
+		obj_node.add_child(sprite_obj)
+		# Ajouter le script d'interaction inline via metadata
+		obj_node.set_meta("item_id", item_id)
+		obj_node.set_meta("obj_id", "%s_%s" % [carte_id, obj_id])
+		obj_node.set_meta("quantite", obj_data.get("quantite", 1))
+		obj_node.set_script(_creer_script_objet_sol())
+		entities.add_child(obj_node)
+
+func _creer_script_objet_sol() -> GDScript:
+	# Script inline minimaliste pour l'objet au sol
+	var code := """extends StaticBody2D
+
+func interagir(joueur: Node) -> void:
+	var item_id: String = get_meta("item_id", "")
+	var obj_id: String = get_meta("obj_id", "")
+	var quantite: int = get_meta("quantite", 1)
+	if item_id.is_empty():
+		return
+	PlayerData.ajouter_item(item_id, quantite)
+	PlayerData.marquer_objet_ramasse(obj_id)
+	var item_data: Dictionary = ItemsData.get_item(item_id)
+	var nom: String = item_data.get("nom", item_id)
+	# Trouver le DialogBox pour afficher le message
+	var parent = get_parent()
+	while parent != null:
+		if parent.has_node("DialogBox"):
+			parent.get_node("DialogBox").afficher_dialogue(["Tu as trouvé %s !" % nom])
+			break
+		parent = parent.get_parent()
+	AudioManager.jouer_sfx("res://assets/audio/sfx/item_get.ogg")
+	queue_free()
+"""
+	var script := GDScript.new()
+	script.source_code = code
+	script.reload()
+	return script
 
 func _on_dialogue_demarre(lignes: Array) -> void:
 	if joueur:

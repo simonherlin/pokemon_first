@@ -7,6 +7,7 @@ extends CharacterBody2D
 const TAILLE_TILE := 32
 const VITESSE_MARCHE := 4.0    # tiles/seconde
 const VITESSE_SPRINT := 7.0    # tiles/seconde (avec Shift)
+const VITESSE_VELO := 9.0      # tiles/seconde (avec Vélo)
 
 # --- Nœuds ---
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -18,6 +19,8 @@ var en_deplacement: bool = false
 var position_grille: Vector2i = Vector2i(7, 12)
 var direction_actuelle: Vector2i = Vector2i(0, 1)  # bas par défaut
 var peut_bouger: bool = true  # désactivé pendant les dialogues/combats
+var est_sur_eau: bool = false  # true si le joueur surfe
+var sur_velo: bool = false     # true si le joueur est sur le vélo
 
 # --- Déplacement ---
 var cible_monde: Vector2 = Vector2.ZERO
@@ -49,8 +52,13 @@ func _process(delta: float) -> void:
 		_lire_input()
 
 func _lire_input() -> void:
-	# Vérifier sprint
-	vitesse_courante = VITESSE_SPRINT if Input.is_action_pressed("action_sprint") else VITESSE_MARCHE
+	# Vérifier sprint / vélo
+	if sur_velo:
+		vitesse_courante = VITESSE_VELO
+	elif Input.is_action_pressed("action_sprint"):
+		vitesse_courante = VITESSE_SPRINT
+	else:
+		vitesse_courante = VITESSE_MARCHE
 
 	# Direction demandée
 	var dir := Vector2i.ZERO
@@ -104,8 +112,15 @@ func _arrivee_nouvelle_case() -> void:
 		position_grille.x, position_grille.y,
 		_vec_vers_direction(direction_actuelle)
 	)
+	# Décrémenter le compteur Repousse dans GameManager
+	# (Le EncounterSystem gère la logique de blocage)
+	
 	# Vérifier warp
 	if _verifier_warp():
+		return
+	# Rencontres aquatiques si en surf
+	if est_sur_eau:
+		EncounterSystem.verifier_rencontre_surf(position_grille, self)
 		return
 	# Vérifier herbes sauvages
 	EncounterSystem.verifier_rencontre(position_grille, self)
@@ -141,7 +156,22 @@ func _case_accessible(cible: Vector2i) -> bool:
 	if ray_interaction.is_colliding():
 		var collider = ray_interaction.get_collider()
 		if collider != null:
+			# Si on surfe, on peut passer les collisions d'eau
+			# Mais on ne peut pas aller sur la terre ferme sans descendre du surf
 			return false
+	
+	# Vérifier si la case cible est de l'eau
+	var tilemap := _get_tilemap()
+	if tilemap:
+		var is_water := SurfSystem.est_case_eau(tilemap, cible)
+		if is_water and not est_sur_eau:
+			# Proposer de surfer si le joueur a la CS
+			return false  # L'interaction Surf se fait via _interagir()
+		elif not is_water and est_sur_eau:
+			# Descendre du surf quand on atteint la terre
+			est_sur_eau = false
+			sprite.modulate = Color.WHITE
+	
 	return true
 
 func _verifier_warp() -> bool:
@@ -202,6 +232,91 @@ func _interagir() -> void:
 		var collider = ray_interaction.get_collider()
 		if collider and collider.has_method("interagir"):
 			collider.interagir(self)
+			return
+	
+	# Si la case devant est de l'eau et qu'on n'est pas encore en train de surfer
+	var tilemap := _get_tilemap()
+	if tilemap and not est_sur_eau:
+		var cible := position_grille + direction_actuelle
+		if SurfSystem.est_case_eau(tilemap, cible) and SurfSystem.peut_surfer():
+			_commencer_surf()
+			return
+	
+	# Pêche : si on est face à l'eau et qu'on a une canne
+	if tilemap and not est_sur_eau:
+		var cible := position_grille + direction_actuelle
+		if FishingSystem.peut_pecher(tilemap, position_grille, direction_actuelle):
+			_lancer_peche()
+			return
+
+# --- Système de Surf ---
+func _commencer_surf() -> void:
+	est_sur_eau = true
+	sprite.modulate = Color(0.7, 0.85, 1.0)  # Teinte bleutée pour indiquer le surf
+	AudioManager.jouer_sfx("res://assets/audio/sfx/surf.ogg")
+	# Se déplacer sur la première case d'eau
+	var cible := position_grille + direction_actuelle
+	position_grille = cible
+	cible_monde = Vector2(position_grille) * TAILLE_TILE
+	en_deplacement = true
+	_mettre_a_jour_animation(_vec_vers_direction(direction_actuelle), true)
+
+# --- Système de Pêche ---
+func _lancer_peche() -> void:
+	peut_bouger = false
+	# Obtenir la zone d'encounter
+	var zone_id := _obtenir_zone_encounter()
+	if zone_id.is_empty():
+		peut_bouger = true
+		return
+	
+	var pokemon_data := FishingSystem.pecher(zone_id)
+	if pokemon_data.is_empty():
+		# Rien n'a mordu
+		AudioManager.jouer_sfx("res://assets/audio/sfx/fishing_fail.ogg")
+		# TODO: afficher message "Rien ne mord..."
+		await get_tree().create_timer(1.0).timeout
+		peut_bouger = true
+		return
+	
+	# Ajuster le niveau selon la canne
+	pokemon_data = FishingSystem.ajuster_niveau_peche(pokemon_data)
+	var espece_id: String = pokemon_data.get("pokemon_id", "129")  # Magicarpe par défaut
+	var niveau := randi_range(pokemon_data.get("niveau_min", 5), pokemon_data.get("niveau_max", 15))
+	
+	AudioManager.jouer_sfx("res://assets/audio/sfx/encounter.ogg")
+	SceneManager.charger_scene("res://scenes/battle/battle_scene.tscn", {
+		"type_combat": "sauvage",
+		"espece_id": espece_id,
+		"niveau": niveau,
+		"pokemon_joueur_index": 0,
+		"carte_retour": PlayerData.carte_actuelle,
+		"musique_carte": MapLoader.get_carte(PlayerData.carte_actuelle).get("musique", "")
+	})
+
+func _obtenir_zone_encounter() -> String:
+	# Chercher la zone de rencontre pour cette carte (pour la pêche/surf)
+	var carte_data := MapLoader.get_carte(PlayerData.carte_actuelle)
+	# D'abord chercher dans les zones d'herbes (qui peuvent avoir aussi des données pêche)
+	for zone in carte_data.get("zones_herbes", []):
+		var x1: int = zone.get("x1", 0)
+		var y1: int = zone.get("y1", 0)
+		var x2: int = zone.get("x2", 0)
+		var y2: int = zone.get("y2", 0)
+		if position_grille.x >= x1 and position_grille.x <= x2 and \
+		   position_grille.y >= y1 and position_grille.y <= y2:
+			return zone.get("table", "")
+	# Sinon utiliser l'ID de la carte directement comme zone
+	return PlayerData.carte_actuelle
+
+func _get_tilemap() -> TileMap:
+	var parent := get_parent()
+	if parent == null:
+		return null
+	var scene := parent.get_parent()
+	if scene and scene.has_node("TileMap"):
+		return scene.get_node("TileMap") as TileMap
+	return null
 
 func _vec_vers_direction(v: Vector2i) -> String:
 	if v == Vector2i(0, -1): return "haut"

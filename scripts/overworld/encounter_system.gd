@@ -1,10 +1,11 @@
 extends Node
 
-# EncounterSystem — Système de rencontres Pokémon sauvages dans les herbes
-# Se déclenche à chaque pas dans les zones d'herbes hautes
+# EncounterSystem — Système de rencontres Pokémon sauvages
+# Supporte : herbes hautes, surf (eau), pêche, grottes
 
 const CHEMIN_JSON := "res://data/encounter_tables.json"
 const TAUX_RENCONTRE_BASE := 0.10  # 10% de chance par pas dans les herbes
+const TAUX_RENCONTRE_SURF := 0.10  # 10% de chance par pas sur l'eau
 
 var _tables: Dictionary = {}
 var _charge: bool = false
@@ -57,6 +58,10 @@ func verifier_rencontre(position_grille: Vector2i, joueur_node: Node) -> void:
 	if pokemon_data.is_empty():
 		return
 
+	_lancer_combat_sauvage(pokemon_data, joueur_node)
+
+# Lancer un combat sauvage à partir des données du Pokémon tiré
+func _lancer_combat_sauvage(pokemon_data: Dictionary, joueur_node: Node) -> void:
 	# Déclencher le combat
 	var espece_id: String = pokemon_data.get("pokemon_id", "019")
 	var niveau_min: int = pokemon_data.get("niveau_min", 2)
@@ -112,27 +117,89 @@ func _obtenir_zone_herbe(position_grille: Vector2i, joueur_node: Node) -> String
 	return ""
 
 # Choisir un Pokémon depuis la table de rencontres (tirage pondéré)
-func _choisir_pokemon(zone_id: String) -> Dictionary:
+# cle_table : "herbes", "surf", "peche", "cave"
+func _choisir_pokemon(zone_id: String, cle_table: String = "herbes") -> Dictionary:
 	if not _charge:
 		_charger_tables()
 	var table: Dictionary = _tables.get(zone_id, {})
 	if table.is_empty():
 		return {}
-	var herbes: Array = table.get("herbes", [])
-	if herbes.is_empty():
+	var liste: Array = table.get(cle_table, [])
+	if liste.is_empty():
 		return {}
 
 	# Tirage pondéré
 	var total_taux := 0
-	for entree in herbes:
+	for entree in liste:
 		total_taux += entree.get("taux", 0)
 	var tirage := randi() % maxi(1, total_taux)
 	var cumul := 0
-	for entree in herbes:
+	for entree in liste:
 		cumul += entree.get("taux", 0)
 		if tirage < cumul:
 			return entree
-	return herbes[herbes.size() - 1]
+	return liste[liste.size() - 1]
+
+# Vérifier si une rencontre surf se déclenche (appelé à chaque pas sur l'eau)
+func verifier_rencontre_surf(position_grille: Vector2i, joueur_node: Node) -> void:
+	# Trouver la zone de surf
+	var zone_id := _obtenir_zone_surf(position_grille)
+	if zone_id.is_empty():
+		# Pas de zone surf définie, utiliser la zone herbe par défaut
+		zone_id = _obtenir_zone_herbe(position_grille, joueur_node)
+		if zone_id.is_empty():
+			# Utiliser la carte comme zone par défaut
+			zone_id = PlayerData.carte_actuelle
+
+	# Vérifier si la table a des Pokémon surf
+	var table: Dictionary = _tables.get(zone_id, {})
+	if table.get("surf", []).is_empty():
+		return  # Pas de rencontres surf dans cette zone
+
+	# Repousse
+	if GameManager.repousse_restant > 0:
+		GameManager.repousse_restant -= 1
+		var niveau_leader := _obtenir_niveau_leader()
+		var pokemon_test := _choisir_pokemon(zone_id, "surf")
+		if not pokemon_test.is_empty():
+			if pokemon_test.get("niveau_max", 5) <= niveau_leader:
+				return
+		else:
+			return
+
+	# Taux de rencontre surf
+	if randf() > TAUX_RENCONTRE_SURF:
+		return
+
+	# Choisir le Pokémon
+	var pokemon_data := _choisir_pokemon(zone_id, "surf")
+	if pokemon_data.is_empty():
+		return
+
+	_lancer_combat_sauvage(pokemon_data, joueur_node)
+
+# Identifier la zone de surf à la position donnée
+func _obtenir_zone_surf(position_grille: Vector2i) -> String:
+	var carte_data := MapLoader.get_carte(PlayerData.carte_actuelle)
+	# D'abord chercher dans zones_surf si défini
+	for zone in carte_data.get("zones_surf", []):
+		var x1: int = zone.get("x1", 0)
+		var y1: int = zone.get("y1", 0)
+		var x2: int = zone.get("x2", 0)
+		var y2: int = zone.get("y2", 0)
+		if position_grille.x >= x1 and position_grille.x <= x2 and \
+		   position_grille.y >= y1 and position_grille.y <= y2:
+			return zone.get("table", "")
+	# Fallback: chercher dans zones_herbes (beaucoup de maps encodent les zones surf ici)
+	for zone in carte_data.get("zones_herbes", []):
+		var x1: int = zone.get("x1", 0)
+		var y1: int = zone.get("y1", 0)
+		var x2: int = zone.get("x2", 0)
+		var y2: int = zone.get("y2", 0)
+		if position_grille.x >= x1 and position_grille.x <= x2 and \
+		   position_grille.y >= y1 and position_grille.y <= y2:
+			return zone.get("table", "")
+	return ""
 
 # Obtenir toutes les zones pour le débogage
 func get_zones() -> Array:

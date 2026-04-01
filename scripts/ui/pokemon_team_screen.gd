@@ -2,11 +2,28 @@ extends CanvasLayer
 
 # PokemonTeamScreen — Affiche l'équipe du joueur (6 slots max)
 # Chaque slot : icône, surnom, niveau, barre PV, PV texte, statut
+# Supporte : sélection, sous-menu CS (Vol, Surf, Flash), réorganisation
 
 signal ecran_ferme()
+signal action_cs(action: String)  # Signal pour les CS overworld
+
+# Constantes pour les CS overworld
+const CS_OVERWORLD := {
+	"vol": "VOL",
+	"surf": "SURF",
+	"coupe": "COUPE",
+	"force": "FORCE",
+	"flash": "FLASH"
+}
 
 var _index: int = 0
-var _slots: Array[Dictionary] = []  # [{panel, label_nom, label_niv, barre, label_pv, icon}]
+var _slots: Array[Dictionary] = []
+var _sous_menu: Control = null
+var _sous_menu_index: int = 0
+var _sous_menu_options: Array[String] = []
+var _sous_menu_labels: Array[Label] = []
+var _mode_swap: bool = false
+var _swap_source: int = -1
 
 func _ready() -> void:
 	layer = 85
@@ -171,12 +188,35 @@ func _process(_delta: float) -> void:
 			_fermer()
 		return
 
+	# Sous-menu actif
+	if _sous_menu != null:
+		_process_sous_menu()
+		return
+
+	# Mode échange
+	if _mode_swap:
+		if Input.is_action_just_pressed("action_haut"):
+			_index = (_index - 1 + nb_pokemon) % nb_pokemon
+			_maj_selection()
+		elif Input.is_action_just_pressed("action_bas"):
+			_index = (_index + 1) % nb_pokemon
+			_maj_selection()
+		elif Input.is_action_just_pressed("action_confirmer"):
+			_executer_swap()
+		elif Input.is_action_just_pressed("action_annuler"):
+			_mode_swap = false
+			_swap_source = -1
+			_maj_selection()
+		return
+
 	if Input.is_action_just_pressed("action_haut"):
 		_index = (_index - 1 + nb_pokemon) % nb_pokemon
 		_maj_selection()
 	elif Input.is_action_just_pressed("action_bas"):
 		_index = (_index + 1) % nb_pokemon
 		_maj_selection()
+	elif Input.is_action_just_pressed("action_confirmer"):
+		_ouvrir_sous_menu()
 	elif Input.is_action_just_pressed("action_annuler") or Input.is_action_just_pressed("action_menu"):
 		_fermer()
 
@@ -187,6 +227,11 @@ func _maj_selection() -> void:
 			if i == _index:
 				style.bg_color = Color(0.3, 0.5, 0.8, 0.9)
 				style.border_color = Color(1, 1, 0.5)
+				style.set_border_width_all(2)
+			elif _mode_swap and i == _swap_source:
+				# Source de l'échange en surbrillance verte
+				style.bg_color = Color(0.2, 0.55, 0.3, 0.9)
+				style.border_color = Color(0.5, 1, 0.5)
 				style.set_border_width_all(2)
 			else:
 				style.bg_color = Color(0.2, 0.35, 0.55, 0.8)
@@ -202,5 +247,159 @@ func _abreger_statut(statut: String) -> String:
 		"sommeil": return "SOM"
 	return ""
 
+# --- Sous-menu d'actions ---
+func _ouvrir_sous_menu() -> void:
+	if _index >= PlayerData.equipe.size():
+		return
+	var poke_data: Dictionary = PlayerData.equipe[_index]
+	var attaques: Array = poke_data.get("attaques", [])
+
+	_sous_menu_options.clear()
+	# Vérifier les CS overworld
+	for att in attaques:
+		var move_id: String = att.get("id", "")
+		if CS_OVERWORLD.has(move_id):
+			_sous_menu_options.append(move_id)
+	# Options de base
+	_sous_menu_options.append("ordre")
+	_sous_menu_options.append("retour")
+
+	_sous_menu_index = 0
+	_sous_menu_labels.clear()
+
+	# Créer le panel du sous-menu
+	_sous_menu = Panel.new()
+	_sous_menu.position = Vector2(300, 24 + _index * 46)
+	_sous_menu.size = Vector2(140, _sous_menu_options.size() * 24 + 12)
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(1, 1, 1, 0.95)
+	style.border_color = Color(0.2, 0.2, 0.2)
+	style.set_border_width_all(2)
+	style.set_corner_radius_all(3)
+	_sous_menu.add_theme_stylebox_override("panel", style)
+	add_child(_sous_menu)
+
+	for i in range(_sous_menu_options.size()):
+		var lbl := Label.new()
+		lbl.position = Vector2(8, 6 + i * 24)
+		lbl.size = Vector2(124, 22)
+		lbl.add_theme_color_override("font_color", Color(0.1, 0.1, 0.1))
+		lbl.add_theme_font_size_override("font_size", 12)
+		_sous_menu.add_child(lbl)
+		_sous_menu_labels.append(lbl)
+
+	_maj_sous_menu()
+
+func _process_sous_menu() -> void:
+	if Input.is_action_just_pressed("action_haut"):
+		_sous_menu_index = (_sous_menu_index - 1 + _sous_menu_options.size()) % _sous_menu_options.size()
+		_maj_sous_menu()
+	elif Input.is_action_just_pressed("action_bas"):
+		_sous_menu_index = (_sous_menu_index + 1) % _sous_menu_options.size()
+		_maj_sous_menu()
+	elif Input.is_action_just_pressed("action_confirmer"):
+		_selectionner_sous_menu()
+	elif Input.is_action_just_pressed("action_annuler"):
+		_fermer_sous_menu()
+
+func _maj_sous_menu() -> void:
+	for i in range(_sous_menu_labels.size()):
+		var option: String = _sous_menu_options[i]
+		var prefix := "▶ " if i == _sous_menu_index else "  "
+		var texte := ""
+		match option:
+			"vol": texte = "VOL"
+			"surf": texte = "SURF"
+			"coupe": texte = "COUPE"
+			"force": texte = "FORCE"
+			"flash": texte = "FLASH"
+			"ordre": texte = "ORDRE"
+			"retour": texte = "RETOUR"
+		_sous_menu_labels[i].text = prefix + texte
+
+func _selectionner_sous_menu() -> void:
+	var option: String = _sous_menu_options[_sous_menu_index]
+	_fermer_sous_menu()
+
+	match option:
+		"vol":
+			if FlySystem.peut_voler():
+				_ouvrir_ecran_vol()
+			else:
+				pass  # TODO: afficher message "Impossible d'utiliser Vol ici"
+		"surf":
+			# Surf est géré par l'overworld, on ferme tout
+			if SurfSystem.peut_surfer():
+				emit_signal("action_cs", "surf")
+				_fermer()
+		"coupe":
+			emit_signal("action_cs", "coupe")
+			_fermer()
+		"force":
+			if StrengthSystem.peut_utiliser_force():
+				emit_signal("action_cs", "force")
+				_fermer()
+		"flash":
+			emit_signal("action_cs", "flash")
+			_fermer()
+		"ordre":
+			_mode_swap = true
+			_swap_source = _index
+			_maj_selection()
+		"retour":
+			pass
+
+func _fermer_sous_menu() -> void:
+	if _sous_menu:
+		_sous_menu.queue_free()
+		_sous_menu = null
+	_sous_menu_labels.clear()
+	_sous_menu_options.clear()
+
+func _ouvrir_ecran_vol() -> void:
+	var fly_screen := CanvasLayer.new()
+	fly_screen.set_script(load("res://scripts/ui/fly_screen.gd"))
+	add_child(fly_screen)
+	if fly_screen.has_signal("destination_choisie"):
+		fly_screen.destination_choisie.connect(_on_vol_destination)
+	if fly_screen.has_signal("ecran_ferme"):
+		fly_screen.ecran_ferme.connect(_on_vol_annule)
+
+func _on_vol_destination(carte_id: String) -> void:
+	FlySystem.voler_vers(carte_id)
+
+func _on_vol_annule() -> void:
+	pass  # Retour au sous-menu, rien à faire
+
+# --- Échange de Pokémon dans l'équipe ---
+func _executer_swap() -> void:
+	if _swap_source == _index:
+		_mode_swap = false
+		_swap_source = -1
+		_maj_selection()
+		return
+	# Échanger les Pokémon
+	var temp = PlayerData.equipe[_swap_source]
+	PlayerData.equipe[_swap_source] = PlayerData.equipe[_index]
+	PlayerData.equipe[_index] = temp
+	_mode_swap = false
+	_swap_source = -1
+	# Rafraîchir l'affichage complet
+	_rafraichir_slots()
+	_maj_selection()
+
+func _rafraichir_slots() -> void:
+	# Supprimer les anciens slots visuels
+	for slot in _slots:
+		if slot.has("panel") and is_instance_valid(slot["panel"]):
+			slot["panel"].queue_free()
+	_slots.clear()
+	# Recréer
+	var equipe := PlayerData.equipe
+	for i in range(6):
+		var slot := _creer_slot(i, equipe[i] if i < equipe.size() else {})
+		_slots.append(slot)
+
 func _fermer() -> void:
+	_fermer_sous_menu()
 	emit_signal("ecran_ferme")
