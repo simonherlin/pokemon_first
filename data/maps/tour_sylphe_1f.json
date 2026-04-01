@@ -22,6 +22,14 @@
       "vers_map": "tour_sylphe_5f",
       "vers_warp": "escalier_1f",
       "type": "escalier"
+    },
+    {
+      "id": "escalier_2f",
+      "x": 1,
+      "y": 1,
+      "vers_map": "tour_sylphe_2f",
+      "vers_warp": "escalier_1f",
+      "type": "escalier"
     }
   ],
   "zones_herbes": [],

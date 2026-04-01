@@ -576,5 +576,91 @@
     24,
     24,
     25
-  ]
+  ],
+  "puzzle": {
+    "type": "poubelles_carmin",
+    "poubelles": [
+      {
+        "id": "poubelle_0",
+        "x": 2,
+        "y": 5
+      },
+      {
+        "id": "poubelle_1",
+        "x": 4,
+        "y": 5
+      },
+      {
+        "id": "poubelle_2",
+        "x": 6,
+        "y": 5
+      },
+      {
+        "id": "poubelle_3",
+        "x": 8,
+        "y": 5
+      },
+      {
+        "id": "poubelle_4",
+        "x": 10,
+        "y": 5
+      },
+      {
+        "id": "poubelle_5",
+        "x": 2,
+        "y": 7
+      },
+      {
+        "id": "poubelle_6",
+        "x": 4,
+        "y": 7
+      },
+      {
+        "id": "poubelle_7",
+        "x": 6,
+        "y": 7
+      },
+      {
+        "id": "poubelle_8",
+        "x": 8,
+        "y": 7
+      },
+      {
+        "id": "poubelle_9",
+        "x": 10,
+        "y": 7
+      },
+      {
+        "id": "poubelle_10",
+        "x": 2,
+        "y": 9
+      },
+      {
+        "id": "poubelle_11",
+        "x": 4,
+        "y": 9
+      },
+      {
+        "id": "poubelle_12",
+        "x": 6,
+        "y": 9
+      },
+      {
+        "id": "poubelle_13",
+        "x": 8,
+        "y": 9
+      },
+      {
+        "id": "poubelle_14",
+        "x": 10,
+        "y": 9
+      }
+    ],
+    "barriere_y": [
+      4,
+      8
+    ],
+    "barriere_x_min": 3,
+    "barriere_x_max": 8
+  }
 }

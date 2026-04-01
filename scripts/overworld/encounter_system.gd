@@ -70,14 +70,18 @@ func _lancer_combat_sauvage(pokemon_data: Dictionary, joueur_node: Node) -> void
 
 	# === Équilibrage dynamique ===
 	# Les Pokémon sauvages s'adaptent au niveau du joueur
-	var avg_joueur := _calculer_niveau_moyen_equipe()
-	if avg_joueur > 0 and avg_joueur > niveau_max:
-		# Le sauvage monte au minimum à 85% du niveau moyen du joueur
-		var plancher := int(avg_joueur * 0.85)
-		niveau = maxi(niveau, plancher)
-		# Mais pas plus de 3 niveaux au-dessus du joueur
-		niveau = mini(niveau, avg_joueur + 3)
-		# Et jamais en-dessous de niveau_min d'origine
+	# (Désactivé dans le Safari — niveaux d'origine)
+	var est_safari := SafariSystem.est_zone_safari()
+	if not est_safari:
+		var avg_joueur := _calculer_niveau_moyen_equipe()
+		if avg_joueur > 0 and avg_joueur > niveau_max:
+			# Le sauvage monte au minimum à 85% du niveau moyen du joueur
+			var plancher := int(avg_joueur * 0.85)
+			niveau = maxi(niveau, plancher)
+			# Mais pas plus de 3 niveaux au-dessus du joueur
+			niveau = mini(niveau, avg_joueur + 3)
+			# Et jamais en-dessous de niveau_min d'origine
+			niveau = maxi(niveau, niveau_min)
 		niveau = maxi(niveau, niveau_min)
 
 	# SFX de rencontre sauvage
@@ -85,6 +89,17 @@ func _lancer_combat_sauvage(pokemon_data: Dictionary, joueur_node: Node) -> void
 	# Passer en mode combat
 	if joueur_node.has_method("set_peut_bouger"):
 		joueur_node.set_peut_bouger(false)
+
+	# Safari : combat spécial sans Pokémon du joueur
+	if est_safari:
+		SceneManager.charger_scene("res://scenes/battle/battle_scene.tscn", {
+			"type_combat": "safari",
+			"espece_id": espece_id,
+			"niveau": niveau,
+			"carte_retour": PlayerData.carte_actuelle,
+			"musique_carte": MapLoader.get_carte(PlayerData.carte_actuelle).get("musique", "")
+		})
+		return
 
 	# Obtenir le Pokémon de tête de l'équipe joueur
 	if PlayerData.equipe.is_empty():

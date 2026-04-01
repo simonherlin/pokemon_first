@@ -1313,5 +1313,27 @@
       "attaque_id": "surchauffe"
     },
     "utilisable_combat": false
+  },
+  "cle_carte": {
+    "id": "cle_carte",
+    "nom": "Carte Magnétique",
+    "description": "Une carte magnétique pour ouvrir les portes de la Tour Sylphe.",
+    "categorie": "objets_cles",
+    "prix_achat": 0,
+    "prix_vente": 0,
+    "effet": null,
+    "utilisable_combat": false,
+    "utilisable_hors_combat": false
+  },
+  "perle": {
+    "id": "perle",
+    "nom": "Perle",
+    "description": "Une jolie perle. Se revend cher.",
+    "categorie": "objets",
+    "prix_achat": 0,
+    "prix_vente": 1000,
+    "effet": null,
+    "utilisable_combat": false,
+    "utilisable_hors_combat": false
   }
 }

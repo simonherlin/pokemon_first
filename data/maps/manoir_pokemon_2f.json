@@ -14,6 +14,14 @@
       "vers_map": "manoir_pokemon_1f",
       "vers_warp": "escalier_2f",
       "type": "escalier"
+    },
+    {
+      "id": "escalier_3f",
+      "x": 1,
+      "y": 1,
+      "vers_map": "manoir_pokemon_3f",
+      "vers_warp": "escalier_2f",
+      "type": "escalier"
     }
   ],
   "zones_herbes": [],

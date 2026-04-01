@@ -21,6 +21,15 @@ var _menu_ouvert: bool = false
 var _start_menu: Node = null
 var _overlay_obscurite: CanvasLayer = null
 
+# --- Safari ---
+var safari_system: SafariSystem = null
+
+# --- Puzzle Arène ---
+var _puzzle_data: Dictionary = {}
+var _poubelles_nodes: Array = []
+var _premier_interrupteur_trouve: bool = false
+var _interrupteur_positions: Array = []  # [index_a, index_b]
+
 func _ready() -> void:
 	# Le carte_id peut être défini via recevoir_params ou depuis le nom de la scène
 	if carte_id.is_empty():
@@ -34,6 +43,10 @@ func _ready() -> void:
 	_instancier_objets_sol()
 	# Grotte sombre : ajouter l'overlay de ténèbres
 	_initialiser_obscurite()
+	# Puzzle d'arène (poubelles Carmin, téléporteurs Safrania)
+	_initialiser_puzzle_arene()
+	# Safari : compteur de pas et mécaniques
+	_initialiser_safari()
 	# Afficher le nom de la carte en haut
 	_afficher_nom_carte()
 	# Lancer la musique de la carte
@@ -289,6 +302,134 @@ func _on_champion_battu() -> void:
 			var tid: String = pnj_data.get("trainer_id", pnj_data.get("id", ""))
 			PlayerData.marquer_dresseur_battu(tid)
 			PlayerData.marquer_dresseur_battu(pnj_data.get("id", ""))
+
+# ----------------------------------------------------------------
+# Puzzle Arène de Carmin (poubelles / interrupteurs)
+# ----------------------------------------------------------------
+func _initialiser_puzzle_arene() -> void:
+	_puzzle_data = carte_data.get("puzzle", {})
+	if _puzzle_data.is_empty():
+		return
+	match _puzzle_data.get("type", ""):
+		"poubelles_carmin":
+			_creer_poubelles()
+		"teleporteurs_safrania":
+			_creer_teleporteurs()
+
+func _creer_poubelles() -> void:
+	# Générer 2 positions d'interrupteurs aléatoires parmi les 15 poubelles
+	var poubelles_data: Array = _puzzle_data.get("poubelles", [])
+	var nb := poubelles_data.size()
+	if nb < 2:
+		return
+	_interrupteur_positions = []
+	_interrupteur_positions.append(randi() % nb)
+	var second := randi() % (nb - 1)
+	if second >= _interrupteur_positions[0]:
+		second += 1
+	_interrupteur_positions.append(second)
+	_premier_interrupteur_trouve = false
+
+	for i in range(nb):
+		var pd: Dictionary = poubelles_data[i]
+		var poubelle := StaticBody2D.new()
+		poubelle.position = Vector2(pd.get("x", 0), pd.get("y", 0)) * TAILLE_TILE
+		var shape := RectangleShape2D.new()
+		shape.size = Vector2(TAILLE_TILE - 2, TAILLE_TILE - 2)
+		var col := CollisionShape2D.new()
+		col.shape = shape
+		col.position = Vector2(TAILLE_TILE / 2, TAILLE_TILE / 2)
+		poubelle.add_child(col)
+		# Visuel simple
+		var sprite_p := ColorRect.new()
+		sprite_p.color = Color(0.4, 0.4, 0.4)
+		sprite_p.size = Vector2(24, 24)
+		sprite_p.position = Vector2(4, 4)
+		poubelle.add_child(sprite_p)
+		poubelle.set_meta("poubelle_index", i)
+		poubelle.set_meta("type", "poubelle")
+		_poubelles_nodes.append(poubelle)
+		entities.add_child(poubelle)
+
+## Appelé quand le joueur interagit avec une poubelle
+func interagir_poubelle(index: int) -> void:
+	if index in _interrupteur_positions:
+		if not _premier_interrupteur_trouve:
+			_premier_interrupteur_trouve = true
+			AudioManager.jouer_sfx("res://assets/audio/sfx/switch.ogg")
+			dialog_box.afficher_dialogue(["Tu as trouvé le 1er interrupteur !", "Cherche le 2e dans une poubelle voisine !"])
+		else:
+			# Vérifier si c'est le bon (doit être le 2e interrupteur)
+			AudioManager.jouer_sfx("res://assets/audio/sfx/switch.ogg")
+			dialog_box.afficher_dialogue(["Tu as trouvé le 2e interrupteur !", "La porte s'ouvre !"])
+			_ouvrir_barriere_carmin()
+	else:
+		if _premier_interrupteur_trouve:
+			# Mauvaise poubelle → reset
+			_premier_interrupteur_trouve = false
+			# Re-randomiser les positions
+			var nb := _puzzle_data.get("poubelles", []).size()
+			_interrupteur_positions[0] = randi() % nb
+			var second := randi() % (nb - 1)
+			if second >= _interrupteur_positions[0]:
+				second += 1
+			_interrupteur_positions[1] = second
+			dialog_box.afficher_dialogue(["La poubelle est vide...", "Les interrupteurs ont été réinitialisés !"])
+		else:
+			dialog_box.afficher_dialogue(["La poubelle est vide..."])
+
+func _ouvrir_barriere_carmin() -> void:
+	# Retirer les murs de barrière dans le TileMap
+	var y_bars: Array = _puzzle_data.get("barriere_y", [])
+	var x_min: int = _puzzle_data.get("barriere_x_min", 3)
+	var x_max: int = _puzzle_data.get("barriere_x_max", 8)
+	for y in y_bars:
+		for x in range(x_min, x_max + 1):
+			# Remettre le tile à 24 (sol) au lieu de 25 (mur)
+			tilemap.set_cell(0, Vector2i(x, y), 0, Vector2i(24 % 8, 24 / 8))
+	GameManager.set_flag("puzzle_carmin_resolu", true)
+
+# ----------------------------------------------------------------
+# Puzzle Arène de Safrania (téléporteurs)
+# ----------------------------------------------------------------
+func _creer_teleporteurs() -> void:
+	# Les téléporteurs sont gérés via la détection de case dans le joueur
+	# On stocke les données pour que le player_controller puisse y accéder
+	pass
+
+## Vérifie si la position est un téléporteur et retourne la destination
+func verifier_teleporteur(position_grille: Vector2i) -> Dictionary:
+	if _puzzle_data.get("type", "") != "teleporteurs_safrania":
+		return {}
+	for tp in _puzzle_data.get("teleporteurs", []):
+		if tp.get("x", -1) == position_grille.x and tp.get("y", -1) == position_grille.y:
+			return {"x": tp.get("dest_x", 0), "y": tp.get("dest_y", 0)}
+	return {}
+
+# ----------------------------------------------------------------
+# Safari Zone — Gestion des pas et mécaniques
+# ----------------------------------------------------------------
+func _initialiser_safari() -> void:
+	if not SafariSystem.est_zone_safari():
+		return
+	# Chercher le SafariSystem dans les autoloads ou le créer localement
+	var safari_nodes := get_tree().get_nodes_in_group("safari_system")
+	if safari_nodes.size() > 0:
+		safari_system = safari_nodes[0] as SafariSystem
+	# Connecter le signal du joueur pour décompter les pas
+	if joueur and joueur.has_signal("pas_effectue"):
+		joueur.pas_effectue.connect(_on_pas_safari)
+
+func _on_pas_safari() -> void:
+	if safari_system and safari_system.actif:
+		if not safari_system.decompter_pas():
+			# Plus de pas → retour à l'entrée
+			dialog_box.afficher_dialogue(["Ding dong ! C'est fini !", "Votre temps au Parc Safari est écoulé !"])
+			await dialog_box.dialogue_termine
+			SceneManager.charger_scene("res://scenes/maps/map_scene.tscn", {
+				"carte_id": "parc_safari_entree",
+				"warp_entree": "retour_safari"
+			})
 
 # --- Gestion du Start Menu ---
 func _process(_delta: float) -> void:

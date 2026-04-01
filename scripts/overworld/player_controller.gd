@@ -22,6 +22,9 @@ var peut_bouger: bool = true  # désactivé pendant les dialogues/combats
 var est_sur_eau: bool = false  # true si le joueur surfe
 var sur_velo: bool = false     # true si le joueur est sur le vélo
 
+# --- Signaux ---
+signal pas_effectue()  # émis à chaque pas (utilisé par le Safari)
+
 # --- Déplacement ---
 var cible_monde: Vector2 = Vector2.ZERO
 var vitesse_courante: float = VITESSE_MARCHE
@@ -113,12 +116,16 @@ func _arrivee_nouvelle_case() -> void:
 		position_grille.x, position_grille.y,
 		_vec_vers_direction(direction_actuelle)
 	)
+	# Signal de pas (pour Safari, etc.)
+	emit_signal("pas_effectue")
 	# Décrémenter le compteur Repousse dans GameManager
 	# (Le EncounterSystem gère la logique de blocage)
 	
 	# Vérifier warp
 	if _verifier_warp():
 		return
+	# Vérifier téléporteur d'arène (Safrania)
+	_verifier_teleporteur()
 	# Rencontres aquatiques si en surf
 	if est_sur_eau:
 		EncounterSystem.verifier_rencontre_surf(position_grille, self)
@@ -225,6 +232,19 @@ func _changer_carte(vers_carte: String, x: int, y: int) -> void:
 		"carte_id": vers_carte
 	})
 
+## Vérifier si le joueur est sur un téléporteur (puzzle arène Safrania)
+func _verifier_teleporteur() -> void:
+	var scene_root := get_tree().current_scene
+	if scene_root and scene_root.has_method("verifier_teleporteur"):
+		var dest: Dictionary = scene_root.verifier_teleporteur(position_grille)
+		if not dest.is_empty():
+			# Téléporter le joueur à la destination
+			AudioManager.jouer_sfx("res://assets/audio/sfx/teleport.ogg")
+			peut_bouger = false
+			await get_tree().create_timer(0.3).timeout
+			teleporter(dest.get("x", 0), dest.get("y", 0), "bas")
+			peut_bouger = true
+
 func _interagir() -> void:
 	# Orienter le RayCast vers la direction du joueur et détecter
 	ray_interaction.target_position = Vector2(direction_actuelle) * TAILLE_TILE
@@ -234,6 +254,14 @@ func _interagir() -> void:
 		if collider and collider.has_method("interagir"):
 			collider.interagir(self)
 			return
+		# Vérifier si c'est une poubelle (puzzle arène Carmin)
+		if collider and collider.has_meta("type") and collider.get_meta("type") == "poubelle":
+			var idx: int = collider.get_meta("poubelle_index", -1)
+			if idx >= 0:
+				var scene_root := get_tree().current_scene
+				if scene_root and scene_root.has_method("interagir_poubelle"):
+					scene_root.interagir_poubelle(idx)
+				return
 	
 	# Si la case devant est de l'eau et qu'on n'est pas encore en train de surfer
 	var tilemap := _get_tilemap()

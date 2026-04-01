@@ -198,5 +198,67 @@
     24,
     24,
     25
-  ]
+  ],
+  "puzzle": {
+    "type": "teleporteurs_safrania",
+    "teleporteurs": [
+      {
+        "id": "telepad_0",
+        "x": 3,
+        "y": 3,
+        "dest_x": 8,
+        "dest_y": 7
+      },
+      {
+        "id": "telepad_1",
+        "x": 8,
+        "y": 7,
+        "dest_x": 4,
+        "dest_y": 5
+      },
+      {
+        "id": "telepad_2",
+        "x": 4,
+        "y": 5,
+        "dest_x": 7,
+        "dest_y": 3
+      },
+      {
+        "id": "telepad_3",
+        "x": 7,
+        "y": 3,
+        "dest_x": 3,
+        "dest_y": 9
+      },
+      {
+        "id": "telepad_4",
+        "x": 3,
+        "y": 9,
+        "dest_x": 8,
+        "dest_y": 5
+      },
+      {
+        "id": "telepad_5",
+        "x": 8,
+        "y": 5,
+        "dest_x": 5,
+        "dest_y": 7
+      },
+      {
+        "id": "telepad_6",
+        "x": 5,
+        "y": 7,
+        "dest_x": 6,
+        "dest_y": 3
+      },
+      {
+        "id": "telepad_7",
+        "x": 6,
+        "y": 3,
+        "dest_x": 6,
+        "dest_y": 2
+      }
+    ],
+    "tile_teleport": 29
+  }
 }

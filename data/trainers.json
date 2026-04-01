@@ -2173,5 +2173,373 @@
     "recompense": 9750,
     "dialogue_intro": "Salut ! Tu es arrivé jusque-là ?\nJe suis le nouveau CHAMPION !\nJe t'ai battu de vitesse,\ncomme d'habitude !",
     "dialogue_defaite": "Non... C'est impossible...\nMoi, le CHAMPION, vaincu ?"
+  },
+  "route11_gamin1": {
+    "id": "route11_gamin1",
+    "nom": "Mathieu",
+    "classe": "Gamin",
+    "dialogue_avant": "T'as des Pokémon forts ? Montre-moi !",
+    "dialogue_defaite": "T'es trop fort !",
+    "recompense": 360,
+    "equipe": [
+      {
+        "espece_id": "019",
+        "niveau": 18
+      },
+      {
+        "espece_id": "023",
+        "niveau": 18
+      }
+    ]
+  },
+  "route11_fillette1": {
+    "id": "route11_fillette1",
+    "nom": "Nathalie",
+    "classe": "Fillette",
+    "dialogue_avant": "Je m'entraîne dur dans ce coin !",
+    "dialogue_defaite": "Oh non...",
+    "recompense": 380,
+    "equipe": [
+      {
+        "espece_id": "032",
+        "niveau": 19
+      },
+      {
+        "espece_id": "029",
+        "niveau": 19
+      }
+    ]
+  },
+  "route11_gamin2": {
+    "id": "route11_gamin2",
+    "nom": "Vincent",
+    "classe": "Gamin",
+    "dialogue_avant": "Je bloque le passage !",
+    "dialogue_defaite": "OK tu passes...",
+    "recompense": 400,
+    "equipe": [
+      {
+        "espece_id": "096",
+        "niveau": 20
+      },
+      {
+        "espece_id": "021",
+        "niveau": 18
+      },
+      {
+        "espece_id": "100",
+        "niveau": 18
+      }
+    ]
+  },
+  "sylphe_2f_rocket1": {
+    "id": "sylphe_2f_rocket1",
+    "nom": "",
+    "classe": "Rocket Sbire",
+    "dialogue_avant": "Au nom de la Team Rocket, tu ne passeras pas !",
+    "dialogue_defaite": "La Team Rocket ne sera pas vaincue si facilement...",
+    "recompense": 700,
+    "equipe": [
+      {
+        "espece_id": "041",
+        "niveau": 26
+      }
+    ]
+  },
+  "sylphe_3f_rocket1": {
+    "id": "sylphe_3f_rocket1",
+    "nom": "",
+    "classe": "Rocket Sbire",
+    "dialogue_avant": "Au nom de la Team Rocket, tu ne passeras pas !",
+    "dialogue_defaite": "La Team Rocket ne sera pas vaincue si facilement...",
+    "recompense": 800,
+    "equipe": [
+      {
+        "espece_id": "109",
+        "niveau": 28
+      },
+      {
+        "espece_id": "024",
+        "niveau": 28
+      }
+    ]
+  },
+  "sylphe_3f_rocket2": {
+    "id": "sylphe_3f_rocket2",
+    "nom": "",
+    "classe": "Rocket Sbire",
+    "dialogue_avant": "Au nom de la Team Rocket, tu ne passeras pas !",
+    "dialogue_defaite": "La Team Rocket ne sera pas vaincue si facilement...",
+    "recompense": 800,
+    "equipe": [
+      {
+        "espece_id": "020",
+        "niveau": 27
+      },
+      {
+        "espece_id": "042",
+        "niveau": 28
+      }
+    ]
+  },
+  "sylphe_4f_rocket1": {
+    "id": "sylphe_4f_rocket1",
+    "nom": "",
+    "classe": "Rocket Sbire",
+    "dialogue_avant": "Au nom de la Team Rocket, tu ne passeras pas !",
+    "dialogue_defaite": "La Team Rocket ne sera pas vaincue si facilement...",
+    "recompense": 900,
+    "equipe": [
+      {
+        "espece_id": "089",
+        "niveau": 29
+      }
+    ]
+  },
+  "sylphe_4f_rocket2": {
+    "id": "sylphe_4f_rocket2",
+    "nom": "",
+    "classe": "Rocket Sbire",
+    "dialogue_avant": "Au nom de la Team Rocket, tu ne passeras pas !",
+    "dialogue_defaite": "La Team Rocket ne sera pas vaincue si facilement...",
+    "recompense": 900,
+    "equipe": [
+      {
+        "espece_id": "024",
+        "niveau": 28
+      },
+      {
+        "espece_id": "109",
+        "niveau": 28
+      }
+    ]
+  },
+  "sylphe_4f_rocket3": {
+    "id": "sylphe_4f_rocket3",
+    "nom": "",
+    "classe": "Rocket Sbire",
+    "dialogue_avant": "Au nom de la Team Rocket, tu ne passeras pas !",
+    "dialogue_defaite": "La Team Rocket ne sera pas vaincue si facilement...",
+    "recompense": 900,
+    "equipe": [
+      {
+        "espece_id": "110",
+        "niveau": 30
+      }
+    ]
+  },
+  "sylphe_6f_rocket1": {
+    "id": "sylphe_6f_rocket1",
+    "nom": "",
+    "classe": "Rocket Sbire",
+    "dialogue_avant": "Au nom de la Team Rocket, tu ne passeras pas !",
+    "dialogue_defaite": "La Team Rocket ne sera pas vaincue si facilement...",
+    "recompense": 1100,
+    "equipe": [
+      {
+        "espece_id": "042",
+        "niveau": 30
+      },
+      {
+        "espece_id": "110",
+        "niveau": 30
+      }
+    ]
+  },
+  "sylphe_7f_rocket1": {
+    "id": "sylphe_7f_rocket1",
+    "nom": "",
+    "classe": "Rocket Sbire",
+    "dialogue_avant": "Au nom de la Team Rocket, tu ne passeras pas !",
+    "dialogue_defaite": "La Team Rocket ne sera pas vaincue si facilement...",
+    "recompense": 1200,
+    "equipe": [
+      {
+        "espece_id": "089",
+        "niveau": 31
+      },
+      {
+        "espece_id": "024",
+        "niveau": 31
+      }
+    ]
+  },
+  "sylphe_7f_rocket2": {
+    "id": "sylphe_7f_rocket2",
+    "nom": "",
+    "classe": "Rocket Sbire",
+    "dialogue_avant": "Au nom de la Team Rocket, tu ne passeras pas !",
+    "dialogue_defaite": "La Team Rocket ne sera pas vaincue si facilement...",
+    "recompense": 1200,
+    "equipe": [
+      {
+        "espece_id": "020",
+        "niveau": 29
+      },
+      {
+        "espece_id": "020",
+        "niveau": 29
+      },
+      {
+        "espece_id": "020",
+        "niveau": 30
+      }
+    ]
+  },
+  "sylphe_7f_rocket3": {
+    "id": "sylphe_7f_rocket3",
+    "nom": "",
+    "classe": "Rocket Admin",
+    "dialogue_avant": "Au nom de la Team Rocket, tu ne passeras pas !",
+    "dialogue_defaite": "La Team Rocket ne sera pas vaincue si facilement...",
+    "recompense": 1200,
+    "equipe": [
+      {
+        "espece_id": "024",
+        "niveau": 33
+      },
+      {
+        "espece_id": "110",
+        "niveau": 33
+      },
+      {
+        "espece_id": "089",
+        "niveau": 33
+      }
+    ]
+  },
+  "sylphe_8f_rocket1": {
+    "id": "sylphe_8f_rocket1",
+    "nom": "",
+    "classe": "Rocket Sbire",
+    "dialogue_avant": "Au nom de la Team Rocket, tu ne passeras pas !",
+    "dialogue_defaite": "La Team Rocket ne sera pas vaincue si facilement...",
+    "recompense": 1300,
+    "equipe": [
+      {
+        "espece_id": "042",
+        "niveau": 31
+      }
+    ]
+  },
+  "sylphe_8f_rocket2": {
+    "id": "sylphe_8f_rocket2",
+    "nom": "",
+    "classe": "Rocket Sbire",
+    "dialogue_avant": "Au nom de la Team Rocket, tu ne passeras pas !",
+    "dialogue_defaite": "La Team Rocket ne sera pas vaincue si facilement...",
+    "recompense": 1300,
+    "equipe": [
+      {
+        "espece_id": "109",
+        "niveau": 32
+      },
+      {
+        "espece_id": "024",
+        "niveau": 32
+      }
+    ]
+  },
+  "sylphe_9f_rocket1": {
+    "id": "sylphe_9f_rocket1",
+    "nom": "",
+    "classe": "Rocket Sbire",
+    "dialogue_avant": "Au nom de la Team Rocket, tu ne passeras pas !",
+    "dialogue_defaite": "La Team Rocket ne sera pas vaincue si facilement...",
+    "recompense": 1400,
+    "equipe": [
+      {
+        "espece_id": "110",
+        "niveau": 32
+      },
+      {
+        "espece_id": "089",
+        "niveau": 32
+      }
+    ]
+  },
+  "sylphe_9f_rocket2": {
+    "id": "sylphe_9f_rocket2",
+    "nom": "",
+    "classe": "Rocket Sbire",
+    "dialogue_avant": "Au nom de la Team Rocket, tu ne passeras pas !",
+    "dialogue_defaite": "La Team Rocket ne sera pas vaincue si facilement...",
+    "recompense": 1400,
+    "equipe": [
+      {
+        "espece_id": "024",
+        "niveau": 33
+      },
+      {
+        "espece_id": "042",
+        "niveau": 33
+      }
+    ]
+  },
+  "sylphe_10f_rocket1": {
+    "id": "sylphe_10f_rocket1",
+    "nom": "",
+    "classe": "Rocket Admin",
+    "dialogue_avant": "Au nom de la Team Rocket, tu ne passeras pas !",
+    "dialogue_defaite": "La Team Rocket ne sera pas vaincue si facilement...",
+    "recompense": 1500,
+    "equipe": [
+      {
+        "espece_id": "110",
+        "niveau": 35
+      },
+      {
+        "espece_id": "089",
+        "niveau": 35
+      },
+      {
+        "espece_id": "053",
+        "niveau": 35
+      }
+    ]
+  },
+  "manoir_scientifique3": {
+    "id": "manoir_scientifique3",
+    "nom": "Dr. Mercure",
+    "classe": "Scientifique",
+    "dialogue_avant": "Mes expériences ne doivent pas être perturbées !",
+    "dialogue_defaite": "Mes données... perdues...",
+    "recompense": 1400,
+    "equipe": [
+      {
+        "espece_id": "081",
+        "niveau": 30
+      },
+      {
+        "espece_id": "082",
+        "niveau": 30
+      },
+      {
+        "espece_id": "100",
+        "niveau": 28
+      }
+    ]
+  },
+  "manoir_scientifique_b1f": {
+    "id": "manoir_scientifique_b1f",
+    "nom": "Dr. Plomb",
+    "classe": "Scientifique",
+    "dialogue_avant": "Comment es-tu arrivé ici ?!",
+    "dialogue_defaite": "Je retourne à mes recherches...",
+    "recompense": 1500,
+    "equipe": [
+      {
+        "espece_id": "088",
+        "niveau": 32
+      },
+      {
+        "espece_id": "089",
+        "niveau": 32
+      },
+      {
+        "espece_id": "101",
+        "niveau": 30
+      }
+    ]
   }
 }
