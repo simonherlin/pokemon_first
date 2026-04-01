@@ -28,9 +28,9 @@
       ],
       "mobile": false,
       "type": "vendeur",
-      "stock": [
-        "poke_ball",
-        "super_ball",
+      "inventaire_boutique": [
+        "pokeball",
+        "superball",
         "potion",
         "super_potion",
         "hyper_potion",
@@ -38,7 +38,8 @@
         "anti_para",
         "total_soin",
         "rappel",
-        "corde_sortie"
+        "corde_sortie",
+        "repousse"
       ]
     },
     {

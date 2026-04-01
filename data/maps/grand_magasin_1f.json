@@ -37,7 +37,33 @@
         "Les étages supérieurs proposent\ndes articles plus rares !"
       ],
       "mobile": false,
-      "type": "vendeur"
+      "type": "vendeur",
+      "inventaire_boutique": [
+        "pokeball",
+        "superball",
+        "hyperball",
+        "potion",
+        "super_potion",
+        "hyper_potion",
+        "max_potion",
+        "antidote",
+        "anti_para",
+        "anti_brule",
+        "anti_gel",
+        "reveil",
+        "total_soin",
+        "rappel",
+        "max_rappel",
+        "repousse",
+        "super_repousse",
+        "max_repousse",
+        "corde_sortie",
+        "proteine",
+        "fer",
+        "calcium",
+        "carbone",
+        "pv_plus"
+      ]
     },
     {
       "id": "pnj_gm_1f_01",

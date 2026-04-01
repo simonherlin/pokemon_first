@@ -28,7 +28,25 @@
         "Bienvenue ! Que puis-je\nfaire pour vous ?"
       ],
       "mobile": false,
-      "type": "vendeur"
+      "type": "vendeur",
+      "inventaire_boutique": [
+        "pokeball",
+        "superball",
+        "hyperball",
+        "potion",
+        "super_potion",
+        "hyper_potion",
+        "max_potion",
+        "total_soin",
+        "rappel",
+        "max_rappel",
+        "anti_para",
+        "anti_brule",
+        "anti_gel",
+        "corde_sortie",
+        "super_repousse",
+        "max_repousse"
+      ]
     }
   ],
   "tile_data": [

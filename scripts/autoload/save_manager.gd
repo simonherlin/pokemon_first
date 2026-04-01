@@ -116,7 +116,8 @@ func _collecter_donnees() -> Dictionary:
 		"pokedex_vu": PlayerData.pokedex_vu,
 		"pokedex_capture": PlayerData.pokedex_capture,
 		"dresseurs_battus": PlayerData.dresseurs_battus,
-		"objets_ramasses": PlayerData.objets_ramasses
+		"objets_ramasses": PlayerData.objets_ramasses,
+		"boites": PlayerData.boites
 	}
 
 func _appliquer_donnees(data: Dictionary) -> void:
@@ -175,3 +176,13 @@ func _appliquer_donnees(data: Dictionary) -> void:
 		for s in data["objets_ramasses"]:
 			obj_typed.append(str(s))
 		PlayerData.objets_ramasses = obj_typed
+	if "boites" in data:
+		PlayerData.boites = []
+		for boite in data["boites"]:
+			var boite_typed: Array = []
+			for pokemon in boite:
+				boite_typed.append(pokemon)
+			PlayerData.boites.append(boite_typed)
+		# Compléter jusqu'à MAX_BOITES si besoin
+		while PlayerData.boites.size() < PlayerData.MAX_BOITES:
+			PlayerData.boites.append([])

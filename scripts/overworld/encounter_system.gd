@@ -34,6 +34,20 @@ func verifier_rencontre(position_grille: Vector2i, joueur_node: Node) -> void:
 	if zone_id.is_empty():
 		return
 
+	# Décrémenter le compteur Repousse si actif
+	if GameManager.repousse_restant > 0:
+		GameManager.repousse_restant -= 1
+		# Repousse bloque les rencontres avec des Pokémon de niveau <= leader
+		var niveau_leader := _obtenir_niveau_leader()
+		# On doit quand même tirer le Pokémon pour vérifier son niveau
+		var pokemon_test := _choisir_pokemon(zone_id)
+		if not pokemon_test.is_empty():
+			var niv_max_test: int = pokemon_test.get("niveau_max", 5)
+			if niv_max_test <= niveau_leader:
+				return  # Repousse bloque cette rencontre
+		else:
+			return  # Pas de Pokémon dans cette zone
+
 	# Taux de rencontre
 	if randf() > TAUX_RENCONTRE_BASE:
 		return
@@ -138,3 +152,11 @@ func _calculer_niveau_moyen_equipe() -> int:
 	if count == 0:
 		return 0
 	return int(total / count)
+
+# Obtenir le niveau du premier Pokémon non-KO de l'équipe (pour Repousse)
+func _obtenir_niveau_leader() -> int:
+	for poke_dict in PlayerData.equipe:
+		var pv: int = poke_dict.get("pv_actuels", 0)
+		if pv > 0:
+			return poke_dict.get("niveau", 1)
+	return 1

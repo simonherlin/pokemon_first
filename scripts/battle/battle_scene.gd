@@ -178,11 +178,24 @@ func _on_statut_mis_a_jour(joueur: bool, statut: String) -> void:
 
 # Gérer le changement de Pokémon (envoi du suivant par le dresseur, ou échange joueur)
 func _on_pokemon_change(joueur: bool) -> void:
-	_charger_sprites_pokemon()
-	_afficher_info_pokemon()
-	# Jouer le cri du nouveau Pokémon ennemi
-	if not joueur and _controller.pokemon_ennemi:
-		_jouer_cri_pokemon(_controller.pokemon_ennemi.espece_id)
+	if joueur:
+		# Pokémon joueur KO → forcer le choix d'un remplaçant
+		if _controller.pokemon_joueur and _controller.pokemon_joueur.est_ko():
+			_charger_sprites_pokemon()
+			_afficher_info_pokemon()
+			# Sauvegarder l'état du KO
+			PlayerData.equipe[_controller.index_pokemon_joueur] = _controller.pokemon_joueur.to_dict()
+			_ouvrir_switch_combat(true)
+			return
+		# Switch normal (joueur_change_pokemon déjà appelé)
+		_charger_sprites_pokemon()
+		_afficher_info_pokemon()
+		_jouer_cri_pokemon(_controller.pokemon_joueur.espece_id)
+	else:
+		_charger_sprites_pokemon()
+		_afficher_info_pokemon()
+		if _controller.pokemon_ennemi:
+			_jouer_cri_pokemon(_controller.pokemon_ennemi.espece_id)
 
 func _on_combat_termine(victoire: bool) -> void:
 	if _controller:
@@ -285,13 +298,164 @@ func _executer_action(action: String) -> void:
 		"attaque":
 			_on_attaque_requise()
 		"sac":
-			# TODO: ouvrir le sac
-			_controller.joueur_tente_capture("pokeball")
+			_ouvrir_sac_combat()
 		"pokemon":
-			# TODO: écran de sélection
-			_on_action_requise()
+			_ouvrir_switch_combat(false)
 		"fuite":
 			_controller.joueur_tente_fuite()
+
+# --- Sac en combat ---
+func _ouvrir_sac_combat() -> void:
+	var bag_screen := load("res://scripts/ui/battle_bag_screen.gd").new()
+	add_child(bag_screen)
+	_menu_actif = ""
+	bag_screen.item_choisi.connect(func(item_id: String):
+		bag_screen.queue_free()
+		_utiliser_item_combat(item_id)
+	)
+	bag_screen.ecran_ferme.connect(func():
+		bag_screen.queue_free()
+		_on_action_requise()
+	)
+
+func _utiliser_item_combat(item_id: String) -> void:
+	var item_data: Dictionary = ItemsData.get_item(item_id)
+	var categorie: String = item_data.get("categorie", "")
+	if not item_data.get("utilisable_combat", false):
+		label_message.text = "Pas utilisable ici !"
+		await get_tree().create_timer(1.0).timeout
+		_on_action_requise()
+		return
+	if categorie == "balls":
+		_controller.joueur_tente_capture(item_id)
+	elif categorie in ["objets"]:
+		var effet: Dictionary = item_data.get("effet", {})
+		var type_effet: String = effet.get("type", "")
+		if type_effet in ["soin_pv", "guerison_statut", "soin_total", "rappel", "soin_pp", "soin_pp_all"]:
+			_choisir_cible_soin(item_id, item_data)
+		else:
+			label_message.text = "Pas utilisable ici !"
+			await get_tree().create_timer(1.0).timeout
+			_on_action_requise()
+	else:
+		label_message.text = "Pas utilisable ici !"
+		await get_tree().create_timer(1.0).timeout
+		_on_action_requise()
+
+func _choisir_cible_soin(item_id: String, item_data: Dictionary) -> void:
+	var switch_screen := load("res://scripts/ui/battle_switch_screen.gd").new()
+	switch_screen.index_actif = -1  # Tous sélectionnables pour le soin
+	add_child(switch_screen)
+	switch_screen.pokemon_choisi.connect(func(index: int):
+		switch_screen.queue_free()
+		_appliquer_soin_combat(item_id, item_data, index)
+	)
+	switch_screen.ecran_ferme.connect(func():
+		switch_screen.queue_free()
+		_on_action_requise()
+	)
+
+func _appliquer_soin_combat(item_id: String, item_data: Dictionary, index_cible: int) -> void:
+	var p_data: Dictionary = PlayerData.equipe[index_cible]
+	var effet: Dictionary = item_data.get("effet", {})
+	var type_effet: String = effet.get("type", "")
+	var nom_item: String = item_data.get("nom", item_id)
+	var surnom: String = p_data.get("surnom", "???")
+	var pv_act: int = p_data.get("pv_actuels", 0)
+	var pv_max: int = p_data.get("stats", {}).get("pv", 1)
+	var applique := false
+
+	match type_effet:
+		"soin_pv":
+			if pv_act <= 0 or pv_act >= pv_max:
+				label_message.text = "Ça n'aura aucun effet !"
+				await get_tree().create_timer(1.0).timeout
+				_on_action_requise()
+				return
+			var soin: int = effet.get("montant", 20)
+			p_data["pv_actuels"] = mini(pv_act + soin, pv_max)
+			applique = true
+		"soin_total":
+			if pv_act <= 0:
+				label_message.text = "Ça n'aura aucun effet !"
+				await get_tree().create_timer(1.0).timeout
+				_on_action_requise()
+				return
+			p_data["pv_actuels"] = pv_max
+			p_data["statut"] = ""
+			applique = true
+		"guerison_statut":
+			var statut_soigne: String = effet.get("statut", "")
+			var statut_actuel: String = p_data.get("statut", "")
+			if statut_actuel.is_empty() or (not statut_soigne.is_empty() and statut_actuel != statut_soigne):
+				label_message.text = "Ça n'aura aucun effet !"
+				await get_tree().create_timer(1.0).timeout
+				_on_action_requise()
+				return
+			p_data["statut"] = ""
+			applique = true
+		"rappel":
+			if pv_act > 0:
+				label_message.text = "Ça n'aura aucun effet !"
+				await get_tree().create_timer(1.0).timeout
+				_on_action_requise()
+				return
+			var pct_rappel: int = effet.get("montant", 50)
+			var soin_rappel: int = maxi(1, int(pv_max * pct_rappel / 100.0))
+			p_data["pv_actuels"] = mini(soin_rappel, pv_max)
+			p_data["statut"] = ""
+			applique = true
+
+	if applique:
+		PlayerData.retirer_item(item_id)
+		PlayerData.equipe[index_cible] = p_data
+		# Synchroniser le Pokémon actif en combat si c'est celui qui est soigné
+		if index_cible == _controller.index_pokemon_joueur and _controller.pokemon_joueur:
+			_controller.pokemon_joueur.pv_actuels = p_data["pv_actuels"]
+			_controller.pokemon_joueur.statut = p_data.get("statut", "")
+			emit_signal("pv_mis_a_jour", true, _controller.pokemon_joueur.pv_actuels, _controller.pokemon_joueur.pv_max) if _controller.pv_mis_a_jour else null
+			_controller.emit_signal("pv_mis_a_jour", true, _controller.pokemon_joueur.pv_actuels, _controller.pokemon_joueur.pv_max)
+			_controller.emit_signal("statut_mis_a_jour", true, _controller.pokemon_joueur.statut)
+		label_message.text = "Tu utilises %s sur %s !" % [nom_item, surnom]
+		await get_tree().create_timer(1.0).timeout
+		# L'ennemi attaque ensuite (c'est un tour)
+		_controller.action_joueur = "item"
+		_controller.item_utilise = item_id
+		_controller.attaque_ennemi_index = AIController.choisir_attaque(_controller.pokemon_ennemi, _controller.pokemon_joueur)
+		_controller._changer_etat(BattleController.Etat.EXECUTION)
+	else:
+		label_message.text = "Ça n'aura aucun effet !"
+		await get_tree().create_timer(1.0).timeout
+		_on_action_requise()
+
+# --- Switch Pokémon en combat ---
+func _ouvrir_switch_combat(forcer: bool) -> void:
+	var switch_screen := load("res://scripts/ui/battle_switch_screen.gd").new()
+	switch_screen.index_actif = _controller.index_pokemon_joueur
+	switch_screen.forcer_choix = forcer
+	add_child(switch_screen)
+	switch_screen.pokemon_choisi.connect(func(index: int):
+		switch_screen.queue_free()
+		# Sauvegarder l'état du Pokémon actuel
+		PlayerData.equipe[_controller.index_pokemon_joueur] = _controller.pokemon_joueur.to_dict()
+		_controller.joueur_change_pokemon(index)
+		_charger_sprites_pokemon()
+		if not forcer:
+			# Switch volontaire = l'ennemi attaque
+			_controller.action_joueur = "change"
+			_controller.attaque_ennemi_index = AIController.choisir_attaque(_controller.pokemon_ennemi, _controller.pokemon_joueur)
+			await get_tree().create_timer(0.5).timeout
+			await _controller._pokemon_attaque(_controller.pokemon_ennemi, _controller.pokemon_joueur, _controller.attaque_ennemi_index, false)
+			_controller._changer_etat(BattleController.Etat.VERIF_KO)
+	)
+	switch_screen.ecran_ferme.connect(func():
+		switch_screen.queue_free()
+		if forcer:
+			# Obligé de choisir, pas d'annulation
+			_ouvrir_switch_combat(true)
+		else:
+			_on_action_requise()
+	)
 
 func _maj_curseur_action() -> void:
 	var labels := menu_action.get_children()

@@ -99,6 +99,7 @@ var partie_en_cours: bool = false
 var temps_jeu_secondes: int = 0
 var _temps_accum: float = 0.0
 var nom_rival: String = "Régis"
+var repousse_restant: int = 0  # Nombre de pas restants pour l'effet Repousse
 
 # --- Signal ---
 signal badge_obtenu(index: int)

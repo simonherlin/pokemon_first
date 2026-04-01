@@ -2,102 +2,131 @@
   "potion": {
     "id": "potion",
     "nom": "Potion",
-    "nom_en": "Potion",
     "categorie": "objets",
     "prix": 300,
     "description": "Restaure 20 PV à un Pokémon.",
     "effet": {
-      "type_effet": "soin_pv",
-      "valeur": 20
+      "type": "soin_pv",
+      "montant": 20
     },
     "utilisable_combat": true
   },
   "super_potion": {
     "id": "super_potion",
     "nom": "Super Potion",
-    "nom_en": "Super Potion",
     "categorie": "objets",
     "prix": 700,
     "description": "Restaure 50 PV à un Pokémon.",
     "effet": {
-      "type_effet": "soin_pv",
-      "valeur": 50
+      "type": "soin_pv",
+      "montant": 50
     },
     "utilisable_combat": true
   },
   "hyper_potion": {
     "id": "hyper_potion",
     "nom": "Hyper Potion",
-    "nom_en": "Hyper Potion",
     "categorie": "objets",
     "prix": 1200,
-    "description": "Restaure 200 PV d'un seul Pokémon.",
+    "description": "Restaure 200 PV à un Pokémon.",
     "effet": {
-      "type_effet": "soin",
+      "type": "soin_pv",
       "montant": 200
     },
     "utilisable_combat": true
   },
   "max_potion": {
     "id": "max_potion",
-    "nom": "Max Potion",
-    "nom_en": "Max Potion",
+    "nom": "Potion Max",
     "categorie": "objets",
     "prix": 2500,
     "description": "Restaure tous les PV d'un Pokémon.",
     "effet": {
-      "type_effet": "soin_pv_complet"
+      "type": "soin_pv",
+      "montant": 9999
     },
     "utilisable_combat": true
   },
   "eau_fraiche": {
     "id": "eau_fraiche",
     "nom": "Eau Fraîche",
-    "nom_en": "Fresh Water",
     "categorie": "objets",
     "prix": 200,
     "description": "Restaure 50 PV à un Pokémon.",
     "effet": {
-      "type_effet": "soin_pv",
-      "valeur": 50
+      "type": "soin_pv",
+      "montant": 50
+    },
+    "utilisable_combat": true
+  },
+  "soda_cool": {
+    "id": "soda_cool",
+    "nom": "Soda Cool",
+    "categorie": "objets",
+    "prix": 300,
+    "description": "Restaure 60 PV à un Pokémon.",
+    "effet": {
+      "type": "soin_pv",
+      "montant": 60
+    },
+    "utilisable_combat": true
+  },
+  "limonade": {
+    "id": "limonade",
+    "nom": "Limonade",
+    "categorie": "objets",
+    "prix": 350,
+    "description": "Restaure 80 PV à un Pokémon.",
+    "effet": {
+      "type": "soin_pv",
+      "montant": 80
+    },
+    "utilisable_combat": true
+  },
+  "lait_meumeu": {
+    "id": "lait_meumeu",
+    "nom": "Lait Meumeu",
+    "categorie": "objets",
+    "prix": 500,
+    "description": "Restaure 100 PV à un Pokémon.",
+    "effet": {
+      "type": "soin_pv",
+      "montant": 100
     },
     "utilisable_combat": true
   },
   "antidote": {
     "id": "antidote",
     "nom": "Antidote",
-    "nom_en": "Antidote",
     "categorie": "objets",
     "prix": 100,
     "description": "Guérit un Pokémon empoisonné.",
     "effet": {
-      "type_effet": "guerit_statut",
+      "type": "guerison_statut",
       "statut": "poison"
     },
     "utilisable_combat": true
   },
   "anti_brulure": {
     "id": "anti_brulure",
-    "nom": "Anti-Brûlure",
-    "nom_en": "Burn Heal",
+    "nom": "Anti-Brûle",
     "categorie": "objets",
     "prix": 250,
     "description": "Guérit un Pokémon brûlé.",
     "effet": {
-      "type_effet": "guerit_statut",
+      "type": "guerison_statut",
       "statut": "brulure"
     },
     "utilisable_combat": true
   },
   "anti_gel": {
     "id": "anti_gel",
-    "nom": "Anti-Gel",
-    "nom_en": "Ice Heal",
+    "nom": "Antigel",
     "categorie": "objets",
     "prix": 250,
     "description": "Décongèle un Pokémon gelé.",
     "effet": {
-      "type_effet": "guerit_statut",
+      "type": "guerison_statut",
       "statut": "gel"
     },
     "utilisable_combat": true
@@ -105,12 +134,11 @@
   "anti_para": {
     "id": "anti_para",
     "nom": "Anti-Para",
-    "nom_en": "Paralyze Heal",
     "categorie": "objets",
     "prix": 200,
     "description": "Guérit un Pokémon paralysé.",
     "effet": {
-      "type_effet": "guerit_statut",
+      "type": "guerison_statut",
       "statut": "paralysie"
     },
     "utilisable_combat": true
@@ -118,412 +146,118 @@
   "reveil": {
     "id": "reveil",
     "nom": "Réveil",
-    "nom_en": "Awakening",
     "categorie": "objets",
     "prix": 250,
     "description": "Réveille un Pokémon endormi.",
     "effet": {
-      "type_effet": "guerit_statut",
+      "type": "guerison_statut",
       "statut": "sommeil"
     },
     "utilisable_combat": true
   },
-  "soin_total": {
-    "id": "soin_total",
-    "nom": "Soin Total",
-    "nom_en": "Full Heal",
+  "total_soin": {
+    "id": "total_soin",
+    "nom": "Total Soin",
     "categorie": "objets",
     "prix": 600,
-    "description": "Guérit tous les problèmes de statut.",
+    "description": "Guérit tous les problèmes de statut d'un Pokémon.",
     "effet": {
-      "type_effet": "guerit_tous_statuts"
+      "type": "soin_total"
     },
     "utilisable_combat": true
   },
   "rappel": {
     "id": "rappel",
     "nom": "Rappel",
-    "nom_en": "Revive",
     "categorie": "objets",
     "prix": 1500,
     "description": "Ranime un Pokémon KO avec la moitié de ses PV.",
     "effet": {
-      "type_effet": "ranimer",
-      "pourcentage": 50
+      "type": "rappel",
+      "montant": 50
     },
     "utilisable_combat": true
   },
   "max_rappel": {
     "id": "max_rappel",
-    "nom": "Max Rappel",
-    "nom_en": "Max Revive",
+    "nom": "Rappel Max",
     "categorie": "objets",
     "prix": 4000,
     "description": "Ranime un Pokémon KO avec tous ses PV.",
     "effet": {
-      "type_effet": "ranimer_complet"
-    },
-    "utilisable_combat": true
-  },
-  "pokeball": {
-    "id": "pokeball",
-    "nom": "Poké Ball",
-    "nom_en": "Poke Ball",
-    "categorie": "balls",
-    "prix": 200,
-    "description": "Une Ball pour attraper les Pokémon sauvages.",
-    "effet": {
-      "type_effet": "capture",
-      "multiplicateur": 1.0
-    },
-    "utilisable_combat": true
-  },
-  "superball": {
-    "id": "superball",
-    "nom": "Super Ball",
-    "nom_en": "Great Ball",
-    "categorie": "balls",
-    "prix": 600,
-    "description": "Une Ball plus performante qu'une Poké Ball normale.",
-    "effet": {
-      "type_effet": "capture",
-      "multiplicateur": 1.5
-    },
-    "utilisable_combat": true
-  },
-  "hyperball": {
-    "id": "hyperball",
-    "nom": "Hyper Ball",
-    "nom_en": "Ultra Ball",
-    "categorie": "balls",
-    "prix": 1200,
-    "description": "Une Ball très performante. Taux de capture élevé.",
-    "effet": {
-      "type_effet": "capture",
-      "multiplicateur": 2.0
-    },
-    "utilisable_combat": true
-  },
-  "masterball": {
-    "id": "masterball",
-    "nom": "Master Ball",
-    "nom_en": "Master Ball",
-    "categorie": "balls",
-    "prix": 0,
-    "description": "La meilleure Ball. Capture à coup sûr n'importe quel Pokémon.",
-    "effet": {
-      "type_effet": "capture",
-      "multiplicateur": 999.0
-    },
-    "utilisable_combat": true
-  },
-  "colis_chen": {
-    "id": "colis_chen",
-    "nom": "Colis Chen",
-    "nom_en": "Oak's Parcel",
-    "categorie": "objets_cles",
-    "prix": 0,
-    "description": "Un colis pour le Professeur Chen. À livrer à Bourg Palette.",
-    "effet": null,
-    "utilisable_combat": false
-  },
-  "pokedex": {
-    "id": "pokedex",
-    "nom": "Pokédex",
-    "nom_en": "Pokedex",
-    "categorie": "objets_cles",
-    "prix": 0,
-    "description": "Un appareil high-tech conçu par le Professeur Chen.",
-    "effet": null,
-    "utilisable_combat": false
-  },
-  "cs01_coupe": {
-    "id": "cs01_coupe",
-    "nom": "CS01 Coupe",
-    "nom_en": "HM01 Cut",
-    "categorie": "ct_cs",
-    "prix": 0,
-    "description": "CS qui apprend Coupe. Permet de couper les arbustes.",
-    "effet": {
-      "type_effet": "apprendre_attaque",
-      "attaque_id": "taillade"
-    },
-    "utilisable_combat": false
-  },
-  "cs03_surf": {
-    "id": "cs03_surf",
-    "nom": "CS03 Surf",
-    "type": "ct_cs",
-    "prix": 0,
-    "description": "Permet de naviguer sur l'eau.",
-    "utilisable_combat": false,
-    "utilisable_terrain": true
-  },
-  "cs04_force": {
-    "id": "cs04_force",
-    "nom": "CS04 Force",
-    "type": "ct_cs",
-    "prix": 0,
-    "description": "Permet de pousser les rochers.",
-    "utilisable_combat": false,
-    "utilisable_terrain": true
-  },
-  "ct_tomberoche": {
-    "id": "ct_tomberoche",
-    "nom": "CT Tomberoche",
-    "nom_en": "TM Rock Throw",
-    "categorie": "ct_cs",
-    "prix": 0,
-    "description": "CT qui apprend l'attaque Tomberoche. Récompense de l'arène d'Argenta.",
-    "effet": {
-      "type_effet": "apprendre_attaque",
-      "attaque_id": "tomberoche"
-    },
-    "utilisable_combat": false
-  },
-  "pierre_feu": {
-    "id": "pierre_feu",
-    "nom": "Pierre Feu",
-    "type": "objets",
-    "prix": 2100,
-    "description": "Fait évoluer certains Pokémon de type Feu.",
-    "utilisable_combat": false,
-    "utilisable_terrain": true
-  },
-  "pierre_eau": {
-    "id": "pierre_eau",
-    "nom": "Pierre Eau",
-    "type": "objets",
-    "prix": 2100,
-    "description": "Fait évoluer certains Pokémon de type Eau.",
-    "utilisable_combat": false,
-    "utilisable_terrain": true
-  },
-  "pierre_foudre": {
-    "id": "pierre_foudre",
-    "nom": "Pierre Foudre",
-    "type": "objets",
-    "prix": 2100,
-    "description": "Fait évoluer certains Pokémon de type Électrik.",
-    "utilisable_combat": false,
-    "utilisable_terrain": true
-  },
-  "pierre_lune": {
-    "id": "pierre_lune",
-    "nom": "Pierre Lune",
-    "nom_en": "Moon Stone",
-    "categorie": "objets",
-    "prix": 0,
-    "description": "Fait évoluer certain Pokémon la nuit.",
-    "effet": {
-      "type_effet": "pierre_evolution",
-      "pierre": "pierre_lune"
-    },
-    "utilisable_combat": false
-  },
-  "pierre_plante": {
-    "id": "pierre_plante",
-    "nom": "Pierre Plante",
-    "type": "objets",
-    "prix": 2100,
-    "description": "Fait évoluer certains Pokémon de type Plante.",
-    "utilisable_combat": false,
-    "utilisable_terrain": true
-  },
-  "fossile_dome": {
-    "id": "fossile_dome",
-    "nom": "Fossile Dôme",
-    "nom_en": "Dome Fossil",
-    "categorie": "objets_cles",
-    "prix": 0,
-    "description": "Un fossile d'un ancien Pokémon. Semble provenir d'une carapace.",
-    "effet": null,
-    "utilisable_combat": false
-  },
-  "fossile_helix": {
-    "id": "fossile_helix",
-    "nom": "Fossile Nautile",
-    "nom_en": "Helix Fossil",
-    "categorie": "objets_cles",
-    "prix": 0,
-    "description": "Un fossile d'un ancien Pokémon. Semble provenir d'une coquille.",
-    "effet": null,
-    "utilisable_combat": false
-  },
-  "pepite": {
-    "id": "pepite",
-    "nom": "Pépite",
-    "nom_en": "Nugget",
-    "categorie": "objets",
-    "prix": 5000,
-    "description": "Une pépite d'or pur. Peut être vendue à bon prix.",
-    "effet": null,
-    "utilisable_combat": false
-  },
-  "ct_cascade": {
-    "id": "ct_cascade",
-    "nom": "CT Cascade",
-    "nom_en": "TM Waterfall",
-    "categorie": "ct_cs",
-    "prix": 0,
-    "description": "Attaque puissante de type Eau. Peut aussi être utilisée hors combat.",
-    "effet": {
-      "type_effet": "ct",
-      "attaque_id": "cascade"
-    },
-    "utilisable_combat": false
-  },
-  "elixir": {
-    "id": "elixir",
-    "nom": "Élixir",
-    "nom_en": "Elixir",
-    "categorie": "objets",
-    "prix": 0,
-    "description": "Restaure 10 PP de toutes les attaques d'un Pokémon.",
-    "effet": {
-      "type_effet": "restaure_pp_toutes",
-      "montant": 10
+      "type": "rappel",
+      "montant": 100
     },
     "utilisable_combat": true
   },
   "huile": {
     "id": "huile",
     "nom": "Huile",
-    "nom_en": "Ether",
     "categorie": "objets",
     "prix": 0,
     "description": "Restaure 10 PP d'une attaque d'un Pokémon.",
     "effet": {
-      "type_effet": "restaure_pp",
+      "type": "soin_pp",
       "montant": 10
     },
     "utilisable_combat": true
   },
-  "corde_sortie": {
-    "id": "corde_sortie",
-    "nom": "Corde Sortie",
-    "nom_en": "Escape Rope",
+  "elixir": {
+    "id": "elixir",
+    "nom": "Élixir",
     "categorie": "objets",
-    "prix": 550,
-    "description": "Permet de fuir instantanément d'une grotte ou d'un donjon.",
-    "effet": {
-      "type_effet": "fuite_donjon"
-    },
-    "utilisable_combat": false
-  },
-  "cs_coupe": {
-    "id": "cs_coupe",
-    "nom": "CS01 Coupe",
-    "nom_en": "HM01 Cut",
-    "categorie": "ct_cs",
     "prix": 0,
-    "description": "Apprend l'attaque Coupe à un Pokémon. Utilisable hors combat pour couper les arbustes.",
+    "description": "Restaure 10 PP de toutes les attaques d'un Pokémon.",
     "effet": {
-      "type_effet": "cs",
-      "attaque_id": "coupe"
-    },
-    "utilisable_combat": false
-  },
-  "ct_tonnerre": {
-    "id": "ct_tonnerre",
-    "nom": "CT Tonnerre",
-    "nom_en": "TM24 Thunderbolt",
-    "categorie": "ct_cs",
-    "prix": 0,
-    "description": "Apprend l'attaque Tonnerre à un Pokémon.",
-    "effet": {
-      "type_effet": "ct",
-      "attaque_id": "tonnerre"
-    },
-    "utilisable_combat": false
-  },
-  "ticket_oceane": {
-    "id": "ticket_oceane",
-    "nom": "Ticket Océane",
-    "nom_en": "S.S. Ticket",
-    "categorie": "objets_cles",
-    "prix": 0,
-    "description": "Un billet pour embarquer sur l'Océane, le luxueux navire de Carmin sur Mer.",
-    "effet": null,
-    "utilisable_combat": false
-  },
-  "total_soin": {
-    "id": "total_soin",
-    "nom": "Total Soin",
-    "nom_en": "Full Heal",
-    "categorie": "objets",
-    "prix": 600,
-    "description": "Soigne tous les problèmes de statut d'un seul Pokémon.",
-    "effet": {
-      "type_effet": "guerir_statut",
-      "statut": "tous"
+      "type": "soin_pp_all",
+      "montant": 10
     },
     "utilisable_combat": true
   },
-  "scope_sylphe": {
-    "id": "scope_sylphe",
-    "nom": "Scope Sylphe",
-    "nom_en": "Silph Scope",
-    "categorie": "objets_cles",
+  "huile_max": {
+    "id": "huile_max",
+    "nom": "Huile Max",
+    "categorie": "objets",
     "prix": 0,
-    "description": "Un appareil permettant d identifier les spectres de la Tour Pokémon de Lavanville.",
-    "effet": null,
-    "utilisable_combat": false
-  },
-  "poke_flute": {
-    "id": "poke_flute",
-    "nom": "Poké Flûte",
-    "nom_en": "Poké Flute",
-    "categorie": "objets_cles",
-    "prix": 0,
-    "description": "Une flûte qui peut réveiller n importe quel Pokémon endormi. Donnée par M. Fuji.",
+    "description": "Restaure tous les PP d'une attaque.",
     "effet": {
-      "type_effet": "reveil"
+      "type": "soin_pp",
+      "montant": 999
     },
     "utilisable_combat": true
   },
-  "ct_mega_drain": {
-    "id": "ct_mega_drain",
-    "nom": "CT Méga-Sangsue",
-    "nom_en": "TM21 Mega Drain",
-    "categorie": "ct_cs",
+  "max_elixir": {
+    "id": "max_elixir",
+    "nom": "Max Élixir",
+    "categorie": "objets",
     "prix": 0,
-    "description": "Apprend l attaque Méga-Sangsue à un Pokémon.",
+    "description": "Restaure tous les PP de toutes les attaques.",
     "effet": {
-      "type_effet": "ct",
-      "attaque_id": "mega_drain"
+      "type": "soin_pp_all",
+      "montant": 999
     },
-    "utilisable_combat": false
+    "utilisable_combat": true
   },
-  "jeton_casino": {
-    "id": "jeton_casino",
-    "nom": "Jetons Casino",
-    "nom_en": "Coin Case",
-    "categorie": "objets_cles",
-    "prix": 0,
-    "description": "Un étui à jetons pour le Casino de Céladopole.",
-    "effet": null,
-    "utilisable_combat": false
-  },
-  "cle_ascenseur": {
-    "id": "cle_ascenseur",
-    "nom": "Clé Ascenseur",
-    "nom_en": "Lift Key",
-    "categorie": "objets_cles",
-    "prix": 0,
-    "description": "La clé de l ascenseur du repaire de la Team Rocket.",
-    "effet": null,
+  "repousse": {
+    "id": "repousse",
+    "nom": "Repousse",
+    "categorie": "objets",
+    "prix": 350,
+    "description": "Éloigne les Pokémon sauvages faibles pendant 100 pas.",
+    "effet": {
+      "type": "repousse",
+      "pas": 100
+    },
     "utilisable_combat": false
   },
   "super_repousse": {
     "id": "super_repousse",
     "nom": "Super Repousse",
-    "nom_en": "Super Repel",
     "categorie": "objets",
     "prix": 500,
     "description": "Éloigne les Pokémon sauvages faibles pendant 200 pas.",
     "effet": {
-      "type_effet": "repousse",
+      "type": "repousse",
       "pas": 200
     },
     "utilisable_combat": false
@@ -531,151 +265,1033 @@
   "max_repousse": {
     "id": "max_repousse",
     "nom": "Max Repousse",
-    "nom_en": "Max Repel",
     "categorie": "objets",
     "prix": 700,
     "description": "Éloigne les Pokémon sauvages faibles pendant 250 pas.",
     "effet": {
-      "type_effet": "repousse",
+      "type": "repousse",
       "pas": 250
     },
     "utilisable_combat": false
   },
-  "cs05_vol": {
-    "id": "cs05_vol",
-    "nom": "CS05 Vol",
-    "type": "ct_cs",
-    "prix": 0,
-    "description": "Permet de voler vers une ville visitée.",
-    "utilisable_combat": false,
-    "utilisable_terrain": true
+  "corde_sortie": {
+    "id": "corde_sortie",
+    "nom": "Corde Sortie",
+    "categorie": "objets",
+    "prix": 550,
+    "description": "Permet de fuir instantanément d'une grotte.",
+    "effet": {
+      "type": "fuite_donjon"
+    },
+    "utilisable_combat": false
   },
-  "dent_or": {
-    "id": "dent_or",
-    "nom": "Dent d'Or",
-    "type": "objets_cles",
-    "prix": 0,
-    "description": "La prothèse dentaire du gardien du Parc Safari.",
-    "utilisable_combat": false,
-    "utilisable_terrain": true
+  "pepite": {
+    "id": "pepite",
+    "nom": "Pépite",
+    "categorie": "objets",
+    "prix": 5000,
+    "description": "Une pépite d'or pur. Peut être vendue à bon prix.",
+    "effet": null,
+    "utilisable_combat": false
   },
-  "canne_a_peche": {
-    "id": "canne_a_peche",
-    "nom": "Canne à Pêche",
-    "type": "objets_cles",
+  "super_bonbon": {
+    "id": "super_bonbon",
+    "nom": "Super Bonbon",
+    "categorie": "objets",
     "prix": 0,
-    "description": "Une vieille canne pour pêcher.",
-    "utilisable_combat": false,
-    "utilisable_terrain": true
+    "description": "Monte le niveau du Pokémon d'un cran.",
+    "effet": {
+      "type": "niveau_plus_1"
+    },
+    "utilisable_combat": false
   },
-  "super_canne": {
-    "id": "super_canne",
-    "nom": "Super Canne",
-    "type": "objets_cles",
+  "pp_plus": {
+    "id": "pp_plus",
+    "nom": "PP Plus",
+    "categorie": "objets",
     "prix": 0,
-    "description": "Une bonne canne pour pêcher.",
-    "utilisable_combat": false,
-    "utilisable_terrain": true
+    "description": "Augmente les PP max d'une attaque d'un Pokémon.",
+    "effet": {
+      "type": "pp_plus"
+    },
+    "utilisable_combat": false
   },
-  "mega_canne": {
-    "id": "mega_canne",
-    "nom": "Méga Canne",
-    "type": "objets_cles",
+  "calcium": {
+    "id": "calcium",
+    "nom": "Calcium",
+    "categorie": "objets",
+    "prix": 9800,
+    "description": "Augmente le Spécial d'un Pokémon.",
+    "effet": {
+      "type": "ev_boost",
+      "stat": "special"
+    },
+    "utilisable_combat": false
+  },
+  "fer": {
+    "id": "fer",
+    "nom": "Fer",
+    "categorie": "objets",
+    "prix": 9800,
+    "description": "Augmente la Défense d'un Pokémon.",
+    "effet": {
+      "type": "ev_boost",
+      "stat": "defense"
+    },
+    "utilisable_combat": false
+  },
+  "proteine": {
+    "id": "proteine",
+    "nom": "Protéine",
+    "categorie": "objets",
+    "prix": 9800,
+    "description": "Augmente l'Attaque d'un Pokémon.",
+    "effet": {
+      "type": "ev_boost",
+      "stat": "attaque"
+    },
+    "utilisable_combat": false
+  },
+  "carbone": {
+    "id": "carbone",
+    "nom": "Carbone",
+    "categorie": "objets",
+    "prix": 9800,
+    "description": "Augmente la Vitesse d'un Pokémon.",
+    "effet": {
+      "type": "ev_boost",
+      "stat": "vitesse"
+    },
+    "utilisable_combat": false
+  },
+  "pv_plus": {
+    "id": "pv_plus",
+    "nom": "PV Plus",
+    "categorie": "objets",
+    "prix": 9800,
+    "description": "Augmente les PV max d'un Pokémon.",
+    "effet": {
+      "type": "ev_boost",
+      "stat": "pv"
+    },
+    "utilisable_combat": false
+  },
+  "pokeball": {
+    "id": "pokeball",
+    "nom": "Poké Ball",
+    "categorie": "balls",
+    "prix": 200,
+    "description": "Une Ball pour attraper les Pokémon sauvages.",
+    "effet": {
+      "type": "capture",
+      "multiplicateur": 1.0
+    },
+    "utilisable_combat": true
+  },
+  "superball": {
+    "id": "superball",
+    "nom": "Super Ball",
+    "categorie": "balls",
+    "prix": 600,
+    "description": "Une Ball plus performante qu'une Poké Ball.",
+    "effet": {
+      "type": "capture",
+      "multiplicateur": 1.5
+    },
+    "utilisable_combat": true
+  },
+  "hyperball": {
+    "id": "hyperball",
+    "nom": "Hyper Ball",
+    "categorie": "balls",
+    "prix": 1200,
+    "description": "Une Ball très performante.",
+    "effet": {
+      "type": "capture",
+      "multiplicateur": 2.0
+    },
+    "utilisable_combat": true
+  },
+  "masterball": {
+    "id": "masterball",
+    "nom": "Master Ball",
+    "categorie": "balls",
     "prix": 0,
-    "description": "La meilleure canne à pêche.",
-    "utilisable_combat": false,
-    "utilisable_terrain": true
+    "description": "La meilleure Ball. Capture à coup sûr.",
+    "effet": {
+      "type": "capture",
+      "multiplicateur": 999.0
+    },
+    "utilisable_combat": true
   },
   "safari_ball": {
     "id": "safari_ball",
     "nom": "Safari Ball",
-    "type": "balls",
+    "categorie": "balls",
     "prix": 0,
     "description": "Une Ball spéciale du Parc Safari.",
-    "utilisable_combat": true,
-    "utilisable_terrain": false
+    "effet": {
+      "type": "capture",
+      "multiplicateur": 1.5
+    },
+    "utilisable_combat": true
   },
-  "ct_psyko": {
-    "id": "ct_psyko",
-    "nom": "CT Psyko",
-    "type": "ct_cs",
-    "prix": 0,
-    "description": "Enseigne l'attaque Psyko.",
-    "utilisable_combat": false,
-    "utilisable_terrain": false
+  "pierre_feu": {
+    "id": "pierre_feu",
+    "nom": "Pierre Feu",
+    "categorie": "objets",
+    "prix": 2100,
+    "description": "Fait évoluer certains Pokémon de type Feu.",
+    "effet": {
+      "type": "pierre_evolution",
+      "pierre": "pierre_feu"
+    },
+    "utilisable_combat": false
   },
-  "ct_toxik": {
-    "id": "ct_toxik",
-    "nom": "CT Toxik",
-    "type": "ct_cs",
-    "prix": 0,
-    "description": "Enseigne l'attaque Toxik.",
-    "utilisable_combat": false,
-    "utilisable_terrain": false
+  "pierre_eau": {
+    "id": "pierre_eau",
+    "nom": "Pierre Eau",
+    "categorie": "objets",
+    "prix": 2100,
+    "description": "Fait évoluer certains Pokémon de type Eau.",
+    "effet": {
+      "type": "pierre_evolution",
+      "pierre": "pierre_eau"
+    },
+    "utilisable_combat": false
   },
-  "master_ball": {
-    "id": "master_ball",
-    "nom": "Master Ball",
-    "type": "balls",
+  "pierre_foudre": {
+    "id": "pierre_foudre",
+    "nom": "Pierre Foudre",
+    "categorie": "objets",
+    "prix": 2100,
+    "description": "Fait évoluer certains Pokémon de type Électrik.",
+    "effet": {
+      "type": "pierre_evolution",
+      "pierre": "pierre_foudre"
+    },
+    "utilisable_combat": false
+  },
+  "pierre_plante": {
+    "id": "pierre_plante",
+    "nom": "Pierre Plante",
+    "categorie": "objets",
+    "prix": 2100,
+    "description": "Fait évoluer certains Pokémon de type Plante.",
+    "effet": {
+      "type": "pierre_evolution",
+      "pierre": "pierre_plante"
+    },
+    "utilisable_combat": false
+  },
+  "pierre_lune": {
+    "id": "pierre_lune",
+    "nom": "Pierre Lune",
+    "categorie": "objets",
     "prix": 0,
-    "description": "La Ball ultime. Capture à coup sûr.",
-    "utilisable_combat": true,
-    "utilisable_terrain": false
+    "description": "Fait évoluer certains Pokémon spéciaux.",
+    "effet": {
+      "type": "pierre_evolution",
+      "pierre": "pierre_lune"
+    },
+    "utilisable_combat": false
+  },
+  "colis_chen": {
+    "id": "colis_chen",
+    "nom": "Colis du Prof. Chen",
+    "categorie": "objets_cles",
+    "prix": 0,
+    "description": "Un colis pour le Professeur Chen.",
+    "effet": null,
+    "utilisable_combat": false
+  },
+  "pokedex": {
+    "id": "pokedex",
+    "nom": "Pokédex",
+    "categorie": "objets_cles",
+    "prix": 0,
+    "description": "Un appareil high-tech du Professeur Chen.",
+    "effet": null,
+    "utilisable_combat": false
+  },
+  "ticket_oceane": {
+    "id": "ticket_oceane",
+    "nom": "Ticket Océane",
+    "categorie": "objets_cles",
+    "prix": 0,
+    "description": "Un billet pour le luxueux navire Océane.",
+    "effet": null,
+    "utilisable_combat": false
+  },
+  "scope_sylphe": {
+    "id": "scope_sylphe",
+    "nom": "Scope Sylphe",
+    "categorie": "objets_cles",
+    "prix": 0,
+    "description": "Permet d'identifier les spectres.",
+    "effet": null,
+    "utilisable_combat": false
+  },
+  "poke_flute": {
+    "id": "poke_flute",
+    "nom": "Poké Flûte",
+    "categorie": "objets_cles",
+    "prix": 0,
+    "description": "Réveille les Pokémon endormis.",
+    "effet": {
+      "type": "guerison_statut",
+      "statut": "sommeil"
+    },
+    "utilisable_combat": true
+  },
+  "dent_or": {
+    "id": "dent_or",
+    "nom": "Dent d'Or",
+    "categorie": "objets_cles",
+    "prix": 0,
+    "description": "La prothèse dentaire du gardien du Parc Safari.",
+    "effet": null,
+    "utilisable_combat": false
+  },
+  "cle_ascenseur": {
+    "id": "cle_ascenseur",
+    "nom": "Clé Ascenseur",
+    "categorie": "objets_cles",
+    "prix": 0,
+    "description": "Clé de l'ascenseur du repaire Rocket.",
+    "effet": null,
+    "utilisable_combat": false
   },
   "cle_arene_cramoisile": {
     "id": "cle_arene_cramoisile",
-    "nom": "Clé Arène",
-    "nom_en": "Secret Key",
+    "nom": "Clé Secrète",
     "categorie": "objets_cles",
     "prix": 0,
     "description": "Ouvre l'Arène de Cramois'Île.",
+    "effet": null,
+    "utilisable_combat": false
+  },
+  "jeton_casino": {
+    "id": "jeton_casino",
+    "nom": "Porte-Jetons",
+    "categorie": "objets_cles",
+    "prix": 0,
+    "description": "Un étui pour les jetons du Casino.",
+    "effet": null,
+    "utilisable_combat": false
+  },
+  "fossile_dome": {
+    "id": "fossile_dome",
+    "nom": "Fossile Dôme",
+    "categorie": "objets_cles",
+    "prix": 0,
+    "description": "Fossile d'un ancien Pokémon (Kabuto).",
+    "effet": null,
+    "utilisable_combat": false
+  },
+  "fossile_helix": {
+    "id": "fossile_helix",
+    "nom": "Fossile Nautile",
+    "categorie": "objets_cles",
+    "prix": 0,
+    "description": "Fossile d'un ancien Pokémon (Amonita).",
+    "effet": null,
     "utilisable_combat": false
   },
   "fossile_ambre": {
     "id": "fossile_ambre",
     "nom": "Vieil Ambre",
-    "nom_en": "Old Amber",
     "categorie": "objets_cles",
     "prix": 0,
-    "description": "Un morceau d'ambre contenant\nle matériel génétique d'un\nPokémon ancien.",
+    "description": "Ambre contenant l'ADN d'un Pokémon ancien (Ptéra).",
+    "effet": null,
     "utilisable_combat": false
   },
-  "ct_seisme": {
-    "id": "ct_seisme",
-    "nom": "CT Séisme",
-    "nom_en": "TM Earthquake",
-    "categorie": "ct_cs",
+  "canne_a_peche": {
+    "id": "canne_a_peche",
+    "nom": "Canne",
+    "categorie": "objets_cles",
     "prix": 0,
-    "description": "Enseigne l'attaque SÉISME.",
+    "description": "Une vieille canne pour pêcher des Pokémon.",
+    "effet": null,
     "utilisable_combat": false
   },
-  "ct_deflagration": {
-    "id": "ct_deflagration",
-    "nom": "CT Déflagration",
-    "nom_en": "TM Fire Blast",
-    "categorie": "ct_cs",
+  "super_canne": {
+    "id": "super_canne",
+    "nom": "Super Canne",
+    "categorie": "objets_cles",
     "prix": 0,
-    "description": "Enseigne l'attaque DÉFLAGRATION.",
+    "description": "Une bonne canne pour pêcher.",
+    "effet": null,
     "utilisable_combat": false
   },
-  "ct_blizzard": {
-    "id": "ct_blizzard",
-    "nom": "CT Blizzard",
-    "nom_en": "TM Blizzard",
-    "categorie": "ct_cs",
+  "mega_canne": {
+    "id": "mega_canne",
+    "nom": "Méga Canne",
+    "categorie": "objets_cles",
     "prix": 0,
-    "effet": "apprend_attaque",
-    "attaque_id": "blizzard",
-    "description": "Apprend l'attaque BLIZZARD à un Pokémon."
+    "description": "La meilleure canne à pêche.",
+    "effet": null,
+    "utilisable_combat": false
   },
-  "ct_poing_feu": {
-    "id": "ct_poing_feu",
-    "nom": "CT Poing de Feu",
-    "nom_en": "TM Fire Punch",
+  "cs01_coupe": {
+    "id": "cs01_coupe",
+    "nom": "CS01 Coupe",
     "categorie": "ct_cs",
     "prix": 0,
-    "effet": "apprend_attaque",
-    "attaque_id": "poing_de_feu",
-    "description": "Apprend l'attaque POING DE FEU à un Pokémon."
+    "description": "Apprend Coupe. Coupe les arbustes hors combat.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "coupe"
+    },
+    "utilisable_combat": false
+  },
+  "cs02_vol": {
+    "id": "cs02_vol",
+    "nom": "CS02 Vol",
+    "categorie": "ct_cs",
+    "prix": 0,
+    "description": "Apprend Vol. Permet de voler vers une ville visitée.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "vol"
+    },
+    "utilisable_combat": false
+  },
+  "cs03_surf": {
+    "id": "cs03_surf",
+    "nom": "CS03 Surf",
+    "categorie": "ct_cs",
+    "prix": 0,
+    "description": "Apprend Surf. Permet de naviguer sur l'eau.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "surf"
+    },
+    "utilisable_combat": false
+  },
+  "cs04_force": {
+    "id": "cs04_force",
+    "nom": "CS04 Force",
+    "categorie": "ct_cs",
+    "prix": 0,
+    "description": "Apprend Force. Permet de pousser les rochers.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "force"
+    },
+    "utilisable_combat": false
+  },
+  "cs05_flash": {
+    "id": "cs05_flash",
+    "nom": "CS05 Flash",
+    "categorie": "ct_cs",
+    "prix": 0,
+    "description": "Apprend Flash. Éclaire les grottes sombres.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "flash"
+    },
+    "utilisable_combat": false
+  },
+  "ct01": {
+    "id": "ct01",
+    "nom": "CT01 Mitra-Poing",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Mitra-Poing à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "mitra_poing"
+    },
+    "utilisable_combat": false
+  },
+  "ct02": {
+    "id": "ct02",
+    "nom": "CT02 Draco-Griffe",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Draco-Griffe à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "draco_griffe"
+    },
+    "utilisable_combat": false
+  },
+  "ct03": {
+    "id": "ct03",
+    "nom": "CT03 Vibraqua",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Vibraqua à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "vibraqua"
+    },
+    "utilisable_combat": false
+  },
+  "ct04": {
+    "id": "ct04",
+    "nom": "CT04 Plénitude",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Plénitude à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "plenitude"
+    },
+    "utilisable_combat": false
+  },
+  "ct05": {
+    "id": "ct05",
+    "nom": "CT05 Hurlement",
+    "categorie": "ct_cs",
+    "prix": 1000,
+    "description": "Apprend l'attaque Hurlement à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "hurlement"
+    },
+    "utilisable_combat": false
+  },
+  "ct06": {
+    "id": "ct06",
+    "nom": "CT06 Toxik",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Toxik à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "toxik"
+    },
+    "utilisable_combat": false
+  },
+  "ct07": {
+    "id": "ct07",
+    "nom": "CT07 Grêle",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Grêle à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "grele"
+    },
+    "utilisable_combat": false
+  },
+  "ct08": {
+    "id": "ct08",
+    "nom": "CT08 Gonflette",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Gonflette à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "gonflette"
+    },
+    "utilisable_combat": false
+  },
+  "ct09": {
+    "id": "ct09",
+    "nom": "CT09 Balle Graine",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Balle Graine à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "balle_graine"
+    },
+    "utilisable_combat": false
+  },
+  "ct10": {
+    "id": "ct10",
+    "nom": "CT10 Puissance Cachée",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Puissance Cachée à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "puissance_cachee"
+    },
+    "utilisable_combat": false
+  },
+  "ct11": {
+    "id": "ct11",
+    "nom": "CT11 Zénith",
+    "categorie": "ct_cs",
+    "prix": 2000,
+    "description": "Apprend l'attaque Zénith à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "zenith"
+    },
+    "utilisable_combat": false
+  },
+  "ct12": {
+    "id": "ct12",
+    "nom": "CT12 Provoc",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Provoc à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "provoc"
+    },
+    "utilisable_combat": false
+  },
+  "ct13": {
+    "id": "ct13",
+    "nom": "CT13 Laser Glace",
+    "categorie": "ct_cs",
+    "prix": 5500,
+    "description": "Apprend l'attaque Laser Glace à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "laser_glace"
+    },
+    "utilisable_combat": false
+  },
+  "ct14": {
+    "id": "ct14",
+    "nom": "CT14 Blizzard",
+    "categorie": "ct_cs",
+    "prix": 5500,
+    "description": "Apprend l'attaque Blizzard à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "blizzard"
+    },
+    "utilisable_combat": false
+  },
+  "ct15": {
+    "id": "ct15",
+    "nom": "CT15 Ultralaser",
+    "categorie": "ct_cs",
+    "prix": 7500,
+    "description": "Apprend l'attaque Ultralaser à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "hyper_faisceau"
+    },
+    "utilisable_combat": false
+  },
+  "ct16": {
+    "id": "ct16",
+    "nom": "CT16 Mur Lumière",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Mur Lumière à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "mur_lumiere"
+    },
+    "utilisable_combat": false
+  },
+  "ct17": {
+    "id": "ct17",
+    "nom": "CT17 Abri",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Abri à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "abri"
+    },
+    "utilisable_combat": false
+  },
+  "ct18": {
+    "id": "ct18",
+    "nom": "CT18 Danse Pluie",
+    "categorie": "ct_cs",
+    "prix": 2000,
+    "description": "Apprend l'attaque Danse Pluie à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "danse_pluie"
+    },
+    "utilisable_combat": false
+  },
+  "ct19": {
+    "id": "ct19",
+    "nom": "CT19 Giga-Sangsue",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Giga-Sangsue à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "giga_sangsue"
+    },
+    "utilisable_combat": false
+  },
+  "ct20": {
+    "id": "ct20",
+    "nom": "CT20 Rune Protect",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Rune Protect à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "rune_protect"
+    },
+    "utilisable_combat": false
+  },
+  "ct21": {
+    "id": "ct21",
+    "nom": "CT21 Frustration",
+    "categorie": "ct_cs",
+    "prix": 1000,
+    "description": "Apprend l'attaque Frustration à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "frustration"
+    },
+    "utilisable_combat": false
+  },
+  "ct22": {
+    "id": "ct22",
+    "nom": "CT22 Lance-Soleil",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Lance-Soleil à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "lance_soleil"
+    },
+    "utilisable_combat": false
+  },
+  "ct23": {
+    "id": "ct23",
+    "nom": "CT23 Queue de Fer",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Queue de Fer à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "queue_de_fer"
+    },
+    "utilisable_combat": false
+  },
+  "ct24": {
+    "id": "ct24",
+    "nom": "CT24 Tonnerre",
+    "categorie": "ct_cs",
+    "prix": 4000,
+    "description": "Apprend l'attaque Tonnerre à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "tonnerre"
+    },
+    "utilisable_combat": false
+  },
+  "ct25": {
+    "id": "ct25",
+    "nom": "CT25 Fatal-Foudre",
+    "categorie": "ct_cs",
+    "prix": 5500,
+    "description": "Apprend l'attaque Fatal-Foudre à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "foudre"
+    },
+    "utilisable_combat": false
+  },
+  "ct26": {
+    "id": "ct26",
+    "nom": "CT26 Séisme",
+    "categorie": "ct_cs",
+    "prix": 6000,
+    "description": "Apprend l'attaque Séisme à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "seisme"
+    },
+    "utilisable_combat": false
+  },
+  "ct27": {
+    "id": "ct27",
+    "nom": "CT27 Retour",
+    "categorie": "ct_cs",
+    "prix": 1000,
+    "description": "Apprend l'attaque Retour à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "retour"
+    },
+    "utilisable_combat": false
+  },
+  "ct28": {
+    "id": "ct28",
+    "nom": "CT28 Tunnel",
+    "categorie": "ct_cs",
+    "prix": 2000,
+    "description": "Apprend l'attaque Tunnel à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "tunnel"
+    },
+    "utilisable_combat": false
+  },
+  "ct29": {
+    "id": "ct29",
+    "nom": "CT29 Psyko",
+    "categorie": "ct_cs",
+    "prix": 4000,
+    "description": "Apprend l'attaque Psyko à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "psyko"
+    },
+    "utilisable_combat": false
+  },
+  "ct30": {
+    "id": "ct30",
+    "nom": "CT30 Ball'Ombre",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Ball'Ombre à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "ball_ombre"
+    },
+    "utilisable_combat": false
+  },
+  "ct31": {
+    "id": "ct31",
+    "nom": "CT31 Casse-Brique",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Casse-Brique à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "casse_brique"
+    },
+    "utilisable_combat": false
+  },
+  "ct32": {
+    "id": "ct32",
+    "nom": "CT32 Reflet",
+    "categorie": "ct_cs",
+    "prix": 2000,
+    "description": "Apprend l'attaque Reflet à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "reflet"
+    },
+    "utilisable_combat": false
+  },
+  "ct33": {
+    "id": "ct33",
+    "nom": "CT33 Protection",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Protection à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "reflet_psy"
+    },
+    "utilisable_combat": false
+  },
+  "ct34": {
+    "id": "ct34",
+    "nom": "CT34 Onde de Choc",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Onde de Choc à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "onde_de_choc"
+    },
+    "utilisable_combat": false
+  },
+  "ct35": {
+    "id": "ct35",
+    "nom": "CT35 Lance-Flamme",
+    "categorie": "ct_cs",
+    "prix": 4000,
+    "description": "Apprend l'attaque Lance-Flamme à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "lance_flamme"
+    },
+    "utilisable_combat": false
+  },
+  "ct36": {
+    "id": "ct36",
+    "nom": "CT36 Bombe Beurk",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Bombe Beurk à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "bombe_beurk"
+    },
+    "utilisable_combat": false
+  },
+  "ct37": {
+    "id": "ct37",
+    "nom": "CT37 Tempête de Sable",
+    "categorie": "ct_cs",
+    "prix": 2000,
+    "description": "Apprend l'attaque Tempête de Sable à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "tempete_sable"
+    },
+    "utilisable_combat": false
+  },
+  "ct38": {
+    "id": "ct38",
+    "nom": "CT38 Déflagration",
+    "categorie": "ct_cs",
+    "prix": 5500,
+    "description": "Apprend l'attaque Déflagration à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "deflagration"
+    },
+    "utilisable_combat": false
+  },
+  "ct39": {
+    "id": "ct39",
+    "nom": "CT39 Tomberoche",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Tomberoche à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "tomberoche"
+    },
+    "utilisable_combat": false
+  },
+  "ct40": {
+    "id": "ct40",
+    "nom": "CT40 Aéropique",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Aéropique à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "aeropique"
+    },
+    "utilisable_combat": false
+  },
+  "ct41": {
+    "id": "ct41",
+    "nom": "CT41 Tourment",
+    "categorie": "ct_cs",
+    "prix": 1500,
+    "description": "Apprend l'attaque Tourment à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "tourment"
+    },
+    "utilisable_combat": false
+  },
+  "ct42": {
+    "id": "ct42",
+    "nom": "CT42 Façade",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Façade à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "facade"
+    },
+    "utilisable_combat": false
+  },
+  "ct43": {
+    "id": "ct43",
+    "nom": "CT43 Force Cachée",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Force Cachée à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "force_cachee"
+    },
+    "utilisable_combat": false
+  },
+  "ct44": {
+    "id": "ct44",
+    "nom": "CT44 Repos",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Repos à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "repos"
+    },
+    "utilisable_combat": false
+  },
+  "ct45": {
+    "id": "ct45",
+    "nom": "CT45 Attraction",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Attraction à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "attraction"
+    },
+    "utilisable_combat": false
+  },
+  "ct46": {
+    "id": "ct46",
+    "nom": "CT46 Larcin",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Larcin à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "larcin"
+    },
+    "utilisable_combat": false
+  },
+  "ct47": {
+    "id": "ct47",
+    "nom": "CT47 Aile d'Acier",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Aile d'Acier à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "aile_acier"
+    },
+    "utilisable_combat": false
+  },
+  "ct48": {
+    "id": "ct48",
+    "nom": "CT48 Échange",
+    "categorie": "ct_cs",
+    "prix": 3000,
+    "description": "Apprend l'attaque Échange à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "echange"
+    },
+    "utilisable_combat": false
+  },
+  "ct49": {
+    "id": "ct49",
+    "nom": "CT49 Surchauffe",
+    "categorie": "ct_cs",
+    "prix": 5500,
+    "description": "Apprend l'attaque Surchauffe à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "surchauffe"
+    },
+    "utilisable_combat": false
+  },
+  "ct50": {
+    "id": "ct50",
+    "nom": "CT50 Surchauffe",
+    "categorie": "ct_cs",
+    "prix": 5500,
+    "description": "Apprend l'attaque Surchauffe à un Pokémon.",
+    "effet": {
+      "type": "apprendre_attaque",
+      "attaque_id": "surchauffe"
+    },
+    "utilisable_combat": false
   }
 }
