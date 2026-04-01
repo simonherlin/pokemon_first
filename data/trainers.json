@@ -1217,5 +1217,451 @@
         "niveau": 29
       }
     ]
+  },
+  "motard_r17_01": {
+    "id": "motard_r17_01",
+    "nom": "Motard",
+    "classe": "Motard",
+    "equipe": [
+      {
+        "espece_id": "109",
+        "niveau": 25
+      },
+      {
+        "espece_id": "110",
+        "niveau": 25
+      }
+    ],
+    "recompense": 500,
+    "dialogue_avant": "Hé gamin, t'as un vélo ?",
+    "dialogue_defaite": "T'es plus rapide que ma bécane !"
+  },
+  "motard_r17_02": {
+    "id": "motard_r17_02",
+    "nom": "Motard",
+    "classe": "Motard",
+    "equipe": [
+      {
+        "espece_id": "020",
+        "niveau": 26
+      },
+      {
+        "espece_id": "024",
+        "niveau": 26
+      }
+    ],
+    "recompense": 520,
+    "dialogue_avant": "La Piste Cyclable appartient\naux motards !",
+    "dialogue_defaite": "Pas mal du tout !"
+  },
+  "motard_r17_03": {
+    "id": "motard_r17_03",
+    "nom": "Motard",
+    "classe": "Motard",
+    "equipe": [
+      {
+        "espece_id": "057",
+        "niveau": 28
+      }
+    ],
+    "recompense": 560,
+    "dialogue_avant": "Tu veux tester mes poings ?",
+    "dialogue_defaite": "OK j'abandonne..."
+  },
+  "motard_r18_01": {
+    "id": "motard_r18_01",
+    "nom": "Motard",
+    "classe": "Motard",
+    "equipe": [
+      {
+        "espece_id": "089",
+        "niveau": 27
+      },
+      {
+        "espece_id": "110",
+        "niveau": 27
+      }
+    ],
+    "recompense": 540,
+    "dialogue_avant": "Haha, regarde cette petite chose !",
+    "dialogue_defaite": "Tu m'as eu..."
+  },
+  "pecheur_r12_01": {
+    "id": "pecheur_r12_01",
+    "nom": "Pêcheur",
+    "classe": "Pêcheur",
+    "equipe": [
+      {
+        "espece_id": "129",
+        "niveau": 22
+      },
+      {
+        "espece_id": "116",
+        "niveau": 24
+      },
+      {
+        "espece_id": "130",
+        "niveau": 22
+      }
+    ],
+    "recompense": 440,
+    "dialogue_avant": "La pêche, c'est toute ma vie !",
+    "dialogue_defaite": "Hmm, mauvaise prise..."
+  },
+  "pecheur_r12_02": {
+    "id": "pecheur_r12_02",
+    "nom": "Pêcheur",
+    "classe": "Pêcheur",
+    "equipe": [
+      {
+        "espece_id": "072",
+        "niveau": 25
+      },
+      {
+        "espece_id": "117",
+        "niveau": 25
+      }
+    ],
+    "recompense": 500,
+    "dialogue_avant": "Tu veux un combat ?\nAllons-y !",
+    "dialogue_defaite": "Bien joué petit !"
+  },
+  "dresseur_r13_01": {
+    "id": "dresseur_r13_01",
+    "nom": "Dresseur",
+    "classe": "Dresseur",
+    "equipe": [
+      {
+        "espece_id": "044",
+        "niveau": 26
+      },
+      {
+        "espece_id": "070",
+        "niveau": 26
+      }
+    ],
+    "recompense": 520,
+    "dialogue_avant": "Mes Pokémon Plante vont\nte surprendre !",
+    "dialogue_defaite": "Surpris en effet..."
+  },
+  "dresseur_r14_01": {
+    "id": "dresseur_r14_01",
+    "nom": "Dresseur",
+    "classe": "Dresseur",
+    "equipe": [
+      {
+        "espece_id": "057",
+        "niveau": 27
+      },
+      {
+        "espece_id": "062",
+        "niveau": 27
+      }
+    ],
+    "recompense": 540,
+    "dialogue_avant": "Hé ! Un combat ?",
+    "dialogue_defaite": "Pas mal !"
+  },
+  "dresseur_r15_01": {
+    "id": "dresseur_r15_01",
+    "nom": "Dresseur",
+    "classe": "Dresseur",
+    "equipe": [
+      {
+        "espece_id": "085",
+        "niveau": 28
+      },
+      {
+        "espece_id": "078",
+        "niveau": 28
+      }
+    ],
+    "recompense": 560,
+    "dialogue_avant": "Tu ne passeras pas !",
+    "dialogue_defaite": "Tu es passé..."
+  },
+  "dresseur_arene_parmanie_01": {
+    "id": "dresseur_arene_parmanie_01",
+    "nom": "Jongleur",
+    "classe": "Jongleur",
+    "equipe": [
+      {
+        "espece_id": "109",
+        "niveau": 30
+      },
+      {
+        "espece_id": "110",
+        "niveau": 30
+      }
+    ],
+    "recompense": 600,
+    "dialogue_avant": "Mes Pokémon Poison vont\nt'empoisonner !",
+    "dialogue_defaite": "Empoisonné par la défaite !"
+  },
+  "dresseur_arene_parmanie_02": {
+    "id": "dresseur_arene_parmanie_02",
+    "nom": "Jongleur",
+    "classe": "Jongleur",
+    "equipe": [
+      {
+        "espece_id": "088",
+        "niveau": 31
+      },
+      {
+        "espece_id": "089",
+        "niveau": 31
+      }
+    ],
+    "recompense": 620,
+    "dialogue_avant": "Attention aux vapeurs toxiques !",
+    "dialogue_defaite": "Mes vapeurs... dissipées !"
+  },
+  "champion_koga": {
+    "id": "champion_koga",
+    "nom": "Koga",
+    "classe": "Champion",
+    "equipe": [
+      {
+        "espece_id": "109",
+        "niveau": 37
+      },
+      {
+        "espece_id": "089",
+        "niveau": 39
+      },
+      {
+        "espece_id": "110",
+        "niveau": 37
+      },
+      {
+        "espece_id": "049",
+        "niveau": 43
+      }
+    ],
+    "recompense": 4300,
+    "dialogue_avant": "Je suis KOGA, le maître ninja !\nMes Pokémon Poison sont mortels !",
+    "dialogue_defaite": "Tu as surpassé mes techniques\nninja... Impressionnant !"
+  },
+  "karateka_dojo_01": {
+    "id": "karateka_dojo_01",
+    "nom": "Karatéka",
+    "classe": "Karatéka",
+    "equipe": [
+      {
+        "espece_id": "056",
+        "niveau": 32
+      },
+      {
+        "espece_id": "057",
+        "niveau": 32
+      }
+    ],
+    "recompense": 640,
+    "dialogue_avant": "KIAI ! Prépare-toi !",
+    "dialogue_defaite": "Tu m'as vaincu..."
+  },
+  "karateka_dojo_02": {
+    "id": "karateka_dojo_02",
+    "nom": "Karatéka",
+    "classe": "Karatéka",
+    "equipe": [
+      {
+        "espece_id": "066",
+        "niveau": 33
+      },
+      {
+        "espece_id": "067",
+        "niveau": 33
+      }
+    ],
+    "recompense": 660,
+    "dialogue_avant": "Mon poing est d'acier !",
+    "dialogue_defaite": "La force brute ne suffit pas..."
+  },
+  "maitre_karate": {
+    "id": "maitre_karate",
+    "nom": "Maître Karaté",
+    "classe": "Maître",
+    "equipe": [
+      {
+        "espece_id": "057",
+        "niveau": 36
+      },
+      {
+        "espece_id": "067",
+        "niveau": 36
+      },
+      {
+        "espece_id": "068",
+        "niveau": 38
+      }
+    ],
+    "recompense": 760,
+    "dialogue_avant": "Je suis le maître de ce dojo !\nBats-moi et je te donnerai\nun Pokémon Combat rare !",
+    "dialogue_defaite": "Bravo ! Choisis un Pokémon :\nKicklee ou Tygnon !"
+  },
+  "medium_arene_safrania_01": {
+    "id": "medium_arene_safrania_01",
+    "nom": "Médium",
+    "classe": "Médium",
+    "equipe": [
+      {
+        "espece_id": "064",
+        "niveau": 33
+      },
+      {
+        "espece_id": "122",
+        "niveau": 33
+      }
+    ],
+    "recompense": 660,
+    "dialogue_avant": "Je lis dans tes pensées...\nTu vas perdre !",
+    "dialogue_defaite": "Je n'avais pas prévu ça !"
+  },
+  "medium_arene_safrania_02": {
+    "id": "medium_arene_safrania_02",
+    "nom": "Médium",
+    "classe": "Médium",
+    "equipe": [
+      {
+        "espece_id": "097",
+        "niveau": 34
+      },
+      {
+        "espece_id": "065",
+        "niveau": 34
+      }
+    ],
+    "recompense": 680,
+    "dialogue_avant": "Mon pouvoir psychique est\nsans limites !",
+    "dialogue_defaite": "Mes pouvoirs... anéantis !"
+  },
+  "champion_morgane": {
+    "id": "champion_morgane",
+    "nom": "Morgane",
+    "classe": "Champion",
+    "equipe": [
+      {
+        "espece_id": "064",
+        "niveau": 38
+      },
+      {
+        "espece_id": "122",
+        "niveau": 37
+      },
+      {
+        "espece_id": "097",
+        "niveau": 38
+      },
+      {
+        "espece_id": "065",
+        "niveau": 43
+      }
+    ],
+    "recompense": 4300,
+    "dialogue_avant": "Je suis MORGANE.\nMes Pokémon Psy vont lire\ndans ton esprit !",
+    "dialogue_defaite": "Tes pensées... Je ne peux\npas les contrôler.\nTu mérites le Badge Marais."
+  },
+  "rocket_sylphe_01": {
+    "id": "rocket_sylphe_01",
+    "nom": "Sbire Rocket",
+    "classe": "Sbire Rocket",
+    "equipe": [
+      {
+        "espece_id": "109",
+        "niveau": 30
+      },
+      {
+        "espece_id": "024",
+        "niveau": 30
+      }
+    ],
+    "recompense": 600,
+    "dialogue_avant": "La Tour Sylphe appartient\nà la Team Rocket !",
+    "dialogue_defaite": "Non... pas encore !"
+  },
+  "rocket_sylphe_02": {
+    "id": "rocket_sylphe_02",
+    "nom": "Sbire Rocket",
+    "classe": "Sbire Rocket",
+    "equipe": [
+      {
+        "espece_id": "020",
+        "niveau": 31
+      },
+      {
+        "espece_id": "110",
+        "niveau": 31
+      }
+    ],
+    "recompense": 620,
+    "dialogue_avant": "Tu ne passeras pas !",
+    "dialogue_defaite": "GIOVANNI va te régler\nton compte !"
+  },
+  "rocket_sylphe_03": {
+    "id": "rocket_sylphe_03",
+    "nom": "Sbire Rocket",
+    "classe": "Sbire Rocket",
+    "equipe": [
+      {
+        "espece_id": "089",
+        "niveau": 32
+      },
+      {
+        "espece_id": "057",
+        "niveau": 32
+      }
+    ],
+    "recompense": 640,
+    "dialogue_avant": "Encore un gamin...\nRépugnant !",
+    "dialogue_defaite": "Giovanni ne sera pas content..."
+  },
+  "giovanni_sylphe": {
+    "id": "giovanni_sylphe",
+    "nom": "Giovanni",
+    "classe": "Boss Rocket",
+    "equipe": [
+      {
+        "espece_id": "031",
+        "niveau": 37
+      },
+      {
+        "espece_id": "112",
+        "niveau": 35
+      },
+      {
+        "espece_id": "034",
+        "niveau": 41
+      }
+    ],
+    "recompense": 4100,
+    "dialogue_avant": "Nous nous retrouvons !\nCette fois tu ne gagneras pas !",
+    "dialogue_defaite": "Impossible ! Vaincu encore\nune fois... La Team Rocket\nquittera cet endroit."
+  },
+  "rival_tour_sylphe": {
+    "id": "rival_tour_sylphe",
+    "nom": "Rival",
+    "classe": "Rival",
+    "equipe": [
+      {
+        "espece_id": "018",
+        "niveau": 37
+      },
+      {
+        "espece_id": "065",
+        "niveau": 35
+      },
+      {
+        "espece_id": "059",
+        "niveau": 35
+      },
+      {
+        "espece_id": "130",
+        "niveau": 38
+      }
+    ],
+    "recompense": 3800,
+    "dialogue_avant": "Tiens, tiens ! On se retrouve !\nJe suis devenu beaucoup\nplus fort !",
+    "dialogue_defaite": "Grr... Tu as encore gagné !\nMais la prochaine fois..."
   }
 }

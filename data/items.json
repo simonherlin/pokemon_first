@@ -253,28 +253,20 @@
   "cs03_surf": {
     "id": "cs03_surf",
     "nom": "CS03 Surf",
-    "nom_en": "HM03 Surf",
-    "categorie": "ct_cs",
+    "type": "ct_cs",
     "prix": 0,
-    "description": "CS qui apprend Surf. Permet de naviguer sur l'eau.",
-    "effet": {
-      "type_effet": "apprendre_attaque",
-      "attaque_id": "surf"
-    },
-    "utilisable_combat": false
+    "description": "Permet de naviguer sur l'eau.",
+    "utilisable_combat": false,
+    "utilisable_terrain": true
   },
   "cs04_force": {
     "id": "cs04_force",
     "nom": "CS04 Force",
-    "nom_en": "HM04 Strength",
-    "categorie": "ct_cs",
+    "type": "ct_cs",
     "prix": 0,
-    "description": "CS qui apprend Force. Permet de pousser les rochers.",
-    "effet": {
-      "type_effet": "apprendre_attaque",
-      "attaque_id": "force"
-    },
-    "utilisable_combat": false
+    "description": "Permet de pousser les rochers.",
+    "utilisable_combat": false,
+    "utilisable_terrain": true
   },
   "ct_tomberoche": {
     "id": "ct_tomberoche",
@@ -292,41 +284,29 @@
   "pierre_feu": {
     "id": "pierre_feu",
     "nom": "Pierre Feu",
-    "nom_en": "Fire Stone",
-    "categorie": "objets",
+    "type": "objets",
     "prix": 2100,
-    "description": "Fait évoluer certain Pokémon de type Feu.",
-    "effet": {
-      "type_effet": "pierre_evolution",
-      "pierre": "pierre_feu"
-    },
-    "utilisable_combat": false
+    "description": "Fait évoluer certains Pokémon de type Feu.",
+    "utilisable_combat": false,
+    "utilisable_terrain": true
   },
   "pierre_eau": {
     "id": "pierre_eau",
     "nom": "Pierre Eau",
-    "nom_en": "Water Stone",
-    "categorie": "objets",
+    "type": "objets",
     "prix": 2100,
-    "description": "Fait évoluer certain Pokémon de type Eau.",
-    "effet": {
-      "type_effet": "pierre_evolution",
-      "pierre": "pierre_eau"
-    },
-    "utilisable_combat": false
+    "description": "Fait évoluer certains Pokémon de type Eau.",
+    "utilisable_combat": false,
+    "utilisable_terrain": true
   },
   "pierre_foudre": {
     "id": "pierre_foudre",
     "nom": "Pierre Foudre",
-    "nom_en": "Thunder Stone",
-    "categorie": "objets",
+    "type": "objets",
     "prix": 2100,
-    "description": "Une pierre qui fait évoluer certains Pokémon de type Électrik.",
-    "effet": {
-      "type_effet": "evolution_pierre",
-      "type_pierre": "pierre_foudre"
-    },
-    "utilisable_combat": false
+    "description": "Fait évoluer certains Pokémon de type Électrik.",
+    "utilisable_combat": false,
+    "utilisable_terrain": true
   },
   "pierre_lune": {
     "id": "pierre_lune",
@@ -344,15 +324,11 @@
   "pierre_plante": {
     "id": "pierre_plante",
     "nom": "Pierre Plante",
-    "nom_en": "Leaf Stone",
-    "categorie": "objets",
+    "type": "objets",
     "prix": 2100,
     "description": "Fait évoluer certains Pokémon de type Plante.",
-    "effet": {
-      "type_effet": "pierre_evolution",
-      "pierre": "pierre_plante"
-    },
-    "utilisable_combat": false
+    "utilisable_combat": false,
+    "utilisable_terrain": true
   },
   "fossile_dome": {
     "id": "fossile_dome",
@@ -564,5 +540,86 @@
       "pas": 250
     },
     "utilisable_combat": false
+  },
+  "cs05_vol": {
+    "id": "cs05_vol",
+    "nom": "CS05 Vol",
+    "type": "ct_cs",
+    "prix": 0,
+    "description": "Permet de voler vers une ville visitée.",
+    "utilisable_combat": false,
+    "utilisable_terrain": true
+  },
+  "dent_or": {
+    "id": "dent_or",
+    "nom": "Dent d'Or",
+    "type": "objets_cles",
+    "prix": 0,
+    "description": "La prothèse dentaire du gardien du Parc Safari.",
+    "utilisable_combat": false,
+    "utilisable_terrain": true
+  },
+  "canne_a_peche": {
+    "id": "canne_a_peche",
+    "nom": "Canne à Pêche",
+    "type": "objets_cles",
+    "prix": 0,
+    "description": "Une vieille canne pour pêcher.",
+    "utilisable_combat": false,
+    "utilisable_terrain": true
+  },
+  "super_canne": {
+    "id": "super_canne",
+    "nom": "Super Canne",
+    "type": "objets_cles",
+    "prix": 0,
+    "description": "Une bonne canne pour pêcher.",
+    "utilisable_combat": false,
+    "utilisable_terrain": true
+  },
+  "mega_canne": {
+    "id": "mega_canne",
+    "nom": "Méga Canne",
+    "type": "objets_cles",
+    "prix": 0,
+    "description": "La meilleure canne à pêche.",
+    "utilisable_combat": false,
+    "utilisable_terrain": true
+  },
+  "safari_ball": {
+    "id": "safari_ball",
+    "nom": "Safari Ball",
+    "type": "balls",
+    "prix": 0,
+    "description": "Une Ball spéciale du Parc Safari.",
+    "utilisable_combat": true,
+    "utilisable_terrain": false
+  },
+  "ct_psyko": {
+    "id": "ct_psyko",
+    "nom": "CT Psyko",
+    "type": "ct_cs",
+    "prix": 0,
+    "description": "Enseigne l'attaque Psyko.",
+    "utilisable_combat": false,
+    "utilisable_terrain": false
+  },
+  "ct_toxik": {
+    "id": "ct_toxik",
+    "nom": "CT Toxik",
+    "type": "ct_cs",
+    "prix": 0,
+    "description": "Enseigne l'attaque Toxik.",
+    "utilisable_combat": false,
+    "utilisable_terrain": false
+  },
+  "master_ball": {
+    "id": "master_ball",
+    "nom": "Master Ball",
+    "type": "balls",
+    "prix": 0,
+    "description": "La Ball ultime. Capture à coup sûr.",
+    "utilisable_combat": true,
+    "utilisable_terrain": false
   }
 }

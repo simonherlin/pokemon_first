@@ -4881,5 +4881,817 @@
     "description_pokedex": "Pokémon légendaire en Chine. Il court avec grâce et majesté sur les plaines.",
     "taille_m": 1.9,
     "poids_kg": 155.0
+  },
+  "106": {
+    "id": 106,
+    "nom": "Kicklee",
+    "nom_en": "Hitmonlee",
+    "types": [
+      "combat"
+    ],
+    "stats_base": {
+      "pv": 50,
+      "attaque": 120,
+      "defense": 53,
+      "special": 35,
+      "vitesse": 87
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "double_pied",
+        "meditation"
+      ],
+      "6": [
+        "pied_saute",
+        "mawashi_geri"
+      ],
+      "11": [
+        "balayage"
+      ],
+      "16": [
+        "pied_voltige"
+      ],
+      "21": [
+        "mega_pied"
+      ]
+    },
+    "groupe_exp": "moyen",
+    "taux_capture": 45,
+    "exp_base": 139,
+    "description_pokedex": "Il a des jambes très extensibles qui lui permettent de donner des coups de pied dévastateurs à distance.",
+    "taille_m": 1.5,
+    "poids_kg": 49.8
+  },
+  "107": {
+    "id": 107,
+    "nom": "Tygnon",
+    "nom_en": "Hitmonchan",
+    "types": [
+      "combat"
+    ],
+    "stats_base": {
+      "pv": 50,
+      "attaque": 105,
+      "defense": 79,
+      "special": 35,
+      "vitesse": 76
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "poing_comete",
+        "vive_attaque"
+      ],
+      "8": [
+        "poing_de_feu"
+      ],
+      "13": [
+        "poing_eclair"
+      ],
+      "18": [
+        "poing_glace"
+      ],
+      "23": [
+        "mega_poing"
+      ]
+    },
+    "groupe_exp": "moyen",
+    "taux_capture": 45,
+    "exp_base": 140,
+    "description_pokedex": "Ses coups de poing sont si rapides qu'ils sont invisibles à l'œil nu.",
+    "taille_m": 1.4,
+    "poids_kg": 50.2
+  },
+  "108": {
+    "id": 108,
+    "nom": "Excelangue",
+    "nom_en": "Lickitung",
+    "types": [
+      "normal"
+    ],
+    "stats_base": {
+      "pv": 90,
+      "attaque": 55,
+      "defense": 75,
+      "special": 60,
+      "vitesse": 30
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "lechouille",
+        "charge"
+      ],
+      "7": [
+        "ligotage"
+      ],
+      "15": [
+        "ultrason"
+      ],
+      "23": [
+        "plaquage"
+      ]
+    },
+    "groupe_exp": "moyen",
+    "taux_capture": 45,
+    "exp_base": 127,
+    "description_pokedex": "Sa langue fait deux fois la longueur de son corps et s'étire comme un élastique.",
+    "taille_m": 1.2,
+    "poids_kg": 65.5
+  },
+  "113": {
+    "id": 113,
+    "nom": "Leveinard",
+    "nom_en": "Chansey",
+    "types": [
+      "normal"
+    ],
+    "stats_base": {
+      "pv": 250,
+      "attaque": 5,
+      "defense": 5,
+      "special": 105,
+      "vitesse": 50
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "ecras_face",
+        "rugissement"
+      ],
+      "12": [
+        "berceuse"
+      ],
+      "24": [
+        "soin"
+      ],
+      "30": [
+        "e_coque"
+      ]
+    },
+    "groupe_exp": "rapide",
+    "taux_capture": 30,
+    "exp_base": 255,
+    "description_pokedex": "Un Pokémon très rare qui distribue ses œufs aux blessés pour les soigner.",
+    "taille_m": 1.1,
+    "poids_kg": 34.6
+  },
+  "115": {
+    "id": 115,
+    "nom": "Kangourex",
+    "nom_en": "Kangaskhan",
+    "types": [
+      "normal"
+    ],
+    "stats_base": {
+      "pv": 105,
+      "attaque": 95,
+      "defense": 80,
+      "special": 40,
+      "vitesse": 90
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "poing_comete",
+        "rugissement"
+      ],
+      "7": [
+        "morsure"
+      ],
+      "13": [
+        "furie"
+      ],
+      "26": [
+        "mega_poing"
+      ],
+      "31": [
+        "ultimapoing"
+      ]
+    },
+    "groupe_exp": "moyen",
+    "taux_capture": 45,
+    "exp_base": 175,
+    "description_pokedex": "Il protège son petit en le gardant dans sa poche ventrale. Il n'hésite pas à attaquer pour le protéger.",
+    "taille_m": 2.2,
+    "poids_kg": 80.0
+  },
+  "116": {
+    "id": 116,
+    "nom": "Hypotrempe",
+    "nom_en": "Horsea",
+    "types": [
+      "eau"
+    ],
+    "stats_base": {
+      "pv": 30,
+      "attaque": 40,
+      "defense": 70,
+      "special": 70,
+      "vitesse": 60
+    },
+    "evolution": {
+      "methode": "niveau",
+      "niveau": 32,
+      "vers": "117"
+    },
+    "learnset": {
+      "1": [
+        "pistolet_a_o",
+        "brouillard"
+      ],
+      "15": [
+        "lire_esprit"
+      ],
+      "24": [
+        "bulles_do"
+      ],
+      "30": [
+        "hydrocanon"
+      ]
+    },
+    "groupe_exp": "moyen",
+    "taux_capture": 225,
+    "exp_base": 83,
+    "description_pokedex": "Il nage à reculons en battant rapidement de ses nageoires pectorales et de sa queue.",
+    "taille_m": 0.4,
+    "poids_kg": 8.0
+  },
+  "117": {
+    "id": 117,
+    "nom": "Hypocéan",
+    "nom_en": "Seadra",
+    "types": [
+      "eau"
+    ],
+    "stats_base": {
+      "pv": 55,
+      "attaque": 65,
+      "defense": 95,
+      "special": 95,
+      "vitesse": 85
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "pistolet_a_o",
+        "brouillard",
+        "bulles_do"
+      ],
+      "24": [
+        "bulles_do"
+      ],
+      "30": [
+        "lire_esprit"
+      ],
+      "41": [
+        "hydrocanon"
+      ]
+    },
+    "groupe_exp": "moyen",
+    "taux_capture": 75,
+    "exp_base": 155,
+    "description_pokedex": "Ses épines venimeuses le rendent dangereux au toucher. Ses nageoires et ses os sont prisés en médecine.",
+    "taille_m": 1.2,
+    "poids_kg": 25.0
+  },
+  "122": {
+    "id": 122,
+    "nom": "M. Mime",
+    "nom_en": "Mr. Mime",
+    "types": [
+      "psy"
+    ],
+    "stats_base": {
+      "pv": 40,
+      "attaque": 45,
+      "defense": 65,
+      "special": 100,
+      "vitesse": 90
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "choc_mental",
+        "protection"
+      ],
+      "15": [
+        "mur_lumiere"
+      ],
+      "23": [
+        "psyko"
+      ],
+      "31": [
+        "encore"
+      ]
+    },
+    "groupe_exp": "moyen",
+    "taux_capture": 45,
+    "exp_base": 136,
+    "description_pokedex": "Il est un maître du mime. Ses gestes peuvent créer des murs invisibles et solides.",
+    "taille_m": 1.3,
+    "poids_kg": 54.5
+  },
+  "123": {
+    "id": 123,
+    "nom": "Insécateur",
+    "nom_en": "Scyther",
+    "types": [
+      "insecte",
+      "vol"
+    ],
+    "stats_base": {
+      "pv": 70,
+      "attaque": 110,
+      "defense": 80,
+      "special": 55,
+      "vitesse": 105
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "vive_attaque",
+        "griffe"
+      ],
+      "6": [
+        "tranche"
+      ],
+      "12": [
+        "reflet"
+      ],
+      "18": [
+        "taillade"
+      ],
+      "24": [
+        "danse_lames"
+      ]
+    },
+    "groupe_exp": "moyen",
+    "taux_capture": 45,
+    "exp_base": 187,
+    "description_pokedex": "Ses faux tranchantes lui servent de bras. Il peut trancher un tronc d'arbre en un seul coup.",
+    "taille_m": 1.5,
+    "poids_kg": 56.0
+  },
+  "124": {
+    "id": 124,
+    "nom": "Lippoutou",
+    "nom_en": "Jynx",
+    "types": [
+      "glace",
+      "psy"
+    ],
+    "stats_base": {
+      "pv": 65,
+      "attaque": 50,
+      "defense": 35,
+      "special": 95,
+      "vitesse": 95
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "ecras_face",
+        "berceuse"
+      ],
+      "15": [
+        "double_gifle"
+      ],
+      "23": [
+        "poing_glace"
+      ],
+      "31": [
+        "blizzard"
+      ],
+      "39": [
+        "psyko"
+      ]
+    },
+    "groupe_exp": "moyen",
+    "taux_capture": 45,
+    "exp_base": 137,
+    "description_pokedex": "Elle marche en se dandinant et communique par un langage rythmique semblable à une danse.",
+    "taille_m": 1.4,
+    "poids_kg": 40.6
+  },
+  "125": {
+    "id": 125,
+    "nom": "Élektek",
+    "nom_en": "Electabuzz",
+    "types": [
+      "electrik"
+    ],
+    "stats_base": {
+      "pv": 65,
+      "attaque": 83,
+      "defense": 57,
+      "special": 85,
+      "vitesse": 105
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "vive_attaque",
+        "griffe"
+      ],
+      "9": [
+        "tonnerre"
+      ],
+      "17": [
+        "eclair"
+      ],
+      "25": [
+        "poing_eclair"
+      ],
+      "36": [
+        "fatal_foudre"
+      ]
+    },
+    "groupe_exp": "moyen",
+    "taux_capture": 45,
+    "exp_base": 156,
+    "description_pokedex": "On le trouve souvent près des centrales électriques. Il provoque des pannes en absorbant l'électricité.",
+    "taille_m": 1.1,
+    "poids_kg": 30.0
+  },
+  "126": {
+    "id": 126,
+    "nom": "Magmar",
+    "nom_en": "Magmar",
+    "types": [
+      "feu"
+    ],
+    "stats_base": {
+      "pv": 65,
+      "attaque": 95,
+      "defense": 57,
+      "special": 85,
+      "vitesse": 93
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "flammeche",
+        "griffe"
+      ],
+      "9": [
+        "lance_flamme"
+      ],
+      "17": [
+        "poing_de_feu"
+      ],
+      "25": [
+        "brouillard"
+      ],
+      "36": [
+        "deflagration"
+      ]
+    },
+    "groupe_exp": "moyen",
+    "taux_capture": 45,
+    "exp_base": 167,
+    "description_pokedex": "Son corps est en permanence parcouru de flammes. On le trouve principalement près des volcans.",
+    "taille_m": 1.3,
+    "poids_kg": 44.5
+  },
+  "127": {
+    "id": 127,
+    "nom": "Scarabrute",
+    "nom_en": "Pinsir",
+    "types": [
+      "insecte"
+    ],
+    "stats_base": {
+      "pv": 65,
+      "attaque": 125,
+      "defense": 100,
+      "special": 55,
+      "vitesse": 85
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "etreinte",
+        "griffe"
+      ],
+      "11": [
+        "tranche"
+      ],
+      "18": [
+        "guillotine"
+      ],
+      "25": [
+        "taillade"
+      ],
+      "36": [
+        "danse_lames"
+      ]
+    },
+    "groupe_exp": "lent",
+    "taux_capture": 45,
+    "exp_base": 200,
+    "description_pokedex": "Ses pinces sont assez puissantes pour broyer des bûches. Si la prise échoue, il projette sa proie au loin.",
+    "taille_m": 1.5,
+    "poids_kg": 55.0
+  },
+  "128": {
+    "id": 128,
+    "nom": "Tauros",
+    "nom_en": "Tauros",
+    "types": [
+      "normal"
+    ],
+    "stats_base": {
+      "pv": 75,
+      "attaque": 100,
+      "defense": 95,
+      "special": 70,
+      "vitesse": 110
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "charge",
+        "mimi_queue"
+      ],
+      "11": [
+        "ecrasement"
+      ],
+      "21": [
+        "belier"
+      ],
+      "28": [
+        "seisme"
+      ],
+      "35": [
+        "damocles"
+      ]
+    },
+    "groupe_exp": "lent",
+    "taux_capture": 45,
+    "exp_base": 211,
+    "description_pokedex": "S'il n'a rien pour charger, il se fouette les flancs de ses trois queues pour s'exciter.",
+    "taille_m": 1.4,
+    "poids_kg": 88.4
+  },
+  "131": {
+    "id": 131,
+    "nom": "Lokhlass",
+    "nom_en": "Lapras",
+    "types": [
+      "eau",
+      "glace"
+    ],
+    "stats_base": {
+      "pv": 130,
+      "attaque": 85,
+      "defense": 80,
+      "special": 95,
+      "vitesse": 60
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "pistolet_a_o",
+        "rugissement"
+      ],
+      "16": [
+        "chant"
+      ],
+      "20": [
+        "brume"
+      ],
+      "25": [
+        "surf"
+      ],
+      "31": [
+        "laser_glace"
+      ],
+      "38": [
+        "hydrocanon"
+      ]
+    },
+    "groupe_exp": "lent",
+    "taux_capture": 45,
+    "exp_base": 219,
+    "description_pokedex": "Un Pokémon très intelligent et gentil. Il comprend le langage humain et transporte les gens sur son dos.",
+    "taille_m": 2.5,
+    "poids_kg": 220.0
+  },
+  "137": {
+    "id": 137,
+    "nom": "Porygon",
+    "nom_en": "Porygon",
+    "types": [
+      "normal"
+    ],
+    "stats_base": {
+      "pv": 65,
+      "attaque": 60,
+      "defense": 70,
+      "special": 75,
+      "vitesse": 40
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "charge",
+        "triplattaque"
+      ],
+      "6": [
+        "affutage"
+      ],
+      "12": [
+        "psyko"
+      ],
+      "24": [
+        "vive_attaque"
+      ],
+      "30": [
+        "adaptation"
+      ]
+    },
+    "groupe_exp": "moyen",
+    "taux_capture": 45,
+    "exp_base": 130,
+    "description_pokedex": "Un Pokémon créé artificiellement par programmation. Il peut se déplacer librement dans le cyberespace.",
+    "taille_m": 0.8,
+    "poids_kg": 36.5
+  },
+  "143": {
+    "id": 143,
+    "nom": "Ronflex",
+    "nom_en": "Snorlax",
+    "types": [
+      "normal"
+    ],
+    "stats_base": {
+      "pv": 160,
+      "attaque": 110,
+      "defense": 65,
+      "special": 65,
+      "vitesse": 30
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "charge",
+        "amnesia"
+      ],
+      "15": [
+        "repos"
+      ],
+      "22": [
+        "plaquage"
+      ],
+      "29": [
+        "damocles"
+      ],
+      "36": [
+        "seisme"
+      ],
+      "43": [
+        "ultralaser"
+      ]
+    },
+    "groupe_exp": "lent",
+    "taux_capture": 25,
+    "exp_base": 154,
+    "description_pokedex": "Il ne fait que manger et dormir. Plus il grossit, plus il devient paresseux.",
+    "taille_m": 2.1,
+    "poids_kg": 460.0
+  },
+  "147": {
+    "id": 147,
+    "nom": "Minidraco",
+    "nom_en": "Dratini",
+    "types": [
+      "dragon"
+    ],
+    "stats_base": {
+      "pv": 41,
+      "attaque": 64,
+      "defense": 45,
+      "special": 50,
+      "vitesse": 50
+    },
+    "evolution": {
+      "methode": "niveau",
+      "niveau": 30,
+      "vers": "148"
+    },
+    "learnset": {
+      "1": [
+        "ligotage",
+        "griffe"
+      ],
+      "10": [
+        "tonnerre"
+      ],
+      "20": [
+        "vive_attaque"
+      ],
+      "30": [
+        "draco_rage"
+      ],
+      "35": [
+        "ultralaser"
+      ]
+    },
+    "groupe_exp": "lent",
+    "taux_capture": 45,
+    "exp_base": 67,
+    "description_pokedex": "On dit que ce mystérieux Pokémon vit dans des colonies au fond des mers et des rivières.",
+    "taille_m": 1.8,
+    "poids_kg": 3.3
+  },
+  "148": {
+    "id": 148,
+    "nom": "Draco",
+    "nom_en": "Dragonair",
+    "types": [
+      "dragon"
+    ],
+    "stats_base": {
+      "pv": 61,
+      "attaque": 84,
+      "defense": 65,
+      "special": 70,
+      "vitesse": 70
+    },
+    "evolution": {
+      "methode": "niveau",
+      "niveau": 55,
+      "vers": "149"
+    },
+    "learnset": {
+      "1": [
+        "ligotage",
+        "griffe",
+        "tonnerre"
+      ],
+      "20": [
+        "vive_attaque"
+      ],
+      "30": [
+        "draco_rage"
+      ],
+      "35": [
+        "ultralaser"
+      ],
+      "45": [
+        "danse_draco"
+      ]
+    },
+    "groupe_exp": "lent",
+    "taux_capture": 45,
+    "exp_base": 144,
+    "description_pokedex": "On dit qu'il peut contrôler le climat. Des orbes sur sa queue émettent une douce lueur.",
+    "taille_m": 4.0,
+    "poids_kg": 16.5
+  },
+  "149": {
+    "id": 149,
+    "nom": "Dracolosse",
+    "nom_en": "Dragonite",
+    "types": [
+      "dragon",
+      "vol"
+    ],
+    "stats_base": {
+      "pv": 91,
+      "attaque": 134,
+      "defense": 95,
+      "special": 100,
+      "vitesse": 80
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "ligotage",
+        "griffe",
+        "tonnerre",
+        "vive_attaque"
+      ],
+      "30": [
+        "draco_rage"
+      ],
+      "35": [
+        "ultralaser"
+      ],
+      "45": [
+        "danse_draco"
+      ],
+      "55": [
+        "deflagration"
+      ]
+    },
+    "groupe_exp": "lent",
+    "taux_capture": 45,
+    "exp_base": 218,
+    "description_pokedex": "Malgré sa corpulence, il est capable de faire le tour du monde en seize heures.",
+    "taille_m": 2.2,
+    "poids_kg": 210.0
   }
 }

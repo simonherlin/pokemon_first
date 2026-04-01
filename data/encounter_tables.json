@@ -604,5 +604,333 @@
         "niveau_max": 25
       }
     ]
+  },
+  "route_12": {
+    "id": "route_12",
+    "pokemon": [
+      {
+        "espece_id": "043",
+        "niveau_min": 22,
+        "niveau_max": 26,
+        "taux": 30
+      },
+      {
+        "espece_id": "044",
+        "niveau_min": 24,
+        "niveau_max": 26,
+        "taux": 15
+      },
+      {
+        "espece_id": "048",
+        "niveau_min": 22,
+        "niveau_max": 26,
+        "taux": 20
+      },
+      {
+        "espece_id": "069",
+        "niveau_min": 22,
+        "niveau_max": 26,
+        "taux": 20
+      },
+      {
+        "espece_id": "016",
+        "niveau_min": 23,
+        "niveau_max": 27,
+        "taux": 15
+      }
+    ]
+  },
+  "route_13": {
+    "id": "route_13",
+    "pokemon": [
+      {
+        "espece_id": "043",
+        "niveau_min": 24,
+        "niveau_max": 26,
+        "taux": 25
+      },
+      {
+        "espece_id": "044",
+        "niveau_min": 24,
+        "niveau_max": 28,
+        "taux": 10
+      },
+      {
+        "espece_id": "048",
+        "niveau_min": 24,
+        "niveau_max": 26,
+        "taux": 25
+      },
+      {
+        "espece_id": "069",
+        "niveau_min": 24,
+        "niveau_max": 26,
+        "taux": 25
+      },
+      {
+        "espece_id": "132",
+        "niveau_min": 25,
+        "niveau_max": 25,
+        "taux": 15
+      }
+    ]
+  },
+  "route_14": {
+    "id": "route_14",
+    "pokemon": [
+      {
+        "espece_id": "043",
+        "niveau_min": 24,
+        "niveau_max": 28,
+        "taux": 20
+      },
+      {
+        "espece_id": "048",
+        "niveau_min": 24,
+        "niveau_max": 28,
+        "taux": 20
+      },
+      {
+        "espece_id": "069",
+        "niveau_min": 24,
+        "niveau_max": 28,
+        "taux": 20
+      },
+      {
+        "espece_id": "132",
+        "niveau_min": 23,
+        "niveau_max": 27,
+        "taux": 15
+      },
+      {
+        "espece_id": "044",
+        "niveau_min": 26,
+        "niveau_max": 30,
+        "taux": 15
+      },
+      {
+        "espece_id": "070",
+        "niveau_min": 26,
+        "niveau_max": 30,
+        "taux": 10
+      }
+    ]
+  },
+  "route_15": {
+    "id": "route_15",
+    "pokemon": [
+      {
+        "espece_id": "043",
+        "niveau_min": 24,
+        "niveau_max": 28,
+        "taux": 20
+      },
+      {
+        "espece_id": "048",
+        "niveau_min": 24,
+        "niveau_max": 28,
+        "taux": 20
+      },
+      {
+        "espece_id": "069",
+        "niveau_min": 24,
+        "niveau_max": 28,
+        "taux": 20
+      },
+      {
+        "espece_id": "132",
+        "niveau_min": 25,
+        "niveau_max": 27,
+        "taux": 15
+      },
+      {
+        "espece_id": "070",
+        "niveau_min": 26,
+        "niveau_max": 30,
+        "taux": 15
+      },
+      {
+        "espece_id": "049",
+        "niveau_min": 28,
+        "niveau_max": 32,
+        "taux": 10
+      }
+    ]
+  },
+  "route_16": {
+    "id": "route_16",
+    "pokemon": [
+      {
+        "espece_id": "019",
+        "niveau_min": 20,
+        "niveau_max": 24,
+        "taux": 30
+      },
+      {
+        "espece_id": "020",
+        "niveau_min": 22,
+        "niveau_max": 26,
+        "taux": 20
+      },
+      {
+        "espece_id": "084",
+        "niveau_min": 22,
+        "niveau_max": 26,
+        "taux": 20
+      },
+      {
+        "espece_id": "056",
+        "niveau_min": 22,
+        "niveau_max": 26,
+        "taux": 20
+      },
+      {
+        "espece_id": "021",
+        "niveau_min": 22,
+        "niveau_max": 26,
+        "taux": 10
+      }
+    ]
+  },
+  "route_17": {
+    "id": "route_17",
+    "pokemon": [
+      {
+        "espece_id": "019",
+        "niveau_min": 24,
+        "niveau_max": 28,
+        "taux": 20
+      },
+      {
+        "espece_id": "020",
+        "niveau_min": 26,
+        "niveau_max": 28,
+        "taux": 15
+      },
+      {
+        "espece_id": "084",
+        "niveau_min": 24,
+        "niveau_max": 28,
+        "taux": 20
+      },
+      {
+        "espece_id": "056",
+        "niveau_min": 24,
+        "niveau_max": 28,
+        "taux": 20
+      },
+      {
+        "espece_id": "077",
+        "niveau_min": 24,
+        "niveau_max": 28,
+        "taux": 15
+      },
+      {
+        "espece_id": "057",
+        "niveau_min": 28,
+        "niveau_max": 30,
+        "taux": 10
+      }
+    ]
+  },
+  "route_18": {
+    "id": "route_18",
+    "pokemon": [
+      {
+        "espece_id": "084",
+        "niveau_min": 24,
+        "niveau_max": 28,
+        "taux": 25
+      },
+      {
+        "espece_id": "020",
+        "niveau_min": 26,
+        "niveau_max": 28,
+        "taux": 20
+      },
+      {
+        "espece_id": "056",
+        "niveau_min": 24,
+        "niveau_max": 28,
+        "taux": 20
+      },
+      {
+        "espece_id": "077",
+        "niveau_min": 26,
+        "niveau_max": 30,
+        "taux": 20
+      },
+      {
+        "espece_id": "057",
+        "niveau_min": 28,
+        "niveau_max": 30,
+        "taux": 15
+      }
+    ]
+  },
+  "parc_safari": {
+    "id": "parc_safari",
+    "pokemon": [
+      {
+        "espece_id": "111",
+        "niveau_min": 25,
+        "niveau_max": 30,
+        "taux": 15
+      },
+      {
+        "espece_id": "113",
+        "niveau_min": 26,
+        "niveau_max": 28,
+        "taux": 5
+      },
+      {
+        "espece_id": "115",
+        "niveau_min": 25,
+        "niveau_max": 28,
+        "taux": 5
+      },
+      {
+        "espece_id": "127",
+        "niveau_min": 25,
+        "niveau_max": 27,
+        "taux": 10
+      },
+      {
+        "espece_id": "128",
+        "niveau_min": 25,
+        "niveau_max": 28,
+        "taux": 5
+      },
+      {
+        "espece_id": "123",
+        "niveau_min": 25,
+        "niveau_max": 28,
+        "taux": 10
+      },
+      {
+        "espece_id": "048",
+        "niveau_min": 24,
+        "niveau_max": 28,
+        "taux": 15
+      },
+      {
+        "espece_id": "102",
+        "niveau_min": 24,
+        "niveau_max": 28,
+        "taux": 15
+      },
+      {
+        "espece_id": "030",
+        "niveau_min": 26,
+        "niveau_max": 30,
+        "taux": 10
+      },
+      {
+        "espece_id": "033",
+        "niveau_min": 26,
+        "niveau_max": 30,
+        "taux": 10
+      }
+    ]
   }
 }

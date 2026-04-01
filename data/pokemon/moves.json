@@ -214,12 +214,7 @@
     "puissance": 120,
     "precision": 85,
     "pp": 5,
-    "priorite": 0,
-    "effet": {
-      "type_effet": "statut",
-      "statut": "brulure",
-      "probabilite": 30
-    }
+    "effet": "brulure_10"
   },
   "ronflements": {
     "id": "ronflements",
@@ -254,7 +249,6 @@
     "puissance": 95,
     "precision": 100,
     "pp": 15,
-    "priorite": 0,
     "effet": null
   },
   "hydrocanon": {
@@ -448,13 +442,12 @@
   "taillade": {
     "id": "taillade",
     "nom": "Taillade",
-    "nom_en": "Cut",
-    "type": "normal",
+    "nom_en": "Fury Cutter",
+    "type": "insecte",
     "categorie": "physique",
-    "puissance": 50,
+    "puissance": 10,
     "precision": 95,
-    "pp": 30,
-    "priorite": 0,
+    "pp": 20,
     "effet": null
   },
   "agrippage": {
@@ -755,7 +748,6 @@
     "puissance": 80,
     "precision": 100,
     "pp": 15,
-    "priorite": 0,
     "effet": null
   },
   "craquement": {
@@ -812,12 +804,7 @@
     "puissance": 120,
     "precision": 90,
     "pp": 5,
-    "priorite": 0,
-    "effet": {
-      "type_effet": "statut",
-      "statut": "gel",
-      "probabilite": 10
-    }
+    "effet": "gel_10"
   },
   "eclaboussure": {
     "id": "eclaboussure",
@@ -924,12 +911,7 @@
     "puissance": 20,
     "precision": 100,
     "pp": 30,
-    "priorite": 0,
-    "effet": {
-      "type_effet": "statut",
-      "statut": "paralysie",
-      "probabilite": 30
-    }
+    "effet": "paralysie_30"
   },
   "devoreve": {
     "id": "devoreve",
@@ -971,12 +953,7 @@
     "puissance": 0,
     "precision": 55,
     "pp": 15,
-    "priorite": 0,
-    "effet": {
-      "type_effet": "statut",
-      "statut": "sommeil",
-      "probabilite": 100
-    }
+    "effet": "sommeil"
   },
   "choc_mental": {
     "id": "choc_mental",
@@ -1108,12 +1085,7 @@
     "puissance": 95,
     "precision": 100,
     "pp": 10,
-    "priorite": 0,
-    "effet": {
-      "type_effet": "statut",
-      "statut": "gel",
-      "probabilite": 10
-    }
+    "effet": "gel_10"
   },
   "onde_folie": {
     "id": "onde_folie",
@@ -1156,11 +1128,7 @@
     "puissance": 30,
     "precision": 100,
     "pp": 30,
-    "priorite": 0,
-    "effet": {
-      "type_effet": "multi_frappe",
-      "coups": 2
-    }
+    "effet": "frappe_double"
   },
   "acide": {
     "id": "acide",
@@ -1216,12 +1184,7 @@
     "puissance": 120,
     "precision": 70,
     "pp": 10,
-    "priorite": 0,
-    "effet": {
-      "type_effet": "statut",
-      "statut": "paralysie",
-      "probabilite": 30
-    }
+    "effet": "paralysie_10"
   },
   "cage_eclair": {
     "id": "cage_eclair",
@@ -1349,14 +1312,7 @@
     "puissance": 90,
     "precision": 100,
     "pp": 10,
-    "priorite": 0,
-    "effet": {
-      "type_effet": "stat",
-      "stat": "special",
-      "cible": "ennemi",
-      "modificateur": -1,
-      "probabilite": 33
-    }
+    "effet": "baisse_special_10"
   },
   "ct_tonnerre": {
     "id": "ct_tonnerre",
@@ -1595,5 +1551,346 @@
       "type_effet": "drain",
       "pourcentage": 50
     }
+  },
+  "pied_saute": {
+    "id": "pied_saute",
+    "nom": "Pied Sauté",
+    "nom_en": "Jump Kick",
+    "type": "combat",
+    "categorie": "physique",
+    "puissance": 70,
+    "precision": 95,
+    "pp": 25,
+    "effet": null
+  },
+  "mega_pied": {
+    "id": "mega_pied",
+    "nom": "Méga Pied",
+    "nom_en": "Mega Kick",
+    "type": "normal",
+    "categorie": "physique",
+    "puissance": 120,
+    "precision": 75,
+    "pp": 5,
+    "effet": null
+  },
+  "pied_voltige": {
+    "id": "pied_voltige",
+    "nom": "Pied Voltige",
+    "nom_en": "Rolling Kick",
+    "type": "combat",
+    "categorie": "physique",
+    "puissance": 60,
+    "precision": 85,
+    "pp": 15,
+    "effet": null
+  },
+  "poing_comete": {
+    "id": "poing_comete",
+    "nom": "Poing Comète",
+    "nom_en": "Comet Punch",
+    "type": "normal",
+    "categorie": "physique",
+    "puissance": 18,
+    "precision": 85,
+    "pp": 15,
+    "effet": "frappe_multiple"
+  },
+  "poing_de_feu": {
+    "id": "poing_de_feu",
+    "nom": "Poing de Feu",
+    "nom_en": "Fire Punch",
+    "type": "feu",
+    "categorie": "physique",
+    "puissance": 75,
+    "precision": 100,
+    "pp": 15,
+    "effet": "brulure_10"
+  },
+  "poing_eclair": {
+    "id": "poing_eclair",
+    "nom": "Poing Éclair",
+    "nom_en": "Thunder Punch",
+    "type": "electrik",
+    "categorie": "physique",
+    "puissance": 75,
+    "precision": 100,
+    "pp": 15,
+    "effet": "paralysie_10"
+  },
+  "poing_glace": {
+    "id": "poing_glace",
+    "nom": "Poing Glace",
+    "nom_en": "Ice Punch",
+    "type": "glace",
+    "categorie": "physique",
+    "puissance": 75,
+    "precision": 100,
+    "pp": 15,
+    "effet": "gel_10"
+  },
+  "mega_poing": {
+    "id": "mega_poing",
+    "nom": "Méga Poing",
+    "nom_en": "Mega Punch",
+    "type": "normal",
+    "categorie": "physique",
+    "puissance": 80,
+    "precision": 85,
+    "pp": 20,
+    "effet": null
+  },
+  "meditation": {
+    "id": "meditation",
+    "nom": "Méditation",
+    "nom_en": "Meditate",
+    "type": "psy",
+    "categorie": "statut",
+    "puissance": 0,
+    "precision": 100,
+    "pp": 40,
+    "effet": "boost_attaque_1"
+  },
+  "mawashi_geri": {
+    "id": "mawashi_geri",
+    "nom": "Mawashi Geri",
+    "nom_en": "Rolling Kick",
+    "type": "combat",
+    "categorie": "physique",
+    "puissance": 60,
+    "precision": 85,
+    "pp": 15,
+    "effet": null
+  },
+  "double_gifle": {
+    "id": "double_gifle",
+    "nom": "Double Gifle",
+    "nom_en": "Double Slap",
+    "type": "normal",
+    "categorie": "physique",
+    "puissance": 15,
+    "precision": 85,
+    "pp": 10,
+    "effet": "frappe_multiple"
+  },
+  "danse_lames": {
+    "id": "danse_lames",
+    "nom": "Danse Lames",
+    "nom_en": "Swords Dance",
+    "type": "normal",
+    "categorie": "statut",
+    "puissance": 0,
+    "precision": 100,
+    "pp": 30,
+    "effet": "boost_attaque_2"
+  },
+  "etreinte": {
+    "id": "etreinte",
+    "nom": "Étreinte",
+    "nom_en": "Vice Grip",
+    "type": "normal",
+    "categorie": "physique",
+    "puissance": 55,
+    "precision": 100,
+    "pp": 30,
+    "effet": null
+  },
+  "guillotine": {
+    "id": "guillotine",
+    "nom": "Guillotine",
+    "nom_en": "Guillotine",
+    "type": "normal",
+    "categorie": "physique",
+    "puissance": 0,
+    "precision": 30,
+    "pp": 5,
+    "effet": "ohko"
+  },
+  "e_coque": {
+    "id": "e_coque",
+    "nom": "E-Coque",
+    "nom_en": "Softboiled",
+    "type": "normal",
+    "categorie": "statut",
+    "puissance": 0,
+    "precision": 100,
+    "pp": 10,
+    "effet": "soin_50"
+  },
+  "draco_rage": {
+    "id": "draco_rage",
+    "nom": "Draco-Rage",
+    "nom_en": "Dragon Rage",
+    "type": "dragon",
+    "categorie": "special",
+    "puissance": 0,
+    "precision": 100,
+    "pp": 10,
+    "effet": "degats_fixes_40"
+  },
+  "danse_draco": {
+    "id": "danse_draco",
+    "nom": "Danse Draco",
+    "nom_en": "Dragon Dance",
+    "type": "dragon",
+    "categorie": "statut",
+    "puissance": 0,
+    "precision": 100,
+    "pp": 20,
+    "effet": "boost_atk_vit_1"
+  },
+  "triplattaque": {
+    "id": "triplattaque",
+    "nom": "Triplattaque",
+    "nom_en": "Tri Attack",
+    "type": "normal",
+    "categorie": "special",
+    "puissance": 80,
+    "precision": 100,
+    "pp": 10,
+    "effet": null
+  },
+  "adaptation": {
+    "id": "adaptation",
+    "nom": "Adaptation",
+    "nom_en": "Conversion",
+    "type": "normal",
+    "categorie": "statut",
+    "puissance": 0,
+    "precision": 100,
+    "pp": 30,
+    "effet": null
+  },
+  "brume": {
+    "id": "brume",
+    "nom": "Brume",
+    "nom_en": "Mist",
+    "type": "glace",
+    "categorie": "statut",
+    "puissance": 0,
+    "precision": 100,
+    "pp": 30,
+    "effet": null
+  },
+  "mur_lumiere": {
+    "id": "mur_lumiere",
+    "nom": "Mur Lumière",
+    "nom_en": "Light Screen",
+    "type": "psy",
+    "categorie": "statut",
+    "puissance": 0,
+    "precision": 100,
+    "pp": 30,
+    "effet": null
+  },
+  "protection": {
+    "id": "protection",
+    "nom": "Protection",
+    "nom_en": "Barrier",
+    "type": "psy",
+    "categorie": "statut",
+    "puissance": 0,
+    "precision": 100,
+    "pp": 30,
+    "effet": "boost_defense_2"
+  },
+  "encore": {
+    "id": "encore",
+    "nom": "Encore",
+    "nom_en": "Encore",
+    "type": "normal",
+    "categorie": "statut",
+    "puissance": 0,
+    "precision": 100,
+    "pp": 5,
+    "effet": null
+  },
+  "vol": {
+    "id": "vol",
+    "nom": "Vol",
+    "nom_en": "Fly",
+    "type": "vol",
+    "categorie": "physique",
+    "puissance": 70,
+    "precision": 95,
+    "pp": 15,
+    "effet": "semi_invulnerable"
+  },
+  "amnesia": {
+    "id": "amnesia",
+    "nom": "Amnésie",
+    "nom_en": "Amnesia",
+    "type": "psy",
+    "categorie": "statut",
+    "puissance": 0,
+    "precision": 100,
+    "pp": 20,
+    "effet": "boost_special_2"
+  },
+  "repos": {
+    "id": "repos",
+    "nom": "Repos",
+    "nom_en": "Rest",
+    "type": "psy",
+    "categorie": "statut",
+    "puissance": 0,
+    "precision": 100,
+    "pp": 10,
+    "effet": "soin_total_sommeil"
+  },
+  "affutage": {
+    "id": "affutage",
+    "nom": "Affûtage",
+    "nom_en": "Sharpen",
+    "type": "normal",
+    "categorie": "statut",
+    "puissance": 0,
+    "precision": 100,
+    "pp": 30,
+    "effet": "boost_attaque_1"
+  },
+  "chant": {
+    "id": "chant",
+    "nom": "Chant",
+    "nom_en": "Perish Song",
+    "type": "normal",
+    "categorie": "statut",
+    "puissance": 0,
+    "precision": 100,
+    "pp": 5,
+    "effet": null
+  },
+  "cs03_surf": {
+    "id": "cs03_surf",
+    "nom": "CS03 Surf",
+    "nom_en": "HM03 Surf",
+    "type": "eau",
+    "categorie": "special",
+    "puissance": 95,
+    "precision": 100,
+    "pp": 15,
+    "effet": null
+  },
+  "cs04_force": {
+    "id": "cs04_force",
+    "nom": "CS04 Force",
+    "nom_en": "HM04 Strength",
+    "type": "normal",
+    "categorie": "physique",
+    "puissance": 80,
+    "precision": 100,
+    "pp": 15,
+    "effet": null
+  },
+  "cs05_vol": {
+    "id": "cs05_vol",
+    "nom": "CS05 Vol",
+    "nom_en": "HM05 Fly",
+    "type": "vol",
+    "categorie": "physique",
+    "puissance": 70,
+    "precision": 95,
+    "pp": 15,
+    "effet": "semi_invulnerable"
   }
 }

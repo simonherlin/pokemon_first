@@ -47,7 +47,27 @@ var flags: Dictionary = {
 	"repaire_rocket_termine": false,
 	"cle_ascenseur_obtenu": false,
 	"evoli_celadopole_recu": false,
-	"jeton_casino_recu": false
+	"jeton_casino_recu": false,
+	# Sprint 7 — Piste Cyclable, Parmanie, Safari, Routes 12-15, Safrania
+	"ronflex_route12_battu": false,
+	"ronflex_route16_battu": false,
+	"badge_ame": false,
+	"parc_safari_visite": false,
+	"dent_or_obtenu": false,
+	"cs_surf_obtenu": false,
+	"cs_force_obtenu": false,
+	"cs_vol_obtenu": false,
+	"canne_a_peche_obtenu": false,
+	"super_canne_obtenu": false,
+	"badge_marais": false,
+	"dojo_termine": false,
+	"tygnon_ou_kicklee_choisi": "",
+	"lokhlass_recu": false,
+	"master_ball_recue": false,
+	"tour_sylphe_terminee": false,
+	"giovanni_sylphe_battu": false,
+	"rival_sylphe_battu": false,
+	"safrania_liberee": false
 }
 
 # --- État de jeu ---
@@ -105,19 +125,11 @@ func get_temps_formate() -> String:
 # Réinitialisation pour nouvelle partie
 func nouvelle_partie() -> void:
 	badges = [false, false, false, false, false, false, false, false]
-	flags = {
-		"colis_chen_livre": false,
-		"pokedex_recu": false,
-		"rival_nomme": false,
-		"fossile_choisi": "",
-		"mewtwo_vaincu": false,
-		"starter_choisi": "",
-		"intro_terminee": false,
-		"rival_labo_battu": false,
-		"vieil_homme_vu": false,
-		"premier_pokemon_recu": false,
-		"badge_roche": false
-	}
+	for key in flags.keys():
+		if flags[key] is bool:
+			flags[key] = false
+		elif flags[key] is String:
+			flags[key] = ""
 	temps_jeu_secondes = 0
 	partie_en_cours = true
 	nom_rival = "Régis"
