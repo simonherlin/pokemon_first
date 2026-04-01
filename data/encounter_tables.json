@@ -932,5 +932,185 @@
         "taux": 10
       }
     ]
+  },
+  "route_19": {
+    "id": "route_19",
+    "nom": "Route 19",
+    "type": "eau",
+    "pokemon": [
+      {
+        "espece_id": "072",
+        "niveau_min": 25,
+        "niveau_max": 30,
+        "probabilite": 60
+      },
+      {
+        "espece_id": "090",
+        "niveau_min": 28,
+        "niveau_max": 33,
+        "probabilite": 30
+      },
+      {
+        "espece_id": "117",
+        "niveau_min": 30,
+        "niveau_max": 35,
+        "probabilite": 10
+      }
+    ]
+  },
+  "route_20": {
+    "id": "route_20",
+    "nom": "Route 20",
+    "type": "eau",
+    "pokemon": [
+      {
+        "espece_id": "072",
+        "niveau_min": 25,
+        "niveau_max": 30,
+        "probabilite": 50
+      },
+      {
+        "espece_id": "073",
+        "niveau_min": 30,
+        "niveau_max": 35,
+        "probabilite": 30
+      },
+      {
+        "espece_id": "116",
+        "niveau_min": 25,
+        "niveau_max": 30,
+        "probabilite": 20
+      }
+    ]
+  },
+  "route_21": {
+    "id": "route_21",
+    "nom": "Route 21",
+    "type": "eau",
+    "pokemon": [
+      {
+        "espece_id": "072",
+        "niveau_min": 25,
+        "niveau_max": 30,
+        "probabilite": 40
+      },
+      {
+        "espece_id": "073",
+        "niveau_min": 30,
+        "niveau_max": 35,
+        "probabilite": 30
+      },
+      {
+        "espece_id": "090",
+        "niveau_min": 28,
+        "niveau_max": 33,
+        "probabilite": 20
+      },
+      {
+        "espece_id": "117",
+        "niveau_min": 30,
+        "niveau_max": 35,
+        "probabilite": 10
+      }
+    ]
+  },
+  "iles_ecume": {
+    "id": "iles_ecume",
+    "nom": "Îles Écume",
+    "type": "grotte_eau",
+    "pokemon": [
+      {
+        "espece_id": "086",
+        "niveau_min": 30,
+        "niveau_max": 35,
+        "probabilite": 30
+      },
+      {
+        "espece_id": "087",
+        "niveau_min": 32,
+        "niveau_max": 37,
+        "probabilite": 20
+      },
+      {
+        "espece_id": "090",
+        "niveau_min": 30,
+        "niveau_max": 35,
+        "probabilite": 20
+      },
+      {
+        "espece_id": "091",
+        "niveau_min": 33,
+        "niveau_max": 38,
+        "probabilite": 15
+      },
+      {
+        "espece_id": "116",
+        "niveau_min": 28,
+        "niveau_max": 33,
+        "probabilite": 15
+      }
+    ]
+  },
+  "centrale": {
+    "id": "centrale",
+    "nom": "Centrale",
+    "type": "batiment",
+    "pokemon": [
+      {
+        "espece_id": "081",
+        "niveau_min": 25,
+        "niveau_max": 32,
+        "probabilite": 40
+      },
+      {
+        "espece_id": "082",
+        "niveau_min": 30,
+        "niveau_max": 35,
+        "probabilite": 20
+      },
+      {
+        "espece_id": "100",
+        "niveau_min": 25,
+        "niveau_max": 32,
+        "probabilite": 30
+      },
+      {
+        "espece_id": "101",
+        "niveau_min": 30,
+        "niveau_max": 35,
+        "probabilite": 10
+      }
+    ]
+  },
+  "manoir_pokemon": {
+    "id": "manoir_pokemon",
+    "nom": "Manoir Pokémon",
+    "type": "batiment",
+    "pokemon": [
+      {
+        "espece_id": "109",
+        "niveau_min": 30,
+        "niveau_max": 35,
+        "probabilite": 30
+      },
+      {
+        "espece_id": "110",
+        "niveau_min": 32,
+        "niveau_max": 37,
+        "probabilite": 20
+      },
+      {
+        "espece_id": "058",
+        "niveau_min": 30,
+        "niveau_max": 35,
+        "probabilite": 30
+      },
+      {
+        "espece_id": "088",
+        "niveau_min": 28,
+        "niveau_max": 33,
+        "probabilite": 20
+      }
+    ]
   }
 }

@@ -621,5 +621,41 @@
     "description": "La Ball ultime. Capture à coup sûr.",
     "utilisable_combat": true,
     "utilisable_terrain": false
+  },
+  "cle_arene_cramoisile": {
+    "id": "cle_arene_cramoisile",
+    "nom": "Clé Arène",
+    "nom_en": "Secret Key",
+    "categorie": "objets_cles",
+    "prix": 0,
+    "description": "Ouvre l'Arène de Cramois'Île.",
+    "utilisable_combat": false
+  },
+  "fossile_ambre": {
+    "id": "fossile_ambre",
+    "nom": "Vieil Ambre",
+    "nom_en": "Old Amber",
+    "categorie": "objets_cles",
+    "prix": 0,
+    "description": "Un morceau d'ambre contenant\nle matériel génétique d'un\nPokémon ancien.",
+    "utilisable_combat": false
+  },
+  "ct_seisme": {
+    "id": "ct_seisme",
+    "nom": "CT Séisme",
+    "nom_en": "TM Earthquake",
+    "categorie": "ct_cs",
+    "prix": 0,
+    "description": "Enseigne l'attaque SÉISME.",
+    "utilisable_combat": false
+  },
+  "ct_deflagration": {
+    "id": "ct_deflagration",
+    "nom": "CT Déflagration",
+    "nom_en": "TM Fire Blast",
+    "categorie": "ct_cs",
+    "prix": 0,
+    "description": "Enseigne l'attaque DÉFLAGRATION.",
+    "utilisable_combat": false
   }
 }

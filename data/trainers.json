@@ -1663,5 +1663,245 @@
     "recompense": 3800,
     "dialogue_avant": "Tiens, tiens ! On se retrouve !\nJe suis devenu beaucoup\nplus fort !",
     "dialogue_defaite": "Grr... Tu as encore gagné !\nMais la prochaine fois..."
+  },
+  "nageur_route19_01": {
+    "id": "nageur_route19_01",
+    "nom": "Nageur Éric",
+    "classe": "Nageur",
+    "equipe": [
+      {
+        "espece_id": "090",
+        "niveau": 30
+      },
+      {
+        "espece_id": "117",
+        "niveau": 30
+      }
+    ],
+    "argent": 600,
+    "dialogue_avant": "Tu ne passeras pas !",
+    "dialogue_apres": "Quelle force..."
+  },
+  "nageur_route19_02": {
+    "id": "nageur_route19_02",
+    "nom": "Nageuse Clara",
+    "classe": "Nageuse",
+    "equipe": [
+      {
+        "espece_id": "121",
+        "niveau": 32
+      }
+    ],
+    "argent": 640,
+    "dialogue_avant": "L'eau est mon domaine !",
+    "dialogue_apres": "Bien joué..."
+  },
+  "nageur_route20_01": {
+    "id": "nageur_route20_01",
+    "nom": "Nageur Pierre",
+    "classe": "Nageur",
+    "equipe": [
+      {
+        "espece_id": "073",
+        "niveau": 33
+      },
+      {
+        "espece_id": "087",
+        "niveau": 33
+      }
+    ],
+    "argent": 660,
+    "dialogue_avant": "Prêt pour un défi aquatique ?",
+    "dialogue_apres": "Tu es trop fort !"
+  },
+  "nageur_route21_01": {
+    "id": "nageur_route21_01",
+    "nom": "Nageur Thomas",
+    "classe": "Nageur",
+    "equipe": [
+      {
+        "espece_id": "055",
+        "niveau": 34
+      },
+      {
+        "espece_id": "131",
+        "niveau": 34
+      }
+    ],
+    "argent": 680,
+    "dialogue_avant": "Seuls les meilleurs nagent ici !",
+    "dialogue_apres": "Tu m'as eu."
+  },
+  "dresseur_arene_auguste_01": {
+    "id": "dresseur_arene_auguste_01",
+    "nom": "Karatéka Léo",
+    "classe": "Canon",
+    "equipe": [
+      {
+        "espece_id": "058",
+        "niveau": 34
+      },
+      {
+        "espece_id": "077",
+        "niveau": 34
+      }
+    ],
+    "argent": 680,
+    "dialogue_avant": "Le feu brûle tout !",
+    "dialogue_apres": "Je me suis brûlé moi-même..."
+  },
+  "dresseur_arene_auguste_02": {
+    "id": "dresseur_arene_auguste_02",
+    "nom": "Pyrobarbare Max",
+    "classe": "Canon",
+    "equipe": [
+      {
+        "espece_id": "126",
+        "niveau": 36
+      },
+      {
+        "espece_id": "078",
+        "niveau": 36
+      }
+    ],
+    "argent": 720,
+    "dialogue_avant": "Les flammes sont ma passion !",
+    "dialogue_apres": "Éteint... comme mes espoirs."
+  },
+  "champion_auguste": {
+    "id": "champion_auguste",
+    "nom": "Auguste",
+    "classe": "Champion",
+    "equipe": [
+      {
+        "espece_id": "058",
+        "niveau": 42
+      },
+      {
+        "espece_id": "077",
+        "niveau": 40
+      },
+      {
+        "espece_id": "078",
+        "niveau": 42
+      },
+      {
+        "espece_id": "059",
+        "niveau": 47
+      }
+    ],
+    "argent": 4653,
+    "dialogue_avant": "Je suis AUGUSTE !\nLe Maître du Feu !",
+    "dialogue_apres": "Tu as éteint mes flammes..."
+  },
+  "dresseur_arene_jadielle_01": {
+    "id": "dresseur_arene_jadielle_01",
+    "nom": "Rocker Marc",
+    "classe": "Rocker",
+    "equipe": [
+      {
+        "espece_id": "095",
+        "niveau": 38
+      },
+      {
+        "espece_id": "105",
+        "niveau": 38
+      }
+    ],
+    "argent": 760,
+    "dialogue_avant": "Giovanni est invincible !",
+    "dialogue_apres": "Impossible..."
+  },
+  "dresseur_arene_jadielle_02": {
+    "id": "dresseur_arene_jadielle_02",
+    "nom": "Montagnard Jules",
+    "classe": "Montagnard",
+    "equipe": [
+      {
+        "espece_id": "074",
+        "niveau": 38
+      },
+      {
+        "espece_id": "075",
+        "niveau": 38
+      },
+      {
+        "espece_id": "076",
+        "niveau": 38
+      }
+    ],
+    "argent": 760,
+    "dialogue_avant": "Le sol tremblera sous tes pieds !",
+    "dialogue_apres": "Quel séisme tu es..."
+  },
+  "champion_giovanni_arene": {
+    "id": "champion_giovanni_arene",
+    "nom": "Giovanni",
+    "classe": "Champion",
+    "equipe": [
+      {
+        "espece_id": "111",
+        "niveau": 45
+      },
+      {
+        "espece_id": "051",
+        "niveau": 42
+      },
+      {
+        "espece_id": "031",
+        "niveau": 44
+      },
+      {
+        "espece_id": "034",
+        "niveau": 45
+      },
+      {
+        "espece_id": "112",
+        "niveau": 50
+      }
+    ],
+    "argent": 4950,
+    "dialogue_avant": "Nous nous retrouvons !\nJe suis le Champion de\nJadielle, GIOVANNI !",
+    "dialogue_apres": "Excellent... Tu m'as vaincu\npour la dernière fois."
+  },
+  "scientifique_manoir_01": {
+    "id": "scientifique_manoir_01",
+    "nom": "Scientifique Albert",
+    "classe": "Scientifique",
+    "equipe": [
+      {
+        "espece_id": "081",
+        "niveau": 33
+      },
+      {
+        "espece_id": "082",
+        "niveau": 33
+      },
+      {
+        "espece_id": "100",
+        "niveau": 33
+      }
+    ],
+    "argent": 990,
+    "dialogue_avant": "Je protège les recherches !",
+    "dialogue_apres": "Mes recherches..."
+  },
+  "scientifique_manoir_02": {
+    "id": "scientifique_manoir_02",
+    "nom": "Scientifique Roger",
+    "classe": "Scientifique",
+    "equipe": [
+      {
+        "espece_id": "109",
+        "niveau": 34
+      },
+      {
+        "espece_id": "110",
+        "niveau": 34
+      }
+    ],
+    "argent": 1020,
+    "dialogue_avant": "Les expériences ne doivent\npas être dérangées !",
+    "dialogue_apres": "Expérience ratée..."
   }
 }

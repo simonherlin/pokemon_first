@@ -67,7 +67,19 @@ var flags: Dictionary = {
 	"tour_sylphe_terminee": false,
 	"giovanni_sylphe_battu": false,
 	"rival_sylphe_battu": false,
-	"safrania_liberee": false
+	"safrania_liberee": false,
+	# Sprint 8 — Routes 19-21, Cramois'Île, Îles Écume, Centrale, Jadielle Arène
+	"badge_volcan": false,
+	"badge_terre": false,
+	"cle_arene_cramoisile_obtenu": false,
+	"manoir_pokemon_termine": false,
+	"fossile_ambre_obtenu": false,
+	"artikodin_battu": false,
+	"electhor_battu": false,
+	"iles_ecume_termine": false,
+	"centrale_visite": false,
+	"giovanni_arene_battu": false,
+	"ptéra_ressuscite": false
 }
 
 # --- État de jeu ---

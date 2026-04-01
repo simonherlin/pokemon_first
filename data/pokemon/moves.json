@@ -1892,5 +1892,49 @@
     "precision": 95,
     "pp": 15,
     "effet": "semi_invulnerable"
+  },
+  "lance_pierre": {
+    "id": "lance_pierre",
+    "nom": "Lance-Pierre",
+    "nom_en": "Rock Throw",
+    "type": "roche",
+    "categorie": "physique",
+    "puissance": 50,
+    "precision": 90,
+    "pp": 15,
+    "effet": null
+  },
+  "bouclier": {
+    "id": "bouclier",
+    "nom": "Bouclier",
+    "nom_en": "Barrier",
+    "type": "psy",
+    "categorie": "statut",
+    "puissance": 0,
+    "precision": 100,
+    "pp": 30,
+    "effet": "defense_plus2"
+  },
+  "lire_esprit": {
+    "id": "lire_esprit",
+    "nom": "Lire Esprit",
+    "nom_en": "Mind Reader",
+    "type": "normal",
+    "categorie": "statut",
+    "puissance": 0,
+    "precision": 100,
+    "pp": 5,
+    "effet": "precision_parfaite"
+  },
+  "fissure": {
+    "id": "fissure",
+    "nom": "Fissure",
+    "nom_en": "Fissure",
+    "type": "sol",
+    "categorie": "physique",
+    "puissance": 0,
+    "precision": 30,
+    "pp": 5,
+    "effet": "ko_en_un_coup"
   }
 }

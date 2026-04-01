@@ -5693,5 +5693,226 @@
     "description_pokedex": "Malgré sa corpulence, il est capable de faire le tour du monde en seize heures.",
     "taille_m": 2.2,
     "poids_kg": 210.0
+  },
+  "142": {
+    "id": 142,
+    "nom": "Ptéra",
+    "nom_en": "Aerodactyl",
+    "types": [
+      "roche",
+      "vol"
+    ],
+    "stats_base": {
+      "pv": 80,
+      "attaque": 105,
+      "defense": 65,
+      "special": 60,
+      "vitesse": 130
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "morsure",
+        "cru_aile"
+      ],
+      "33": [
+        "ultrason"
+      ],
+      "38": [
+        "lance_pierre"
+      ],
+      "45": [
+        "hyper_beam"
+      ]
+    },
+    "groupe_exp": "lent",
+    "taux_capture": 45,
+    "exp_base": 202,
+    "description_pokedex": "Un Pokémon préhistorique ressuscité\nà partir d'un fossile. Il volait\nen planant dans les airs.",
+    "taille_m": 1.8,
+    "poids_kg": 59.0
+  },
+  "144": {
+    "id": 144,
+    "nom": "Artikodin",
+    "nom_en": "Articuno",
+    "types": [
+      "glace",
+      "vol"
+    ],
+    "stats_base": {
+      "pv": 90,
+      "attaque": 85,
+      "defense": 100,
+      "special": 125,
+      "vitesse": 85
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "picpic",
+        "laser_glace"
+      ],
+      "51": [
+        "blizzard"
+      ],
+      "55": [
+        "lire_esprit"
+      ]
+    },
+    "groupe_exp": "lent",
+    "taux_capture": 3,
+    "exp_base": 215,
+    "description_pokedex": "L'oiseau légendaire des glaces.\nSon battement d'ailes gèle l'air\nautour de lui.",
+    "taille_m": 1.7,
+    "poids_kg": 55.4
+  },
+  "145": {
+    "id": 145,
+    "nom": "Électhor",
+    "nom_en": "Zapdos",
+    "types": [
+      "electrik",
+      "vol"
+    ],
+    "stats_base": {
+      "pv": 90,
+      "attaque": 90,
+      "defense": 85,
+      "special": 125,
+      "vitesse": 100
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "picpic",
+        "tonnerre"
+      ],
+      "51": [
+        "fatal_foudre"
+      ],
+      "55": [
+        "hate"
+      ]
+    },
+    "groupe_exp": "lent",
+    "taux_capture": 3,
+    "exp_base": 216,
+    "description_pokedex": "L'oiseau légendaire de la foudre.\nIl apparaît lorsqu'un orage\néclate dans le ciel.",
+    "taille_m": 1.6,
+    "poids_kg": 52.6
+  },
+  "146": {
+    "id": 146,
+    "nom": "Sulfura",
+    "nom_en": "Moltres",
+    "types": [
+      "feu",
+      "vol"
+    ],
+    "stats_base": {
+      "pv": 90,
+      "attaque": 100,
+      "defense": 90,
+      "special": 125,
+      "vitesse": 90
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "picpic",
+        "lance_flamme"
+      ],
+      "51": [
+        "deflagration"
+      ],
+      "55": [
+        "hate"
+      ]
+    },
+    "groupe_exp": "lent",
+    "taux_capture": 3,
+    "exp_base": 217,
+    "description_pokedex": "L'oiseau légendaire du feu.\nChaque battement de ses ailes\nfait jaillir des flammes.",
+    "taille_m": 2.0,
+    "poids_kg": 60.0
+  },
+  "150": {
+    "id": 150,
+    "nom": "Mewtwo",
+    "nom_en": "Mewtwo",
+    "types": [
+      "psy"
+    ],
+    "stats_base": {
+      "pv": 106,
+      "attaque": 110,
+      "defense": 90,
+      "special": 154,
+      "vitesse": 130
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "choc_mental",
+        "devoreve",
+        "bouclier"
+      ],
+      "66": [
+        "psyko"
+      ],
+      "70": [
+        "soin"
+      ],
+      "75": [
+        "amnesia"
+      ],
+      "81": [
+        "ultrason"
+      ]
+    },
+    "groupe_exp": "lent",
+    "taux_capture": 3,
+    "exp_base": 220,
+    "description_pokedex": "Créé par manipulation génétique.\nC'est le Pokémon le plus puissant.\nSon caractère est très violent.",
+    "taille_m": 2.0,
+    "poids_kg": 122.0
+  },
+  "151": {
+    "id": 151,
+    "nom": "Mew",
+    "nom_en": "Mew",
+    "types": [
+      "psy"
+    ],
+    "stats_base": {
+      "pv": 100,
+      "attaque": 100,
+      "defense": 100,
+      "special": 100,
+      "vitesse": 100
+    },
+    "evolution": null,
+    "learnset": {
+      "1": [
+        "ecras_face",
+        "morphing"
+      ],
+      "10": [
+        "psyko"
+      ],
+      "20": [
+        "soin"
+      ],
+      "30": [
+        "morphing"
+      ]
+    },
+    "groupe_exp": "lent_moyen",
+    "taux_capture": 45,
+    "exp_base": 64,
+    "description_pokedex": "Si rare que beaucoup d'experts\nle considèrent comme un mirage.\nTrès peu l'ont vu.",
+    "taille_m": 0.4,
+    "poids_kg": 4.0
   }
 }
