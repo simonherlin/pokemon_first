@@ -50,6 +50,12 @@ var _nb_attaques: int = 0
 var _menu_actif: String = ""
 var _actions := ["attaque", "sac", "pokemon", "fuite"]
 
+# --- Positions de base des sprites (pour animations) ---
+var _pos_joueur_base: Vector2 = Vector2.ZERO
+var _pos_ennemi_base: Vector2 = Vector2.ZERO
+var _tween_pv_joueur: Tween = null
+var _tween_pv_ennemi: Tween = null
+
 func _ready() -> void:
 	menu_action.visible = false
 	menu_attaque.visible = false
@@ -59,6 +65,11 @@ func _ready() -> void:
 		background.color = Color(0.75, 0.85, 0.65, 1)
 	# Charger le mapping des sprites de dresseurs
 	_charger_trainer_sprites_data()
+	# Sauvegarder les positions de base des sprites pour les animations
+	if sprite_joueur:
+		_pos_joueur_base = sprite_joueur.position
+	if sprite_ennemi:
+		_pos_ennemi_base = sprite_ennemi.position
 
 func recevoir_params(params: Dictionary) -> void:
 	_type_combat = params.get("type_combat", "sauvage")
@@ -93,6 +104,9 @@ func recevoir_params(params: Dictionary) -> void:
 	
 	# Charger les sprites des Pokémon
 	_charger_sprites_pokemon()
+	
+	# Animation d'entrée : slide-in des sprites
+	_animer_entree_combat()
 	
 	# Si combat dresseur, montrer la transition trainer → Pokémon après un délai
 	if _type_combat != "sauvage" and sprite_trainer_ennemi.visible:
@@ -136,6 +150,7 @@ func _connecter_signaux() -> void:
 	_controller.evolution_proposee.connect(_on_evolution_proposee)
 	_controller.attaque_a_apprendre.connect(_on_attaque_a_apprendre)
 	_controller.pokemon_change.connect(_on_pokemon_change)
+	_controller.animation_attaque.connect(_on_animation_attaque)
 
 func _on_message(texte: String) -> void:
 	label_message.text = texte
@@ -159,13 +174,35 @@ func _on_attaque_requise() -> void:
 	_maj_curseur_attaque()
 
 func _on_pv_mis_a_jour(joueur: bool, pv: int, pv_max: int) -> void:
+	# Animation fluide de la barre de PV via tween
 	if joueur:
 		barre_pv_joueur.max_value = pv_max
-		barre_pv_joueur.value = pv
+		if _tween_pv_joueur:
+			_tween_pv_joueur.kill()
+		_tween_pv_joueur = create_tween()
+		_tween_pv_joueur.tween_property(barre_pv_joueur, "value", float(pv), 0.5).set_ease(Tween.EASE_OUT)
 		label_pv_joueur.text = "%d/%d" % [pv, pv_max]
+		# Colorer la barre selon le pourcentage de PV
+		var pct := float(pv) / float(maxi(pv_max, 1))
+		if pct <= 0.2:
+			barre_pv_joueur.modulate = Color(1.0, 0.3, 0.3)
+		elif pct <= 0.5:
+			barre_pv_joueur.modulate = Color(1.0, 0.85, 0.2)
+		else:
+			barre_pv_joueur.modulate = Color(0.3, 0.9, 0.3)
 	else:
 		barre_pv_ennemi.max_value = pv_max
-		barre_pv_ennemi.value = pv
+		if _tween_pv_ennemi:
+			_tween_pv_ennemi.kill()
+		_tween_pv_ennemi = create_tween()
+		_tween_pv_ennemi.tween_property(barre_pv_ennemi, "value", float(pv), 0.5).set_ease(Tween.EASE_OUT)
+		var pct := float(pv) / float(maxi(pv_max, 1))
+		if pct <= 0.2:
+			barre_pv_ennemi.modulate = Color(1.0, 0.3, 0.3)
+		elif pct <= 0.5:
+			barre_pv_ennemi.modulate = Color(1.0, 0.85, 0.2)
+		else:
+			barre_pv_ennemi.modulate = Color(0.3, 0.9, 0.3)
 
 func _on_statut_mis_a_jour(joueur: bool, statut: String) -> void:
 	var abrev := _abreger_statut(statut)
@@ -181,6 +218,7 @@ func _on_pokemon_change(joueur: bool) -> void:
 	if joueur:
 		# Pokémon joueur KO → forcer le choix d'un remplaçant
 		if _controller.pokemon_joueur and _controller.pokemon_joueur.est_ko():
+			await _animer_ko(sprite_joueur)
 			_charger_sprites_pokemon()
 			_afficher_info_pokemon()
 			# Sauvegarder l'état du KO
@@ -189,10 +227,16 @@ func _on_pokemon_change(joueur: bool) -> void:
 			return
 		# Switch normal (joueur_change_pokemon déjà appelé)
 		_charger_sprites_pokemon()
+		await _animer_apparition(sprite_joueur)
 		_afficher_info_pokemon()
 		_jouer_cri_pokemon(_controller.pokemon_joueur.espece_id)
 	else:
+		# Pokémon ennemi KO → animer la chute
+		if _controller.pokemon_ennemi and _controller.pokemon_ennemi.est_ko():
+			await _animer_ko(sprite_ennemi)
 		_charger_sprites_pokemon()
+		if _controller.pokemon_ennemi and not _controller.pokemon_ennemi.est_ko():
+			await _animer_apparition(sprite_ennemi)
 		_afficher_info_pokemon()
 		if _controller.pokemon_ennemi:
 			_jouer_cri_pokemon(_controller.pokemon_ennemi.espece_id)
@@ -211,6 +255,8 @@ func _on_combat_termine(victoire: bool) -> void:
 			_controller.attaque_a_apprendre.disconnect(_on_attaque_a_apprendre)
 		if _controller.pokemon_change.is_connected(_on_pokemon_change):
 			_controller.pokemon_change.disconnect(_on_pokemon_change)
+		if _controller.animation_attaque.is_connected(_on_animation_attaque):
+			_controller.animation_attaque.disconnect(_on_animation_attaque)
 	
 	# Jouer la musique de victoire ou arrêter la musique de combat
 	if victoire:
@@ -649,3 +695,128 @@ func _jouer_musique_victoire() -> void:
 				chemin = "res://assets/audio/music/victoire_dresseur.ogg"
 	if not chemin.is_empty():
 		AudioManager.jouer_musique(chemin, false)
+
+# =============================================================================
+# ANIMATIONS DE COMBAT
+# =============================================================================
+
+# Couleurs associées aux types pour le flash d'attaque
+const TYPE_COULEURS := {
+	"normal": Color(0.66, 0.66, 0.56),
+	"feu": Color(0.93, 0.51, 0.19),
+	"eau": Color(0.39, 0.56, 0.94),
+	"electrik": Color(0.97, 0.82, 0.17),
+	"plante": Color(0.48, 0.78, 0.30),
+	"glace": Color(0.59, 0.85, 0.84),
+	"combat": Color(0.76, 0.18, 0.16),
+	"poison": Color(0.64, 0.24, 0.63),
+	"sol": Color(0.88, 0.75, 0.40),
+	"vol": Color(0.66, 0.56, 0.95),
+	"psy": Color(0.98, 0.33, 0.53),
+	"insecte": Color(0.65, 0.72, 0.10),
+	"roche": Color(0.72, 0.63, 0.21),
+	"spectre": Color(0.45, 0.34, 0.59),
+	"dragon": Color(0.44, 0.21, 0.98),
+}
+
+# Animation d'entrée en combat : les sprites glissent depuis les bords
+func _animer_entree_combat() -> void:
+	if not sprite_joueur or not sprite_ennemi:
+		return
+	# Positionner le sprite joueur hors écran à gauche
+	sprite_joueur.position = Vector2(_pos_joueur_base.x - 300, _pos_joueur_base.y)
+	sprite_joueur.modulate.a = 0.0
+	# Positionner le sprite ennemi hors écran à droite
+	sprite_ennemi.position = Vector2(_pos_ennemi_base.x + 300, _pos_ennemi_base.y)
+	sprite_ennemi.modulate.a = 0.0
+	# Animer le slide-in du joueur
+	var tween_joueur := create_tween().set_parallel(true)
+	tween_joueur.tween_property(sprite_joueur, "position", _pos_joueur_base, 0.6)\
+		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	tween_joueur.tween_property(sprite_joueur, "modulate:a", 1.0, 0.4)
+	# Animer le slide-in de l'ennemi avec un léger décalage
+	var tween_ennemi := create_tween().set_parallel(true)
+	tween_ennemi.set_speed_scale(1.0)
+	await get_tree().create_timer(0.15).timeout
+	tween_ennemi.tween_property(sprite_ennemi, "position", _pos_ennemi_base, 0.6)\
+		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	tween_ennemi.tween_property(sprite_ennemi, "modulate:a", 1.0, 0.4)
+
+# Callback quand une attaque est jouée — animer l'attaquant et le défenseur
+func _on_animation_attaque(attaquant_joueur: bool, attaque_id: String) -> void:
+	# Récupérer le type de l'attaque pour la couleur du flash
+	var move_data := MoveData.get_move(attaque_id) if attaque_id else {}
+	var type_attaque: String = move_data.get("type", "normal")
+	var couleur_flash: Color = TYPE_COULEURS.get(type_attaque, Color.WHITE)
+	
+	if attaquant_joueur:
+		# Le sprite joueur avance légèrement, puis le sprite ennemi flashe
+		await _secouer_sprite(sprite_joueur, Vector2(16, -4))
+		await _flash_sprite(sprite_ennemi, couleur_flash)
+	else:
+		# Le sprite ennemi avance, puis le sprite joueur flashe
+		await _secouer_sprite(sprite_ennemi, Vector2(-16, 4))
+		await _flash_sprite(sprite_joueur, couleur_flash)
+
+# Secouer un sprite dans une direction puis le ramener à sa position
+func _secouer_sprite(sprite: Sprite2D, decalage: Vector2) -> void:
+	if not sprite or not is_instance_valid(sprite):
+		return
+	var pos_depart := sprite.position
+	var tween := create_tween()
+	# Aller vers la cible (avance rapide)
+	tween.tween_property(sprite, "position", pos_depart + decalage, 0.08)\
+		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	# Revenir à la position de départ
+	tween.tween_property(sprite, "position", pos_depart, 0.12)\
+		.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+	await tween.finished
+
+# Faire flasher un sprite dans une couleur (impact d'attaque)
+func _flash_sprite(sprite: Sprite2D, couleur: Color) -> void:
+	if not sprite or not is_instance_valid(sprite):
+		return
+	var couleur_originale := sprite.modulate
+	var tween := create_tween()
+	# Flash blanc puis coloré puis retour
+	tween.tween_property(sprite, "modulate", Color.WHITE * 2.0, 0.05)
+	tween.tween_property(sprite, "modulate", couleur, 0.08)
+	tween.tween_property(sprite, "modulate", Color.WHITE * 1.5, 0.05)
+	tween.tween_property(sprite, "modulate", couleur_originale, 0.1)
+	# Petit tremblement pendant le flash
+	var pos_depart := sprite.position
+	var shake_tween := create_tween()
+	shake_tween.tween_property(sprite, "position", pos_depart + Vector2(-3, 0), 0.03)
+	shake_tween.tween_property(sprite, "position", pos_depart + Vector2(3, 0), 0.03)
+	shake_tween.tween_property(sprite, "position", pos_depart + Vector2(-2, 0), 0.03)
+	shake_tween.tween_property(sprite, "position", pos_depart + Vector2(2, 0), 0.03)
+	shake_tween.tween_property(sprite, "position", pos_depart, 0.03)
+	await tween.finished
+
+# Animation de KO : le sprite descend et disparaît
+func _animer_ko(sprite: Sprite2D) -> void:
+	if not sprite or not is_instance_valid(sprite):
+		return
+	var tween := create_tween().set_parallel(true)
+	tween.tween_property(sprite, "position:y", sprite.position.y + 40, 0.5)\
+		.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(sprite, "modulate:a", 0.0, 0.5)
+	await tween.finished
+
+# Animation d'apparition d'un Pokémon (switch ou nouveau)
+func _animer_apparition(sprite: Sprite2D) -> void:
+	if not sprite or not is_instance_valid(sprite):
+		return
+	# Commencer petit et transparent
+	sprite.scale = Vector2(0.1, 0.1)
+	sprite.modulate.a = 0.0
+	var scale_finale: Vector2
+	if sprite == sprite_joueur:
+		scale_finale = Vector2(2.0, 2.0)
+	else:
+		scale_finale = Vector2(1.5, 1.5)
+	var tween := create_tween().set_parallel(true)
+	tween.tween_property(sprite, "scale", scale_finale, 0.4)\
+		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(sprite, "modulate:a", 1.0, 0.3)
+	await tween.finished
