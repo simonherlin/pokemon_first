@@ -19,6 +19,7 @@ var carte_data: Dictionary = {}
 var joueur: CharacterBody2D = null
 var _menu_ouvert: bool = false
 var _start_menu: Node = null
+var _overlay_obscurite: CanvasLayer = null
 
 func _ready() -> void:
 	# Le carte_id peut être défini via recevoir_params ou depuis le nom de la scène
@@ -31,6 +32,8 @@ func _ready() -> void:
 	_instancier_arbres_coupables()
 	_instancier_rochers()
 	_instancier_objets_sol()
+	# Grotte sombre : ajouter l'overlay de ténèbres
+	_initialiser_obscurite()
 	# Afficher le nom de la carte en haut
 	_afficher_nom_carte()
 	# Lancer la musique de la carte
@@ -159,6 +162,35 @@ func interagir(joueur: Node) -> void:
 	script.reload()
 	return script
 
+# --- Grottes sombres (Flash) ---
+func _initialiser_obscurite() -> void:
+	# Vérifier si la carte est une grotte sombre
+	var sombre: bool = carte_data.get("sombre", false)
+	if not sombre:
+		return
+	# Réinitialiser Flash quand on entre dans une nouvelle grotte sombre
+	GameManager.flash_actif = false
+	# Créer un overlay noir semi-transparent
+	_overlay_obscurite = CanvasLayer.new()
+	_overlay_obscurite.layer = 60
+	var rect := ColorRect.new()
+	rect.color = Color(0, 0, 0, 0.92)
+	rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_overlay_obscurite.add_child(rect)
+	add_child(_overlay_obscurite)
+
+func utiliser_flash() -> void:
+	# Appelé quand le joueur utilise Flash depuis le menu Pokémon
+	GameManager.flash_actif = true
+	if _overlay_obscurite:
+		var tween := create_tween()
+		for child in _overlay_obscurite.get_children():
+			if child is ColorRect:
+				tween.tween_property(child, "color:a", 0.0, 0.8)
+		tween.tween_callback(_overlay_obscurite.queue_free)
+		_overlay_obscurite = null
+
 func _on_dialogue_demarre(lignes: Array) -> void:
 	if joueur:
 		joueur.set_peut_bouger(false)
@@ -172,6 +204,13 @@ func _on_dialogue_termine() -> void:
 		joueur.set_peut_bouger(true)
 
 func _on_soin_demande() -> void:
+	# Sauvegarder ce centre comme dernier lieu de soin
+	GameManager.dernier_centre = {
+		"carte_id": carte_id,
+		"x": PlayerData.position_x,
+		"y": PlayerData.position_y,
+		"direction": PlayerData.direction
+	}
 	# Petit délai pour laisser le dialogue s'afficher, puis message de confirmation
 	await get_tree().create_timer(0.5).timeout
 	dialog_box.afficher_dialogue(["...Vos Pokémon sont maintenant en pleine forme !", "Revenez quand vous voulez !"])

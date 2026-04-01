@@ -544,6 +544,26 @@
     },
     "utilisable_combat": true
   },
+  "bon_velo": {
+    "id": "bon_velo",
+    "nom": "Bon Vélo",
+    "categorie": "objets_cles",
+    "prix": 0,
+    "description": "Un bon pour un vélo gratuit. À échanger au magasin de Céladopole.",
+    "effet": null,
+    "utilisable_combat": false
+  },
+  "velo": {
+    "id": "velo",
+    "nom": "Vélo",
+    "categorie": "objets_cles",
+    "prix": 0,
+    "description": "Un vélo pliable. Permet de se déplacer très rapidement.",
+    "effet": {
+      "type": "toggle_velo"
+    },
+    "utilisable_combat": false
+  },
   "dent_or": {
     "id": "dent_or",
     "nom": "Dent d'Or",

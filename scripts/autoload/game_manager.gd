@@ -101,6 +101,18 @@ var _temps_accum: float = 0.0
 var nom_rival: String = "Régis"
 var repousse_restant: int = 0  # Nombre de pas restants pour l'effet Repousse
 
+# --- Dernier Centre Pokémon (pour Corde Sortie / KO) ---
+# Sauvegardé à chaque soin au Centre Pokémon
+var dernier_centre: Dictionary = {
+	"carte_id": "bourg_palette",
+	"x": 7,
+	"y": 12,
+	"direction": "bas"
+}
+
+# --- État Flash (grottes sombres) ---
+var flash_actif: bool = false
+
 # --- Signal ---
 signal badge_obtenu(index: int)
 signal flag_modifie(cle: String, valeur)

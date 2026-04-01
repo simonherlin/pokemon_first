@@ -112,6 +112,22 @@ func _ouvrir_sous_ecran(ecran: String) -> void:
 	# Connecter le signal de fermeture
 	if _sous_ecran.has_signal("ecran_ferme"):
 		_sous_ecran.ecran_ferme.connect(_on_sous_ecran_ferme)
+	# Connecter le signal CS overworld (Vol, Surf, Flash, etc.)
+	if _sous_ecran.has_signal("action_cs"):
+		_sous_ecran.action_cs.connect(_on_action_cs)
+
+func _on_action_cs(action: String) -> void:
+	# Gérer les actions CS qui nécessitent de fermer le menu
+	match action:
+		"flash":
+			# Trouver la scène de carte et utiliser Flash
+			var scene_root = get_tree().current_scene
+			if scene_root and scene_root.has_method("utiliser_flash"):
+				scene_root.utiliser_flash()
+		"surf", "coupe", "force":
+			pass  # Gérés par le joueur dans l'overworld
+	# Fermer le menu après l'action CS
+	_fermer()
 
 func _on_sous_ecran_ferme() -> void:
 	if _sous_ecran:

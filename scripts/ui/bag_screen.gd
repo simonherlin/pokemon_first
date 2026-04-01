@@ -224,10 +224,38 @@ func _tenter_utiliser_item() -> void:
 			_afficher_message("La Repousse fait effet !", Color.GREEN)
 			_rafraichir_items()
 		"fuite_donjon":
-			# Téléporter à la dernière ville → géré par le SceneManager
+			# Téléporter au dernier Centre Pokémon
 			PlayerData.retirer_item(item_id)
 			_afficher_message("Tu t'échappes de la grotte !", Color.GREEN)
 			_rafraichir_items()
+			# Téléporter après un court délai
+			await get_tree().create_timer(0.8).timeout
+			var centre: Dictionary = GameManager.dernier_centre
+			PlayerData.sauvegarder_position(
+				centre.get("carte_id", "bourg_palette"),
+				centre.get("x", 7),
+				centre.get("y", 12),
+				centre.get("direction", "bas")
+			)
+			SceneManager.charger_scene(
+				"res://scenes/maps/%s.tscn" % centre.get("carte_id", "bourg_palette"),
+				{"carte_id": centre.get("carte_id", "bourg_palette")}
+			)
+		"toggle_velo":
+			# Activer/désactiver le vélo — fermer le sac d'abord
+			emit_signal("ecran_ferme")
+			# Trouver le joueur dans la scène et toggler le vélo
+			var tree := get_tree()
+			if tree:
+				var joueurs := tree.get_nodes_in_group("joueur")
+				if joueurs.is_empty():
+					# Fallback: chercher par arbre de scènes
+					var scene_root = tree.current_scene
+					if scene_root and scene_root.has_node("Entities/Player"):
+						var player = scene_root.get_node("Entities/Player")
+						player.sur_velo = not player.sur_velo
+				else:
+					joueurs[0].sur_velo = not joueurs[0].sur_velo
 		_:
 			_afficher_message("Pas utilisable ici.", Color.RED)
 

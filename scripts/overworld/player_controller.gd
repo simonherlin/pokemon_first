@@ -27,6 +27,7 @@ var cible_monde: Vector2 = Vector2.ZERO
 var vitesse_courante: float = VITESSE_MARCHE
 
 func _ready() -> void:
+	add_to_group("joueur")
 	position = Vector2(position_grille) * TAILLE_TILE
 	cible_monde = position
 	# Créer une Camera2D qui suit le joueur

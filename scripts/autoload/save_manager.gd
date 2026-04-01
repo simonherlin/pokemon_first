@@ -104,6 +104,7 @@ func _collecter_donnees() -> Dictionary:
 		"temps_jeu_secondes": GameManager.temps_jeu_secondes,
 		"nom_rival": GameManager.nom_rival,
 		"repousse_restant": GameManager.repousse_restant,
+		"dernier_centre": GameManager.dernier_centre,
 		# PlayerData
 		"nom_joueur": PlayerData.nom_joueur,
 		"argent": PlayerData.argent,
@@ -138,6 +139,8 @@ func _appliquer_donnees(data: Dictionary) -> void:
 		GameManager.nom_rival = data["nom_rival"]
 	if "repousse_restant" in data:
 		GameManager.repousse_restant = int(data["repousse_restant"])
+	if "dernier_centre" in data:
+		GameManager.dernier_centre = data["dernier_centre"]
 	GameManager.partie_en_cours = true
 
 	# PlayerData
