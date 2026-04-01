@@ -33,14 +33,100 @@
       "direction": "bas",
       "dialogue": [
         "Bienvenue au Casino !",
-        "Échangez vos jetons contre\nde super lots !"
+        "Voulez-vous acheter des jetons ?\n50₽ par jeton !"
       ],
+      "inventaire_boutique": ["poke_ball", "super_ball"],
       "mobile": false,
       "type": "vendeur"
     },
     {
-      "id": "pnj_casino_01",
+      "id": "comptoir_prix",
+      "x": 11,
+      "y": 1,
+      "sprite": "pnj_femme",
+      "direction": "bas",
+      "dialogue": [
+        "Bienvenue au comptoir des prix !",
+        "Échangez vos jetons contre\nde super lots !"
+      ],
+      "mobile": false,
+      "type": "casino_prix"
+    },
+    {
+      "id": "machine_a_sous_01",
       "x": 4,
+      "y": 3,
+      "sprite": "pnj_objet",
+      "direction": "bas",
+      "dialogue": [
+        "Une machine à sous..."
+      ],
+      "mobile": false,
+      "type": "casino_machine"
+    },
+    {
+      "id": "machine_a_sous_02",
+      "x": 6,
+      "y": 3,
+      "sprite": "pnj_objet",
+      "direction": "bas",
+      "dialogue": [
+        "Une machine à sous..."
+      ],
+      "mobile": false,
+      "type": "casino_machine"
+    },
+    {
+      "id": "machine_a_sous_03",
+      "x": 8,
+      "y": 3,
+      "sprite": "pnj_objet",
+      "direction": "bas",
+      "dialogue": [
+        "Une machine à sous..."
+      ],
+      "mobile": false,
+      "type": "casino_machine"
+    },
+    {
+      "id": "machine_a_sous_04",
+      "x": 4,
+      "y": 5,
+      "sprite": "pnj_objet",
+      "direction": "bas",
+      "dialogue": [
+        "Une machine à sous..."
+      ],
+      "mobile": false,
+      "type": "casino_machine"
+    },
+    {
+      "id": "machine_a_sous_05",
+      "x": 6,
+      "y": 5,
+      "sprite": "pnj_objet",
+      "direction": "bas",
+      "dialogue": [
+        "Une machine à sous..."
+      ],
+      "mobile": false,
+      "type": "casino_machine"
+    },
+    {
+      "id": "machine_a_sous_06",
+      "x": 8,
+      "y": 5,
+      "sprite": "pnj_objet",
+      "direction": "bas",
+      "dialogue": [
+        "Une machine à sous..."
+      ],
+      "mobile": false,
+      "type": "casino_machine"
+    },
+    {
+      "id": "pnj_casino_01",
+      "x": 5,
       "y": 4,
       "sprite": "pnj_homme",
       "direction": "droite",

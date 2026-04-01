@@ -119,7 +119,8 @@ func _collecter_donnees() -> Dictionary:
 		"pokedex_capture": PlayerData.pokedex_capture,
 		"dresseurs_battus": PlayerData.dresseurs_battus,
 		"objets_ramasses": PlayerData.objets_ramasses,
-		"boites": PlayerData.boites
+		"boites": PlayerData.boites,
+		"jetons": PlayerData.jetons
 	}
 
 func _appliquer_donnees(data: Dictionary) -> void:
@@ -192,3 +193,5 @@ func _appliquer_donnees(data: Dictionary) -> void:
 		# Compléter jusqu'à MAX_BOITES si besoin
 		while PlayerData.boites.size() < PlayerData.MAX_BOITES:
 			PlayerData.boites.append([])
+	if "jetons" in data:
+		PlayerData.jetons = int(data["jetons"])

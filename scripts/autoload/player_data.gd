@@ -38,7 +38,10 @@ var pokedex_capture: Array[String] = [] # IDs des Pokémon capturés
 var dresseurs_battus: Array[String] = []
 
 # --- Objets ramassés au sol ---
-var objets_ramasses: Array[String] = []  # IDs d'objets sol ramassés
+var objets_ramasses: Array[String] = []
+
+# --- Jetons Casino ---
+var jetons: int = 0  # IDs d'objets sol ramassés
 
 # --- Signaux ---
 signal argent_modifie(nouveau_montant: int)
@@ -215,6 +218,7 @@ func nouvelle_partie(nom: String) -> void:
 	pokedex_capture = []
 	dresseurs_battus = []
 	objets_ramasses = []
+	jetons = 0
 	boites = []
 	for _i in range(MAX_BOITES):
 		boites.append([])

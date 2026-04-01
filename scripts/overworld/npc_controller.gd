@@ -35,6 +35,8 @@ signal dialogue_demarre(lignes: Array)
 signal combat_dresseur_demarre(npc_id: String, equipe: Array, recompense: int, nom: String)
 signal soin_demande()
 signal boutique_demandee(items: Array)
+signal casino_machine_demandee()
+signal casino_prix_demandee()
 
 func _ready() -> void:
 	battu = PlayerData.dresseur_est_battu(npc_id)
@@ -84,6 +86,12 @@ func interagir(joueur: Node) -> void:
 			return
 		"nom_rater":
 			_interagir_nom_rater(joueur)
+			return
+		"casino_machine":
+			_interagir_casino_machine(joueur)
+			return
+		"casino_prix":
+			_interagir_casino_prix(joueur)
 			return
 
 	if est_dresseur and not battu:
@@ -200,6 +208,43 @@ func _interagir_nom_rater(joueur: Node) -> void:
 			joueur.set_peut_bouger(true)
 		emit_signal("dialogue_demarre", ["Quel nom magnifique ! Reviens quand tu veux !"])
 	)
+
+# Machine à sous du Casino
+func _interagir_casino_machine(joueur: Node) -> void:
+	if not PlayerData.possede_item("jeton_casino"):
+		emit_signal("dialogue_demarre", ["Il te faut un Porte-Jetons\npour jouer aux machines !"])
+		return
+	emit_signal("dialogue_demarre", ["Tu t'installes devant\nla machine à sous..."])
+	if joueur.has_method("set_peut_bouger"):
+		joueur.set_peut_bouger(false)
+	await get_tree().create_timer(0.8).timeout
+	var scr = load("res://scripts/ui/casino_screen.gd")
+	var ecran := CanvasLayer.new()
+	ecran.layer = 90
+	ecran.set_script(scr)
+	get_tree().current_scene.add_child(ecran)
+	ecran.ecran_ferme.connect(func():
+		if joueur.has_method("set_peut_bouger"):
+			joueur.set_peut_bouger(true)
+	)
+	emit_signal("casino_machine_demandee")
+
+# Comptoir des prix du Casino
+func _interagir_casino_prix(joueur: Node) -> void:
+	emit_signal("dialogue_demarre", ["Bienvenue au comptoir des prix !", "Échangez vos jetons contre\nde fabuleux lots !"])
+	if joueur.has_method("set_peut_bouger"):
+		joueur.set_peut_bouger(false)
+	await get_tree().create_timer(1.0).timeout
+	var scr = load("res://scripts/ui/casino_prizes_screen.gd")
+	var ecran := CanvasLayer.new()
+	ecran.layer = 90
+	ecran.set_script(scr)
+	get_tree().current_scene.add_child(ecran)
+	ecran.ecran_ferme.connect(func():
+		if joueur.has_method("set_peut_bouger"):
+			joueur.set_peut_bouger(true)
+	)
+	emit_signal("casino_prix_demandee")
 
 # Vérifier si le joueur entre dans le champ de vision du dresseur
 # === Équilibrage dynamique ===
