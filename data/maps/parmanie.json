@@ -15,11 +15,6 @@
       "direction": "est",
       "vers": "route_15",
       "decalage": 0
-    },
-    {
-      "direction": "sud",
-      "vers": "parc_safari_entree",
-      "decalage": 0
     }
   ],
   "warps": [
@@ -53,6 +48,14 @@
       "y": 12,
       "vers_map": "maison_gardien_safari",
       "vers_warp": "sortie",
+      "type": "porte"
+    },
+    {
+      "id": "entree_parc_safari",
+      "x": 10,
+      "y": 19,
+      "vers_map": "parc_safari_entree",
+      "vers_warp": "sortie_sud",
       "type": "porte"
     }
   ],
