@@ -98,6 +98,24 @@ func _configurer_arene() -> void:
 			_ct_nom = "CT PSYKO"
 			_ct_description = "PSYKO est une puissante attaque Psy\nqui peut baisser le Spécial adverse."
 			_badge_desc = "Ce badge permet aux Pokémon jusqu'au N.70\nd'obéir sans condition."
+		"arene_cramoisile":
+			_badge_index = 6
+			_badge_flag = "badge_volcan"
+			_champion_id = "champion_auguste"
+			_ct_recompense = "ct_deflagration"
+			_badge_nom = "BADGE VOLCAN"
+			_ct_nom = "CT DÉFLAGRATION"
+			_ct_description = "DÉFLAGRATION est une puissante attaque Feu\nqui peut brûler l'adversaire."
+			_badge_desc = "Ce badge permet aux Pokémon jusqu'au N.80\nd'obéir sans condition."
+		"arene_jadielle":
+			_badge_index = 7
+			_badge_flag = "badge_terre"
+			_champion_id = "champion_giovanni_arene"
+			_ct_recompense = "ct_seisme"
+			_badge_nom = "BADGE TERRE"
+			_ct_nom = "CT SÉISME"
+			_ct_description = "SÉISME est une puissante attaque Sol\nqui touche tous les Pokémon au sol."
+			_badge_desc = "Ce badge permet à tous les Pokémon\nd'obéir sans condition."
 
 func recevoir_params(params: Dictionary) -> void:
 	carte_id = params.get("carte_id", carte_id)
