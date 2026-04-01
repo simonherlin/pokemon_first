@@ -7,7 +7,8 @@
   "musique": "res://assets/audio/music/jadielle_ville.ogg",
   "connexions": [
     {"direction": "sud", "vers": "route_1", "decalage": 0},
-    {"direction": "nord", "vers": "route_2", "decalage": 0}
+    {"direction": "nord", "vers": "route_2", "decalage": 0},
+    {"direction": "ouest", "vers": "route_22", "decalage": 0}
   ],
   "warps": [
     {"id": "centre_pokemon_entree", "x": 5,  "y": 5, "vers_map": "centre_pokemon_jadielle", "vers_warp": "sortie", "type": "porte"},
