@@ -292,28 +292,73 @@ func _appliquer_direction(dir: String) -> void:
 			sprite.play("default")
 
 # Charger le sprite du PNJ depuis le dossier characters
+# Supporte les sprites directionnels ({id}_bas_0.png, {id}_haut_0.png, etc.)
+# et les animations de marche ({id}_bas_1.png, {id}_bas_2.png, etc.)
 func _charger_sprite(sprite_id: String) -> void:
-	var chemin := "res://assets/sprites/characters/%s_bas_0.png" % sprite_id
-	var texture := load(chemin) as Texture2D
-	if texture == null:
+	var base_path := "res://assets/sprites/characters/"
+	var chemin_bas := base_path + "%s_bas_0.png" % sprite_id
+	var texture_bas := load(chemin_bas) as Texture2D
+	if texture_bas == null:
 		# Fallback : utiliser le sprite homme par défaut
-		texture = load("res://assets/sprites/characters/pnj_homme_bas_0.png") as Texture2D
-	if texture == null:
+		sprite_id = "pnj_homme"
+		chemin_bas = base_path + "pnj_homme_bas_0.png"
+		texture_bas = load(chemin_bas) as Texture2D
+	if texture_bas == null:
 		return
-	# Créer un SpriteFrames basique avec une seule frame
+	
+	# Charger les textures directionnelles
+	var directions := {
+		"bas": [], "haut": [], "gauche": [], "droite": []
+	}
+	for dir_name in directions.keys():
+		for i in range(3):  # Jusqu'à 3 frames par direction (stand + 2 walk)
+			var tex_path := base_path + "%s_%s_%d.png" % [sprite_id, dir_name, i]
+			var tex := load(tex_path) as Texture2D
+			if tex:
+				directions[dir_name].append(tex)
+			elif i == 0:
+				# Si pas de frame 0 pour cette direction, utiliser bas_0 comme fallback
+				directions[dir_name].append(texture_bas)
+				break
+			else:
+				break
+	
+	# Créer le SpriteFrames avec animations directionnelles
 	var frames := SpriteFrames.new()
+	# Supprimer l'animation "default" auto-créée
+	if frames.has_animation("default"):
+		frames.remove_animation("default")
+	
+	for dir_name in ["bas", "haut", "gauche", "droite"]:
+		var textures: Array = directions[dir_name]
+		# Animation idle (1 frame)
+		var idle_name := dir_name + "_idle"
+		frames.add_animation(idle_name)
+		frames.set_animation_speed(idle_name, 1.0)
+		frames.set_animation_loop(idle_name, false)
+		if textures.size() > 0:
+			frames.add_frame(idle_name, textures[0])
+		
+		# Animation de marche (si on a des frames de walk)
+		var walk_name := dir_name + "_walk"
+		frames.add_animation(walk_name)
+		frames.set_animation_speed(walk_name, 4.0)
+		frames.set_animation_loop(walk_name, true)
+		if textures.size() >= 3:
+			# Cycle de marche : frame1, frame0, frame2, frame0
+			frames.add_frame(walk_name, textures[1])
+			frames.add_frame(walk_name, textures[0])
+			frames.add_frame(walk_name, textures[2])
+			frames.add_frame(walk_name, textures[0])
+		elif textures.size() > 0:
+			frames.add_frame(walk_name, textures[0])
+	
+	# Ajouter "default" pointant vers bas_idle
 	frames.add_animation("default")
 	frames.set_animation_speed("default", 1.0)
 	frames.set_animation_loop("default", false)
-	frames.add_frame("default", texture)
-	# Ajouter les animations directionnelles (même texture pour le MVP)
-	for dir_name in ["bas_idle", "haut_idle", "gauche_idle", "droite_idle"]:
-		frames.add_animation(dir_name)
-		frames.set_animation_speed(dir_name, 1.0)
-		frames.set_animation_loop(dir_name, false)
-		frames.add_frame(dir_name, texture)
-	# Supprimer l'animation "default" auto-créée si elle est vide
-	if frames.has_animation("default") and frames.get_frame_count("default") == 0:
-		frames.remove_animation("default")
+	if directions["bas"].size() > 0:
+		frames.add_frame("default", directions["bas"][0])
+	
 	sprite.sprite_frames = frames
 	sprite.play("bas_idle")

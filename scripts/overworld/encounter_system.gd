@@ -61,6 +61,8 @@ func verifier_rencontre(position_grille: Vector2i, joueur_node: Node) -> void:
 		# Et jamais en-dessous de niveau_min d'origine
 		niveau = maxi(niveau, niveau_min)
 
+	# SFX de rencontre sauvage
+	AudioManager.jouer_sfx("res://assets/audio/sfx/encounter.ogg")
 	# Passer en mode combat
 	if joueur_node.has_method("set_peut_bouger"):
 		joueur_node.set_peut_bouger(false)

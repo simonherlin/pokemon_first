@@ -7,6 +7,7 @@ extends Node2D
 @onready var hud := $BattleHUD
 @onready var sprite_joueur: Sprite2D = $SpriteJoueur
 @onready var sprite_ennemi: Sprite2D = $SpriteEnnemi
+@onready var sprite_trainer_ennemi: Sprite2D = $SpriteTrainerEnnemi
 @onready var background: ColorRect = $Background
 
 # --- Labels HUD ---
@@ -30,10 +31,17 @@ var _type_combat: String = "sauvage"
 var _carte_retour: String = "bourg_palette"
 var _dresseur_data: Dictionary = {}
 var _params_retour: Dictionary = {}  # Paramètres supplémentaires à renvoyer à la carte
-var _musique_carte_retour: String = ""  # Musique de la carte pour reprendre après combat
+
+# --- Sprites dresseurs ---
+var _trainer_sprites_data: Dictionary = {}
 
 # --- Battle Controller ---
 var _controller: Node = null
+
+# Chemins SFX pour l'UI
+const SFX_CURSOR := "res://assets/audio/sfx/cursor_move.ogg"
+const SFX_CONFIRM := "res://assets/audio/sfx/confirm.ogg"
+const SFX_CANCEL := "res://assets/audio/sfx/cancel.ogg"
 
 # --- État menu ---
 var _index_action: int = 0
@@ -48,14 +56,14 @@ func _ready() -> void:
 	# Charger le fond de combat
 	var bg_texture := load("res://assets/sprites/ui/battle_bg.png") as Texture2D
 	if bg_texture and background:
-		# Remplacer le ColorRect par un TextureRect ou colorer
 		background.color = Color(0.75, 0.85, 0.65, 1)
+	# Charger le mapping des sprites de dresseurs
+	_charger_trainer_sprites_data()
 
 func recevoir_params(params: Dictionary) -> void:
 	_type_combat = params.get("type_combat", "sauvage")
 	_carte_retour = params.get("carte_retour", "bourg_palette")
 	_dresseur_data = params.get("dresseur_data", {})
-	_musique_carte_retour = params.get("musique_carte", "")
 	# Conserver les paramètres supplémentaires pour les renvoyer à la carte
 	if params.get("champion_battu", false):
 		_params_retour["champion_battu"] = true
@@ -79,10 +87,18 @@ func recevoir_params(params: Dictionary) -> void:
 		var niveau: int = params.get("niveau", 5)
 		_controller.demarrer_sauvage(pokemon_joueur, espece_id, niveau, pokemon_index)
 	else:
+		# Afficher le sprite du dresseur pendant l'intro
+		_afficher_sprite_trainer()
 		_controller.demarrer_dresseur(pokemon_joueur, _dresseur_data, pokemon_index)
 	
 	# Charger les sprites des Pokémon
 	_charger_sprites_pokemon()
+	
+	# Si combat dresseur, montrer la transition trainer → Pokémon après un délai
+	if _type_combat != "sauvage" and sprite_trainer_ennemi.visible:
+		await get_tree().create_timer(1.8).timeout
+		_transition_trainer_vers_pokemon()
+		_charger_sprites_pokemon()
 	
 	# Jouer le cri du Pokémon ennemi à l'entrée en combat
 	if _controller.pokemon_ennemi:
@@ -119,6 +135,7 @@ func _connecter_signaux() -> void:
 	_controller.combat_termine.connect(_on_combat_termine)
 	_controller.evolution_proposee.connect(_on_evolution_proposee)
 	_controller.attaque_a_apprendre.connect(_on_attaque_a_apprendre)
+	_controller.pokemon_change.connect(_on_pokemon_change)
 
 func _on_message(texte: String) -> void:
 	label_message.text = texte
@@ -159,6 +176,14 @@ func _on_statut_mis_a_jour(joueur: bool, statut: String) -> void:
 		label_statut_ennemi.text = abrev
 		label_statut_ennemi.visible = not statut.is_empty()
 
+# Gérer le changement de Pokémon (envoi du suivant par le dresseur, ou échange joueur)
+func _on_pokemon_change(joueur: bool) -> void:
+	_charger_sprites_pokemon()
+	_afficher_info_pokemon()
+	# Jouer le cri du nouveau Pokémon ennemi
+	if not joueur and _controller.pokemon_ennemi:
+		_jouer_cri_pokemon(_controller.pokemon_ennemi.espece_id)
+
 func _on_combat_termine(victoire: bool) -> void:
 	if _controller:
 		_controller.message_affiche.disconnect(_on_message)
@@ -171,10 +196,14 @@ func _on_combat_termine(victoire: bool) -> void:
 			_controller.evolution_proposee.disconnect(_on_evolution_proposee)
 		if _controller.attaque_a_apprendre.is_connected(_on_attaque_a_apprendre):
 			_controller.attaque_a_apprendre.disconnect(_on_attaque_a_apprendre)
+		if _controller.pokemon_change.is_connected(_on_pokemon_change):
+			_controller.pokemon_change.disconnect(_on_pokemon_change)
 	
-	# Jouer la musique de victoire
+	# Jouer la musique de victoire ou arrêter la musique de combat
 	if victoire:
 		_jouer_musique_victoire()
+	else:
+		AudioManager.arreter_musique()
 	
 	# Sauvegarder l'état des PV dans l'équipe
 	if _controller.pokemon_joueur:
@@ -219,11 +248,14 @@ func _process(_delta: float) -> void:
 func _gerer_input_action() -> void:
 	if Input.is_action_just_pressed("action_haut"):
 		_index_action = (_index_action - 1 + _actions.size()) % _actions.size()
+		AudioManager.jouer_sfx(SFX_CURSOR)
 		_maj_curseur_action()
 	elif Input.is_action_just_pressed("action_bas"):
 		_index_action = (_index_action + 1) % _actions.size()
+		AudioManager.jouer_sfx(SFX_CURSOR)
 		_maj_curseur_action()
 	elif Input.is_action_just_pressed("action_confirmer"):
+		AudioManager.jouer_sfx(SFX_CONFIRM)
 		_menu_actif = ""
 		menu_action.visible = false
 		_executer_action(_actions[_index_action])
@@ -231,15 +263,19 @@ func _gerer_input_action() -> void:
 func _gerer_input_attaque() -> void:
 	if Input.is_action_just_pressed("action_haut"):
 		_index_attaque = (_index_attaque - 1 + _nb_attaques) % _nb_attaques
+		AudioManager.jouer_sfx(SFX_CURSOR)
 		_maj_curseur_attaque()
 	elif Input.is_action_just_pressed("action_bas"):
 		_index_attaque = (_index_attaque + 1) % _nb_attaques
+		AudioManager.jouer_sfx(SFX_CURSOR)
 		_maj_curseur_attaque()
 	elif Input.is_action_just_pressed("action_confirmer"):
+		AudioManager.jouer_sfx(SFX_CONFIRM)
 		_menu_actif = ""
 		menu_attaque.visible = false
 		_controller.joueur_choisit_attaque(_index_attaque)
 	elif Input.is_action_just_pressed("action_annuler"):
+		AudioManager.jouer_sfx(SFX_CANCEL)
 		_menu_actif = ""
 		menu_attaque.visible = false
 		_on_action_requise()
@@ -316,6 +352,52 @@ func _on_attaque_a_apprendre(pokemon: Pokemon, move_id: String) -> void:
 	learn_screen.choix_fait.connect(func(index_remplacement: int):
 		_controller.confirmer_apprentissage(index_remplacement)
 	)
+
+# === SYSTÈME SPRITES DRESSEURS ===
+
+# Charger le fichier JSON de mapping classe → sprite
+func _charger_trainer_sprites_data() -> void:
+	var chemin := "res://data/trainer_sprites.json"
+	if not FileAccess.file_exists(chemin):
+		return
+	var file := FileAccess.open(chemin, FileAccess.READ)
+	var json := JSON.new()
+	if json.parse(file.get_as_text()) == OK:
+		_trainer_sprites_data = json.data
+
+func _get_trainer_sprite_name() -> String:
+	# Vérifier d'abord le mapping par carte (arène / ligue)
+	var arene_map: Dictionary = _trainer_sprites_data.get("_arene_mapping", {})
+	var ligue_map: Dictionary = _trainer_sprites_data.get("_ligue_mapping", {})
+	if _carte_retour in arene_map:
+		return arene_map[_carte_retour]
+	if _carte_retour in ligue_map:
+		return ligue_map[_carte_retour]
+	# Sinon, utiliser la classe du dresseur
+	var classe: String = _dresseur_data.get("classe", "")
+	if classe in _trainer_sprites_data:
+		return _trainer_sprites_data[classe]
+	# Fallback par défaut
+	return ""
+
+# Afficher le sprite du dresseur ennemi (pendant l'intro)
+func _afficher_sprite_trainer() -> void:
+	var sprite_name := _get_trainer_sprite_name()
+	if sprite_name.is_empty():
+		return
+	var chemin := "res://assets/sprites/trainers/%s.png" % sprite_name
+	var tex := load(chemin) as Texture2D
+	if tex:
+		sprite_trainer_ennemi.texture = tex
+		sprite_trainer_ennemi.scale = Vector2(2.5, 2.5)
+		sprite_trainer_ennemi.visible = true
+		sprite_ennemi.visible = false
+
+# Transition : cacher le sprite dresseur, afficher le sprite Pokémon ennemi
+func _transition_trainer_vers_pokemon() -> void:
+	if sprite_trainer_ennemi.visible:
+		sprite_trainer_ennemi.visible = false
+	sprite_ennemi.visible = true
 
 # === SYSTÈME AUDIO DE COMBAT ===
 

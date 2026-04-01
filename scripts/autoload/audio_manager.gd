@@ -12,7 +12,8 @@ const DUREE_CROSSFADE := 1.0  # secondes
 var _joueur_musique_a: AudioStreamPlayer = null
 var _joueur_musique_b: AudioStreamPlayer = null
 var _joueur_actif: AudioStreamPlayer = null  # Lequel joue en ce moment
-var _joueur_sfx: AudioStreamPlayer = null
+var _joueurs_sfx: Array[AudioStreamPlayer] = []
+const NB_CANAUX_SFX := 4  # Nombre de canaux SFX simultanés
 
 # --- État ---
 var _musique_actuelle: String = ""
@@ -37,9 +38,12 @@ func _ready() -> void:
 	_joueur_musique_b.bus = "Musique"
 	add_child(_joueur_musique_b)
 
-	_joueur_sfx = AudioStreamPlayer.new()
-	_joueur_sfx.bus = "SFX"
-	add_child(_joueur_sfx)
+	# Créer plusieurs canaux SFX pour permettre la superposition
+	for i in range(NB_CANAUX_SFX):
+		var sfx_player := AudioStreamPlayer.new()
+		sfx_player.bus = "SFX"
+		add_child(sfx_player)
+		_joueurs_sfx.append(sfx_player)
 
 	_joueur_actif = _joueur_musique_a
 
@@ -94,16 +98,25 @@ func arreter_musique() -> void:
 func pausemusique(en_pause: bool) -> void:
 	_joueur_actif.stream_paused = en_pause
 
-# Jouer un effet sonore
+# Jouer un effet sonore (utilise le premier canal libre)
 func jouer_sfx(chemin: String) -> void:
 	if _muet:
 		return
 	var stream = _charger_audio(chemin)
 	if stream == null:
 		return
-	_joueur_sfx.stream = stream
-	_joueur_sfx.volume_db = linear_to_db(_volume_sfx)
-	_joueur_sfx.play()
+	# Trouver un canal SFX libre
+	var joueur: AudioStreamPlayer = null
+	for sfx_player in _joueurs_sfx:
+		if not sfx_player.playing:
+			joueur = sfx_player
+			break
+	# Si aucun canal libre, utiliser le premier (le plus ancien)
+	if joueur == null:
+		joueur = _joueurs_sfx[0]
+	joueur.stream = stream
+	joueur.volume_db = linear_to_db(_volume_sfx)
+	joueur.play()
 
 # Charger et mettre en cache un fichier audio
 func _charger_audio(chemin: String) -> AudioStream:

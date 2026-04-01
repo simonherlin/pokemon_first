@@ -29,6 +29,23 @@ enum TypeCombat {
 @onready var effets := MoveEffects
 @onready var ia := AIController
 
+# Chemins SFX
+const SFX_HIT := "res://assets/audio/sfx/hit_normal.ogg"
+const SFX_SUPER := "res://assets/audio/sfx/hit_super_effective.ogg"
+const SFX_RESIST := "res://assets/audio/sfx/hit_not_effective.ogg"
+const SFX_MISS := "res://assets/audio/sfx/miss.ogg"
+const SFX_CRITICAL := "res://assets/audio/sfx/critical.ogg"
+const SFX_FAINT := "res://assets/audio/sfx/faint.ogg"
+const SFX_EXP := "res://assets/audio/sfx/exp_gain.ogg"
+const SFX_LEVEL_UP := "res://assets/audio/sfx/level_up.ogg"
+const SFX_BALL_THROW := "res://assets/audio/sfx/ball_throw.ogg"
+const SFX_BALL_SHAKE := "res://assets/audio/sfx/ball_shake.ogg"
+const SFX_BALL_CLICK := "res://assets/audio/sfx/ball_click.ogg"
+const SFX_FLEE := "res://assets/audio/sfx/flee.ogg"
+const SFX_STAT_UP := "res://assets/audio/sfx/stat_up.ogg"
+const SFX_STAT_DOWN := "res://assets/audio/sfx/stat_down.ogg"
+const SFX_STATUS := "res://assets/audio/sfx/status_applied.ogg"
+
 # ----------------------------------------------------------------
 # État du combat
 # ----------------------------------------------------------------
@@ -185,6 +202,7 @@ func joueur_tente_fuite() -> void:
 	var vit_ennemi := pokemon_ennemi.get_stat_combat("vitesse")
 	var taux_fuite := (vit_joueur * 128 / maxi(1, vit_ennemi) + 30 * tour) % 256
 	if taux_fuite >= 256 or randf() * 256 < taux_fuite:
+		AudioManager.jouer_sfx(SFX_FLEE)
 		emit_signal("message_affiche", "Tu prends la fuite !")
 		_changer_etat(Etat.FIN)
 		emit_signal("combat_termine", false)
@@ -213,10 +231,12 @@ func joueur_tente_capture(ball_id: String) -> void:
 	_resoudre_capture(multi)
 
 func _resoudre_capture(ball_mult: float) -> void:
+	AudioManager.jouer_sfx(SFX_BALL_THROW)
 	emit_signal("message_affiche", "Tu lances la Ball...")
 	await get_tree().create_timer(1.0).timeout
 	var succes := BattleCalculator.calculer_capture(pokemon_ennemi, ball_mult)
 	if succes:
+		AudioManager.jouer_sfx(SFX_BALL_CLICK)
 		emit_signal("message_affiche", "Gotcha ! %s a été capturé !" % pokemon_ennemi.surnom)
 		PlayerData.enregistrer_capture(pokemon_ennemi.espece_id)
 		# Ajouter à l'équipe ou à la boîte
@@ -228,6 +248,7 @@ func _resoudre_capture(ball_mult: float) -> void:
 		_changer_etat(Etat.FIN)
 		emit_signal("combat_termine", true)
 	else:
+		AudioManager.jouer_sfx(SFX_BALL_SHAKE)
 		emit_signal("message_affiche", "%s s'est échappé !" % pokemon_ennemi.surnom)
 		# L'ennemi contre-attaque ce tour
 		attaque_ennemi_index = AIController.choisir_attaque(pokemon_ennemi, pokemon_joueur)
@@ -351,6 +372,7 @@ func _pokemon_attaque(attaquant: Pokemon, defenseur: Pokemon, index_attaque: int
 
 	# Vérifier précision
 	if not BattleCalculator.attaque_touche(attaquant, defenseur, attaque_data):
+		AudioManager.jouer_sfx(SFX_MISS)
 		emit_signal("message_affiche", "L'attaque a raté !")
 		await get_tree().create_timer(0.8).timeout
 		return
@@ -359,10 +381,17 @@ func _pokemon_attaque(attaquant: Pokemon, defenseur: Pokemon, index_attaque: int
 	var degats := BattleCalculator.calculer_degats(attaquant, defenseur, attaque_data)
 	if degats > 0:
 		defenseur.infliger_degats(degats)
+		# SFX selon l'efficacité
+		var type_mult := BattleCalculator.get_efficacite(attaque_data.get("type", "normal"), defenseur.types)
+		if type_mult > 1.0:
+			AudioManager.jouer_sfx(SFX_SUPER)
+		elif type_mult < 1.0 and type_mult > 0.0:
+			AudioManager.jouer_sfx(SFX_RESIST)
+		else:
+			AudioManager.jouer_sfx(SFX_HIT)
 		emit_signal("pv_mis_a_jour", not joueur_attaque, defenseur.pv_actuels, defenseur.pv_max)
 		await get_tree().create_timer(0.5).timeout
 		# Message d'efficacité
-		var type_mult := BattleCalculator.get_efficacite(attaque_data.get("type", "normal"), defenseur.types)
 		var msg_eff := BattleCalculator.message_efficacite(type_mult)
 		if not msg_eff.is_empty():
 			emit_signal("message_affiche", msg_eff)
@@ -371,6 +400,9 @@ func _pokemon_attaque(attaquant: Pokemon, defenseur: Pokemon, index_attaque: int
 	# Appliquer effets secondaires
 	var resultat_effet := MoveEffects.appliquer_effet(attaquant, defenseur, attaque_data)
 	if not resultat_effet["message"].is_empty():
+		# SFX selon le type d'effet
+		if not resultat_effet["statut_applique"].is_empty():
+			AudioManager.jouer_sfx(SFX_STATUS)
 		emit_signal("message_affiche", resultat_effet["message"])
 		await get_tree().create_timer(0.8).timeout
 	if not resultat_effet["statut_applique"].is_empty():
@@ -388,6 +420,7 @@ func _resoudre_item(item_id: String) -> void:
 # ----------------------------------------------------------------
 func _verifier_ko() -> void:
 	if pokemon_joueur.est_ko():
+		AudioManager.jouer_sfx(SFX_FAINT)
 		emit_signal("message_affiche", "%s est mis KO !" % pokemon_joueur.surnom)
 		await get_tree().create_timer(1.0).timeout
 		# Chercher un remplaçant dans l'équipe
@@ -404,6 +437,7 @@ func _verifier_ko() -> void:
 			return
 
 	if pokemon_ennemi.est_ko():
+		AudioManager.jouer_sfx(SFX_FAINT)
 		emit_signal("message_affiche", "%s est mis KO !" % pokemon_ennemi.surnom)
 		await get_tree().create_timer(1.0).timeout
 		# Distribuer l'EXP
@@ -466,10 +500,12 @@ func _fin_tour() -> void:
 # ----------------------------------------------------------------
 func _distribuer_exp() -> void:
 	var exp := BattleCalculator.calculer_exp_gagne(pokemon_ennemi, type_combat == TypeCombat.SAUVAGE)
+	AudioManager.jouer_sfx(SFX_EXP)
 	emit_signal("message_affiche", "%s gagne %d points d'Expérience !" % [pokemon_joueur.surnom, exp])
 	await get_tree().create_timer(0.8).timeout
 	var niveaux := pokemon_joueur.gagner_exp(exp)
 	for niv in niveaux:
+		AudioManager.jouer_sfx(SFX_LEVEL_UP)
 		emit_signal("message_affiche", "%s monte au niveau %d !" % [pokemon_joueur.surnom, niv])
 		emit_signal("niveau_gagne", pokemon_joueur, niv)
 		emit_signal("pv_mis_a_jour", true, pokemon_joueur.pv_actuels, pokemon_joueur.pv_max)
