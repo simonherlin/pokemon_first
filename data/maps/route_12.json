@@ -10,6 +10,11 @@
       "direction": "nord",
       "vers": "lavanville",
       "decalage": 0
+    },
+    {
+      "direction": "ouest",
+      "vers": "route_13",
+      "decalage": 0
     }
   ],
   "warps": [],

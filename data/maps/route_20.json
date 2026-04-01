@@ -15,6 +15,11 @@
       "direction": "est",
       "vers": "cramoisile",
       "decalage": 0
+    },
+    {
+      "direction": "nord",
+      "vers": "route_19",
+      "decalage": 0
     }
   ],
   "warps": [

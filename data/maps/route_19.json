@@ -15,6 +15,11 @@
       "direction": "sud",
       "vers": "route_20",
       "decalage": 0
+    },
+    {
+      "direction": "est",
+      "vers": "route_20",
+      "decalage": 0
     }
   ],
   "warps": [],

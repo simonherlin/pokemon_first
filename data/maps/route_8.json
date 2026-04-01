@@ -10,6 +10,11 @@
       "direction": "est",
       "vers": "lavanville",
       "decalage": 0
+    },
+    {
+      "direction": "ouest",
+      "vers": "safrania",
+      "decalage": 0
     }
   ],
   "warps": [
