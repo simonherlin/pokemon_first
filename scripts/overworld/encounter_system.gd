@@ -49,8 +49,9 @@ func verifier_rencontre(position_grille: Vector2i, joueur_node: Node) -> void:
 		else:
 			return  # Pas de Pokémon dans cette zone
 
-	# Taux de rencontre
-	if randf() > TAUX_RENCONTRE_BASE:
+	# Taux de rencontre (modifié par l'heure et la météo)
+	var taux_final := TAUX_RENCONTRE_BASE * TimeManager.get_modificateur_rencontre() * WeatherManager.get_modificateur_rencontre()
+	if randf() > taux_final:
 		return
 
 	# Choisir le Pokémon selon la table
@@ -182,8 +183,9 @@ func verifier_rencontre_surf(position_grille: Vector2i, joueur_node: Node) -> vo
 		else:
 			return
 
-	# Taux de rencontre surf
-	if randf() > TAUX_RENCONTRE_SURF:
+	# Taux de rencontre surf (modifié par l'heure et la météo)
+	var taux_surf := TAUX_RENCONTRE_SURF * TimeManager.get_modificateur_rencontre() * WeatherManager.get_modificateur_rencontre()
+	if randf() > taux_surf:
 		return
 
 	# Choisir le Pokémon

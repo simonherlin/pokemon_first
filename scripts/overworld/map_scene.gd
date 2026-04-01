@@ -20,6 +20,7 @@ var joueur: CharacterBody2D = null
 var _menu_ouvert: bool = false
 var _start_menu: Node = null
 var _overlay_obscurite: CanvasLayer = null
+var _overlay_jour_nuit: CanvasLayer = null
 
 # --- Safari ---
 var safari_system: SafariSystem = null
@@ -43,6 +44,10 @@ func _ready() -> void:
 	_instancier_objets_sol()
 	# Grotte sombre : ajouter l'overlay de ténèbres
 	_initialiser_obscurite()
+	# Cycle jour/nuit : tinter les cartes extérieures
+	_initialiser_cycle_jour_nuit()
+	# Météo : pluie, neige, sable, soleil
+	_initialiser_meteo()
 	# Puzzle d'arène (poubelles Carmin, téléporteurs Safrania)
 	_initialiser_puzzle_arene()
 	# Safari : compteur de pas et mécaniques
@@ -456,6 +461,52 @@ func _ouvrir_menu() -> void:
 
 func _on_menu_ferme() -> void:
 	_menu_ouvert = false
+
+# =============================================================================
+# CYCLE JOUR/NUIT
+# =============================================================================
+
+# Appliquer la teinte jour/nuit sur les cartes extérieures
+func _initialiser_cycle_jour_nuit() -> void:
+	if not TimeManager.est_carte_exterieure(carte_data):
+		return
+	var teinte := TimeManager.get_teinte_actuelle()
+	if teinte.a <= 0.01:
+		return  # Pas de teinte en plein jour
+	_overlay_jour_nuit = CanvasLayer.new()
+	_overlay_jour_nuit.layer = 58  # Au-dessus des entités, sous le HUD
+	_overlay_jour_nuit.name = "JourNuitOverlay"
+	var rect := ColorRect.new()
+	rect.color = teinte
+	rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_overlay_jour_nuit.add_child(rect)
+	add_child(_overlay_jour_nuit)
+	# Se connecter au changement de phase pour adapter la teinte en temps réel
+	TimeManager.phase_changee.connect(_on_phase_changee)
+
+func _on_phase_changee(_nouvelle_phase) -> void:
+	if not TimeManager.est_carte_exterieure(carte_data):
+		return
+	var teinte := TimeManager.get_teinte_actuelle()
+	if _overlay_jour_nuit and is_instance_valid(_overlay_jour_nuit):
+		var rect := _overlay_jour_nuit.get_child(0)
+		if rect is ColorRect:
+			var tween := create_tween()
+			tween.tween_property(rect, "color", teinte, 2.0)
+	else:
+		# Créer l'overlay s'il n'existe pas encore
+		if teinte.a > 0.01:
+			_initialiser_cycle_jour_nuit()
+
+# =============================================================================
+# MÉTÉO
+# =============================================================================
+
+func _initialiser_meteo() -> void:
+	WeatherManager.configurer_meteo_carte(carte_id, carte_data)
+	if WeatherManager.meteo_actuelle != WeatherManager.Meteo.AUCUNE:
+		WeatherManager.creer_overlay_meteo(self)
 	_start_menu = null
 	if joueur:
 		joueur.set_peut_bouger(true)
