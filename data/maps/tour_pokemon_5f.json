@@ -4,7 +4,7 @@
   "largeur": 12,
   "hauteur": 12,
   "tileset": "interieur",
-  "musique": "res://assets/audio/music/lavanville.ogg",
+  "musique": "res://assets/audio/music/tour_pokemon.ogg",
   "connexions": [],
   "warps": [
     {

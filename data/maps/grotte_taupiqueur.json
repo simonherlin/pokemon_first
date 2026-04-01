@@ -4,7 +4,7 @@
   "largeur": 10,
   "hauteur": 20,
   "tileset": "grotte",
-  "musique": "res://assets/audio/music/grotte.ogg",
+  "musique": "res://assets/audio/music/grotte_taupiqueur.ogg",
   "connexions": [],
   "warps": [
     {

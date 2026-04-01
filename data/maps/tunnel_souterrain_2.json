@@ -4,7 +4,7 @@
   "largeur": 8,
   "hauteur": 30,
   "tileset": "grotte",
-  "musique": "res://assets/audio/music/mont_selenite.ogg",
+  "musique": "res://assets/audio/music/tunnel.ogg",
   "connexions": [],
   "warps": [
     {

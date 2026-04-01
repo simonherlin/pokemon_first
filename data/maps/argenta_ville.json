@@ -4,7 +4,7 @@
   "largeur": 20,
   "hauteur": 20,
   "tileset": "outdoor",
-  "musique": "res://assets/audio/music/argenta_ville.ogg",
+  "musique": "res://assets/audio/music/argenta.ogg",
   "connexions": [
     {
       "direction": "sud",

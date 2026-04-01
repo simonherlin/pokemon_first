@@ -4,7 +4,7 @@
   "largeur": 10,
   "hauteur": 8,
   "tileset": "indoor",
-  "musique": "res://assets/audio/music/maison.ogg",
+  "musique": "res://assets/audio/music/lavanville.ogg",
   "connexions": [],
   "warps": [
     {

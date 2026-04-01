@@ -4,7 +4,7 @@
   "largeur": 15,
   "hauteur": 12,
   "tileset": "interieur",
-  "musique": "res://assets/audio/music/tour_sylphe.ogg",
+  "musique": "res://assets/audio/music/manoir_pokemon.ogg",
   "connexions": [],
   "warps": [
     {

@@ -4,7 +4,7 @@
   "largeur": 10,
   "hauteur": 8,
   "tileset": "interieur",
-  "musique": "res://assets/audio/music/boutique.ogg",
+  "musique": "res://assets/audio/music/boutique_pokemon.ogg",
   "connexions": [],
   "warps": [
     {

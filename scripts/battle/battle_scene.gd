@@ -30,6 +30,7 @@ var _type_combat: String = "sauvage"
 var _carte_retour: String = "bourg_palette"
 var _dresseur_data: Dictionary = {}
 var _params_retour: Dictionary = {}  # Paramètres supplémentaires à renvoyer à la carte
+var _musique_carte_retour: String = ""  # Musique de la carte pour reprendre après combat
 
 # --- Battle Controller ---
 var _controller: Node = null
@@ -54,9 +55,13 @@ func recevoir_params(params: Dictionary) -> void:
 	_type_combat = params.get("type_combat", "sauvage")
 	_carte_retour = params.get("carte_retour", "bourg_palette")
 	_dresseur_data = params.get("dresseur_data", {})
+	_musique_carte_retour = params.get("musique_carte", "")
 	# Conserver les paramètres supplémentaires pour les renvoyer à la carte
 	if params.get("champion_battu", false):
 		_params_retour["champion_battu"] = true
+
+	# --- Lancer la musique de combat ---
+	_jouer_musique_combat()
 
 	# Obtenir le Pokémon du joueur
 	var pokemon_index: int = params.get("pokemon_joueur_index", 0)
@@ -78,6 +83,10 @@ func recevoir_params(params: Dictionary) -> void:
 	
 	# Charger les sprites des Pokémon
 	_charger_sprites_pokemon()
+	
+	# Jouer le cri du Pokémon ennemi à l'entrée en combat
+	if _controller.pokemon_ennemi:
+		_jouer_cri_pokemon(_controller.pokemon_ennemi.espece_id)
 
 # Charger les textures front/back des Pokémon en combat
 func _charger_sprites_pokemon() -> void:
@@ -162,6 +171,11 @@ func _on_combat_termine(victoire: bool) -> void:
 			_controller.evolution_proposee.disconnect(_on_evolution_proposee)
 		if _controller.attaque_a_apprendre.is_connected(_on_attaque_a_apprendre):
 			_controller.attaque_a_apprendre.disconnect(_on_attaque_a_apprendre)
+	
+	# Jouer la musique de victoire
+	if victoire:
+		_jouer_musique_victoire()
+	
 	# Sauvegarder l'état des PV dans l'équipe
 	if _controller.pokemon_joueur:
 		PlayerData.equipe[_controller.index_pokemon_joueur] = _controller.pokemon_joueur.to_dict()
@@ -302,3 +316,48 @@ func _on_attaque_a_apprendre(pokemon: Pokemon, move_id: String) -> void:
 	learn_screen.choix_fait.connect(func(index_remplacement: int):
 		_controller.confirmer_apprentissage(index_remplacement)
 	)
+
+# === SYSTÈME AUDIO DE COMBAT ===
+
+# Détermine et lance la musique de combat appropriée
+func _jouer_musique_combat() -> void:
+	var chemin_musique: String = ""
+	match _type_combat:
+		"sauvage":
+			chemin_musique = "res://assets/audio/music/combat_sauvage.ogg"
+		"dresseur":
+			# Vérifier si c'est un champion d'arène, le conseil 4, ou le champion
+			var classe := _dresseur_data.get("classe", "")
+			if classe in ["Champion d'Arène", "Champion d'arène"]:
+				chemin_musique = "res://assets/audio/music/combat_champion_arene.ogg"
+			elif classe in ["conseil_4", "Maître"]:
+				chemin_musique = "res://assets/audio/music/combat_conseil4.ogg"
+			elif classe in ["Champion", "champion_ligue"]:
+				chemin_musique = "res://assets/audio/music/combat_champion.ogg"
+			elif classe in ["Rival"]:
+				chemin_musique = "res://assets/audio/music/combat_dresseur.ogg"
+			else:
+				chemin_musique = "res://assets/audio/music/combat_dresseur.ogg"
+	
+	if not chemin_musique.is_empty():
+		AudioManager.jouer_musique(chemin_musique)
+
+# Joue le cri d'un Pokémon par son espece_id
+func _jouer_cri_pokemon(espece_id: String) -> void:
+	var cri_path := "res://assets/audio/sfx/cries/%s.mp3" % espece_id
+	AudioManager.jouer_sfx(cri_path)
+
+# Joue la musique de victoire adaptée au type de combat
+func _jouer_musique_victoire() -> void:
+	var chemin: String = ""
+	match _type_combat:
+		"sauvage":
+			chemin = "res://assets/audio/music/victoire_sauvage.ogg"
+		"dresseur":
+			var classe := _dresseur_data.get("classe", "")
+			if classe in ["Champion d'Arène", "Champion d'arène"]:
+				chemin = "res://assets/audio/music/victoire_champion_arene.ogg"
+			else:
+				chemin = "res://assets/audio/music/victoire_dresseur.ogg"
+	if not chemin.is_empty():
+		AudioManager.jouer_musique(chemin, false)

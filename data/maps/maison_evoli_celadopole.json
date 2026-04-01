@@ -4,7 +4,7 @@
   "largeur": 8,
   "hauteur": 6,
   "tileset": "indoor",
-  "musique": "res://assets/audio/music/ville.ogg",
+  "musique": "res://assets/audio/music/celadopole.ogg",
   "connexions": [],
   "warps": [
     {

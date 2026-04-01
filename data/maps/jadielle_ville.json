@@ -4,7 +4,7 @@
   "largeur": 20,
   "hauteur": 20,
   "tileset": "outdoor",
-  "musique": "res://assets/audio/music/jadielle_ville.ogg",
+  "musique": "res://assets/audio/music/jadielle.ogg",
   "connexions": [
     {
       "direction": "sud",

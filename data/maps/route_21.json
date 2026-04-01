@@ -4,7 +4,7 @@
   "largeur": 15,
   "hauteur": 25,
   "tileset": "exterieur",
-  "musique": "res://assets/audio/music/route.ogg",
+  "musique": "res://assets/audio/music/route_21.ogg",
   "connexions": [
     {
       "direction": "nord",

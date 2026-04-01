@@ -4,7 +4,7 @@
   "largeur": 20,
   "hauteur": 20,
   "tileset": "exterieur",
-  "musique": "res://assets/audio/music/ville.ogg",
+  "musique": "res://assets/audio/music/cramoisile.ogg",
   "connexions": [
     {
       "direction": "nord",

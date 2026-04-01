@@ -4,7 +4,7 @@
   "largeur": 12,
   "hauteur": 12,
   "tileset": "interieur",
-  "musique": "res://assets/audio/music/ligue.ogg",
+  "musique": "res://assets/audio/music/arene.ogg",
   "connexions": [],
   "warps": [
     {

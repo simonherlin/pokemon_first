@@ -4,7 +4,7 @@
   "largeur": 10,
   "hauteur": 8,
   "tileset": "interieur",
-  "musique": "res://assets/audio/music/ville.ogg",
+  "musique": "res://assets/audio/music/labo_fossiles.ogg",
   "connexions": [],
   "warps": [
     {

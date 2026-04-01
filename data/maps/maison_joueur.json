@@ -4,7 +4,7 @@
   "largeur": 8,
   "hauteur": 8,
   "tileset": "indoor",
-  "musique": "res://assets/audio/music/maison_joueur.ogg",
+  "musique": "res://assets/audio/music/bourg_palette.ogg",
   "connexions": [],
   "warps": [
     {

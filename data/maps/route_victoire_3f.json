@@ -4,7 +4,7 @@
   "largeur": 18,
   "hauteur": 15,
   "tileset": "grotte",
-  "musique": "res://assets/audio/music/grotte.ogg",
+  "musique": "res://assets/audio/music/route_victoire.ogg",
   "connexions": [],
   "warps": [
     {

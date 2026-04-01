@@ -4,7 +4,7 @@
   "largeur": 25,
   "hauteur": 20,
   "tileset": "outdoor",
-  "musique": "res://assets/audio/music/carmin_sur_mer.ogg",
+  "musique": "res://assets/audio/music/carmin.ogg",
   "connexions": [
     {
       "direction": "nord",

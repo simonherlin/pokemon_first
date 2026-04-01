@@ -4,7 +4,7 @@
   "largeur": 25,
   "hauteur": 25,
   "tileset": "exterieur",
-  "musique": "res://assets/audio/music/ville.ogg",
+  "musique": "res://assets/audio/music/safrania.ogg",
   "connexions": [
     {
       "direction": "nord",

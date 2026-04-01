@@ -4,7 +4,7 @@
   "largeur": 15,
   "hauteur": 15,
   "tileset": "grotte",
-  "musique": "res://assets/audio/music/grotte.ogg",
+  "musique": "res://assets/audio/music/iles_ecume.ogg",
   "connexions": [],
   "warps": [
     {

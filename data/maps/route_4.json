@@ -4,7 +4,7 @@
   "largeur": 20,
   "hauteur": 12,
   "tileset": "outdoor",
-  "musique": "res://assets/audio/music/route_1.ogg",
+  "musique": "res://assets/audio/music/route_4.ogg",
   "connexions": [
     {
       "direction": "est",

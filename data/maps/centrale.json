@@ -4,7 +4,7 @@
   "largeur": 15,
   "hauteur": 12,
   "tileset": "interieur",
-  "musique": "res://assets/audio/music/grotte.ogg",
+  "musique": "res://assets/audio/music/repaire_rocket.ogg",
   "connexions": [],
   "warps": [
     {

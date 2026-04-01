@@ -221,7 +221,8 @@ func _on_combat_dresseur(dresseur_id: String, _equipe: Array, _recompense_npc: i
 		"carte_retour": carte_id,
 		"dresseur_data": trainer_data,
 		"pokemon_joueur_index": 0,
-		"champion_battu": est_champion
+		"champion_battu": est_champion,
+		"musique_carte": carte_data.get("musique", "")
 	})
 
 # --- Séquence d'obtention de badge ---

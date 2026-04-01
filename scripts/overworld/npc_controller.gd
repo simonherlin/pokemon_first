@@ -20,6 +20,7 @@ var type_pnj: String = ""           # "", "infirmiere", "vendeur", "pc", "champi
 var inventaire_boutique: Array = [] # IDs des items en vente (si type=vendeur)
 var trainer_id: String = ""          # Référence vers trainers.json (si présent)
 var _trainer_nom: String = ""        # Nom du dresseur chargé depuis trainers.json
+var _trainer_classe: String = ""     # Classe du dresseur (pour choisir la musique de combat)
 
 # --- Nœuds ---
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -96,6 +97,8 @@ func _interagir_infirmiere(joueur: Node) -> void:
 	# Dialogue d'accueil
 	var lignes_soin := ["Bienvenue au Centre Pokémon !", "Je vais soigner vos Pokémon."]
 	emit_signal("dialogue_demarre", lignes_soin)
+	# Jouer le jingle de soin
+	AudioManager.jouer_musique("res://assets/audio/music/soin_pokemon.ogg", false)
 	# Soigner tous les Pokémon de l'équipe
 	_soigner_equipe()
 	# Émettre le signal de soin (pour animations futures)
@@ -207,6 +210,7 @@ func _demarrer_combat(joueur: Node) -> void:
 	var dresseur_data := {
 		"id": npc_id,
 		"nom": _trainer_nom if not _trainer_nom.is_empty() else npc_id,
+		"classe": _trainer_classe if not _trainer_classe.is_empty() else "",
 		"equipe": equipe_equilibree,
 		"recompense": recompense
 	}
@@ -215,7 +219,8 @@ func _demarrer_combat(joueur: Node) -> void:
 		"type_combat": "dresseur",
 		"dresseur_data": dresseur_data,
 		"pokemon_joueur_index": 0,
-		"carte_retour": PlayerData.carte_actuelle
+		"carte_retour": PlayerData.carte_actuelle,
+		"musique_carte": MapLoader.get_carte(PlayerData.carte_actuelle).get("musique", "")
 	}
 	# Si type champion, signaler pour le traitement post-victoire
 	if type_pnj == "champion":
@@ -247,6 +252,7 @@ func _charger_trainer_data() -> void:
 		est_dresseur = true
 	recompense = trainer_raw.get("recompense", 0)
 	_trainer_nom = trainer_raw.get("nom", trainer_id)
+	_trainer_classe = trainer_raw.get("classe", "")
 	# Charger les dialogues du dresseur si pas définis dans la carte
 	if dialogues.is_empty():
 		var dial_avant: String = trainer_raw.get("dialogue_avant", "")

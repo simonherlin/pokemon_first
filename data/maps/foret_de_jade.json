@@ -4,7 +4,7 @@
   "largeur": 25,
   "hauteur": 30,
   "tileset": "outdoor",
-  "musique": "res://assets/audio/music/foret_de_jade.ogg",
+  "musique": "res://assets/audio/music/foret_jade.ogg",
   "connexions": [
     {
       "direction": "sud",

@@ -212,7 +212,8 @@ func _lancer_combat_rival() -> void:
 		"type_combat": "dresseur",
 		"carte_retour": "laboratoire_chen",
 		"dresseur_data": trainer_data,
-		"pokemon_joueur_index": 0
+		"pokemon_joueur_index": 0,
+		"musique_carte": "res://assets/audio/music/laboratoire_chen.ogg"
 	})
 
 func _on_combat_rival_termine(resultat: Dictionary) -> void:

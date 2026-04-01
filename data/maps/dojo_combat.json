@@ -4,7 +4,7 @@
   "largeur": 12,
   "hauteur": 12,
   "tileset": "interieur",
-  "musique": "res://assets/audio/music/arene.ogg",
+  "musique": "res://assets/audio/music/dojo_combat.ogg",
   "connexions": [],
   "warps": [
     {

@@ -77,7 +77,8 @@ func verifier_rencontre(position_grille: Vector2i, joueur_node: Node) -> void:
 		"espece_id": espece_id,
 		"niveau": niveau,
 		"pokemon_joueur_index": 0,
-		"carte_retour": PlayerData.carte_actuelle
+		"carte_retour": PlayerData.carte_actuelle,
+		"musique_carte": MapLoader.get_carte(PlayerData.carte_actuelle).get("musique", "")
 	})
 
 # Identifier si la case courante est dans une zone d'herbes
