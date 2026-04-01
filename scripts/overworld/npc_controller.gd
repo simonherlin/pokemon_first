@@ -104,6 +104,21 @@ func _interagir_infirmiere(joueur: Node) -> void:
 	emit_signal("dialogue_demarre", lignes_soin)
 	# Jouer le jingle de soin
 	AudioManager.jouer_musique("res://assets/audio/music/soin_pokemon.ogg", false)
+	# Animation flash de soin (overlay blanc clignotant)
+	var overlay := ColorRect.new()
+	overlay.color = Color(1, 1, 1, 0)
+	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var canvas := CanvasLayer.new()
+	canvas.layer = 80
+	canvas.add_child(overlay)
+	get_tree().current_scene.add_child(canvas)
+	# 3 flashs blancs
+	var tween := get_tree().create_tween()
+	for i in range(3):
+		tween.tween_property(overlay, "color:a", 0.6, 0.15)
+		tween.tween_property(overlay, "color:a", 0.0, 0.15)
+	tween.tween_callback(canvas.queue_free)
 	# Soigner tous les Pokémon de l'équipe
 	_soigner_equipe()
 	# Émettre le signal de soin (pour animations futures)

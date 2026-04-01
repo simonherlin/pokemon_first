@@ -215,8 +215,19 @@ func _process(delta: float) -> void:
 		_retour_jeu()
 
 func _retour_jeu() -> void:
+	# Soigner toute l'équipe
+	for i in range(PlayerData.equipe.size()):
+		var p := Pokemon.from_dict(PlayerData.equipe[i])
+		p.soigner_complet()
+		PlayerData.equipe[i] = p.to_dict()
+	# Réinitialiser les flags E4 (pour pouvoir recommencer)
+	GameManager.set_flag("ligue_en_cours", false)
+	GameManager.set_flag("conseil_olga_battu", false)
+	GameManager.set_flag("conseil_aldo_battu", false)
+	GameManager.set_flag("conseil_agatha_battu", false)
+	GameManager.set_flag("conseil_peter_battu", false)
 	# Retour à Bourg Palette après les crédits
-	PlayerData.carte_actuelle = "bourg_palette"
-	PlayerData.position_x = 10
-	PlayerData.position_y = 10
-	SceneManager.changer_scene("res://scenes/maps/bourg_palette.tscn")
+	SceneManager.charger_scene("res://scenes/maps/map_scene.tscn", {
+		"carte_id": "bourg_palette",
+		"warp_entree": ""
+	})

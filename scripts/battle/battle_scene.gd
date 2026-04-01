@@ -240,12 +240,33 @@ func _on_combat_termine(victoire: bool) -> void:
 			"warp_entree": "sortie"
 		})
 		return
-	# Vérifier si c'est la victoire contre le champion de la Ligue → crédits
+	# Vérifier si c'est la victoire contre le champion de la Ligue → Hall of Fame → crédits
 	if victoire and _carte_retour == "ligue_champion" and _params_retour.get("champion_battu", false):
 		GameManager.set_flag("champion_ligue_battu", true)
+		GameManager.set_flag("generique_vu", true)
+		GameManager.set_flag("grotte_inconnue_ouverte", true)
 		PlayerData.marquer_dresseur_battu("champion_rival_ligue")
 		await get_tree().create_timer(2.0).timeout
+		# Afficher le Hall of Fame avant les crédits
+		var hof_scr = load("res://scripts/ui/hall_of_fame_screen.gd")
+		var hof := CanvasLayer.new()
+		hof.set_script(hof_scr)
+		add_child(hof)
+		await hof.ecran_ferme
 		SceneManager.charger_scene("res://scenes/ui/credits_screen.tscn", {})
+		return
+	# Défaite hors E4 → soigner + retour au dernier Centre Pokémon (whiteout)
+	if not victoire:
+		for i in range(PlayerData.equipe.size()):
+			var p := Pokemon.from_dict(PlayerData.equipe[i])
+			p.soigner_complet()
+			PlayerData.equipe[i] = p.to_dict()
+		var dc: Dictionary = GameManager.dernier_centre
+		await get_tree().create_timer(2.0).timeout
+		SceneManager.charger_scene("res://scenes/maps/map_scene.tscn", {
+			"carte_id": dc.get("carte_id", "bourg_palette"),
+			"warp_entree": ""
+		})
 		return
 	# Retour à la carte
 	await get_tree().create_timer(2.0).timeout
@@ -489,7 +510,8 @@ func _maj_menu_attaque() -> void:
 	for i in range(labels.size()):
 		if i < attaques.size():
 			var md := MoveData.get_move(attaques[i]["id"])
-			labels[i].text = "%s  %d/%d" % [md.get("nom", "???"), attaques[i]["pp_actuels"], attaques[i]["pp_max"]]
+			var type_atk: String = md.get("type", "normal").to_upper().left(3)
+			labels[i].text = "%s  %s  %d/%d" % [md.get("nom", "???"), type_atk, attaques[i]["pp_actuels"], attaques[i]["pp_max"]]
 			labels[i].visible = true
 		else:
 			labels[i].visible = false
@@ -500,8 +522,9 @@ func _maj_curseur_attaque() -> void:
 	for i in range(labels.size()):
 		if i < attaques.size():
 			var md := MoveData.get_move(attaques[i]["id"])
+			var type_atk: String = md.get("type", "normal").to_upper().left(3)
 			var prefix := "▶ " if i == _index_attaque else "  "
-			labels[i].text = prefix + "%s  %d/%d" % [md.get("nom", "???"), attaques[i]["pp_actuels"], attaques[i]["pp_max"]]
+			labels[i].text = prefix + "%s  %s  %d/%d" % [md.get("nom", "???"), type_atk, attaques[i]["pp_actuels"], attaques[i]["pp_max"]]
 
 func _abreger_statut(statut: String) -> String:
 	match statut:
