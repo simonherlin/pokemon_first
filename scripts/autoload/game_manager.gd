@@ -79,7 +79,19 @@ var flags: Dictionary = {
 	"iles_ecume_termine": false,
 	"centrale_visite": false,
 	"giovanni_arene_battu": false,
-	"ptéra_ressuscite": false
+	"ptéra_ressuscite": false,
+	# Sprint 9 — Routes 22-23, Route Victoire, Ligue, Post-game
+	"sulfura_battu": false,
+	"route_victoire_terminee": false,
+	"conseil_olga_battu": false,
+	"conseil_aldo_battu": false,
+	"conseil_agatha_battu": false,
+	"conseil_peter_battu": false,
+	"champion_ligue_battu": false,
+	"generique_vu": false,
+	"grotte_inconnue_ouverte": false,
+	"grotte_inconnue_terminee": false,
+	"mew_obtenu": false
 }
 
 # --- État de jeu ---

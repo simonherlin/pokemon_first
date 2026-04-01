@@ -657,5 +657,25 @@
     "prix": 0,
     "description": "Enseigne l'attaque DÉFLAGRATION.",
     "utilisable_combat": false
+  },
+  "ct_blizzard": {
+    "id": "ct_blizzard",
+    "nom": "CT Blizzard",
+    "nom_en": "TM Blizzard",
+    "categorie": "ct_cs",
+    "prix": 0,
+    "effet": "apprend_attaque",
+    "attaque_id": "blizzard",
+    "description": "Apprend l'attaque BLIZZARD à un Pokémon."
+  },
+  "ct_poing_feu": {
+    "id": "ct_poing_feu",
+    "nom": "CT Poing de Feu",
+    "nom_en": "TM Fire Punch",
+    "categorie": "ct_cs",
+    "prix": 0,
+    "effet": "apprend_attaque",
+    "attaque_id": "poing_de_feu",
+    "description": "Apprend l'attaque POING DE FEU à un Pokémon."
   }
 }

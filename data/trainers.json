@@ -1903,5 +1903,275 @@
     "argent": 1020,
     "dialogue_avant": "Les expériences ne doivent\npas être dérangées !",
     "dialogue_apres": "Expérience ratée..."
+  },
+  "dresseur_route22_01": {
+    "id": "dresseur_route22_01",
+    "nom": "Montagnard Yvon",
+    "classe": "montagnard",
+    "equipe": [
+      {
+        "espece_id": "074",
+        "niveau": 42
+      },
+      {
+        "espece_id": "075",
+        "niveau": 42
+      },
+      {
+        "espece_id": "076",
+        "niveau": 42
+      }
+    ],
+    "recompense": 1680,
+    "dialogue_intro": "La Route Victoire est\njuste après !",
+    "dialogue_defaite": "Bonne chance là-haut !"
+  },
+  "dresseur_route22_02": {
+    "id": "dresseur_route22_02",
+    "nom": "Karatéka Hideo",
+    "classe": "karateka",
+    "equipe": [
+      {
+        "espece_id": "066",
+        "niveau": 43
+      },
+      {
+        "espece_id": "067",
+        "niveau": 43
+      }
+    ],
+    "recompense": 1720,
+    "dialogue_intro": "Seuls les dresseurs avec 8 BADGES\npeuvent passer !",
+    "dialogue_defaite": "Tu as les 8 BADGES,\ntu es fort !"
+  },
+  "dresseur_route23_01": {
+    "id": "dresseur_route23_01",
+    "nom": "Rival Garde",
+    "classe": "garde",
+    "equipe": [
+      {
+        "espece_id": "022",
+        "niveau": 44
+      },
+      {
+        "espece_id": "045",
+        "niveau": 44
+      }
+    ],
+    "recompense": 1760,
+    "dialogue_intro": "Halte ! Montrez vos BADGES !",
+    "dialogue_defaite": "Impressionnant,\nvous pouvez passer."
+  },
+  "dresseur_rv_01": {
+    "id": "dresseur_rv_01",
+    "nom": "Montagnard Gérald",
+    "classe": "montagnard",
+    "equipe": [
+      {
+        "espece_id": "095",
+        "niveau": 44
+      },
+      {
+        "espece_id": "076",
+        "niveau": 44
+      }
+    ],
+    "recompense": 1760,
+    "dialogue_intro": "La Route Victoire élimine\nles faibles !",
+    "dialogue_defaite": "Tu es digne !"
+  },
+  "dresseur_rv_02": {
+    "id": "dresseur_rv_02",
+    "nom": "Karatéka Nobuo",
+    "classe": "karateka",
+    "equipe": [
+      {
+        "espece_id": "067",
+        "niveau": 45
+      },
+      {
+        "espece_id": "068",
+        "niveau": 45
+      }
+    ],
+    "recompense": 1800,
+    "dialogue_intro": "Le Conseil des 4 est\nla plus grande épreuve !",
+    "dialogue_defaite": "Formidable..."
+  },
+  "dresseur_rv_03": {
+    "id": "dresseur_rv_03",
+    "nom": "Dresseur Karine",
+    "classe": "dresseuse",
+    "equipe": [
+      {
+        "espece_id": "049",
+        "niveau": 44
+      },
+      {
+        "espece_id": "071",
+        "niveau": 44
+      },
+      {
+        "espece_id": "038",
+        "niveau": 44
+      }
+    ],
+    "recompense": 1760,
+    "dialogue_intro": "Tu cherches le Conseil des 4 ?",
+    "dialogue_defaite": "Vas-y, montre-leur !"
+  },
+  "conseil_olga": {
+    "id": "conseil_olga",
+    "nom": "Olga",
+    "classe": "conseil_4",
+    "equipe": [
+      {
+        "espece_id": "087",
+        "niveau": 54
+      },
+      {
+        "espece_id": "091",
+        "niveau": 53
+      },
+      {
+        "espece_id": "080",
+        "niveau": 54
+      },
+      {
+        "espece_id": "124",
+        "niveau": 56
+      },
+      {
+        "espece_id": "131",
+        "niveau": 56
+      }
+    ],
+    "recompense": 6696,
+    "dialogue_intro": "Je suis OLGA du Conseil des 4 !\nMes Pokémon de type Glace vont\nte geler sur place !",
+    "dialogue_defaite": "Tu m'as vaincue...\nBien joué."
+  },
+  "conseil_aldo": {
+    "id": "conseil_aldo",
+    "nom": "Aldo",
+    "classe": "conseil_4",
+    "equipe": [
+      {
+        "espece_id": "095",
+        "niveau": 53
+      },
+      {
+        "espece_id": "107",
+        "niveau": 55
+      },
+      {
+        "espece_id": "106",
+        "niveau": 55
+      },
+      {
+        "espece_id": "095",
+        "niveau": 56
+      },
+      {
+        "espece_id": "068",
+        "niveau": 58
+      }
+    ],
+    "recompense": 6960,
+    "dialogue_intro": "Je suis ALDO ! La force brute\nest ma philosophie !",
+    "dialogue_defaite": "Tu es plus fort que moi.\nContinue !"
+  },
+  "conseil_agatha": {
+    "id": "conseil_agatha",
+    "nom": "Agatha",
+    "classe": "conseil_4",
+    "equipe": [
+      {
+        "espece_id": "094",
+        "niveau": 56
+      },
+      {
+        "espece_id": "042",
+        "niveau": 56
+      },
+      {
+        "espece_id": "093",
+        "niveau": 55
+      },
+      {
+        "espece_id": "024",
+        "niveau": 58
+      },
+      {
+        "espece_id": "094",
+        "niveau": 60
+      }
+    ],
+    "recompense": 7200,
+    "dialogue_intro": "Je suis AGATHA du Conseil des 4 !\nJe vais te montrer la puissance\ndes Pokémon Spectre !",
+    "dialogue_defaite": "Impressionnant...\nPeter t'attend."
+  },
+  "conseil_peter": {
+    "id": "conseil_peter",
+    "nom": "Peter",
+    "classe": "conseil_4",
+    "equipe": [
+      {
+        "espece_id": "130",
+        "niveau": 58
+      },
+      {
+        "espece_id": "148",
+        "niveau": 56
+      },
+      {
+        "espece_id": "148",
+        "niveau": 56
+      },
+      {
+        "espece_id": "142",
+        "niveau": 60
+      },
+      {
+        "espece_id": "149",
+        "niveau": 62
+      }
+    ],
+    "recompense": 7440,
+    "dialogue_intro": "Je suis PETER, le maître des\nDragons ! Prépare-toi !",
+    "dialogue_defaite": "Tu as battu mes Dragons...\nVa défier le Champion !"
+  },
+  "champion_rival_ligue": {
+    "id": "champion_rival_ligue",
+    "nom": "Régis",
+    "classe": "champion_ligue",
+    "equipe": [
+      {
+        "espece_id": "018",
+        "niveau": 61
+      },
+      {
+        "espece_id": "065",
+        "niveau": 59
+      },
+      {
+        "espece_id": "112",
+        "niveau": 61
+      },
+      {
+        "espece_id": "103",
+        "niveau": 61
+      },
+      {
+        "espece_id": "130",
+        "niveau": 63
+      },
+      {
+        "espece_id": "006",
+        "niveau": 65
+      }
+    ],
+    "recompense": 9750,
+    "dialogue_intro": "Salut ! Tu es arrivé jusque-là ?\nJe suis le nouveau CHAMPION !\nJe t'ai battu de vitesse,\ncomme d'habitude !",
+    "dialogue_defaite": "Non... C'est impossible...\nMoi, le CHAMPION, vaincu ?"
   }
 }

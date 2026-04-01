@@ -1936,5 +1936,27 @@
     "precision": 30,
     "pp": 5,
     "effet": "ko_en_un_coup"
+  },
+  "dracosouffle": {
+    "id": "dracosouffle",
+    "nom": "Dracosouffle",
+    "nom_en": "Dragon Rage",
+    "type": "dragon",
+    "categorie": "special",
+    "puissance": 0,
+    "precision": 100,
+    "pp": 10,
+    "effet": "degats_fixes_40"
+  },
+  "hyper_beam": {
+    "id": "hyper_beam",
+    "nom": "Ultralaser",
+    "nom_en": "Hyper Beam",
+    "type": "normal",
+    "categorie": "special",
+    "puissance": 150,
+    "precision": 90,
+    "pp": 5,
+    "effet": "recharge_tour"
   }
 }

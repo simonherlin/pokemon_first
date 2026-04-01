@@ -1112,5 +1112,173 @@
         "probabilite": 20
       }
     ]
+  },
+  "route_22": {
+    "zone": "route_22",
+    "methode": "marche",
+    "pokemon": [
+      {
+        "espece_id": "056",
+        "niveau_min": 28,
+        "niveau_max": 33,
+        "taux": 30
+      },
+      {
+        "espece_id": "021",
+        "niveau_min": 28,
+        "niveau_max": 33,
+        "taux": 25
+      },
+      {
+        "espece_id": "022",
+        "niveau_min": 32,
+        "niveau_max": 36,
+        "taux": 15
+      },
+      {
+        "espece_id": "020",
+        "niveau_min": 30,
+        "niveau_max": 34,
+        "taux": 20
+      },
+      {
+        "espece_id": "057",
+        "niveau_min": 34,
+        "niveau_max": 36,
+        "taux": 10
+      }
+    ]
+  },
+  "route_23": {
+    "zone": "route_23",
+    "methode": "marche",
+    "pokemon": [
+      {
+        "espece_id": "022",
+        "niveau_min": 34,
+        "niveau_max": 38,
+        "taux": 25
+      },
+      {
+        "espece_id": "057",
+        "niveau_min": 34,
+        "niveau_max": 40,
+        "taux": 20
+      },
+      {
+        "espece_id": "020",
+        "niveau_min": 34,
+        "niveau_max": 38,
+        "taux": 20
+      },
+      {
+        "espece_id": "024",
+        "niveau_min": 36,
+        "niveau_max": 40,
+        "taux": 15
+      },
+      {
+        "espece_id": "047",
+        "niveau_min": 36,
+        "niveau_max": 40,
+        "taux": 20
+      }
+    ]
+  },
+  "route_victoire": {
+    "zone": "route_victoire",
+    "methode": "marche",
+    "pokemon": [
+      {
+        "espece_id": "095",
+        "niveau_min": 36,
+        "niveau_max": 42,
+        "taux": 25
+      },
+      {
+        "espece_id": "067",
+        "niveau_min": 38,
+        "niveau_max": 44,
+        "taux": 20
+      },
+      {
+        "espece_id": "042",
+        "niveau_min": 38,
+        "niveau_max": 44,
+        "taux": 20
+      },
+      {
+        "espece_id": "075",
+        "niveau_min": 40,
+        "niveau_max": 46,
+        "taux": 15
+      },
+      {
+        "espece_id": "105",
+        "niveau_min": 40,
+        "niveau_max": 46,
+        "taux": 10
+      },
+      {
+        "espece_id": "076",
+        "niveau_min": 44,
+        "niveau_max": 46,
+        "taux": 10
+      }
+    ]
+  },
+  "grotte_inconnue": {
+    "zone": "grotte_inconnue",
+    "methode": "marche",
+    "pokemon": [
+      {
+        "espece_id": "064",
+        "niveau_min": 46,
+        "niveau_max": 55,
+        "taux": 20
+      },
+      {
+        "espece_id": "042",
+        "niveau_min": 46,
+        "niveau_max": 55,
+        "taux": 15
+      },
+      {
+        "espece_id": "132",
+        "niveau_min": 46,
+        "niveau_max": 55,
+        "taux": 15
+      },
+      {
+        "espece_id": "047",
+        "niveau_min": 48,
+        "niveau_max": 56,
+        "taux": 15
+      },
+      {
+        "espece_id": "082",
+        "niveau_min": 48,
+        "niveau_max": 56,
+        "taux": 10
+      },
+      {
+        "espece_id": "101",
+        "niveau_min": 48,
+        "niveau_max": 56,
+        "taux": 10
+      },
+      {
+        "espece_id": "097",
+        "niveau_min": 50,
+        "niveau_max": 58,
+        "taux": 10
+      },
+      {
+        "espece_id": "113",
+        "niveau_min": 52,
+        "niveau_max": 60,
+        "taux": 5
+      }
+    ]
   }
 }
