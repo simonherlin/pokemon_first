@@ -49,6 +49,22 @@
       "vers_map": "ss_anne_pont",
       "vers_warp": "sortie_port",
       "type": "porte"
+    },
+    {
+      "id": "sevii_ferry_depart",
+      "x": 22,
+      "y": 15,
+      "vers_map": "sevii_ile1",
+      "vers_warp": "port_ferry",
+      "type": "porte"
+    },
+    {
+      "id": "sevii_ferry_arrivee",
+      "x": 22,
+      "y": 14,
+      "vers_map": "carmin_sur_mer",
+      "vers_warp": "sevii_ferry_arrivee",
+      "type": "porte"
     }
   ],
   "zones_herbes": [],
@@ -98,6 +114,29 @@
       "dialogue": [
         "L'arbre là-bas bloque le passage vers la Route 9.",
         "Il faudrait pouvoir le couper..."
+      ],
+      "mobile": false
+    },
+    {
+      "id": "pnj_ferry_sevii",
+      "x": 21,
+      "y": 14,
+      "sprite": "pnj_marin",
+      "direction": "bas",
+      "dialogue": [
+        "Le ferry vers les Îles Sevii\nn'est pas encore en service.",
+        "Reviens après avoir vaincu\nla Ligue Pokémon !"
+      ],
+      "dialogue_conditions": [
+        {
+          "flag": "champion_ligue_battu",
+          "valeur": true,
+          "dialogue": [
+            "Le ferry vers les Îles Sevii\nest prêt à partir !",
+            "Monte à bord quand tu veux !",
+            "Direction : Île 1 — Port des Braises !"
+          ]
+        }
       ],
       "mobile": false
     }

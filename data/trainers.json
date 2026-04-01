@@ -2541,5 +2541,131 @@
         "niveau": 30
       }
     ]
+  },
+  "sevii_insectomane_01": {
+    "id": "sevii_insectomane_01",
+    "nom": "Fabrice",
+    "classe": "Insectomane",
+    "dialogue_avant": "Les Pokémon Insecte de cette forêt sont uniques !",
+    "dialogue_defaite": "Impressionnant !",
+    "recompense": 1200,
+    "equipe": [
+      {"espece_id": "012", "niveau": 38},
+      {"espece_id": "015", "niveau": 38},
+      {"espece_id": "049", "niveau": 40}
+    ]
+  },
+  "sevii_campeur_01": {
+    "id": "sevii_campeur_01",
+    "nom": "Léo",
+    "classe": "Campeur",
+    "dialogue_avant": "Je m'entraîne ici tous les jours !",
+    "dialogue_defaite": "Tu es trop fort pour moi…",
+    "recompense": 1000,
+    "equipe": [
+      {"espece_id": "057", "niveau": 36},
+      {"espece_id": "047", "niveau": 38}
+    ]
+  },
+  "sevii_randonneuse_01": {
+    "id": "sevii_randonneuse_01",
+    "nom": "Marine",
+    "classe": "Randonneuse",
+    "dialogue_avant": "Tu es perdu ? Moi aussi ! Combattons pour passer le temps !",
+    "dialogue_defaite": "Au moins j'ai plus de patience maintenant !",
+    "recompense": 1000,
+    "equipe": [
+      {"espece_id": "044", "niveau": 36},
+      {"espece_id": "070", "niveau": 36},
+      {"espece_id": "114", "niveau": 38}
+    ]
+  },
+  "sevii_karateka_01": {
+    "id": "sevii_karateka_01",
+    "nom": "Takeshi",
+    "classe": "Karatéka",
+    "dialogue_avant": "Le volcan me rend plus fort !",
+    "dialogue_defaite": "Aargh ! Trop chaud pour moi !",
+    "recompense": 1400,
+    "equipe": [
+      {"espece_id": "057", "niveau": 40},
+      {"espece_id": "068", "niveau": 42}
+    ]
+  },
+  "sevii_montagnard_01": {
+    "id": "sevii_montagnard_01",
+    "nom": "Roc",
+    "classe": "Montagnard",
+    "dialogue_avant": "Seuls les meilleurs arrivent jusqu'ici !",
+    "dialogue_defaite": "Tu mérites d'entrer dans la grotte !",
+    "recompense": 1400,
+    "equipe": [
+      {"espece_id": "095", "niveau": 38},
+      {"espece_id": "076", "niveau": 40},
+      {"espece_id": "078", "niveau": 42}
+    ]
+  },
+  "sevii_scientifique_01": {
+    "id": "sevii_scientifique_01",
+    "nom": "Dr. Ignis",
+    "classe": "Scientifique",
+    "dialogue_avant": "J'étudie les Pokémon Feu de cette grotte.",
+    "dialogue_defaite": "Revenez avec des Pokémon Eau la prochaine fois !",
+    "recompense": 1600,
+    "equipe": [
+      {"espece_id": "126", "niveau": 42},
+      {"espece_id": "059", "niveau": 40},
+      {"espece_id": "038", "niveau": 42}
+    ]
+  },
+  "sevii_montagnard_02": {
+    "id": "sevii_montagnard_02",
+    "nom": "Boulder",
+    "classe": "Montagnard",
+    "dialogue_avant": "La chaleur ne me fait pas peur !",
+    "dialogue_defaite": "Bon, peut-être un peu quand même…",
+    "recompense": 1600,
+    "equipe": [
+      {"espece_id": "078", "niveau": 42},
+      {"espece_id": "005", "niveau": 44}
+    ]
+  },
+  "sevii_nageur_01": {
+    "id": "sevii_nageur_01",
+    "nom": "Yann",
+    "classe": "Nageur",
+    "dialogue_avant": "L'eau est bonne !",
+    "dialogue_defaite": "Tu nages bien et tu combats bien !",
+    "recompense": 1200,
+    "equipe": [
+      {"espece_id": "073", "niveau": 38},
+      {"espece_id": "130", "niveau": 40}
+    ]
+  },
+  "sevii_nageuse_01": {
+    "id": "sevii_nageuse_01",
+    "nom": "Clara",
+    "classe": "Nageuse",
+    "dialogue_avant": "Mes Pokémon Eau sont imbattables !",
+    "dialogue_defaite": "Ah… peut-être pas.",
+    "recompense": 1200,
+    "equipe": [
+      {"espece_id": "117", "niveau": 38},
+      {"espece_id": "121", "niveau": 40},
+      {"espece_id": "131", "niveau": 38}
+    ]
+  },
+  "sevii_dresseur_ile3_01": {
+    "id": "sevii_dresseur_ile3_01",
+    "nom": "Sacha",
+    "classe": "Dresseur",
+    "dialogue_avant": "Hey ! Tu es un dresseur de Kanto ?",
+    "dialogue_defaite": "Tu es costaud !",
+    "recompense": 1200,
+    "equipe": [
+      {"espece_id": "022", "niveau": 36},
+      {"espece_id": "085", "niveau": 38},
+      {"espece_id": "057", "niveau": 38}
+    ]
   }
 }

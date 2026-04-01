@@ -234,6 +234,40 @@
         {"description": "Capturer les 151 espèces de Pokémon", "flag": "_special_pokedex_complet", "valeur": true}
       ],
       "prerequis": "pokedex_recu"
+    },
+    {
+      "id": "q_sevii_exploration",
+      "nom": "Exploration des Îles Sevii",
+      "description": "Après ta victoire à la Ligue, un ferry te permet de visiter les mystérieuses Îles Sevii !",
+      "icone": "bateau",
+      "etapes": [
+        {"description": "Prendre le ferry à Carmin-sur-Mer", "flag": "sevii_ile1_visitee", "valeur": true},
+        {"description": "Explorer l'Île 2", "flag": "sevii_ile2_visitee", "valeur": true},
+        {"description": "Explorer l'Île 3 et la Forêt Baie", "flag": "sevii_foret_terminee", "valeur": true}
+      ],
+      "prerequis": "champion_ligue_battu"
+    },
+    {
+      "id": "q_sevii_volcan",
+      "nom": "Le Volcan des Braises",
+      "description": "Un volcan au nord de l'Île 1 abrite des Pokémon Feu rares. Explore la Grotte des Braises !",
+      "icone": "grotte",
+      "etapes": [
+        {"description": "Traverser le Sentier des Braises", "flag": "sevii_volcan_termine", "valeur": true},
+        {"description": "Explorer la Grotte des Braises", "flag": "sevii_grotte_braise_terminee", "valeur": true}
+      ],
+      "prerequis": "sevii_ile1_visitee"
+    },
+    {
+      "id": "q_sevii_chercheur",
+      "nom": "Les Recherches du Professeur",
+      "description": "Un chercheur sur l'Île 1 étudie les Pokémon locaux. Aide-le dans ses recherches !",
+      "icone": "science",
+      "etapes": [
+        {"description": "Parler au chercheur sur l'Île 1", "flag": "sevii_ile1_visitee", "valeur": true},
+        {"description": "Compléter la recherche", "flag": "sevii_quete_chercheur_terminee", "valeur": true}
+      ],
+      "prerequis": "sevii_ile1_visitee"
     }
   ]
 }

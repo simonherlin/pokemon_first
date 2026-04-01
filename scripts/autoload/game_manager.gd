@@ -92,7 +92,16 @@ var flags: Dictionary = {
 	"generique_vu": false,
 	"grotte_inconnue_ouverte": false,
 	"grotte_inconnue_terminee": false,
-	"mew_obtenu": false
+	"mew_obtenu": false,
+	# Sprint I — Îles Sevii
+	"sevii_debloque": false,
+	"sevii_ile1_visitee": false,
+	"sevii_ile2_visitee": false,
+	"sevii_ile3_visitee": false,
+	"sevii_foret_terminee": false,
+	"sevii_volcan_termine": false,
+	"sevii_grotte_braise_terminee": false,
+	"sevii_quete_chercheur_terminee": false
 }
 
 # --- État de jeu ---

@@ -1,0 +1,227 @@
+{
+  "id": "sevii_ile1_maison",
+  "nom": "Maison",
+  "largeur": 8,
+  "hauteur": 6,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/maison.ogg",
+  "connexions": [],
+  "warps": [
+    {
+      "id": "sortie",
+      "x": 4,
+      "y": 5,
+      "vers_map": "sevii_ile1",
+      "vers_warp": "maison_entree",
+      "type": "porte"
+    }
+  ],
+  "pnj": [
+    {
+      "id": "pnj_chercheur_sevii",
+      "x": 3,
+      "y": 2,
+      "sprite": "pnj_scientifique",
+      "direction": "bas",
+      "dialogue": [
+        "Je suis un chercheur qui étudie\nles Pokémon des Îles Sevii.",
+        "Ces îles ont des espèces\nqu'on ne trouve nulle part\nailleurs à Kanto !",
+        "Les eaux entre les îles\nregorgent de Pokémon Eau rares."
+      ],
+      "dialogue_conditions": [
+        {
+          "flag": "sevii_quete_chercheur_terminee",
+          "valeur": true,
+          "dialogue": [
+            "Merci pour ton aide !\nGrâce à toi, mes recherches\navancent bien."
+          ]
+        }
+      ],
+      "mobile": false
+    }
+  ],
+  "objets_sol": [
+    {
+      "id": "obj_pp_plus_sevii",
+      "x": 6,
+      "y": 1,
+      "item_id": "pp_plus",
+      "ramasse": false
+    }
+  ],
+  "panneaux": [],
+  "tiles_sol": [
+    [
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ],
+    [
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ],
+    [
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ],
+    [
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ],
+    [
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ],
+    [
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ]
+  ],
+  "tiles_objets": [
+    [
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+    ],
+    [
+      25,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      25
+    ],
+    [
+      25,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      25
+    ],
+    [
+      25,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      25
+    ],
+    [
+      25,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      25
+    ],
+    [
+      25,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      25
+    ]
+  ],
+  "tile_data": [
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3
+  ]
+}

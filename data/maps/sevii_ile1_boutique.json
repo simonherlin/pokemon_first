@@ -1,0 +1,218 @@
+{
+  "id": "sevii_ile1_boutique",
+  "nom": "Boutique Pokémon",
+  "largeur": 8,
+  "hauteur": 6,
+  "tileset": "indoor",
+  "musique": "res://assets/audio/music/boutique.ogg",
+  "connexions": [],
+  "warps": [
+    {
+      "id": "sortie",
+      "x": 4,
+      "y": 5,
+      "vers_map": "sevii_ile1",
+      "vers_warp": "boutique_entree",
+      "type": "porte"
+    }
+  ],
+  "pnj": [
+    {
+      "id": "vendeur_sevii1",
+      "x": 3,
+      "y": 1,
+      "sprite": "pnj_vendeur",
+      "direction": "bas",
+      "dialogue": [
+        "Bienvenue ! Nous avons\ndes articles spéciaux\ndes Îles Sevii."
+      ],
+      "mobile": false,
+      "type": "vendeur",
+      "boutique": [
+        "hyper_ball",
+        "super_potion",
+        "hyper_potion",
+        "total_soin",
+        "rappel",
+        "super_repousse",
+        "corde_sortie"
+      ]
+    }
+  ],
+  "objets_sol": [],
+  "panneaux": [],
+  "tiles_sol": [
+    [
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ],
+    [
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ],
+    [
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ],
+    [
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ],
+    [
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ],
+    [
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ]
+  ],
+  "tiles_objets": [
+    [
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+    ],
+    [
+      25,
+      -1,
+      26,
+      26,
+      26,
+      26,
+      -1,
+      25
+    ],
+    [
+      25,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      25
+    ],
+    [
+      25,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      25
+    ],
+    [
+      25,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      25
+    ],
+    [
+      25,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      25
+    ]
+  ],
+  "tile_data": [
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    0,
+    3,
+    3,
+    3,
+    3,
+    0,
+    3,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3
+  ]
+}
