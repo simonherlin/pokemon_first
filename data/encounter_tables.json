@@ -128,6 +128,12 @@
         "taux": 10,
         "niveau_min": 5,
         "niveau_max": 7
+      },
+      {
+        "pokemon_id": "001",
+        "niveau_min": 8,
+        "niveau_max": 12,
+        "taux": 3
       }
     ]
   },
@@ -1302,6 +1308,12 @@
         "taux": 15,
         "niveau_min": 26,
         "niveau_max": 28
+      },
+      {
+        "pokemon_id": "133",
+        "niveau_min": 24,
+        "niveau_max": 28,
+        "taux": 3
       }
     ]
   },
@@ -1518,6 +1530,12 @@
         "taux": 20,
         "niveau_min": 21,
         "niveau_max": 23
+      },
+      {
+        "pokemon_id": "007",
+        "niveau_min": 25,
+        "niveau_max": 30,
+        "taux": 5
       }
     ],
     "peche": [
@@ -1718,6 +1736,18 @@
         "taux": 15,
         "niveau_min": 30,
         "niveau_max": 36
+      },
+      {
+        "pokemon_id": "004",
+        "niveau_min": 28,
+        "niveau_max": 32,
+        "taux": 5
+      },
+      {
+        "pokemon_id": "133",
+        "niveau_min": 26,
+        "niveau_max": 30,
+        "taux": 3
       }
     ]
   },

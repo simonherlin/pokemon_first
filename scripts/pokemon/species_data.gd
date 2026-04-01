@@ -84,8 +84,15 @@ func peut_evoluer_pierre(espece_id: String, pierre_id: String) -> String:
 	var evo: Dictionary = data.get("evolution", {})
 	if evo.is_empty():
 		return ""
+	# Pierre simple (ex: Pikachu + Pierre Foudre)
 	if evo.get("methode", "") == "pierre" and evo.get("pierre", "") == pierre_id:
 		return evo.get("vers", "")
+	# Pierre multiple (ex: Évoli → Aquali/Voltali/Pyroli)
+	if evo.get("methode", "") == "pierre_multiple":
+		var options: Array = evo.get("options", [])
+		for option in options:
+			if option.get("pierre", "") == pierre_id:
+				return option.get("vers", "")
 	return ""
 
 # Faire évoluer un Pokémon (retourne la nouvelle espèce_id ou "" si impossible)

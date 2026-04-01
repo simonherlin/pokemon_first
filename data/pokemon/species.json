@@ -1745,7 +1745,11 @@
       "special": 45,
       "vitesse": 35
     },
-    "evolution": null,
+    "evolution": {
+      "methode": "niveau",
+      "niveau": 37,
+      "vers": "076"
+    },
     "learnset": {
       "1": [
         "charge",

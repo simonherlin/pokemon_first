@@ -423,13 +423,12 @@ func _appliquer_item_hors_combat(item_id: String, item_data: Dictionary, index: 
 		"pierre_evolution":
 			var pierre: String = effet.get("pierre", "")
 			var espece_id: String = p.get("espece_id", "")
-			var espece: Dictionary = SpeciesData.get_espece(espece_id)
-			var evo: Dictionary = espece.get("evolution", {})
-			if evo.get("methode", "") != "pierre" or evo.get("pierre", "") != pierre:
+			# Utiliser la méthode de SpeciesData qui gère pierre + pierre_multiple
+			var nouvel_id: String = SpeciesData.peut_evoluer_pierre(espece_id, pierre)
+			if nouvel_id.is_empty():
 				_afficher_message("Ça n'a aucun effet sur %s !" % surnom, Color.RED)
 				return
-			# Évoluer le Pokémon
-			var nouvel_id: String = evo.get("vers", "")
+			var espece: Dictionary = SpeciesData.get_espece(espece_id)
 			var nouvelle_espece: Dictionary = SpeciesData.get_espece(nouvel_id)
 			if nouvelle_espece.is_empty():
 				_afficher_message("Erreur d'évolution !", Color.RED)
