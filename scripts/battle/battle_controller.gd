@@ -104,6 +104,14 @@ func demarrer_sauvage(pokemon_du_joueur: Pokemon, espece_id: String, niveau: int
 	pokemon_joueur = pokemon_du_joueur
 	index_pokemon_joueur = idx_joueur
 	pokemon_ennemi = SpeciesData.creer_sauvage(espece_id, niveau)
+	if pokemon_ennemi == null:
+		push_error("BattleController: impossible de créer le Pokémon sauvage '%s'" % espece_id)
+		# Créer un Pokémon par défaut pour éviter le crash
+		pokemon_ennemi = SpeciesData.creer_sauvage("001", niveau)
+	if pokemon_ennemi == null:
+		push_error("BattleController: impossible de créer un Pokémon, fin du combat.")
+		emit_signal("combat_termine", false)
+		return
 	tour = 0
 	etat_actuel = Etat.INTRO
 	_changer_etat(Etat.INTRO)
@@ -121,8 +129,13 @@ func demarrer_dresseur(pokemon_du_joueur: Pokemon, donnees_dresseur: Dictionary,
 	index_pokemon_ennemi = 0
 	pokemon_du_joueur_ref = pokemon_du_joueur
 	if equipe_ennemi.is_empty():
-		push_error("BattleController: l'équipe ennemie est vide !")
-		return
+		push_error("BattleController: l'équipe ennemie est vide, création d'un Pokémon par défaut.")
+		var p_default := SpeciesData.creer_pokemon("001", 5)
+		if p_default:
+			equipe_ennemi.append(p_default)
+		else:
+			emit_signal("combat_termine", false)
+			return
 	pokemon_ennemi = equipe_ennemi[0]
 	pokemon_joueur = pokemon_du_joueur
 	tour = 0
@@ -133,28 +146,40 @@ var pokemon_du_joueur_ref: Pokemon = null
 # ----------------------------------------------------------------
 # Machine à états
 # ----------------------------------------------------------------
+var _traitement_etat_en_cours: bool = false
+
 func _changer_etat(nouvel_etat: Etat) -> void:
+	# Garde anti-réentrance : si un état est déjà en traitement, on diffère
+	if _traitement_etat_en_cours:
+		call_deferred("_changer_etat", nouvel_etat)
+		return
+	_traitement_etat_en_cours = true
 	etat_actuel = nouvel_etat
 	match etat_actuel:
 		Etat.INTRO:
-			_phase_intro()
+			await _phase_intro()
 		Etat.CHOIX_ACTION:
 			emit_signal("action_requise")
 		Etat.CHOIX_ATTAQUE:
 			emit_signal("attaque_requise")
 		Etat.EXECUTION:
-			_executer_tour()
+			await _executer_tour()
 		Etat.VERIF_KO:
-			_verifier_ko()
+			await _verifier_ko()
 		Etat.FIN_TOUR:
-			_fin_tour()
+			await _fin_tour()
 		Etat.FIN:
 			pass
+	_traitement_etat_en_cours = false
 
 # ----------------------------------------------------------------
 # Phase INTRO
 # ----------------------------------------------------------------
 func _phase_intro() -> void:
+	if pokemon_ennemi == null:
+		push_error("BattleController: pokemon_ennemi est null dans _phase_intro")
+		emit_signal("combat_termine", false)
+		return
 	PlayerData.enregistrer_vu(pokemon_ennemi.espece_id)
 	if type_combat == TypeCombat.SAUVAGE:
 		var msg := "Un %s sauvage apparaît !" % pokemon_ennemi.surnom

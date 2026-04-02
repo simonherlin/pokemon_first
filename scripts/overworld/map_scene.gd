@@ -437,8 +437,7 @@ func _on_pas_safari() -> void:
 			# Plus de pas → retour à l'entrée
 			dialog_box.afficher_dialogue(["Ding dong ! C'est fini !", "Votre temps au Parc Safari est écoulé !"])
 			await dialog_box.dialogue_termine
-			SceneManager.charger_scene("res://scenes/maps/map_scene.tscn", {
-				"carte_id": "parc_safari_entree",
+			SceneManager.charger_scene("res://scenes/maps/parc_safari_entree.tscn", {
 				"warp_entree": "retour_safari"
 			})
 

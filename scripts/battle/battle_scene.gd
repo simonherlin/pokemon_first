@@ -106,9 +106,7 @@ func recevoir_params(params: Dictionary) -> void:
 		push_error("BattleScene: équipe du joueur vide !")
 		# Retourner à la carte au lieu de rester bloqué
 		await get_tree().create_timer(0.5).timeout
-		SceneManager.charger_scene("res://scenes/maps/map_scene.tscn", {
-			"carte_id": _carte_retour
-		})
+		SceneManager.charger_scene("res://scenes/maps/%s.tscn" % _carte_retour, {})
 		return
 	var pokemon_joueur := Pokemon.from_dict(PlayerData.equipe[pokemon_index])
 
@@ -328,8 +326,7 @@ func _on_combat_termine(victoire: bool) -> void:
 			p.soigner_complet()
 			PlayerData.equipe[i] = p.to_dict()
 		await get_tree().create_timer(2.0).timeout
-		SceneManager.charger_scene("res://scenes/maps/map_scene.tscn", {
-			"carte_id": "centre_pokemon_plateau",
+		SceneManager.charger_scene("res://scenes/maps/centre_pokemon_plateau.tscn", {
 			"warp_entree": "sortie"
 		})
 		return
@@ -355,9 +352,9 @@ func _on_combat_termine(victoire: bool) -> void:
 			p.soigner_complet()
 			PlayerData.equipe[i] = p.to_dict()
 		var dc: Dictionary = GameManager.dernier_centre
+		var carte_retour_id: String = dc.get("carte_id", "bourg_palette")
 		await get_tree().create_timer(2.0).timeout
-		SceneManager.charger_scene("res://scenes/maps/map_scene.tscn", {
-			"carte_id": dc.get("carte_id", "bourg_palette"),
+		SceneManager.charger_scene("res://scenes/maps/%s.tscn" % carte_retour_id, {
 			"warp_entree": ""
 		})
 		return

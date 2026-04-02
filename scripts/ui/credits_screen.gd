@@ -227,7 +227,6 @@ func _retour_jeu() -> void:
 	GameManager.set_flag("conseil_agatha_battu", false)
 	GameManager.set_flag("conseil_peter_battu", false)
 	# Retour à Bourg Palette après les crédits
-	SceneManager.charger_scene("res://scenes/maps/map_scene.tscn", {
-		"carte_id": "bourg_palette",
+	SceneManager.charger_scene("res://scenes/maps/bourg_palette.tscn", {
 		"warp_entree": ""
 	})
