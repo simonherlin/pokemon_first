@@ -347,8 +347,8 @@ func _on_combat_termine(victoire: bool) -> void:
 func _afficher_info_pokemon() -> void:
 	if not _controller:
 		return
-	var pj := _controller.pokemon_joueur
-	var pe := _controller.pokemon_ennemi
+	var pj: Pokemon = _controller.pokemon_joueur
+	var pe: Pokemon = _controller.pokemon_ennemi
 	if pj:
 		label_nom_joueur.text = pj.surnom
 		label_niveau_joueur.text = "N.%d" % pj.niveau
@@ -418,7 +418,7 @@ func _executer_action(action: String) -> void:
 
 # --- Sac en combat ---
 func _ouvrir_sac_combat() -> void:
-	var bag_screen := load("res://scripts/ui/battle_bag_screen.gd").new()
+	var bag_screen: Node = load("res://scripts/ui/battle_bag_screen.gd").new()
 	add_child(bag_screen)
 	_menu_actif = ""
 	bag_screen.item_choisi.connect(func(item_id: String):
@@ -455,7 +455,7 @@ func _utiliser_item_combat(item_id: String) -> void:
 		_on_action_requise()
 
 func _choisir_cible_soin(item_id: String, item_data: Dictionary) -> void:
-	var switch_screen := load("res://scripts/ui/battle_switch_screen.gd").new()
+	var switch_screen: Node = load("res://scripts/ui/battle_switch_screen.gd").new()
 	switch_screen.index_actif = -1  # Tous sélectionnables pour le soin
 	add_child(switch_screen)
 	switch_screen.pokemon_choisi.connect(func(index: int):
@@ -542,7 +542,7 @@ func _appliquer_soin_combat(item_id: String, item_data: Dictionary, index_cible:
 
 # --- Switch Pokémon en combat ---
 func _ouvrir_switch_combat(forcer: bool) -> void:
-	var switch_screen := load("res://scripts/ui/battle_switch_screen.gd").new()
+	var switch_screen: Node = load("res://scripts/ui/battle_switch_screen.gd").new()
 	switch_screen.index_actif = _controller.index_pokemon_joueur
 	switch_screen.forcer_choix = forcer
 	add_child(switch_screen)
@@ -578,7 +578,7 @@ func _maj_curseur_action() -> void:
 
 func _maj_menu_attaque() -> void:
 	var labels := menu_attaque.get_children()
-	var attaques := _controller.pokemon_joueur.attaques
+	var attaques: Array = _controller.pokemon_joueur.attaques
 	for i in range(labels.size()):
 		if i < attaques.size():
 			var md := MoveData.get_move(attaques[i]["id"])
@@ -590,7 +590,7 @@ func _maj_menu_attaque() -> void:
 
 func _maj_curseur_attaque() -> void:
 	var labels := menu_attaque.get_children()
-	var attaques := _controller.pokemon_joueur.attaques
+	var attaques: Array = _controller.pokemon_joueur.attaques
 	for i in range(labels.size()):
 		if i < attaques.size():
 			var md := MoveData.get_move(attaques[i]["id"])
@@ -609,7 +609,7 @@ func _abreger_statut(statut: String) -> String:
 
 # --- Gestion des évolutions ---
 func _on_evolution_proposee(pokemon: Pokemon, vers_id: String) -> void:
-	var evo_screen := load("res://scripts/ui/evolution_screen.gd").new()
+	var evo_screen: Node = load("res://scripts/ui/evolution_screen.gd").new()
 	evo_screen.pokemon = pokemon
 	evo_screen.vers_id = vers_id
 	add_child(evo_screen)
@@ -623,7 +623,7 @@ func _on_evolution_proposee(pokemon: Pokemon, vers_id: String) -> void:
 
 # --- Gestion de l'apprentissage d'attaques ---
 func _on_attaque_a_apprendre(pokemon: Pokemon, move_id: String) -> void:
-	var learn_screen := load("res://scripts/ui/move_learn_screen.gd").new()
+	var learn_screen: Node = load("res://scripts/ui/move_learn_screen.gd").new()
 	learn_screen.pokemon = pokemon
 	learn_screen.move_id = move_id
 	add_child(learn_screen)
@@ -687,7 +687,7 @@ func _jouer_musique_combat() -> void:
 			chemin_musique = "res://assets/audio/music/combat_sauvage.ogg"
 		"dresseur":
 			# Vérifier si c'est un champion d'arène, le conseil 4, ou le champion
-			var classe := _dresseur_data.get("classe", "")
+			var classe: String = _dresseur_data.get("classe", "")
 			if classe in ["Champion d'Arène", "Champion d'arène"]:
 				chemin_musique = "res://assets/audio/music/combat_champion_arene.ogg"
 			elif classe in ["conseil_4", "Maître"]:
@@ -714,7 +714,7 @@ func _jouer_musique_victoire() -> void:
 		"sauvage":
 			chemin = "res://assets/audio/music/victoire_sauvage.ogg"
 		"dresseur":
-			var classe := _dresseur_data.get("classe", "")
+			var classe: String = _dresseur_data.get("classe", "")
 			if classe in ["Champion d'Arène", "Champion d'arène"]:
 				chemin = "res://assets/audio/music/victoire_champion_arene.ogg"
 			else:
@@ -856,10 +856,10 @@ func _maj_barre_exp(pokemon: Pokemon) -> void:
 	if not barre_exp or not pokemon:
 		return
 	var info := pokemon.get_exp_info()
-	var exp_niv := info.get("exp_niv_actuel", 0)
-	var exp_next := info.get("exp_niv_suivant", 1)
-	var exp_act := info.get("exp_actuel", 0)
-	var range_exp := maxi(exp_next - exp_niv, 1)
+	var exp_niv: int = info.get("exp_niv_actuel", 0)
+	var exp_next: int = info.get("exp_niv_suivant", 1)
+	var exp_act: int = info.get("exp_actuel", 0)
+	var range_exp: int = maxi(exp_next - exp_niv, 1)
 	barre_exp.max_value = range_exp
 	barre_exp.value = exp_act - exp_niv
 	# Couleur bleue pour EXP
@@ -881,9 +881,9 @@ func _on_exp_gagnee(pokemon: Pokemon, montant: int, exp_avant: int, exp_apres: i
 	if niveaux.is_empty():
 		# Pas de level-up : simple tween de remplissage
 		var info := pokemon.get_exp_info()
-		var exp_niv := info.get("exp_niv_actuel", 0)
-		var exp_next := info.get("exp_niv_suivant", 1)
-		var range_exp := maxi(exp_next - exp_niv, 1)
+		var exp_niv: int = info.get("exp_niv_actuel", 0)
+		var exp_next: int = info.get("exp_niv_suivant", 1)
+		var range_exp: int = maxi(exp_next - exp_niv, 1)
 		barre_exp.max_value = range_exp
 		if _tween_exp:
 			_tween_exp.kill()

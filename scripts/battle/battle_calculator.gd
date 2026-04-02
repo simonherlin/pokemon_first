@@ -66,7 +66,7 @@ func calculer_degats(attaquant: Pokemon, defenseur: Pokemon, attaque: Dictionary
 # ----------------------------------------------------------------
 func _est_critique(attaquant: Pokemon, attaque: Dictionary) -> bool:
 	# Taux de base Gen 1 = vitesse_base / 512 (environ)
-	var vitesse_base := attaquant.stats_base.get("vitesse", 50)
+	var vitesse_base: int = int(attaquant.stats_base.get("vitesse", 50))
 	var taux: float = vitesse_base / 512.0
 	# Attaque à fort taux de critique (ex: Tranche) : ×8
 	if attaque.get("effet", {}) != null:
@@ -104,8 +104,8 @@ func attaque_touche(attaquant: Pokemon, defenseur: Pokemon, attaque: Dictionary)
 	var precision: int = attaque.get("precision", 100)
 	if precision == 0:
 		return true  # Attaque qui touche toujours (ex: Tranche Nuit)
-	var modif_precision := attaquant.modificateurs_stats.get("precision", 0)
-	var modif_esquive := defenseur.modificateurs_stats.get("esquive", 0)
+	var modif_precision: int = int(attaquant.modificateurs_stats.get("precision", 0))
+	var modif_esquive: int = int(defenseur.modificateurs_stats.get("esquive", 0))
 	var etape_finale := clampi(modif_precision - modif_esquive, -6, 6)
 	var multiplicateurs := [
 		33.0/100, 36.0/100, 43.0/100, 50.0/100, 60.0/100, 75.0/100,
@@ -113,7 +113,7 @@ func attaque_touche(attaquant: Pokemon, defenseur: Pokemon, attaque: Dictionary)
 		133.0/100, 166.0/100, 200.0/100, 250.0/100, 233.0/100, 300.0/100
 	]
 	var index := clampi(etape_finale + 6, 0, 12)
-	var taux_final := precision * multiplicateurs[index] / 100.0
+	var taux_final: float = float(precision) * float(multiplicateurs[index]) / 100.0
 	return randf() < taux_final
 
 # ----------------------------------------------------------------
@@ -155,5 +155,5 @@ func get_taux_capture(espece_id: String) -> int:
 func calculer_exp_gagne(pokemon_vaincu: Pokemon, sauvage: bool) -> int:
 	var espece_data := SpeciesData.get_espece(pokemon_vaincu.espece_id)
 	var exp_base: int = espece_data.get("exp_base", 64)
-	var a := 1 if sauvage else 1.5
+	var a: float = 1.0 if sauvage else 1.5
 	return maxi(1, int(a * exp_base * pokemon_vaincu.niveau / 7.0))

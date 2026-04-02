@@ -7,12 +7,33 @@ class_name Pokemon
 # --- Constantes ---
 const MAX_ATTAQUES := 4
 const NIVEAU_MAX := 100
-const GROUPES_EXP := {
-	"rapide":       func(n): return int(4.0 * pow(n, 3) / 5.0),
-	"moyen_rapide": func(n): return int(pow(n, 3)),
-	"lent_moyen":   func(n): return int(6.0 * pow(n, 3) / 5.0 - 15 * pow(n, 2) + 100 * n - 140),
-	"lent":         func(n): return int(5.0 * pow(n, 3) / 4.0)
-}
+
+# Calcul EXP par groupe (remplace les lambdas pour compatibilité class_name)
+static func _exp_groupe(groupe: String, n: int) -> int:
+	match groupe:
+		"rapide":
+			return int(4.0 * pow(n, 3) / 5.0)
+		"moyen_rapide":
+			return int(pow(n, 3))
+		"lent_moyen":
+			return int(6.0 * pow(n, 3) / 5.0 - 15 * pow(n, 2) + 100 * n - 140)
+		"lent":
+			return int(5.0 * pow(n, 3) / 4.0)
+	return int(pow(n, 3))
+
+# Cache statique des données d'attaques (évite la dépendance à l'autoload MoveData)
+static var _moves_cache: Dictionary = {}
+
+static func _get_move_data(move_id: String) -> Dictionary:
+	if _moves_cache.is_empty():
+		var chemin := "res://data/pokemon/moves.json"
+		if FileAccess.file_exists(chemin):
+			var fichier := FileAccess.open(chemin, FileAccess.READ)
+			var data = JSON.parse_string(fichier.get_as_text())
+			fichier.close()
+			if data is Dictionary:
+				_moves_cache = data
+	return _moves_cache.get(move_id, {})
 
 # --- Identité ---
 var espece_id: String = ""             # ex: "001"
@@ -82,7 +103,7 @@ func initialiser(espece_data: Dictionary, niv: int) -> void:
 	# Garder uniquement les 4 dernières
 	var dernieres := attaques_apprises.slice(max(0, attaques_apprises.size() - MAX_ATTAQUES))
 	for move_id in dernieres:
-		var move_data = MoveData.get_move(move_id)
+		var move_data = _get_move_data(move_id)
 		if move_data:
 			attaques.append({
 				"id": move_id,
@@ -104,8 +125,8 @@ func _calculer_stats() -> void:
 
 # Obtenir la stat en combat (avec modificateurs)
 func get_stat_combat(stat_nom: String) -> int:
-	var valeur_base := stats.get(stat_nom, 1)
-	var modif := modificateurs_stats.get(stat_nom, 0)
+	var valeur_base: int = int(stats.get(stat_nom, 1))
+	var modif: int = int(modificateurs_stats.get(stat_nom, 0))
 	return _appliquer_modificateur(valeur_base, modif)
 
 # Table des multiplicateurs Gen 1 (-6 à +6)
@@ -119,7 +140,7 @@ func _appliquer_modificateur(valeur: int, etape: int) -> int:
 # Modifier un modificateur de stat en combat
 func modifier_stat(stat_nom: String, etapes: int) -> int:
 	# Retourne le changement réel appliqué
-	var avant := modificateurs_stats.get(stat_nom, 0)
+	var avant: int = int(modificateurs_stats.get(stat_nom, 0))
 	var apres := clampi(avant + etapes, -6, 6)
 	modificateurs_stats[stat_nom] = apres
 	return apres - avant
@@ -179,7 +200,7 @@ func utiliser_pp(index_attaque: int) -> void:
 
 # Apprendre une nouvelle attaque (remplace si 4 déjà)
 func apprendre_attaque(move_id: String, remplacer_index: int = -1) -> bool:
-	var move_data = MoveData.get_move(move_id)
+	var move_data = _get_move_data(move_id)
 	if move_data == null:
 		return false
 	var nouvelle_attaque := {
@@ -223,9 +244,7 @@ func attaques_a_apprendre(espece_data: Dictionary) -> Array[String]:
 func _exp_pour_niveau(niv: int) -> int:
 	if niv <= 1:
 		return 0
-	if groupe_exp in GROUPES_EXP:
-		return GROUPES_EXP[groupe_exp].call(niv)
-	return int(pow(niv, 3))
+	return _exp_groupe(groupe_exp, niv)
 
 # Informations EXP pour la barre d'EXP animée
 func get_exp_info() -> Dictionary:
@@ -242,7 +261,7 @@ func get_exp_info() -> Dictionary:
 func exp_a_la_mort(sauvage: bool) -> int:
 	var exp_base: int = 64  # valeur par défaut
 	# À récupérer depuis SpeciesData si besoin
-	var a := 1 if sauvage else 1.5
+	var a: float = 1.0 if sauvage else 1.5
 	return int(a * exp_base * niveau / 7.0)
 
 # Sérialisation pour sauvegarde

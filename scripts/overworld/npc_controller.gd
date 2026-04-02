@@ -281,7 +281,7 @@ func _equilibrer_equipe_dresseur(equipe_base: Array) -> Array:
 	var boost := avg_joueur - avg_dresseur - 2  # On garde le joueur 2 niveaux au-dessus
 	var equipe_ajustee := []
 	for poke in equipe_base:
-		var copie := poke.duplicate(true)
+		var copie: Dictionary = poke.duplicate(true)
 		var niv_base: int = copie.get("niveau", 5)
 		var nouveau_niv := mini(niv_base + boost, 100)
 		copie["niveau"] = nouveau_niv
@@ -376,7 +376,7 @@ func _charger_trainer_data() -> void:
 
 # Calculer la direction pour faire face au joueur
 func _direction_vers(cible: Node) -> String:
-	var delta := cible.position - position
+	var delta: Vector2 = cible.position - position
 	if abs(delta.x) > abs(delta.y):
 		return "droite" if delta.x > 0 else "gauche"
 	return "bas" if delta.y > 0 else "haut"
@@ -441,7 +441,7 @@ func _charger_sprite(sprite_id: String) -> void:
 	for dir_name in ["bas", "haut", "gauche", "droite"]:
 		var textures: Array = directions[dir_name]
 		# Animation idle (1 frame)
-		var idle_name := dir_name + "_idle"
+		var idle_name: String = dir_name + "_idle"
 		frames.add_animation(idle_name)
 		frames.set_animation_speed(idle_name, 1.0)
 		frames.set_animation_loop(idle_name, false)
@@ -449,7 +449,7 @@ func _charger_sprite(sprite_id: String) -> void:
 			frames.add_frame(idle_name, textures[0])
 		
 		# Animation de marche (si on a des frames de walk)
-		var walk_name := dir_name + "_walk"
+		var walk_name: String = dir_name + "_walk"
 		frames.add_animation(walk_name)
 		frames.set_animation_speed(walk_name, 4.0)
 		frames.set_animation_loop(walk_name, true)

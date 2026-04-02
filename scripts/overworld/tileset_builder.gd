@@ -85,6 +85,10 @@ func _construire_tileset() -> void:
 	atlas_source.texture = texture
 	atlas_source.texture_region_size = Vector2i(TAILLE_TILE, TAILLE_TILE)
 	
+	# Ajouter la source au TileSet AVANT de créer les tiles,
+	# sinon les tile_data ne connaissent pas la couche physique
+	var source_id := _tileset.add_source(atlas_source)
+	
 	# Calculer le nombre de lignes
 	var nb_colonnes := texture.get_width() / TAILLE_TILE
 	var nb_lignes := texture.get_height() / TAILLE_TILE
@@ -109,8 +113,6 @@ func _construire_tileset() -> void:
 				])
 				tile_data.add_collision_polygon(0)
 				tile_data.set_collision_polygon_points(0, 0, polygon)
-	
-	var source_id := _tileset.add_source(atlas_source)
 	# Le source_id devrait être 0
 	if source_id != 0:
 		push_warning("TileSetBuilder: source_id = %d (attendu 0)" % source_id)

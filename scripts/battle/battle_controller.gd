@@ -368,8 +368,8 @@ func _priorite_joueur_en_premier() -> bool:
 func _pokemon_attaque(attaquant: Pokemon, defenseur: Pokemon, index_attaque: int, joueur_attaque: bool) -> void:
 	if index_attaque < 0 or index_attaque >= attaquant.attaques.size():
 		return
-	var attaque_ref := attaquant.attaques[index_attaque]
-	var attaque_data := MoveData.get_move(attaque_ref["id"])
+	var attaque_ref: Dictionary = attaquant.attaques[index_attaque]
+	var attaque_data: Dictionary = MoveData.get_move(attaque_ref["id"])
 	if attaque_data.is_empty():
 		return
 
@@ -566,7 +566,7 @@ func _trouver_remplacant_joueur() -> int:
 	for i in range(PlayerData.equipe.size()):
 		if i == index_pokemon_joueur:
 			continue
-		var p_data := PlayerData.equipe[i]
+		var p_data: Dictionary = PlayerData.equipe[i]
 		if p_data.get("pv_actuels", 0) > 0:
 			return i
 	return -1
@@ -574,7 +574,7 @@ func _trouver_remplacant_joueur() -> int:
 # Appeler depuis l'UI après la sélection du Pokémon remplaçant
 func joueur_change_pokemon(index_equipe: int) -> void:
 	index_pokemon_joueur = index_equipe
-	var p_data := PlayerData.equipe[index_equipe]
+	var p_data: Dictionary = PlayerData.equipe[index_equipe]
 	pokemon_joueur = Pokemon.from_dict(p_data)
 	emit_signal("pokemon_change", true)
 	emit_signal("pv_mis_a_jour", true, pokemon_joueur.pv_actuels, pokemon_joueur.pv_max)
@@ -589,8 +589,8 @@ func confirmer_apprentissage(index_remplacement: int) -> void:
 	if index_remplacement >= 0 and index_remplacement < Pokemon.MAX_ATTAQUES:
 		var move_data := MoveData.get_move(_move_en_attente)
 		var move_nom: String = move_data.get("nom", _move_en_attente) if move_data else _move_en_attente
-		var ancienne := pokemon_joueur.attaques[index_remplacement]
-		var anc_data := MoveData.get_move(ancienne.get("id", ""))
+		var ancienne: Dictionary = pokemon_joueur.attaques[index_remplacement]
+		var anc_data: Dictionary = MoveData.get_move(ancienne.get("id", ""))
 		var anc_nom: String = anc_data.get("nom", "???") if anc_data else "???"
 		pokemon_joueur.apprendre_attaque(_move_en_attente, index_remplacement)
 		emit_signal("message_affiche", "1, 2, 3 et... Hop !\n%s oublie %s et apprend %s !" % [pokemon_joueur.surnom, anc_nom, move_nom])

@@ -25,6 +25,15 @@ var _tween: Tween = null
 # --- Cache des ressources audio ---
 var _cache_audio: Dictionary = {}
 
+# Seuil de silence en dB — évite -INF et NaN lors des tweens
+const SILENCE_DB := -80.0
+
+# Conversion linéaire → dB sécurisée (0.0 → -80 dB au lieu de -INF)
+static func _linear_to_db_safe(linear: float) -> float:
+	if linear <= 0.0:
+		return SILENCE_DB
+	return linear_to_db(linear)
+
 func _ready() -> void:
 	# Créer les bus audio s'ils n'existent pas
 	_assurer_bus("Musique")
@@ -69,7 +78,7 @@ func jouer_musique(chemin: String, boucle: bool = true) -> void:
 
 	var nouveau_joueur := _joueur_musique_b if _joueur_actif == _joueur_musique_a else _joueur_musique_a
 	nouveau_joueur.stream = stream
-	nouveau_joueur.volume_db = linear_to_db(0.0)
+	nouveau_joueur.volume_db = SILENCE_DB
 
 	if stream is AudioStreamOggVorbis:
 		stream.loop = boucle
@@ -83,8 +92,8 @@ func jouer_musique(chemin: String, boucle: bool = true) -> void:
 		_tween.kill()
 	_tween = create_tween()
 	_tween.set_parallel(true)
-	_tween.tween_property(_joueur_actif, "volume_db", linear_to_db(0.0), DUREE_CROSSFADE)
-	_tween.tween_property(nouveau_joueur, "volume_db", linear_to_db(_volume_musique), DUREE_CROSSFADE)
+	_tween.tween_property(_joueur_actif, "volume_db", SILENCE_DB, DUREE_CROSSFADE)
+	_tween.tween_property(nouveau_joueur, "volume_db", _linear_to_db_safe(_volume_musique), DUREE_CROSSFADE)
 	_tween.set_parallel(false)
 	_tween.tween_callback(func(): _joueur_actif.stop())
 
@@ -115,7 +124,7 @@ func jouer_sfx(chemin: String) -> void:
 	if joueur == null:
 		joueur = _joueurs_sfx[0]
 	joueur.stream = stream
-	joueur.volume_db = linear_to_db(_volume_sfx)
+	joueur.volume_db = _linear_to_db_safe(_volume_sfx)
 	joueur.play()
 
 # Charger et mettre en cache un fichier audio
@@ -132,7 +141,7 @@ func _charger_audio(chemin: String) -> AudioStream:
 # Réglage du volume musique (0.0 - 1.0)
 func set_volume_musique(volume: float) -> void:
 	_volume_musique = clamp(volume, 0.0, 1.0)
-	_joueur_actif.volume_db = linear_to_db(_volume_musique)
+	_joueur_actif.volume_db = _linear_to_db_safe(_volume_musique)
 
 # Réglage du volume SFX (0.0 - 1.0)
 func set_volume_sfx(volume: float) -> void:

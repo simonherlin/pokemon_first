@@ -65,7 +65,7 @@ func _creer_ui() -> void:
 	# Points des villes
 	for ville in VILLES:
 		var point := ColorRect.new()
-		var visible_ville := ville["flag"] == "" or GameManager.get_flag(ville["flag"]) == true
+		var visible_ville: bool = str(ville["flag"]) == "" or GameManager.get_flag(str(ville["flag"])) == true
 		point.color = Color(0.8, 0.2, 0.2) if visible_ville else Color(0.5, 0.5, 0.5, 0.3)
 		point.size = Vector2(8, 8)
 		point.position = Vector2(ville["x"] - 4, ville["y"] - 4)

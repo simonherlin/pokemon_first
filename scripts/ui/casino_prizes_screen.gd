@@ -105,7 +105,7 @@ func _maj_affichage() -> void:
 		var idx := _scroll_offset + i
 		if idx < PRIX.size():
 			var prix_data: Dictionary = PRIX[idx]
-			var peut_acheter := PlayerData.jetons >= prix_data["cout"]
+			var peut_acheter: bool = PlayerData.jetons >= int(prix_data["cout"])
 			var couleur := Color(1, 1, 1) if peut_acheter else Color(0.4, 0.4, 0.4)
 			_labels_prix[i].text = "%s   —   %d jetons" % [prix_data["nom"], prix_data["cout"]]
 			_labels_prix[i].add_theme_color_override("font_color", couleur)

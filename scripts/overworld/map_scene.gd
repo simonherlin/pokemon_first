@@ -379,9 +379,9 @@ func interagir_poubelle(index: int) -> void:
 			# Mauvaise poubelle → reset
 			_premier_interrupteur_trouve = false
 			# Re-randomiser les positions
-			var nb := _puzzle_data.get("poubelles", []).size()
+			var nb: int = _puzzle_data.get("poubelles", []).size()
 			_interrupteur_positions[0] = randi() % nb
-			var second := randi() % (nb - 1)
+			var second: int = randi() % (nb - 1)
 			if second >= _interrupteur_positions[0]:
 				second += 1
 			_interrupteur_positions[1] = second

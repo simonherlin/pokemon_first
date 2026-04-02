@@ -69,11 +69,11 @@ func _creer_version() -> void:
 
 func _animer_entree() -> void:
 	# Titre : slide depuis le haut + fondu
-	var titre_node := $VBox/Title
-	var subtitle_node := $VBox/Subtitle
+	var titre_node: Label = $VBox/Title
+	var subtitle_node: Label = $VBox/Subtitle
 	titre_node.modulate = Color(1, 1, 1, 0)
 	subtitle_node.modulate = Color(1, 1, 1, 0)
-	var pos_orig_titre := titre_node.position
+	var pos_orig_titre: Vector2 = titre_node.position
 	titre_node.position.y -= 30
 	var tween := create_tween()
 	tween.set_parallel(true)
@@ -94,7 +94,7 @@ func _process(delta: float) -> void:
 	# Animer les étoiles (scintillement)
 	for data in _etoiles:
 		data["phase"] += delta * data["vitesse"]
-		var alpha := data["alpha_base"] + sin(data["phase"]) * 0.3
+		var alpha: float = float(data["alpha_base"]) + sin(float(data["phase"])) * 0.3
 		var label: Label = data["label"]
 		label.add_theme_color_override("font_color", Color(0.6, 0.7, 1.0, clampf(alpha, 0.05, 0.8)))
 	# Animer le titre (couleur cyclique subtile)
