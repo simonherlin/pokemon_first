@@ -44,6 +44,14 @@
       "vers_map": "carmin_sur_mer",
       "vers_warp": "sevii_ferry_arrivee",
       "type": "porte"
+    },
+    {
+      "id": "port_marine",
+      "x": 8,
+      "y": 15,
+      "vers_map": "sevii_route_marine",
+      "vers_warp": "vers_ile1",
+      "type": "chemin"
     }
   ],
   "pnj": [

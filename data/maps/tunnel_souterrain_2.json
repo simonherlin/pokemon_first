@@ -22,6 +22,14 @@
       "vers_map": "route_8",
       "vers_warp": "entree_tunnel_ouest",
       "type": "porte"
+    },
+    {
+      "id": "sortie_sud",
+      "x": 4,
+      "y": 29,
+      "vers_map": "route_11",
+      "vers_warp": "entree_tunnel_souterrain",
+      "type": "grotte"
     }
   ],
   "zones_herbes": [],

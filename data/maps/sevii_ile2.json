@@ -22,6 +22,14 @@
       "vers_map": "sevii_ile2_maison2",
       "vers_warp": "sortie",
       "type": "porte"
+    },
+    {
+      "id": "arrivee_marine",
+      "x": 7,
+      "y": 13,
+      "vers_map": "sevii_route_marine",
+      "vers_warp": "vers_ile2",
+      "type": "chemin"
     }
   ],
   "zones_herbes": [
