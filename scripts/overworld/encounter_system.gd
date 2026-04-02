@@ -35,6 +35,8 @@ func verifier_rencontre(position_grille: Vector2i, joueur_node: Node) -> void:
 	if zone_id.is_empty():
 		return
 
+	print("[Encounter] Zone herbe détectée: %s à pos %s" % [zone_id, position_grille])
+
 	# Décrémenter le compteur Repousse si actif
 	if GameManager.repousse_restant > 0:
 		GameManager.repousse_restant -= 1
@@ -68,6 +70,7 @@ func _lancer_combat_sauvage(pokemon_data: Dictionary, joueur_node: Node) -> void
 	var niveau_min: int = pokemon_data.get("niveau_min", 2)
 	var niveau_max: int = pokemon_data.get("niveau_max", 5)
 	var niveau := randi_range(niveau_min, niveau_max)
+	print("[Encounter] Combat sauvage: espece=%s, niveau=%d" % [espece_id, niveau])
 
 	# === Équilibrage dynamique ===
 	# Les Pokémon sauvages s'adaptent au niveau du joueur
@@ -104,8 +107,16 @@ func _lancer_combat_sauvage(pokemon_data: Dictionary, joueur_node: Node) -> void
 
 	# Obtenir le Pokémon de tête de l'équipe joueur
 	if PlayerData.equipe.is_empty():
-		push_warning("EncounterSystem: équipe du joueur vide !")
-		return
+		push_warning("EncounterSystem: équipe vide — création d'un Pikachu de secours !")
+		var pika = SpeciesData.creer_pokemon("025", 5)
+		if pika:
+			PlayerData.ajouter_pokemon(pika.to_dict())
+			PlayerData.enregistrer_capture("025")
+			PlayerData.enregistrer_vu("025")
+			GameManager.set_flag("premier_pokemon_recu", true)
+		else:
+			push_error("EncounterSystem: impossible de créer le Pikachu de secours")
+			return
 	var premier_pokemon := Pokemon.from_dict(PlayerData.equipe[0])
 
 	# Charger la scène de combat avec les paramètres

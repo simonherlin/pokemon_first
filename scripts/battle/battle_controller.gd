@@ -123,7 +123,11 @@ func demarrer_dresseur(pokemon_du_joueur: Pokemon, donnees_dresseur: Dictionary,
 	index_pokemon_joueur = idx_joueur
 	equipe_ennemi = []
 	for p_data in donnees_dresseur.get("equipe", []):
-		var p := SpeciesData.creer_pokemon(p_data.get("espece_id", "001"), p_data.get("niveau", 5))
+		var p: Pokemon = null
+		if p_data.has("stats") and p_data.has("attaques"):
+			p = Pokemon.from_dict(p_data)
+		else:
+			p = SpeciesData.creer_pokemon(p_data.get("espece_id", "001"), p_data.get("niveau", 5))
 		if p:
 			equipe_ennemi.append(p)
 	index_pokemon_ennemi = 0
@@ -151,10 +155,12 @@ var _traitement_etat_en_cours: bool = false
 func _changer_etat(nouvel_etat: Etat) -> void:
 	# Garde anti-réentrance : si un état est déjà en traitement, on diffère
 	if _traitement_etat_en_cours:
+		print("[BattleController] État en cours, report de %s" % Etat.keys()[nouvel_etat])
 		call_deferred("_changer_etat", nouvel_etat)
 		return
 	_traitement_etat_en_cours = true
 	etat_actuel = nouvel_etat
+	print("[BattleController] >>> État: %s" % Etat.keys()[nouvel_etat])
 	match etat_actuel:
 		Etat.INTRO:
 			await _phase_intro()

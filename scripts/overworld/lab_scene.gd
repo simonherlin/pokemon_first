@@ -30,6 +30,12 @@ func _ready() -> void:
 	var musique: String = carte_data.get("musique", "")
 	if not musique.is_empty() and ResourceLoader.exists(musique):
 		AudioManager.jouer_musique(musique)
+	# Réconcilier le flag rival_labo_battu depuis PlayerData
+	# (car _on_combat_rival_termine est appelé sur une instance détruite lors du changement de scène)
+	if PlayerData.dresseur_est_battu("rival_labo_001") and not GameManager.get_flag("rival_labo_battu"):
+		GameManager.set_flag("rival_labo_battu", true)
+		print("[LabScene] Flag rival_labo_battu réconcilié depuis PlayerData")
+
 	# Vérifier si on doit lancer la séquence du starter
 	if not GameManager.get_flag("premier_pokemon_recu"):
 		# Petite pause avant d'afficher le dialogue
@@ -99,6 +105,7 @@ func _on_dialogue_termine() -> void:
 
 # --- Séquence de choix du starter ---
 func _lancer_sequence_starter() -> void:
+	print("[LabScene] Lancement séquence starter")
 	_cutscene_active = true
 	if joueur:
 		joueur.set_peut_bouger(false)
@@ -123,6 +130,7 @@ func _apres_dialogue_chen() -> void:
 	_starter_screen.starter_choisi.connect(_on_starter_choisi)
 
 func _on_starter_choisi(espece_id: String) -> void:
+	print("[LabScene] Starter choisi: %s" % espece_id)
 	# Fermer l'écran de choix
 	if _starter_screen:
 		_starter_screen.queue_free()
@@ -134,6 +142,7 @@ func _on_starter_choisi(espece_id: String) -> void:
 		PlayerData.ajouter_pokemon(pokemon.to_dict())
 		PlayerData.enregistrer_capture(espece_id)
 		PlayerData.enregistrer_vu(espece_id)
+		print("[LabScene] Pokémon ajouté: %s N.%d, équipe=%d" % [pokemon.surnom, pokemon.niveau, PlayerData.equipe.size()])
 
 	# Mettre à jour les flags
 	GameManager.set_flag("starter_choisi", espece_id)
@@ -185,6 +194,7 @@ func _determiner_starter_rival() -> String:
 			return "004"
 
 func _lancer_combat_rival() -> void:
+	print("[LabScene] Lancement combat rival")
 	# Construire l'équipe du rival
 	var rival_starter := _determiner_starter_rival()
 	var rival_pokemon = SpeciesData.creer_pokemon(rival_starter, 5)

@@ -34,3 +34,4 @@ saves/
 /tmp/
 *.tmp
 *.bak
+tools/__pycache__/

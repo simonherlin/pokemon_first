@@ -90,6 +90,7 @@ func _ready() -> void:
 		label_capture.visible = false
 
 func recevoir_params(params: Dictionary) -> void:
+	print("[BattleScene] recevoir_params: type=%s, carte_retour=%s" % [params.get("type_combat", "sauvage"), params.get("carte_retour", "?")])
 	_type_combat = params.get("type_combat", "sauvage")
 	_carte_retour = params.get("carte_retour", "bourg_palette")
 	_dresseur_data = params.get("dresseur_data", {})
@@ -102,6 +103,7 @@ func recevoir_params(params: Dictionary) -> void:
 
 	# Obtenir le Pokémon du joueur
 	var pokemon_index: int = params.get("pokemon_joueur_index", 0)
+	print("[BattleScene] Equipe joueur: %d pokemon" % PlayerData.equipe.size())
 	if PlayerData.equipe.is_empty():
 		push_error("BattleScene: équipe du joueur vide !")
 		# Retourner à la carte au lieu de rester bloqué
@@ -109,6 +111,7 @@ func recevoir_params(params: Dictionary) -> void:
 		SceneManager.charger_scene("res://scenes/maps/%s.tscn" % _carte_retour, {})
 		return
 	var pokemon_joueur := Pokemon.from_dict(PlayerData.equipe[pokemon_index])
+	print("[BattleScene] Pokemon joueur: %s N.%d PV=%d/%d, %d attaques" % [pokemon_joueur.surnom, pokemon_joueur.niveau, pokemon_joueur.pv_actuels, pokemon_joueur.pv_max, pokemon_joueur.attaques.size()])
 
 	# Initialiser le BattleController
 	_controller = BattleController
@@ -134,7 +137,12 @@ func recevoir_params(params: Dictionary) -> void:
 		_controller.index_pokemon_joueur = pokemon_index
 		_controller.equipe_ennemi = []
 		for p_data in _dresseur_data.get("equipe", []):
-			var p := SpeciesData.creer_pokemon(p_data.get("espece_id", "001"), p_data.get("niveau", 5))
+			var p: Pokemon = null
+			# Utiliser from_dict si les données sont complètes (to_dict), sinon recréer
+			if p_data.has("stats") and p_data.has("attaques"):
+				p = Pokemon.from_dict(p_data)
+			else:
+				p = SpeciesData.creer_pokemon(p_data.get("espece_id", "001"), p_data.get("niveau", 5))
 			if p:
 				_controller.equipe_ennemi.append(p)
 		_controller.index_pokemon_ennemi = 0
@@ -165,6 +173,7 @@ func recevoir_params(params: Dictionary) -> void:
 		_jouer_cri_pokemon(_controller.pokemon_ennemi.espece_id)
 
 	# MAINTENANT démarrer la machine à états (après que l'UI est prête)
+	print("[BattleScene] Démarrage combat: %s (N.%d) vs %s (N.%d)" % [pokemon_joueur.surnom, pokemon_joueur.niveau, _controller.pokemon_ennemi.surnom, _controller.pokemon_ennemi.niveau])
 	PlayerData.enregistrer_vu(_controller.pokemon_ennemi.espece_id)
 	_controller._changer_etat(BattleController.Etat.INTRO)
 
