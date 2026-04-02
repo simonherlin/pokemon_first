@@ -20,7 +20,7 @@
   "warps": [
     {
       "id": "maison_joueur_entree",
-      "x": 7,
+      "x": 5,
       "y": 13,
       "vers_map": "maison_joueur",
       "vers_warp": "sortie",
@@ -28,7 +28,7 @@
     },
     {
       "id": "maison_rival_entree",
-      "x": 13,
+      "x": 14,
       "y": 13,
       "vers_map": "maison_rival",
       "vers_warp": "sortie",

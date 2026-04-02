@@ -61,9 +61,15 @@ func _assurer_bus(nom_bus: String) -> void:
 		var idx := AudioServer.bus_count
 		AudioServer.add_bus(idx)
 		AudioServer.set_bus_name(idx, nom_bus)
+		# S'assurer que le bus envoie vers Master
+		AudioServer.set_bus_send(idx, "Master")
+		print("AudioManager: bus '%s' créé (index %d, send → Master)" % [nom_bus, idx])
+	else:
+		print("AudioManager: bus '%s' existe déjà" % nom_bus)
 
 # Jouer une musique (avec crossfade si une autre joue déjà)
 func jouer_musique(chemin: String, boucle: bool = true) -> void:
+	print("AudioManager: jouer_musique('%s') — actuelle='%s'" % [chemin, _musique_actuelle])
 	if chemin == _musique_actuelle:
 		return
 	if chemin.is_empty():
@@ -72,8 +78,10 @@ func jouer_musique(chemin: String, boucle: bool = true) -> void:
 
 	var stream = _charger_audio(chemin)
 	if stream == null:
+		push_error("AudioManager: échec chargement '%s'" % chemin)
 		return
 
+	print("AudioManager: stream chargé, type=%s" % stream.get_class())
 	_musique_actuelle = chemin
 
 	var nouveau_joueur := _joueur_musique_b if _joueur_actif == _joueur_musique_a else _joueur_musique_a
@@ -91,9 +99,11 @@ func jouer_musique(chemin: String, boucle: bool = true) -> void:
 	if _tween:
 		_tween.kill()
 	_tween = create_tween()
+	var target_db := _linear_to_db_safe(_volume_musique)
+	print("AudioManager: crossfade vers %s dB (volume linéaire: %s)" % [target_db, _volume_musique])
 	_tween.set_parallel(true)
 	_tween.tween_property(_joueur_actif, "volume_db", SILENCE_DB, DUREE_CROSSFADE)
-	_tween.tween_property(nouveau_joueur, "volume_db", _linear_to_db_safe(_volume_musique), DUREE_CROSSFADE)
+	_tween.tween_property(nouveau_joueur, "volume_db", target_db, DUREE_CROSSFADE)
 	_tween.set_parallel(false)
 	_tween.tween_callback(func(): _joueur_actif.stop())
 

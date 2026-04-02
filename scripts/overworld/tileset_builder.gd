@@ -43,7 +43,27 @@ const TILE_TAPIS := 29
 const TILE_SOL_CARRELAGE := 30
 const TILE_MUR_MOTIF := 31
 
-# --- Tiles avec collision (murs, obstacles) ---
+# Ligne 4 : Chambre / Salon
+const TILE_LIT_TETE := 32
+const TILE_LIT_PIED := 33
+const TILE_TV := 34
+const TILE_PC := 35
+const TILE_PLANTE := 36
+const TILE_ESCALIER_UP := 37
+const TILE_ESCALIER_DOWN := 38
+const TILE_PAILLASSON := 39
+
+# Ligne 5 : Intérieur avancé
+const TILE_PORTE_INT := 40
+const TILE_FENETRE_INT := 41
+const TILE_SOL_BOIS_FONCE := 42
+const TILE_MUR_EXT_FENETRE := 43
+const TILE_TABLE := 44
+const TILE_CHAISE := 45
+const TILE_POSTER := 46
+const TILE_POUBELLE := 47
+
+# --- Tiles avec collision (murs, obstacles, mobilier) ---
 const TILES_COLLISION := [
 	TILE_EAU, TILE_ARBRE_HAUT, TILE_ARBRE_BAS,
 	TILE_ARBRE_HAUT_R, TILE_ARBRE_BAS_R,
@@ -51,7 +71,12 @@ const TILES_COLLISION := [
 	TILE_TOIT_G, TILE_TOIT_M, TILE_TOIT_D,
 	TILE_MUR_G, TILE_MUR_D, TILE_FENETRE,
 	TILE_MUR_INT, TILE_COMPTOIR, TILE_MACHINE_SOIN,
-	TILE_ETAGERE, TILE_MUR_MOTIF
+	TILE_ETAGERE, TILE_MUR_MOTIF,
+	# Mobilier intérieur (bloquant)
+	TILE_LIT_TETE, TILE_LIT_PIED, TILE_TV, TILE_PC,
+	TILE_PLANTE, TILE_FENETRE_INT, TILE_MUR_EXT_FENETRE,
+	TILE_TABLE, TILE_CHAISE, TILE_POSTER, TILE_POUBELLE
+	# Note : TILE_ESCALIER_UP/DOWN, TILE_PORTE_INT, TILE_PAILLASSON = traversables (warps)
 ]
 
 # --- Cache ---
