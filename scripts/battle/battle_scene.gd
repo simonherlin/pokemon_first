@@ -114,30 +114,59 @@ func recevoir_params(params: Dictionary) -> void:
 	_controller = BattleController
 	_connecter_signaux()
 
+	# Préparer le combat AVANT de démarrer la machine à états
 	if _type_combat == "sauvage":
 		var espece_id: String = params.get("espece_id", "019")
 		var niveau: int = params.get("niveau", 5)
-		_controller.demarrer_sauvage(pokemon_joueur, espece_id, niveau, pokemon_index)
+		# Préparer les données sans démarrer la machine à états
+		_controller.type_combat = BattleController.TypeCombat.SAUVAGE
+		_controller.pokemon_joueur = pokemon_joueur
+		_controller.index_pokemon_joueur = pokemon_index
+		_controller.pokemon_ennemi = SpeciesData.creer_sauvage(espece_id, niveau)
+		if _controller.pokemon_ennemi == null:
+			_controller.pokemon_ennemi = SpeciesData.creer_sauvage("001", niveau)
+		_controller.tour = 0
 	else:
 		# Afficher le sprite du dresseur pendant l'intro
 		_afficher_sprite_trainer()
-		_controller.demarrer_dresseur(pokemon_joueur, _dresseur_data, pokemon_index)
-	
-	# Charger les sprites des Pokémon
+		_controller.type_combat = BattleController.TypeCombat.DRESSEUR
+		_controller.dresseur_ennemi = _dresseur_data
+		_controller.index_pokemon_joueur = pokemon_index
+		_controller.equipe_ennemi = []
+		for p_data in _dresseur_data.get("equipe", []):
+			var p := SpeciesData.creer_pokemon(p_data.get("espece_id", "001"), p_data.get("niveau", 5))
+			if p:
+				_controller.equipe_ennemi.append(p)
+		_controller.index_pokemon_ennemi = 0
+		_controller.pokemon_du_joueur_ref = pokemon_joueur
+		if _controller.equipe_ennemi.is_empty():
+			var p_default := SpeciesData.creer_pokemon("001", 5)
+			if p_default:
+				_controller.equipe_ennemi.append(p_default)
+		_controller.pokemon_ennemi = _controller.equipe_ennemi[0]
+		_controller.pokemon_joueur = pokemon_joueur
+		_controller.tour = 0
+
+	# Charger les sprites et afficher les infos AVANT l'animation
 	_charger_sprites_pokemon()
-	
-	# Animation d'entrée : slide-in des sprites (awaitée pour éviter les race conditions)
+	_afficher_info_pokemon()
+
+	# Animation d'entrée : slide-in des sprites
 	await _animer_entree_combat()
-	
+
 	# Si combat dresseur, montrer la transition trainer → Pokémon après un délai
 	if _type_combat != "sauvage" and sprite_trainer_ennemi.visible:
 		await get_tree().create_timer(1.8).timeout
 		_transition_trainer_vers_pokemon()
 		_charger_sprites_pokemon()
-	
-	# Jouer le cri du Pokémon ennemi à l'entrée en combat
+
+	# Jouer le cri du Pokémon ennemi à l'entrée
 	if _controller.pokemon_ennemi:
 		_jouer_cri_pokemon(_controller.pokemon_ennemi.espece_id)
+
+	# MAINTENANT démarrer la machine à états (après que l'UI est prête)
+	PlayerData.enregistrer_vu(_controller.pokemon_ennemi.espece_id)
+	_controller._changer_etat(BattleController.Etat.INTRO)
 
 # Charger les textures front/back des Pokémon en combat
 func _charger_sprites_pokemon() -> void:
@@ -545,8 +574,7 @@ func _appliquer_soin_combat(item_id: String, item_data: Dictionary, index_cible:
 		if index_cible == _controller.index_pokemon_joueur and _controller.pokemon_joueur:
 			_controller.pokemon_joueur.pv_actuels = p_data["pv_actuels"]
 			_controller.pokemon_joueur.statut = p_data.get("statut", "")
-			emit_signal("pv_mis_a_jour", true, _controller.pokemon_joueur.pv_actuels, _controller.pokemon_joueur.pv_max) if _controller.pv_mis_a_jour else null
-			_controller.emit_signal("pv_mis_a_jour", true, _controller.pokemon_joueur.pv_actuels, _controller.pokemon_joueur.pv_max)
+			_on_pv_mis_a_jour(true, _controller.pokemon_joueur.pv_actuels, _controller.pokemon_joueur.pv_max)
 			_controller.emit_signal("statut_mis_a_jour", true, _controller.pokemon_joueur.statut)
 		label_message.text = "Tu utilises %s sur %s !" % [nom_item, surnom]
 		await get_tree().create_timer(1.0).timeout
@@ -572,13 +600,12 @@ func _ouvrir_switch_combat(forcer: bool) -> void:
 		PlayerData.equipe[_controller.index_pokemon_joueur] = _controller.pokemon_joueur.to_dict()
 		_controller.joueur_change_pokemon(index)
 		_charger_sprites_pokemon()
+		_afficher_info_pokemon()
 		if not forcer:
-			# Switch volontaire = l'ennemi attaque
+			# Switch volontaire = l'ennemi attaque ensuite via la machine à états
 			_controller.action_joueur = "change"
 			_controller.attaque_ennemi_index = AIController.choisir_attaque(_controller.pokemon_ennemi, _controller.pokemon_joueur)
-			await get_tree().create_timer(0.5).timeout
-			await _controller._pokemon_attaque(_controller.pokemon_ennemi, _controller.pokemon_joueur, _controller.attaque_ennemi_index, false)
-			_controller._changer_etat(BattleController.Etat.VERIF_KO)
+			_controller._changer_etat(BattleController.Etat.EXECUTION)
 	)
 	switch_screen.ecran_ferme.connect(func():
 		switch_screen.queue_free()

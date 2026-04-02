@@ -310,6 +310,15 @@ func _executer_tour() -> void:
 		_changer_etat(Etat.VERIF_KO)
 		return
 
+	# Switch volontaire : le joueur a déjà changé, l'ennemi attaque
+	if action_joueur == "change":
+		emit_signal("message_affiche", "Vas-y, %s !" % pokemon_joueur.surnom)
+		await get_tree().create_timer(0.8).timeout
+		if attaque_ennemi_index >= 0:
+			await _pokemon_attaque(pokemon_ennemi, pokemon_joueur, attaque_ennemi_index, false)
+		_changer_etat(Etat.VERIF_KO)
+		return
+
 	# Déterminer l'ordre (vitesse, Gen 1)
 	var joueur_en_premier := _priorite_joueur_en_premier()
 

@@ -264,8 +264,8 @@ func _intercepter_chen() -> void:
 
 	# Afficher le message d'avertissement du Prof. Chen via le DialogBox de la scène
 	var scene_root := get_tree().current_scene
-	if scene_root and scene_root.has_node("DialogBox"):
-		var dialog_box: Control = scene_root.get_node("DialogBox")
+	var dialog_box = scene_root.get("dialog_box") if scene_root else null
+	if dialog_box and dialog_box.has_method("afficher_dialogue"):
 		dialog_box.afficher_dialogue([
 			"PROF. CHEN : Hé ! Attends !",
 			"C'est dangereux de s'aventurer\ndans les hautes herbes sans POKÉMON !",

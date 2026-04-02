@@ -42,6 +42,15 @@ func _ready() -> void:
 	_instancier_arbres_coupables()
 	_instancier_rochers()
 	_instancier_objets_sol()
+	# Reparenter le DialogBox dans un CanvasLayer pour qu'il reste fixe à l'écran
+	# (sinon il scroll avec la caméra et devient invisible aux bords de carte)
+	if dialog_box:
+		var _ui_layer := CanvasLayer.new()
+		_ui_layer.name = "UILayer"
+		_ui_layer.layer = 90
+		remove_child(dialog_box)
+		_ui_layer.add_child(dialog_box)
+		add_child(_ui_layer)
 	# Grotte sombre : ajouter l'overlay de ténèbres
 	_initialiser_obscurite()
 	# Cycle jour/nuit : tinter les cartes extérieures
@@ -168,13 +177,11 @@ func interagir(joueur: Node) -> void:
 	PlayerData.marquer_objet_ramasse(obj_id)
 	var item_data: Dictionary = ItemsData.get_item(item_id)
 	var nom: String = item_data.get("nom", item_id)
-	# Trouver le DialogBox pour afficher le message
-	var parent = get_parent()
-	while parent != null:
-		if parent.has_node("DialogBox"):
-			parent.get_node("DialogBox").afficher_dialogue(["Tu as trouvé %s !" % nom])
-			break
-		parent = parent.get_parent()
+	# Afficher le message via le dialog_box de la scène
+	var scene_root = get_tree().current_scene
+	var db = scene_root.get("dialog_box") if scene_root else null
+	if db and db.has_method("afficher_dialogue"):
+		db.afficher_dialogue(["Tu as trouvé %s !" % nom])
 	AudioManager.jouer_sfx("res://assets/audio/sfx/item_get.ogg")
 	queue_free()
 """
