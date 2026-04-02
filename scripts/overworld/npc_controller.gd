@@ -22,6 +22,7 @@ var trainer_id: String = ""          # Référence vers trainers.json (si prése
 var _trainer_nom: String = ""        # Nom du dresseur chargé depuis trainers.json
 var _trainer_classe: String = ""     # Classe du dresseur (pour choisir la musique de combat)
 var dialogue_conditions: Array = []  # Dialogues conditionnels [{flag, valeur, dialogue}]
+var _sprite_id: String = "pnj_homme"  # ID du sprite à charger (différé à _ready)
 
 # --- Nœuds ---
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -40,6 +41,8 @@ signal casino_prix_demandee()
 
 func _ready() -> void:
 	battu = PlayerData.dresseur_est_battu(npc_id)
+	# Charger le sprite ici car @onready est maintenant résolu
+	_charger_sprite(_sprite_id)
 	_appliquer_direction(direction_initiale)
 
 func _process(_delta: float) -> void:
@@ -61,8 +64,8 @@ func initialiser_depuis_json(data: Dictionary) -> void:
 	trainer_id = data.get("trainer_id", "")
 	dialogue_conditions = data.get("dialogue_conditions", [])
 	battu = PlayerData.dresseur_est_battu(npc_id)
-	# Charger le sprite du PNJ
-	_charger_sprite(data.get("sprite", "pnj_homme"))
+	# Stocker l'ID du sprite (sera chargé dans _ready quand le nœud est dans l'arbre)
+	_sprite_id = data.get("sprite", "pnj_homme")
 	# Si trainer_id est défini, charger l'équipe depuis trainers.json
 	if not trainer_id.is_empty() and not est_dresseur:
 		_charger_trainer_data()

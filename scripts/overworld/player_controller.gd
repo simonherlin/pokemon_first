@@ -81,12 +81,18 @@ func _lire_input() -> void:
 		return
 
 	if dir == Vector2i.ZERO:
-		_mettre_a_jour_animation(_vec_vers_direction(direction_actuelle), false)
+		# Ne relancer l'animation idle que si on ne la joue pas déjà
+		var anim_idle := _vec_vers_direction(direction_actuelle) + "_idle"
+		if sprite and sprite.sprite_frames and sprite.animation != anim_idle:
+			_mettre_a_jour_animation(_vec_vers_direction(direction_actuelle), false)
 		return
 
-	# Tourner si direction différente
-	direction_actuelle = dir
-	_mettre_a_jour_animation(_vec_vers_direction(dir), false)
+	# Tourner d'abord si direction différente (comportement Pokémon original)
+	if dir != direction_actuelle:
+		direction_actuelle = dir
+		_mettre_a_jour_animation(_vec_vers_direction(dir), false)
+		# Ne pas marcher au premier frame — juste tourner
+		return
 
 	# Vérifier si la case cible est accessible
 	var cible_grille := position_grille + dir

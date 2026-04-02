@@ -128,8 +128,8 @@ func recevoir_params(params: Dictionary) -> void:
 	# Charger les sprites des Pokémon
 	_charger_sprites_pokemon()
 	
-	# Animation d'entrée : slide-in des sprites
-	_animer_entree_combat()
+	# Animation d'entrée : slide-in des sprites (awaitée pour éviter les race conditions)
+	await _animer_entree_combat()
 	
 	# Si combat dresseur, montrer la transition trainer → Pokémon après un délai
 	if _type_combat != "sauvage" and sprite_trainer_ennemi.visible:
@@ -145,14 +145,17 @@ func recevoir_params(params: Dictionary) -> void:
 func _charger_sprites_pokemon() -> void:
 	if not _controller:
 		return
-	# Sprite du joueur (dos)
+	# Sprite du joueur (dos) — sprites 96×96 depuis PokeAPI Gen V
 	if _controller.pokemon_joueur:
 		var back_path := "res://assets/sprites/pokemon/back/%s.png" % _controller.pokemon_joueur.espece_id
 		var back_tex := load(back_path) as Texture2D
 		if back_tex:
 			sprite_joueur.texture = back_tex
-			# Adapter l'échelle pour que ce soit visible (64×96 → agrandi ×2)
-			sprite_joueur.scale = Vector2(2.0, 2.0)
+			sprite_joueur.scale = Vector2(1.8, 1.8)
+			# Réinitialiser position, visibilité et alpha (après KO ou transition)
+			sprite_joueur.position = _pos_joueur_base
+			sprite_joueur.modulate = Color.WHITE
+			sprite_joueur.visible = true
 	# Sprite de l'ennemi (face)
 	if _controller.pokemon_ennemi:
 		var front_path := "res://assets/sprites/pokemon/front/%s.png" % _controller.pokemon_ennemi.espece_id
@@ -160,6 +163,10 @@ func _charger_sprites_pokemon() -> void:
 		if front_tex:
 			sprite_ennemi.texture = front_tex
 			sprite_ennemi.scale = Vector2(1.5, 1.5)
+			# Réinitialiser position, visibilité et alpha (après KO ou transition)
+			sprite_ennemi.position = _pos_ennemi_base
+			sprite_ennemi.modulate = Color.WHITE
+			sprite_ennemi.visible = true
 
 func _connecter_signaux() -> void:
 	if not _controller:
@@ -768,21 +775,24 @@ func _animer_entree_combat() -> void:
 	# Positionner le sprite joueur hors écran à gauche
 	sprite_joueur.position = Vector2(_pos_joueur_base.x - 300, _pos_joueur_base.y)
 	sprite_joueur.modulate.a = 0.0
+	sprite_joueur.visible = true
 	# Positionner le sprite ennemi hors écran à droite
 	sprite_ennemi.position = Vector2(_pos_ennemi_base.x + 300, _pos_ennemi_base.y)
 	sprite_ennemi.modulate.a = 0.0
+	sprite_ennemi.visible = true
 	# Animer le slide-in du joueur
 	var tween_joueur := create_tween().set_parallel(true)
 	tween_joueur.tween_property(sprite_joueur, "position", _pos_joueur_base, 0.6)\
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween_joueur.tween_property(sprite_joueur, "modulate:a", 1.0, 0.4)
 	# Animer le slide-in de l'ennemi avec un léger décalage
-	var tween_ennemi := create_tween().set_parallel(true)
-	tween_ennemi.set_speed_scale(1.0)
 	await get_tree().create_timer(0.15).timeout
+	var tween_ennemi := create_tween().set_parallel(true)
 	tween_ennemi.tween_property(sprite_ennemi, "position", _pos_ennemi_base, 0.6)\
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween_ennemi.tween_property(sprite_ennemi, "modulate:a", 1.0, 0.4)
+	# Attendre que les deux animations soient terminées
+	await tween_ennemi.finished
 
 # Callback quand une attaque est jouée — animer l'attaquant et le défenseur
 func _on_animation_attaque(attaquant_joueur: bool, attaque_id: String) -> void:
@@ -849,12 +859,18 @@ func _animer_ko(sprite: Sprite2D) -> void:
 func _animer_apparition(sprite: Sprite2D) -> void:
 	if not sprite or not is_instance_valid(sprite):
 		return
+	# Réinitialiser la position (après un KO qui déplace le sprite vers le bas)
+	if sprite == sprite_joueur:
+		sprite.position = _pos_joueur_base
+	else:
+		sprite.position = _pos_ennemi_base
 	# Commencer petit et transparent
 	sprite.scale = Vector2(0.1, 0.1)
-	sprite.modulate.a = 0.0
+	sprite.modulate = Color(1, 1, 1, 0)
+	sprite.visible = true
 	var scale_finale: Vector2
 	if sprite == sprite_joueur:
-		scale_finale = Vector2(2.0, 2.0)
+		scale_finale = Vector2(1.8, 1.8)
 	else:
 		scale_finale = Vector2(1.5, 1.5)
 	var tween := create_tween().set_parallel(true)
