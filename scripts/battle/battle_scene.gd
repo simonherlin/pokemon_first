@@ -111,10 +111,18 @@ func recevoir_params(params: Dictionary) -> void:
 		SceneManager.charger_scene("res://scenes/maps/%s.tscn" % _carte_retour, {})
 		return
 	var pokemon_joueur := Pokemon.from_dict(PlayerData.equipe[pokemon_index])
+	if pokemon_joueur == null:
+		push_error("[BattleScene] Impossible de créer le Pokémon joueur depuis l'équipe — retour à la carte")
+		await get_tree().create_timer(0.5).timeout
+		SceneManager.charger_scene("res://scenes/maps/%s.tscn" % _carte_retour, {})
+		return
 	print("[BattleScene] Pokemon joueur: %s N.%d PV=%d/%d, %d attaques" % [pokemon_joueur.surnom, pokemon_joueur.niveau, pokemon_joueur.pv_actuels, pokemon_joueur.pv_max, pokemon_joueur.attaques.size()])
 
 	# Initialiser le BattleController
 	_controller = BattleController
+	# Réinitialiser l'état de la machine à états (sécurité entre combats)
+	_controller._traitement_etat_en_cours = false
+	_controller._etat_en_attente = -1
 	_connecter_signaux()
 
 	# Préparer le combat AVANT de démarrer la machine à états
@@ -160,10 +168,13 @@ func recevoir_params(params: Dictionary) -> void:
 	_afficher_info_pokemon()
 
 	# Animation d'entrée : slide-in des sprites
+	print("[BattleScene] Début animation entrée combat...")
 	await _animer_entree_combat()
+	print("[BattleScene] Animation entrée terminée")
 
 	# Si combat dresseur, montrer la transition trainer → Pokémon après un délai
 	if _type_combat != "sauvage" and sprite_trainer_ennemi.visible:
+		print("[BattleScene] Transition trainer → pokémon (1.8s)")
 		await get_tree().create_timer(1.8).timeout
 		_transition_trainer_vers_pokemon()
 		_charger_sprites_pokemon()
@@ -173,7 +184,7 @@ func recevoir_params(params: Dictionary) -> void:
 		_jouer_cri_pokemon(_controller.pokemon_ennemi.espece_id)
 
 	# MAINTENANT démarrer la machine à états (après que l'UI est prête)
-	print("[BattleScene] Démarrage combat: %s (N.%d) vs %s (N.%d)" % [pokemon_joueur.surnom, pokemon_joueur.niveau, _controller.pokemon_ennemi.surnom, _controller.pokemon_ennemi.niveau])
+	print("[BattleScene] Démarrage machine à états → INTRO")
 	PlayerData.enregistrer_vu(_controller.pokemon_ennemi.espece_id)
 	_controller._changer_etat(BattleController.Etat.INTRO)
 
@@ -444,6 +455,14 @@ func _gerer_input_action() -> void:
 		_executer_action(_actions[_index_action])
 
 func _gerer_input_attaque() -> void:
+	# Sécurité : si aucune attaque, revenir au menu action
+	if _nb_attaques <= 0:
+		if Input.is_action_just_pressed("action_confirmer") or Input.is_action_just_pressed("action_annuler"):
+			AudioManager.jouer_sfx(SFX_CANCEL)
+			_menu_actif = ""
+			menu_attaque.visible = false
+			_on_action_requise()
+		return
 	if Input.is_action_just_pressed("action_haut"):
 		_index_attaque = (_index_attaque - 1 + _nb_attaques) % _nb_attaques
 		AudioManager.jouer_sfx(SFX_CURSOR)
@@ -453,6 +472,13 @@ func _gerer_input_attaque() -> void:
 		AudioManager.jouer_sfx(SFX_CURSOR)
 		_maj_curseur_attaque()
 	elif Input.is_action_just_pressed("action_confirmer"):
+		# Vérifier qu'il y a des attaques disponibles avant de confirmer
+		if _nb_attaques <= 0 or _index_attaque >= _nb_attaques:
+			AudioManager.jouer_sfx(SFX_CANCEL)
+			_menu_actif = ""
+			menu_attaque.visible = false
+			_on_action_requise()
+			return
 		AudioManager.jouer_sfx(SFX_CONFIRM)
 		_menu_actif = ""
 		menu_attaque.visible = false

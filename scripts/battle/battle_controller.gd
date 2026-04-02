@@ -148,44 +148,72 @@ func demarrer_dresseur(pokemon_du_joueur: Pokemon, donnees_dresseur: Dictionary,
 var pokemon_du_joueur_ref: Pokemon = null
 
 # ----------------------------------------------------------------
-# Machine à états
+# Machine à états — Pattern fire-and-forget (pas d'await dans _changer_etat)
+# Chaque handler async appelle _changer_etat(prochain) à la fin de son flux.
+# Un watchdog timer assure la récupération si un handler plante.
 # ----------------------------------------------------------------
+# Conservés pour compatibilité avec battle_scene.gd qui les réinitialise
 var _traitement_etat_en_cours: bool = false
+var _etat_en_attente: int = -1
 
-func _changer_etat(nouvel_etat: Etat) -> void:
-	# Garde anti-réentrance : si un état est déjà en traitement, on diffère
-	if _traitement_etat_en_cours:
-		print("[BattleController] État en cours, report de %s" % Etat.keys()[nouvel_etat])
-		call_deferred("_changer_etat", nouvel_etat)
-		return
-	_traitement_etat_en_cours = true
-	etat_actuel = nouvel_etat
-	print("[BattleController] >>> État: %s" % Etat.keys()[nouvel_etat])
+var _watchdog_timer: Timer = null
+const WATCHDOG_TIMEOUT := 30.0  # secondes sans transition → récupération
+
+func _ready() -> void:
+	_watchdog_timer = Timer.new()
+	_watchdog_timer.one_shot = true
+	_watchdog_timer.wait_time = WATCHDOG_TIMEOUT
+	_watchdog_timer.timeout.connect(_on_watchdog_timeout)
+	add_child(_watchdog_timer)
+
+func _on_watchdog_timeout() -> void:
+	push_warning("[BattleController] WATCHDOG: aucune transition depuis %ds — récupération forcée vers CHOIX_ACTION" % int(WATCHDOG_TIMEOUT))
+	# Réinitialiser les gardes au cas où
+	_traitement_etat_en_cours = false
+	_etat_en_attente = -1
+	# Forcer le retour au choix d'action si le combat est toujours en cours
+	if pokemon_joueur and not pokemon_joueur.est_ko() and pokemon_ennemi and not pokemon_ennemi.est_ko():
+		etat_actuel = Etat.CHOIX_ACTION
+		emit_signal("action_requise")
+	else:
+		emit_signal("combat_termine", false)
+
+func _changer_etat(nouvel_etat) -> void:
+	etat_actuel = int(nouvel_etat)
+	print("[BattleController] >>> État: %s" % Etat.keys()[etat_actuel])
+	# Redémarrer le watchdog à chaque transition
+	if _watchdog_timer:
+		_watchdog_timer.stop()
+		if etat_actuel != Etat.FIN:
+			_watchdog_timer.start(WATCHDOG_TIMEOUT)
+	# Les handlers async (fire-and-forget) appellent _changer_etat(prochain) quand ils ont fini
 	match etat_actuel:
 		Etat.INTRO:
-			await _phase_intro()
+			_phase_intro()
 		Etat.CHOIX_ACTION:
 			emit_signal("action_requise")
 		Etat.CHOIX_ATTAQUE:
 			emit_signal("attaque_requise")
 		Etat.EXECUTION:
-			await _executer_tour()
+			_executer_tour()
 		Etat.VERIF_KO:
-			await _verifier_ko()
+			_verifier_ko()
 		Etat.FIN_TOUR:
-			await _fin_tour()
+			_fin_tour()
+		Etat.CAPTURE:
+			pass
 		Etat.FIN:
 			pass
-	_traitement_etat_en_cours = false
 
 # ----------------------------------------------------------------
 # Phase INTRO
 # ----------------------------------------------------------------
 func _phase_intro() -> void:
-	if pokemon_ennemi == null:
-		push_error("BattleController: pokemon_ennemi est null dans _phase_intro")
+	if pokemon_ennemi == null or pokemon_joueur == null:
+		push_error("[BattleController] INTRO: pokemon null (ennemi=%s, joueur=%s)" % [pokemon_ennemi != null, pokemon_joueur != null])
 		emit_signal("combat_termine", false)
 		return
+	print("[BattleController] INTRO: %s (N.%d) vs %s (N.%d)" % [pokemon_joueur.surnom, pokemon_joueur.niveau, pokemon_ennemi.surnom, pokemon_ennemi.niveau])
 	PlayerData.enregistrer_vu(pokemon_ennemi.espece_id)
 	if type_combat == TypeCombat.SAUVAGE:
 		var msg := "Un %s sauvage apparaît !" % pokemon_ennemi.surnom
@@ -196,6 +224,7 @@ func _phase_intro() -> void:
 	emit_signal("pv_mis_a_jour", false, pokemon_ennemi.pv_actuels, pokemon_ennemi.pv_max)
 	emit_signal("pv_mis_a_jour", true, pokemon_joueur.pv_actuels, pokemon_joueur.pv_max)
 	await get_tree().create_timer(1.5).timeout
+	print("[BattleController] INTRO terminé → CHOIX_ACTION")
 	_changer_etat(Etat.CHOIX_ACTION)
 
 # ----------------------------------------------------------------
@@ -590,8 +619,14 @@ func _distribuer_exp() -> void:
 				_move_en_attente = move_id
 				emit_signal("attaque_a_apprendre", pokemon_joueur, move_id)
 				# Attendre que l'UI réponde via confirmer_apprentissage()
+				var _timeout_apprentissage: int = 0
 				while _attente_apprentissage:
 					await get_tree().create_timer(0.1).timeout
+					_timeout_apprentissage += 1
+					if _timeout_apprentissage > 300:  # 30 secondes max
+						push_warning("[BattleController] Timeout apprentissage attaque — abandon automatique")
+						_attente_apprentissage = false
+						_move_en_attente = ""
 		# Vérifier évolution
 		var vers := SpeciesData.peut_evoluer_niveau(pokemon_joueur.espece_id, niv)
 		if not vers.is_empty():
