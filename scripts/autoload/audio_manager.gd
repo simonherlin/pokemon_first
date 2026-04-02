@@ -95,17 +95,19 @@ func jouer_musique(chemin: String, boucle: bool = true) -> void:
 
 	nouveau_joueur.play()
 
-	# Crossfade
+	# Crossfade — IMPORTANT : capturer l'ancien joueur dans une variable locale
+	# pour que le callback arrête le BON lecteur (pas le nouveau)
+	var ancien_joueur := _joueur_actif
 	if _tween:
 		_tween.kill()
 	_tween = create_tween()
 	var target_db := _linear_to_db_safe(_volume_musique)
-	print("AudioManager: crossfade vers %s dB (volume linéaire: %s)" % [target_db, _volume_musique])
+	print("AudioManager: crossfade ancien→silence, nouveau→%s dB (volume linéaire: %s)" % [target_db, _volume_musique])
 	_tween.set_parallel(true)
-	_tween.tween_property(_joueur_actif, "volume_db", SILENCE_DB, DUREE_CROSSFADE)
+	_tween.tween_property(ancien_joueur, "volume_db", SILENCE_DB, DUREE_CROSSFADE)
 	_tween.tween_property(nouveau_joueur, "volume_db", target_db, DUREE_CROSSFADE)
 	_tween.set_parallel(false)
-	_tween.tween_callback(func(): _joueur_actif.stop())
+	_tween.tween_callback(func(): ancien_joueur.stop())
 
 	_joueur_actif = nouveau_joueur
 
