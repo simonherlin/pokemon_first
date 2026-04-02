@@ -104,6 +104,11 @@ func recevoir_params(params: Dictionary) -> void:
 	var pokemon_index: int = params.get("pokemon_joueur_index", 0)
 	if PlayerData.equipe.is_empty():
 		push_error("BattleScene: équipe du joueur vide !")
+		# Retourner à la carte au lieu de rester bloqué
+		await get_tree().create_timer(0.5).timeout
+		SceneManager.charger_scene("res://scenes/maps/map_scene.tscn", {
+			"carte_id": _carte_retour
+		})
 		return
 	var pokemon_joueur := Pokemon.from_dict(PlayerData.equipe[pokemon_index])
 
@@ -159,6 +164,8 @@ func _charger_sprites_pokemon() -> void:
 func _connecter_signaux() -> void:
 	if not _controller:
 		return
+	# Déconnecter les anciens signaux s'ils existent (sécurité singleton)
+	_deconnecter_signaux()
 	_controller.message_affiche.connect(_on_message)
 	_controller.action_requise.connect(_on_action_requise)
 	_controller.attaque_requise.connect(_on_attaque_requise)
@@ -171,6 +178,33 @@ func _connecter_signaux() -> void:
 	_controller.animation_attaque.connect(_on_animation_attaque)
 	_controller.exp_gagnee.connect(_on_exp_gagnee)
 	_controller.animation_capture.connect(_on_animation_capture)
+
+
+func _deconnecter_signaux() -> void:
+	if not _controller:
+		return
+	var signaux := [
+		[_controller.message_affiche, _on_message],
+		[_controller.action_requise, _on_action_requise],
+		[_controller.attaque_requise, _on_attaque_requise],
+		[_controller.pv_mis_a_jour, _on_pv_mis_a_jour],
+		[_controller.statut_mis_a_jour, _on_statut_mis_a_jour],
+		[_controller.combat_termine, _on_combat_termine],
+		[_controller.evolution_proposee, _on_evolution_proposee],
+		[_controller.attaque_a_apprendre, _on_attaque_a_apprendre],
+		[_controller.pokemon_change, _on_pokemon_change],
+		[_controller.animation_attaque, _on_animation_attaque],
+		[_controller.exp_gagnee, _on_exp_gagnee],
+		[_controller.animation_capture, _on_animation_capture],
+	]
+	for s in signaux:
+		if s[0].is_connected(s[1]):
+			s[0].disconnect(s[1])
+
+
+func _exit_tree() -> void:
+	# Nettoyage des signaux quand la scène est détruite
+	_deconnecter_signaux()
 
 func _on_message(texte: String) -> void:
 	label_message.text = texte
@@ -262,25 +296,7 @@ func _on_pokemon_change(joueur: bool) -> void:
 			_jouer_cri_pokemon(_controller.pokemon_ennemi.espece_id)
 
 func _on_combat_termine(victoire: bool) -> void:
-	if _controller:
-		_controller.message_affiche.disconnect(_on_message)
-		_controller.action_requise.disconnect(_on_action_requise)
-		_controller.attaque_requise.disconnect(_on_attaque_requise)
-		_controller.pv_mis_a_jour.disconnect(_on_pv_mis_a_jour)
-		_controller.statut_mis_a_jour.disconnect(_on_statut_mis_a_jour)
-		_controller.combat_termine.disconnect(_on_combat_termine)
-		if _controller.evolution_proposee.is_connected(_on_evolution_proposee):
-			_controller.evolution_proposee.disconnect(_on_evolution_proposee)
-		if _controller.attaque_a_apprendre.is_connected(_on_attaque_a_apprendre):
-			_controller.attaque_a_apprendre.disconnect(_on_attaque_a_apprendre)
-		if _controller.pokemon_change.is_connected(_on_pokemon_change):
-			_controller.pokemon_change.disconnect(_on_pokemon_change)
-		if _controller.animation_attaque.is_connected(_on_animation_attaque):
-			_controller.animation_attaque.disconnect(_on_animation_attaque)
-		if _controller.exp_gagnee.is_connected(_on_exp_gagnee):
-			_controller.exp_gagnee.disconnect(_on_exp_gagnee)
-		if _controller.animation_capture.is_connected(_on_animation_capture):
-			_controller.animation_capture.disconnect(_on_animation_capture)
+	_deconnecter_signaux()
 	
 	# Jouer la musique de victoire ou arrêter la musique de combat
 	if victoire:

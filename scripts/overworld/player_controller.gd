@@ -199,6 +199,10 @@ func _verifier_warp() -> bool:
 		var vers: String = connexion.get("vers", "")
 		var decalage: int = connexion.get("decalage", 0)
 		if dir == "nord" and position_grille.y < 0:
+			# --- Interception Prof. Chen à Bourg Palette ---
+			if PlayerData.carte_actuelle == "bourg_palette" and not GameManager.get_flag("premier_pokemon_recu"):
+				_intercepter_chen()
+				return true
 			var vers_data := MapLoader.get_carte(vers)
 			var vers_h: int = vers_data.get("hauteur", 18) if not vers_data.is_empty() else 18
 			_changer_carte(vers, position_grille.x + decalage, vers_h - 1)
@@ -235,6 +239,42 @@ func _changer_carte(vers_carte: String, x: int, y: int) -> void:
 	PlayerData.sauvegarder_position(vers_carte, x, y, _vec_vers_direction(direction_actuelle))
 	SceneManager.charger_scene("res://scenes/maps/%s.tscn" % vers_carte, {
 		"carte_id": vers_carte
+	})
+
+
+## Interception du Prof. Chen quand le joueur essaie de quitter Bourg Palette
+## sans avoir de Pokémon. Le professeur le ramène au laboratoire.
+func _intercepter_chen() -> void:
+	peut_bouger = false
+	# Faire reculer le joueur d'un pas (il était en train de sortir)
+	position_grille.y = 0
+	position = Vector2(position_grille) * TAILLE_TILE
+	cible_monde = position
+	en_deplacement = false
+	direction_actuelle = Vector2i(0, -1)
+	_mettre_a_jour_animation("haut", false)
+
+	await get_tree().create_timer(0.3).timeout
+
+	# Afficher le message d'avertissement du Prof. Chen via le DialogBox de la scène
+	var scene_root := get_tree().current_scene
+	if scene_root and scene_root.has_node("DialogBox"):
+		var dialog_box: Control = scene_root.get_node("DialogBox")
+		dialog_box.afficher_dialogue([
+			"PROF. CHEN : Hé ! Attends !",
+			"C'est dangereux de s'aventurer\ndans les hautes herbes sans POKÉMON !",
+			"Suis-moi à mon laboratoire !"
+		])
+		await dialog_box.dialogue_termine
+	else:
+		# Fallback : simple timer si pas de DialogBox
+		await get_tree().create_timer(2.0).timeout
+
+	# Rediriger vers le laboratoire du Prof. Chen
+	PlayerData.sauvegarder_position("laboratoire_chen", 5, 8, "haut")
+	SceneManager.charger_scene("res://scenes/maps/laboratoire_chen.tscn", {
+		"carte_id": "laboratoire_chen",
+		"intercepte_par_chen": true
 	})
 
 ## Retourne le flag requis pour débloquer le warp de sortie de la salle E4
