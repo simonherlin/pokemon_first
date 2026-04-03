@@ -157,7 +157,7 @@ var _traitement_etat_en_cours: bool = false
 var _etat_en_attente: int = -1
 
 var _watchdog_timer: Timer = null
-const WATCHDOG_TIMEOUT := 30.0  # secondes sans transition → récupération
+const WATCHDOG_TIMEOUT := 10.0  # secondes sans transition → récupération
 
 func _ready() -> void:
 	_watchdog_timer = Timer.new()
@@ -206,7 +206,8 @@ func _changer_etat(nouvel_etat) -> void:
 			pass
 
 # ----------------------------------------------------------------
-# Phase INTRO
+# Phase INTRO — synchrone, pas d'await
+# L'avancement est géré par battle_scene._process() (input ou timeout)
 # ----------------------------------------------------------------
 func _phase_intro() -> void:
 	if pokemon_ennemi == null or pokemon_joueur == null:
@@ -223,7 +224,13 @@ func _phase_intro() -> void:
 		emit_signal("message_affiche", "%s veut se battre !" % nom_dresseur)
 	emit_signal("pv_mis_a_jour", false, pokemon_ennemi.pv_actuels, pokemon_ennemi.pv_max)
 	emit_signal("pv_mis_a_jour", true, pokemon_joueur.pv_actuels, pokemon_joueur.pv_max)
-	await get_tree().create_timer(1.5).timeout
+	# Pas d'await — battle_scene gère l'avancement via _process()
+	print("[BattleController] INTRO affiché — en attente input ou timeout")
+
+# Appelé par battle_scene quand le joueur appuie sur confirmer ou après le timeout
+func avancer_intro() -> void:
+	if etat_actuel != Etat.INTRO:
+		return
 	print("[BattleController] INTRO terminé → CHOIX_ACTION")
 	_changer_etat(Etat.CHOIX_ACTION)
 

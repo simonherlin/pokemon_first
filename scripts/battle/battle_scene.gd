@@ -54,6 +54,15 @@ var _nb_attaques: int = 0
 var _menu_actif: String = ""
 var _actions := ["attaque", "sac", "pokemon", "fuite"]
 
+# --- Timer intro (remplacement du await dans _phase_intro) ---
+var _intro_timer: float = 0.0
+var _intro_en_cours: bool = false
+const INTRO_AUTO_AVANCE := 3.0  # secondes avant auto-avancement
+
+# --- Timer de sécurité : récupération si recevoir_params meurt ---
+var _scene_timer: float = 0.0
+var _combat_demarre: bool = false
+
 # --- Positions de base des sprites (pour animations) ---
 var _pos_joueur_base: Vector2 = Vector2.ZERO
 var _pos_ennemi_base: Vector2 = Vector2.ZERO
@@ -166,6 +175,9 @@ func recevoir_params(params: Dictionary) -> void:
 	# Charger les sprites et afficher les infos AVANT l'animation
 	_charger_sprites_pokemon()
 	_afficher_info_pokemon()
+	# Si combat dresseur avec sprite trainer, cacher le sprite Pokémon ennemi pendant l'intro
+	if _type_combat != "sauvage" and sprite_trainer_ennemi.visible:
+		sprite_ennemi.visible = false
 
 	# Animation d'entrée : slide-in des sprites
 	print("[BattleScene] Début animation entrée combat...")
@@ -187,6 +199,11 @@ func recevoir_params(params: Dictionary) -> void:
 	print("[BattleScene] Démarrage machine à états → INTRO")
 	PlayerData.enregistrer_vu(_controller.pokemon_ennemi.espece_id)
 	_controller._changer_etat(BattleController.Etat.INTRO)
+	# Activer le timer d'intro — _process() gère l'avancement
+	_intro_en_cours = true
+	_intro_timer = 0.0
+	# Ne PAS mettre _combat_demarre ici — on le fait dans _process() quand l'intro avance
+	print("[BattleScene] Intro activée — en attente input (max %.1fs)" % INTRO_AUTO_AVANCE)
 
 # Charger les textures front/back des Pokémon en combat
 func _charger_sprites_pokemon() -> void:
@@ -432,7 +449,31 @@ func _afficher_info_pokemon() -> void:
 		barre_pv_ennemi.value = pe.pv_actuels
 		_maj_indicateur_capture(pe)
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	# Timer de sécurité : si après 8 secondes le combat n'a pas démarré correctement
+	if not _combat_demarre:
+		_scene_timer += delta
+		if _scene_timer >= 8.0 and _controller:
+			print("[BattleScene] SÉCURITÉ: combat pas démarré après 8s — forçage CHOIX_ACTION")
+			_combat_demarre = true
+			_intro_en_cours = false
+			if _controller.pokemon_joueur and _controller.pokemon_ennemi:
+				_controller._changer_etat(BattleController.Etat.CHOIX_ACTION)
+			else:
+				push_error("[BattleScene] SÉCURITÉ: pokemon null — retour à la carte")
+				SceneManager.charger_scene("res://scenes/maps/%s.tscn" % _carte_retour, {})
+			return
+	# Gérer l'avancement de l'intro (remplace le await timer dans le controller)
+	if _intro_en_cours:
+		_intro_timer += delta
+		if Input.is_action_just_pressed("action_confirmer") or _intro_timer >= INTRO_AUTO_AVANCE:
+			print("[BattleScene] Intro avancée (timer=%.1fs, input=%s)" % [_intro_timer, Input.is_action_just_pressed("action_confirmer")])
+			_intro_en_cours = false
+			_intro_timer = 0.0
+			_combat_demarre = true
+			if _controller:
+				_controller.avancer_intro()
+		return
 	match _menu_actif:
 		"action":
 			_gerer_input_action()
