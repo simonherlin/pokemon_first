@@ -81,14 +81,14 @@ func _creer_ui() -> void:
 	# --- Étoiles décoratives ---
 	_creer_etoiles()
 
-	# --- Portrait du Prof. Chen (sprite dresseur) ---
+	# --- Portrait du Prof. Chen (sprite dresseur HD Scale3x) ---
 	_sprite_chen = Sprite2D.new()
-	var chen_tex := load("res://assets/sprites/trainers/professor_oak.png") as Texture2D
+	var chen_tex := load("res://assets/sprites/trainers/professor_oak_hd.png") as Texture2D
 	if chen_tex:
 		_sprite_chen.texture = chen_tex
 		_sprite_chen.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	_sprite_chen.position = Vector2(240, 100)
-	_sprite_chen.scale = Vector2(3.0, 3.0)
+	_sprite_chen.scale = Vector2(1.0, 1.0)
 	add_child(_sprite_chen)
 
 	# --- Sprite Pokémon (Nidorino — apparaît pendant le dialogue) ---
