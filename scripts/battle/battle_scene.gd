@@ -746,7 +746,10 @@ func _maj_curseur_action() -> void:
 			labels[i].text = ("▶ " if i == _index_action else "  ") + noms[i]
 
 func _maj_menu_attaque() -> void:
-	var labels := menu_attaque.get_children()
+	var labels: Array[Node] = []
+	for child in menu_attaque.get_children():
+		if child is Label:
+			labels.append(child)
 	var attaques: Array = _controller.pokemon_joueur.attaques
 	for i in range(labels.size()):
 		if i < attaques.size():
@@ -761,7 +764,10 @@ func _maj_menu_attaque() -> void:
 			labels[i].visible = false
 
 func _maj_curseur_attaque() -> void:
-	var labels := menu_attaque.get_children()
+	var labels: Array[Node] = []
+	for child in menu_attaque.get_children():
+		if child is Label:
+			labels.append(child)
 	var attaques: Array = _controller.pokemon_joueur.attaques
 	for i in range(labels.size()):
 		if i < attaques.size():

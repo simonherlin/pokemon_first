@@ -73,9 +73,17 @@ func _charger_scene_apres_fondu() -> void:
 		_en_transition = false
 		return
 	emit_signal("scene_chargee", _scene_en_attente)
-	# Attendre un frame pour que la scène soit initialisée
-	await get_tree().process_frame
-	print("[SceneManager] process_frame OK — appliquer params")
+	# Attendre que current_scene soit valide (change_scene_to_file est différé)
+	for i in range(30):  # max 30 frames (~0.5s)
+		await get_tree().process_frame
+		if get_tree().current_scene != null:
+			break
+	var racine = get_tree().current_scene
+	if racine == null:
+		push_error("[SceneManager] current_scene toujours null après 30 frames")
+		_fondu_vers(0.0, _fin_transition)
+		return
+	print("[SceneManager] Scène prête: %s" % racine.name)
 	_appliquer_params(_params_en_attente)
 	_fondu_vers(0.0, _fin_transition)
 
