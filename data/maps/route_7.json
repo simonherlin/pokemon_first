@@ -46,14 +46,14 @@
       "y1": 3,
       "x2": 10,
       "y2": 7,
-      "table": "route_5"
+      "table": "route_7"
     },
     {
       "x1": 12,
       "y1": 8,
       "x2": 17,
       "y2": 12,
-      "table": "route_5"
+      "table": "route_7"
     }
   ],
   "arbres_coupables": [
@@ -74,7 +74,8 @@
         "La Grotte Taupiqueur est à l'ouest.",
         "Elle est pleine de Taupiqueur et Triopikeur !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     }
   ],
   "objets_sol": [

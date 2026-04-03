@@ -54,9 +54,10 @@
         "Hé ! Tu es dresseur ?",
         "Alors battons-nous !"
       ],
-      "mobile": false,
+      "mobile": true,
       "type": "dresseur",
-      "dresseur_id": "gamin_route2_01"
+      "dresseur_id": "gamin_route2_01",
+      "rayon_deplacement": 2
     }
   ],
   "objets_sol": [

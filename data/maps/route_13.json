@@ -62,8 +62,9 @@
       "dialogue": [
         "ROUTE 13\nLabyrinthe de haies naturelles."
       ],
-      "mobile": false,
-      "type": "panneau"
+      "mobile": true,
+      "type": "panneau",
+      "rayon_deplacement": 2
     }
   ],
   "tile_data": [

@@ -73,8 +73,9 @@
       "dialogue": [
         "ROUTE 12\nZone de pêche réputée."
       ],
-      "mobile": false,
-      "type": "panneau"
+      "mobile": true,
+      "type": "panneau",
+      "rayon_deplacement": 2
     },
     {
       "id": "ronflex_route12",
@@ -85,8 +86,9 @@
       "dialogue": [
         "Un gros Pokémon bloque le passage...\nIl dort profondément.\nUtilisez la Poké Flûte pour\nle réveiller !"
       ],
-      "mobile": false,
-      "type": "ronflex"
+      "mobile": true,
+      "type": "ronflex",
+      "rayon_deplacement": 2
     }
   ],
   "tile_data": [

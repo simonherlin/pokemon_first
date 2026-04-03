@@ -51,8 +51,9 @@
         "Le CONSEIL DES 4 t'attend\ndans le bâtiment à droite.",
         "Assure-toi de bien te préparer\nau Centre Pokémon d'abord !"
       ],
-      "mobile": false,
-      "type": ""
+      "mobile": true,
+      "type": "",
+      "rayon_deplacement": 2
     },
     {
       "id": "panneau_pi",
@@ -63,8 +64,9 @@
       "dialogue": [
         "PLATEAU INDIGO\n← Centre Pokémon\n→ Ligue Pokémon"
       ],
-      "mobile": false,
-      "type": "panneau"
+      "mobile": true,
+      "type": "panneau",
+      "rayon_deplacement": 2
     }
   ],
   "tile_data": [

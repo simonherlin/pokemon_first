@@ -29,16 +29,18 @@
   ],
   "zones_herbes": [
     {
-      "x": 3,
-      "y": 10,
-      "largeur": 3,
-      "hauteur": 5
+      "x1": 1,
+      "y1": 2,
+      "x2": 13,
+      "y2": 13,
+      "table": "route_23"
     },
     {
-      "x": 3,
-      "y": 18,
-      "largeur": 3,
-      "hauteur": 5
+      "x1": 1,
+      "y1": 16,
+      "x2": 13,
+      "y2": 28,
+      "table": "route_23"
     }
   ],
   "pnj": [
@@ -53,8 +55,9 @@
         "Vous devez posséder les\n8 BADGES pour passer.",
         "Montrez vos BADGES !"
       ],
-      "mobile": false,
-      "type": "gardien"
+      "mobile": true,
+      "type": "gardien",
+      "rayon_deplacement": 2
     },
     {
       "id": "dresseur_r23",
@@ -78,8 +81,9 @@
       "dialogue": [
         "ROUTE 23\n↑ Plateau Indigo\n↓ Route 22"
       ],
-      "mobile": false,
-      "type": "panneau"
+      "mobile": true,
+      "type": "panneau",
+      "rayon_deplacement": 2
     }
   ],
   "tile_data": [

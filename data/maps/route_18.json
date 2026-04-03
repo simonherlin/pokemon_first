@@ -55,8 +55,9 @@
       "dialogue": [
         "ROUTE 18\nFin de la Piste Cyclable.\nParmanie est à l'est."
       ],
-      "mobile": false,
-      "type": "panneau"
+      "mobile": true,
+      "type": "panneau",
+      "rayon_deplacement": 2
     }
   ],
   "tile_data": [

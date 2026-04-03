@@ -30,6 +30,11 @@ saves/
 # Décommenter si vous ne voulez pas versionner les fichiers sources Aseprite
 # *.aseprite
 
+# ─── Données sources / intermédiaires (volumineux, non nécessaires) ──────────
+tools/source_sprites/frlg_tilesets/
+tools/source_sprites/frlg_rendered/
+tools/source_sprites/*.png
+
 # ─── Temporaire ──────────────────────────────────────────────────────────────
 /tmp/
 *.tmp

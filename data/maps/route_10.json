@@ -78,7 +78,8 @@
         "La Tour Pokémon de Lavanville\nest visible d'ici...",
         "On dit que les esprits des Pokémon\ny reposent en paix."
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     }
   ],
   "objets_sol": [],

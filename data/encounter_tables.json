@@ -2323,82 +2323,540 @@
     "zone_id": "sevii_ile2",
     "nom": "Île 2 — Cap du Paradis",
     "herbes": [
-      {"pokemon_id": "043", "taux": 25, "niveau_min": 30, "niveau_max": 36},
-      {"pokemon_id": "044", "taux": 10, "niveau_min": 34, "niveau_max": 38},
-      {"pokemon_id": "069", "taux": 25, "niveau_min": 30, "niveau_max": 36},
-      {"pokemon_id": "070", "taux": 10, "niveau_min": 34, "niveau_max": 38},
-      {"pokemon_id": "048", "taux": 20, "niveau_min": 30, "niveau_max": 34},
-      {"pokemon_id": "049", "taux": 10, "niveau_min": 36, "niveau_max": 40}
+      {
+        "pokemon_id": "043",
+        "taux": 25,
+        "niveau_min": 30,
+        "niveau_max": 36
+      },
+      {
+        "pokemon_id": "044",
+        "taux": 10,
+        "niveau_min": 34,
+        "niveau_max": 38
+      },
+      {
+        "pokemon_id": "069",
+        "taux": 25,
+        "niveau_min": 30,
+        "niveau_max": 36
+      },
+      {
+        "pokemon_id": "070",
+        "taux": 10,
+        "niveau_min": 34,
+        "niveau_max": 38
+      },
+      {
+        "pokemon_id": "048",
+        "taux": 20,
+        "niveau_min": 30,
+        "niveau_max": 34
+      },
+      {
+        "pokemon_id": "049",
+        "taux": 10,
+        "niveau_min": 36,
+        "niveau_max": 40
+      }
     ]
   },
   "sevii_ile3": {
     "zone_id": "sevii_ile3",
     "nom": "Île 3 — Île du Bond",
     "herbes": [
-      {"pokemon_id": "021", "taux": 30, "niveau_min": 28, "niveau_max": 34},
-      {"pokemon_id": "022", "taux": 10, "niveau_min": 36, "niveau_max": 40},
-      {"pokemon_id": "056", "taux": 25, "niveau_min": 30, "niveau_max": 36},
-      {"pokemon_id": "057", "taux": 10, "niveau_min": 36, "niveau_max": 40},
-      {"pokemon_id": "084", "taux": 15, "niveau_min": 28, "niveau_max": 34},
-      {"pokemon_id": "085", "taux": 10, "niveau_min": 36, "niveau_max": 42}
+      {
+        "pokemon_id": "021",
+        "taux": 30,
+        "niveau_min": 28,
+        "niveau_max": 34
+      },
+      {
+        "pokemon_id": "022",
+        "taux": 10,
+        "niveau_min": 36,
+        "niveau_max": 40
+      },
+      {
+        "pokemon_id": "056",
+        "taux": 25,
+        "niveau_min": 30,
+        "niveau_max": 36
+      },
+      {
+        "pokemon_id": "057",
+        "taux": 10,
+        "niveau_min": 36,
+        "niveau_max": 40
+      },
+      {
+        "pokemon_id": "084",
+        "taux": 15,
+        "niveau_min": 28,
+        "niveau_max": 34
+      },
+      {
+        "pokemon_id": "085",
+        "taux": 10,
+        "niveau_min": 36,
+        "niveau_max": 42
+      }
     ]
   },
   "sevii_foret": {
     "zone_id": "sevii_foret",
     "nom": "Forêt Baie",
     "herbes": [
-      {"pokemon_id": "010", "taux": 10, "niveau_min": 28, "niveau_max": 32},
-      {"pokemon_id": "012", "taux": 5, "niveau_min": 34, "niveau_max": 38},
-      {"pokemon_id": "013", "taux": 10, "niveau_min": 28, "niveau_max": 32},
-      {"pokemon_id": "015", "taux": 5, "niveau_min": 34, "niveau_max": 38},
-      {"pokemon_id": "046", "taux": 20, "niveau_min": 30, "niveau_max": 36},
-      {"pokemon_id": "047", "taux": 10, "niveau_min": 36, "niveau_max": 40},
-      {"pokemon_id": "048", "taux": 15, "niveau_min": 30, "niveau_max": 34},
-      {"pokemon_id": "069", "taux": 15, "niveau_min": 30, "niveau_max": 36},
-      {"pokemon_id": "114", "taux": 10, "niveau_min": 32, "niveau_max": 38}
+      {
+        "pokemon_id": "010",
+        "taux": 10,
+        "niveau_min": 28,
+        "niveau_max": 32
+      },
+      {
+        "pokemon_id": "012",
+        "taux": 5,
+        "niveau_min": 34,
+        "niveau_max": 38
+      },
+      {
+        "pokemon_id": "013",
+        "taux": 10,
+        "niveau_min": 28,
+        "niveau_max": 32
+      },
+      {
+        "pokemon_id": "015",
+        "taux": 5,
+        "niveau_min": 34,
+        "niveau_max": 38
+      },
+      {
+        "pokemon_id": "046",
+        "taux": 20,
+        "niveau_min": 30,
+        "niveau_max": 36
+      },
+      {
+        "pokemon_id": "047",
+        "taux": 10,
+        "niveau_min": 36,
+        "niveau_max": 40
+      },
+      {
+        "pokemon_id": "048",
+        "taux": 15,
+        "niveau_min": 30,
+        "niveau_max": 34
+      },
+      {
+        "pokemon_id": "069",
+        "taux": 15,
+        "niveau_min": 30,
+        "niveau_max": 36
+      },
+      {
+        "pokemon_id": "114",
+        "taux": 10,
+        "niveau_min": 32,
+        "niveau_max": 38
+      }
     ]
   },
   "sevii_volcan": {
     "zone_id": "sevii_volcan",
     "nom": "Sentier des Braises",
     "herbes": [
-      {"pokemon_id": "058", "taux": 25, "niveau_min": 32, "niveau_max": 38},
-      {"pokemon_id": "059", "taux": 5, "niveau_min": 40, "niveau_max": 44},
-      {"pokemon_id": "077", "taux": 25, "niveau_min": 32, "niveau_max": 38},
-      {"pokemon_id": "078", "taux": 5, "niveau_min": 40, "niveau_max": 44},
-      {"pokemon_id": "126", "taux": 10, "niveau_min": 38, "niveau_max": 42},
-      {"pokemon_id": "004", "taux": 15, "niveau_min": 30, "niveau_max": 36},
-      {"pokemon_id": "005", "taux": 10, "niveau_min": 36, "niveau_max": 40},
-      {"pokemon_id": "037", "taux": 5, "niveau_min": 32, "niveau_max": 38}
+      {
+        "pokemon_id": "058",
+        "taux": 25,
+        "niveau_min": 32,
+        "niveau_max": 38
+      },
+      {
+        "pokemon_id": "059",
+        "taux": 5,
+        "niveau_min": 40,
+        "niveau_max": 44
+      },
+      {
+        "pokemon_id": "077",
+        "taux": 25,
+        "niveau_min": 32,
+        "niveau_max": 38
+      },
+      {
+        "pokemon_id": "078",
+        "taux": 5,
+        "niveau_min": 40,
+        "niveau_max": 44
+      },
+      {
+        "pokemon_id": "126",
+        "taux": 10,
+        "niveau_min": 38,
+        "niveau_max": 42
+      },
+      {
+        "pokemon_id": "004",
+        "taux": 15,
+        "niveau_min": 30,
+        "niveau_max": 36
+      },
+      {
+        "pokemon_id": "005",
+        "taux": 10,
+        "niveau_min": 36,
+        "niveau_max": 40
+      },
+      {
+        "pokemon_id": "037",
+        "taux": 5,
+        "niveau_min": 32,
+        "niveau_max": 38
+      }
     ]
   },
   "sevii_grotte_braise": {
     "zone_id": "sevii_grotte_braise",
     "nom": "Grotte des Braises",
     "herbes": [
-      {"pokemon_id": "004", "taux": 10, "niveau_min": 34, "niveau_max": 38},
-      {"pokemon_id": "005", "taux": 15, "niveau_min": 38, "niveau_max": 42},
-      {"pokemon_id": "006", "taux": 5, "niveau_min": 44, "niveau_max": 48},
-      {"pokemon_id": "058", "taux": 15, "niveau_min": 36, "niveau_max": 40},
-      {"pokemon_id": "077", "taux": 15, "niveau_min": 36, "niveau_max": 40},
-      {"pokemon_id": "078", "taux": 10, "niveau_min": 42, "niveau_max": 46},
-      {"pokemon_id": "126", "taux": 15, "niveau_min": 40, "niveau_max": 44},
-      {"pokemon_id": "037", "taux": 10, "niveau_min": 36, "niveau_max": 40},
-      {"pokemon_id": "038", "taux": 5, "niveau_min": 44, "niveau_max": 48}
+      {
+        "pokemon_id": "004",
+        "taux": 10,
+        "niveau_min": 34,
+        "niveau_max": 38
+      },
+      {
+        "pokemon_id": "005",
+        "taux": 15,
+        "niveau_min": 38,
+        "niveau_max": 42
+      },
+      {
+        "pokemon_id": "006",
+        "taux": 5,
+        "niveau_min": 44,
+        "niveau_max": 48
+      },
+      {
+        "pokemon_id": "058",
+        "taux": 15,
+        "niveau_min": 36,
+        "niveau_max": 40
+      },
+      {
+        "pokemon_id": "077",
+        "taux": 15,
+        "niveau_min": 36,
+        "niveau_max": 40
+      },
+      {
+        "pokemon_id": "078",
+        "taux": 10,
+        "niveau_min": 42,
+        "niveau_max": 46
+      },
+      {
+        "pokemon_id": "126",
+        "taux": 15,
+        "niveau_min": 40,
+        "niveau_max": 44
+      },
+      {
+        "pokemon_id": "037",
+        "taux": 10,
+        "niveau_min": 36,
+        "niveau_max": 40
+      },
+      {
+        "pokemon_id": "038",
+        "taux": 5,
+        "niveau_min": 44,
+        "niveau_max": 48
+      }
     ]
   },
   "sevii_mer": {
     "zone_id": "sevii_mer",
     "nom": "Route Marine Sevii",
     "herbes": [
-      {"pokemon_id": "072", "taux": 30, "niveau_min": 30, "niveau_max": 36},
-      {"pokemon_id": "073", "taux": 10, "niveau_min": 38, "niveau_max": 42},
-      {"pokemon_id": "090", "taux": 15, "niveau_min": 32, "niveau_max": 38},
-      {"pokemon_id": "116", "taux": 15, "niveau_min": 30, "niveau_max": 36},
-      {"pokemon_id": "117", "taux": 10, "niveau_min": 38, "niveau_max": 42},
-      {"pokemon_id": "120", "taux": 10, "niveau_min": 32, "niveau_max": 38},
-      {"pokemon_id": "130", "taux": 5, "niveau_min": 40, "niveau_max": 45},
-      {"pokemon_id": "131", "taux": 5, "niveau_min": 35, "niveau_max": 40}
+      {
+        "pokemon_id": "072",
+        "taux": 30,
+        "niveau_min": 30,
+        "niveau_max": 36
+      },
+      {
+        "pokemon_id": "073",
+        "taux": 10,
+        "niveau_min": 38,
+        "niveau_max": 42
+      },
+      {
+        "pokemon_id": "090",
+        "taux": 15,
+        "niveau_min": 32,
+        "niveau_max": 38
+      },
+      {
+        "pokemon_id": "116",
+        "taux": 15,
+        "niveau_min": 30,
+        "niveau_max": 36
+      },
+      {
+        "pokemon_id": "117",
+        "taux": 10,
+        "niveau_min": 38,
+        "niveau_max": 42
+      },
+      {
+        "pokemon_id": "120",
+        "taux": 10,
+        "niveau_min": 32,
+        "niveau_max": 38
+      },
+      {
+        "pokemon_id": "130",
+        "taux": 5,
+        "niveau_min": 40,
+        "niveau_max": 45
+      },
+      {
+        "pokemon_id": "131",
+        "taux": 5,
+        "niveau_min": 35,
+        "niveau_max": 40
+      }
+    ]
+  },
+  "tour_pokemon_2f": {
+    "zone_id": "tour_pokemon_2f",
+    "nom": "Tour Pokémon 2F",
+    "cave": [
+      {
+        "pokemon_id": "092",
+        "taux": 40,
+        "niveau_min": 20,
+        "niveau_max": 24
+      },
+      {
+        "pokemon_id": "093",
+        "taux": 20,
+        "niveau_min": 25,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "104",
+        "taux": 25,
+        "niveau_min": 20,
+        "niveau_max": 24
+      },
+      {
+        "pokemon_id": "041",
+        "taux": 15,
+        "niveau_min": 20,
+        "niveau_max": 24
+      }
+    ]
+  },
+  "tour_pokemon_3f": {
+    "zone_id": "tour_pokemon_3f",
+    "nom": "Tour Pokémon 3F",
+    "cave": [
+      {
+        "pokemon_id": "092",
+        "taux": 40,
+        "niveau_min": 20,
+        "niveau_max": 24
+      },
+      {
+        "pokemon_id": "093",
+        "taux": 20,
+        "niveau_min": 25,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "104",
+        "taux": 25,
+        "niveau_min": 20,
+        "niveau_max": 24
+      },
+      {
+        "pokemon_id": "041",
+        "taux": 15,
+        "niveau_min": 20,
+        "niveau_max": 24
+      }
+    ]
+  },
+  "tour_pokemon_4f": {
+    "zone_id": "tour_pokemon_4f",
+    "nom": "Tour Pokémon 4F",
+    "cave": [
+      {
+        "pokemon_id": "092",
+        "taux": 40,
+        "niveau_min": 20,
+        "niveau_max": 24
+      },
+      {
+        "pokemon_id": "093",
+        "taux": 20,
+        "niveau_min": 25,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "104",
+        "taux": 25,
+        "niveau_min": 20,
+        "niveau_max": 24
+      },
+      {
+        "pokemon_id": "041",
+        "taux": 15,
+        "niveau_min": 20,
+        "niveau_max": 24
+      }
+    ]
+  },
+  "tour_pokemon_5f": {
+    "zone_id": "tour_pokemon_5f",
+    "nom": "Tour Pokémon 5F",
+    "cave": [
+      {
+        "pokemon_id": "092",
+        "taux": 40,
+        "niveau_min": 20,
+        "niveau_max": 24
+      },
+      {
+        "pokemon_id": "093",
+        "taux": 20,
+        "niveau_min": 25,
+        "niveau_max": 28
+      },
+      {
+        "pokemon_id": "104",
+        "taux": 25,
+        "niveau_min": 20,
+        "niveau_max": 24
+      },
+      {
+        "pokemon_id": "041",
+        "taux": 15,
+        "niveau_min": 20,
+        "niveau_max": 24
+      }
+    ]
+  },
+  "tunnel_roche": {
+    "zone_id": "tunnel_roche",
+    "nom": "Tunnel Roche",
+    "cave": [
+      {
+        "pokemon_id": "041",
+        "taux": 35,
+        "niveau_min": 15,
+        "niveau_max": 18
+      },
+      {
+        "pokemon_id": "074",
+        "taux": 25,
+        "niveau_min": 15,
+        "niveau_max": 17
+      },
+      {
+        "pokemon_id": "066",
+        "taux": 20,
+        "niveau_min": 15,
+        "niveau_max": 17
+      },
+      {
+        "pokemon_id": "095",
+        "taux": 10,
+        "niveau_min": 13,
+        "niveau_max": 15
+      },
+      {
+        "pokemon_id": "046",
+        "taux": 10,
+        "niveau_min": 15,
+        "niveau_max": 17
+      }
+    ]
+  },
+  "tunnel_roche_1f": {
+    "zone_id": "tunnel_roche_1f",
+    "nom": "Tunnel Roche 1F",
+    "cave": [
+      {
+        "pokemon_id": "041",
+        "taux": 35,
+        "niveau_min": 15,
+        "niveau_max": 18
+      },
+      {
+        "pokemon_id": "074",
+        "taux": 25,
+        "niveau_min": 15,
+        "niveau_max": 17
+      },
+      {
+        "pokemon_id": "066",
+        "taux": 20,
+        "niveau_min": 15,
+        "niveau_max": 17
+      },
+      {
+        "pokemon_id": "095",
+        "taux": 10,
+        "niveau_min": 13,
+        "niveau_max": 15
+      },
+      {
+        "pokemon_id": "046",
+        "taux": 10,
+        "niveau_min": 15,
+        "niveau_max": 17
+      }
+    ]
+  },
+  "tunnel_roche_b1f": {
+    "zone_id": "tunnel_roche_b1f",
+    "nom": "Tunnel Roche B1F",
+    "cave": [
+      {
+        "pokemon_id": "041",
+        "taux": 35,
+        "niveau_min": 15,
+        "niveau_max": 18
+      },
+      {
+        "pokemon_id": "074",
+        "taux": 25,
+        "niveau_min": 15,
+        "niveau_max": 17
+      },
+      {
+        "pokemon_id": "066",
+        "taux": 20,
+        "niveau_min": 15,
+        "niveau_max": 17
+      },
+      {
+        "pokemon_id": "095",
+        "taux": 10,
+        "niveau_min": 13,
+        "niveau_max": 15
+      },
+      {
+        "pokemon_id": "046",
+        "taux": 10,
+        "niveau_min": 15,
+        "niveau_max": 17
+      }
     ]
   }
 }

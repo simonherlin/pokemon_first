@@ -67,8 +67,9 @@
       "dialogue": [
         "ROUTE 15\nParmanie est à l'est."
       ],
-      "mobile": false,
-      "type": "panneau"
+      "mobile": true,
+      "type": "panneau",
+      "rayon_deplacement": 2
     }
   ],
   "tile_data": [

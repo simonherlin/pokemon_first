@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 # --- Constantes ---
 const TAILLE_TILE := 32
+const VITESSE_MARCHE_NPC := 2.0  # tiles/seconde (plus lent que le joueur)
 
 # --- Données du PNJ (chargées depuis la carte JSON) ---
 var npc_id: String = ""
@@ -32,6 +33,17 @@ var _sprite_id: String = "pnj_homme"  # ID du sprite à charger (différé à _r
 var joueur_detecte: bool = false
 var battu: bool = false
 
+# --- Déplacement aléatoire (PNJ mobiles) ---
+var position_grille: Vector2i = Vector2i.ZERO       # Position actuelle sur la grille
+var position_origine: Vector2i = Vector2i.ZERO       # Position initiale (centre du rayon)
+var rayon_deplacement: int = 2                       # Rayon max en tiles depuis l'origine
+var intervalle_min: float = 2.0                      # Intervalle min entre mouvements (sec)
+var intervalle_max: float = 5.0                      # Intervalle max entre mouvements (sec)
+var _en_deplacement: bool = false                    # Le PNJ est en train de bouger
+var _cible_monde: Vector2 = Vector2.ZERO             # Position monde cible
+var _mouvement_pause: bool = false                   # Pause pendant dialogue/combat
+var _timer_mouvement: Timer = null                    # Timer pour déclencher les mouvements
+
 signal dialogue_demarre(lignes: Array)
 signal combat_dresseur_demarre(npc_id: String, equipe: Array, recompense: int, nom: String)
 signal soin_demande()
@@ -40,12 +52,28 @@ signal casino_machine_demandee()
 signal casino_prix_demandee()
 
 func _ready() -> void:
+	add_to_group("pnj")
 	battu = PlayerData.dresseur_est_battu(npc_id)
 	# Charger le sprite ici car @onready est maintenant résolu
 	_charger_sprite(_sprite_id)
 	_appliquer_direction(direction_initiale)
+	# Initialiser la position grille depuis la position pixel
+	position_grille = Vector2i(int(position.x / TAILLE_TILE), int(position.y / TAILLE_TILE))
+	position_origine = position_grille
+	_cible_monde = position
+	# Configurer le déplacement aléatoire si le PNJ est mobile
+	if mobile and not est_dresseur:
+		_timer_mouvement = Timer.new()
+		_timer_mouvement.one_shot = true
+		_timer_mouvement.timeout.connect(_on_timer_mouvement)
+		add_child(_timer_mouvement)
+		_demarrer_timer_mouvement()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	# Déplacement en cours : interpoler vers la cible
+	if _en_deplacement:
+		_continuer_deplacement_npc(delta)
+	# Détection dresseur
 	if est_dresseur and not battu:
 		_verifier_champ_vision()
 
@@ -58,6 +86,9 @@ func initialiser_depuis_json(data: Dictionary) -> void:
 	equipe_dresseur = data.get("equipe", [])
 	recompense = data.get("recompense", 0)
 	mobile = data.get("mobile", false)
+	rayon_deplacement = data.get("rayon_deplacement", 2)
+	intervalle_min = data.get("intervalle_min", 2.0)
+	intervalle_max = data.get("intervalle_max", 5.0)
 	direction_initiale = data.get("direction", "bas")
 	type_pnj = data.get("type", "")
 	inventaire_boutique = data.get("inventaire_boutique", [])
@@ -75,6 +106,8 @@ func interagir(joueur: Node) -> void:
 	# Tourner vers le joueur
 	var dir_vers_joueur := _direction_vers(joueur)
 	_appliquer_direction(dir_vers_joueur)
+	# Mettre en pause le déplacement pendant l'interaction
+	pause_mouvement()
 
 	# PNJ spéciaux
 	match type_pnj:
@@ -248,6 +281,129 @@ func _interagir_casino_prix(joueur: Node) -> void:
 			joueur.set_peut_bouger(true)
 	)
 	emit_signal("casino_prix_demandee")
+
+# ----------------------------------------------------------------
+# Système de déplacement aléatoire des PNJ
+# ----------------------------------------------------------------
+
+# Démarrer le timer avant le prochain mouvement
+func _demarrer_timer_mouvement() -> void:
+	if _timer_mouvement and not _mouvement_pause:
+		_timer_mouvement.start(randf_range(intervalle_min, intervalle_max))
+
+# Callback du timer : tenter un déplacement aléatoire
+func _on_timer_mouvement() -> void:
+	if _mouvement_pause or _en_deplacement:
+		_demarrer_timer_mouvement()
+		return
+	_tenter_deplacement_aleatoire()
+
+# Choisir une direction au hasard et tenter de bouger
+func _tenter_deplacement_aleatoire() -> void:
+	var directions := [Vector2i(0, -1), Vector2i(0, 1), Vector2i(-1, 0), Vector2i(1, 0)]
+	# 30% de chance de ne pas bouger (juste changer de direction ou rester idle)
+	if randf() < 0.3:
+		var dir_alea: Vector2i = directions[randi() % 4]
+		direction_initiale = _vec_vers_direction_str(dir_alea)
+		_appliquer_direction(direction_initiale)
+		_demarrer_timer_mouvement()
+		return
+
+	# Mélanger les directions pour essayer aléatoirement
+	directions.shuffle()
+	for dir in directions:
+		var cible: Vector2i = position_grille + dir
+		# Vérifier que la cible est dans le rayon de déplacement
+		if abs(cible.x - position_origine.x) > rayon_deplacement:
+			continue
+		if abs(cible.y - position_origine.y) > rayon_deplacement:
+			continue
+		# Vérifier que la case est accessible (pas de collision)
+		if not _case_accessible_npc(cible):
+			continue
+		# Démarrer le mouvement
+		direction_initiale = _vec_vers_direction_str(dir)
+		position_grille = cible
+		_cible_monde = Vector2(cible) * TAILLE_TILE
+		_en_deplacement = true
+		# Jouer l'animation de marche
+		var walk_anim := direction_initiale + "_walk"
+		if sprite and sprite.sprite_frames and sprite.sprite_frames.has_animation(walk_anim):
+			sprite.play(walk_anim)
+		return
+
+	# Aucune direction possible : réessayer plus tard
+	_demarrer_timer_mouvement()
+
+# Interpolation fluide vers la case cible
+func _continuer_deplacement_npc(delta: float) -> void:
+	var pas := VITESSE_MARCHE_NPC * TAILLE_TILE * delta
+	var diff := _cible_monde - position
+	if diff.length() <= pas:
+		position = _cible_monde
+		_en_deplacement = false
+		_appliquer_direction(direction_initiale)
+		_demarrer_timer_mouvement()
+	else:
+		position += diff.normalized() * pas
+
+# Vérifier si une case est accessible pour le PNJ
+func _case_accessible_npc(cible: Vector2i) -> bool:
+	# Vérifier les limites de la carte
+	var carte_data := MapLoader.get_carte(PlayerData.carte_actuelle)
+	var largeur: int = carte_data.get("largeur", 20)
+	var hauteur: int = carte_data.get("hauteur", 18)
+	if cible.x < 0 or cible.x >= largeur or cible.y < 0 or cible.y >= hauteur:
+		return false
+	# Vérifier les collisions avec le TileMap via le RayCast
+	if ray_vision:
+		var dir_vec := Vector2(cible - position_grille) * TAILLE_TILE
+		ray_vision.target_position = dir_vec
+		ray_vision.force_raycast_update()
+		if ray_vision.is_colliding():
+			return false
+	# Vérifier la collision avec le joueur
+	var joueurs := get_tree().get_nodes_in_group("joueur")
+	for j in joueurs:
+		if "position_grille" in j:
+			if Vector2i(j.position_grille) == cible:
+				return false
+		elif Vector2i(int(j.position.x / TAILLE_TILE), int(j.position.y / TAILLE_TILE)) == cible:
+			return false
+	# Vérifier la collision avec d'autres PNJ
+	var pnjs := get_tree().get_nodes_in_group("pnj")
+	for autre_npc in pnjs:
+		if autre_npc == self:
+			continue
+		if "position_grille" in autre_npc:
+			if Vector2i(autre_npc.position_grille) == cible:
+				return false
+	return true
+
+# Convertir un vecteur direction en nom de direction
+func _vec_vers_direction_str(dir: Vector2i) -> String:
+	if dir == Vector2i(0, -1): return "haut"
+	if dir == Vector2i(0, 1): return "bas"
+	if dir == Vector2i(-1, 0): return "gauche"
+	if dir == Vector2i(1, 0): return "droite"
+	return "bas"
+
+# Mettre en pause le déplacement du PNJ (pendant dialogue, combat, cutscene)
+func pause_mouvement() -> void:
+	_mouvement_pause = true
+	if _timer_mouvement:
+		_timer_mouvement.stop()
+	# Arrêter le mouvement en cours immédiatement
+	if _en_deplacement:
+		position = _cible_monde
+		_en_deplacement = false
+		_appliquer_direction(direction_initiale)
+
+# Reprendre le déplacement aléatoire
+func reprendre_mouvement() -> void:
+	_mouvement_pause = false
+	if mobile and not est_dresseur:
+		_demarrer_timer_mouvement()
 
 # Vérifier si le joueur entre dans le champ de vision du dresseur
 # === Équilibrage dynamique ===

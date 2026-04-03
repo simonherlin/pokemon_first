@@ -101,7 +101,8 @@
         "La maison de BILL est juste devant.",
         "C'est un génie des Pokémon !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     }
   ],
   "objets_sol": [

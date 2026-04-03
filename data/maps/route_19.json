@@ -56,8 +56,9 @@
       "dialogue": [
         "ROUTE 19\nSurf requis pour continuer."
       ],
-      "mobile": false,
-      "type": "panneau"
+      "mobile": true,
+      "type": "panneau",
+      "rayon_deplacement": 2
     }
   ],
   "tile_data": [

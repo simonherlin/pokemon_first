@@ -6,6 +6,7 @@ extends Node
 const CHEMIN_JSON := "res://data/encounter_tables.json"
 const TAUX_RENCONTRE_BASE := 0.10  # 10% de chance par pas dans les herbes
 const TAUX_RENCONTRE_SURF := 0.10  # 10% de chance par pas sur l'eau
+const TAUX_RENCONTRE_CAVE := 0.08  # 8% de chance par pas en grotte
 
 var _tables: Dictionary = {}
 var _charge: bool = false
@@ -228,6 +229,48 @@ func _obtenir_zone_surf(position_grille: Vector2i) -> String:
 		   position_grille.y >= y1 and position_grille.y <= y2:
 			return zone.get("table", "")
 	return ""
+
+# Vérifier si une rencontre en grotte se déclenche (appelé à chaque pas en grotte/donjon)
+func verifier_rencontre_cave(joueur_node: Node) -> void:
+	var zone_id := PlayerData.carte_actuelle
+	# Vérifier si la table a des Pokémon cave
+	var table: Dictionary = _tables.get(zone_id, {})
+	if table.get("cave", []).is_empty():
+		return  # Pas de rencontres grotte dans cette zone
+
+	# Repousse
+	if GameManager.repousse_restant > 0:
+		GameManager.repousse_restant -= 1
+		var niveau_leader := _obtenir_niveau_leader()
+		var pokemon_test := _choisir_pokemon(zone_id, "cave")
+		if not pokemon_test.is_empty():
+			if pokemon_test.get("niveau_max", 5) <= niveau_leader:
+				return
+		else:
+			return
+
+	# Taux de rencontre grotte (modifié par l'heure et la météo)
+	var taux_cave := TAUX_RENCONTRE_CAVE * TimeManager.get_modificateur_rencontre() * WeatherManager.get_modificateur_rencontre()
+	if randf() > taux_cave:
+		return
+
+	# Choisir le Pokémon
+	var pokemon_data := _choisir_pokemon(zone_id, "cave")
+	if pokemon_data.is_empty():
+		return
+
+	_lancer_combat_sauvage(pokemon_data, joueur_node)
+
+# Déterminer si la carte actuelle est une grotte/donjon (pour rencontres sans herbes)
+func est_carte_cave() -> bool:
+	var carte_data := MapLoader.get_carte(PlayerData.carte_actuelle)
+	var tileset: String = carte_data.get("tileset", "")
+	# Les grottes/donjons utilisent divers noms de tileset
+	if tileset in ["indoor", "cave", "grotte", "interieur"]:
+		var zone_id := PlayerData.carte_actuelle
+		var table: Dictionary = _tables.get(zone_id, {})
+		return not table.get("cave", []).is_empty()
+	return false
 
 # Obtenir toutes les zones pour le débogage
 func get_zones() -> Array:

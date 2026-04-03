@@ -16,7 +16,15 @@
       "type": "porte"
     }
   ],
-  "zones_herbes": [],
+  "zones_herbes": [
+    {
+      "x1": 0,
+      "y1": 0,
+      "x2": 14,
+      "y2": 11,
+      "table": "centrale"
+    }
+  ],
   "pnj": [
     {
       "id": "electhor_pnj",

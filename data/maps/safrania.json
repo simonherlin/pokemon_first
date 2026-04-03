@@ -88,8 +88,9 @@
       "dialogue": [
         "SAFRANIA\nLa ville qui brille."
       ],
-      "mobile": false,
-      "type": "panneau"
+      "mobile": true,
+      "type": "panneau",
+      "rayon_deplacement": 2
     },
     {
       "id": "pnj_safrania_01",
@@ -100,7 +101,8 @@
       "dialogue": [
         "La Team Rocket a pris le contrôle\nde la Tour Sylphe !\nIl faut les arrêter !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     },
     {
       "id": "pnj_safrania_02",
@@ -111,7 +113,8 @@
       "dialogue": [
         "L'Arène de Safrania est dirigée\npar Morgane. Ses Pokémon Psy\nsont très puissants !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     },
     {
       "id": "pnj_safrania_03",
@@ -122,7 +125,8 @@
       "dialogue": [
         "Le Dojo de Combat est juste\nà côté. Bats le Maître et tu\nrecevras un Pokémon Combat !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     }
   ],
   "tile_data": [

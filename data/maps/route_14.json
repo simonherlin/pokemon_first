@@ -62,8 +62,9 @@
       "dialogue": [
         "ROUTE 14"
       ],
-      "mobile": false,
-      "type": "panneau"
+      "mobile": true,
+      "type": "panneau",
+      "rayon_deplacement": 2
     }
   ],
   "tile_data": [

@@ -230,6 +230,10 @@ func _on_dialogue_demarre(lignes: Array) -> void:
 func _on_dialogue_termine() -> void:
 	if joueur:
 		joueur.set_peut_bouger(true)
+	# Reprendre le déplacement des PNJ mobiles
+	for npc in get_tree().get_nodes_in_group("pnj"):
+		if npc.has_method("reprendre_mouvement"):
+			npc.reprendre_mouvement()
 
 func _on_soin_demande() -> void:
 	# Sauvegarder ce centre comme dernier lieu de soin

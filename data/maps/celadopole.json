@@ -79,7 +79,8 @@
         "C'est la plus grande ville de Kanto.",
         "Le Grand Magasin a tout ce dont\nun dresseur a besoin !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     },
     {
       "id": "pnj_celadopole_02",
@@ -91,7 +92,8 @@
         "L'Arène de Céladopole est spécialisée\nen Pokémon de type Plante.",
         "ÉRIKA en est la championne."
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     },
     {
       "id": "pnj_celadopole_03",
@@ -104,7 +106,8 @@
         "Mais méfie-toi de la Team Rocket...",
         "On dit qu'ils ont un repaire secret\nsous le Casino !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     },
     {
       "id": "pnj_celadopole_04",
@@ -116,7 +119,8 @@
         "Il paraît que quelqu'un offre\nun Pokémon rare dans le Manoir.",
         "Je crois que c'est un Évoli !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     },
     {
       "id": "pnj_celadopole_05",
@@ -128,7 +132,8 @@
         "ÉRIKA est très douce et gentille.",
         "Mais ne sous-estime pas ses Pokémon !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     }
   ],
   "objets_sol": [],

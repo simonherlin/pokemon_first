@@ -64,7 +64,8 @@
           ]
         }
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     },
     {
       "id": "pnj_femme_01",
@@ -76,7 +77,8 @@
         "Les Pokémon sauvages vivent dans les hautes herbes.",
         "Ne t'aventure pas sans les tiens !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     }
   ],
   "objets_sol": [],

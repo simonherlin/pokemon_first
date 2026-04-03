@@ -74,7 +74,8 @@
           ]
         }
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     },
     {
       "id": "pnj_femme_02",
@@ -86,7 +87,8 @@
         "La boutique vend toutes sortes\nd'objets utiles aux dresseurs.",
         "N'oublie pas de t'équiper !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     },
     {
       "id": "pnj_homme_02",
@@ -98,7 +100,8 @@
         "Le Centre Pokémon soigne tes\nPokémon gratuitement !",
         "N'hésite pas à y passer souvent."
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     }
   ],
   "objets_sol": [],

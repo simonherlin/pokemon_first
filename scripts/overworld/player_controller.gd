@@ -136,6 +136,10 @@ func _arrivee_nouvelle_case() -> void:
 	if est_sur_eau:
 		EncounterSystem.verifier_rencontre_surf(position_grille, self)
 		return
+	# Rencontres en grotte (chaque pas peut déclencher un combat)
+	if EncounterSystem.est_carte_cave():
+		EncounterSystem.verifier_rencontre_cave(self)
+		return
 	# Vérifier herbes sauvages
 	EncounterSystem.verifier_rencontre(position_grille, self)
 

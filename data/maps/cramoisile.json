@@ -70,8 +70,9 @@
       "dialogue": [
         "CRAMOIS'ÎLE\nL'île de la passion ardente."
       ],
-      "mobile": false,
-      "type": "panneau"
+      "mobile": true,
+      "type": "panneau",
+      "rayon_deplacement": 2
     },
     {
       "id": "pnj_cramoisile_01",
@@ -82,7 +83,8 @@
       "dialogue": [
         "Le Manoir Pokémon est abandonné\ndepuis longtemps... On dit qu'il\ncontient la clé de l'Arène !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     },
     {
       "id": "pnj_cramoisile_02",
@@ -93,7 +95,8 @@
       "dialogue": [
         "Le Labo de Fossiles peut\nressusciter des Pokémon anciens\nà partir de fossiles !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     }
   ],
   "tile_data": [

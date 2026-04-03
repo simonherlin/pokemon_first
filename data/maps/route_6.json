@@ -81,7 +81,8 @@
         "Carmin sur Mer est au sud !",
         "Le port est célèbre pour l'Océane."
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     }
   ],
   "objets_sol": [

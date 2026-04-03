@@ -54,7 +54,8 @@
         "Argenta est juste au nord !",
         "Il y a une arène là-bas, prépare-toi !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     }
   ],
   "objets_sol": [

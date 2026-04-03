@@ -81,7 +81,8 @@
         "La maison de garde au sud mène à Safrania.",
         "Mais la route est bloquée pour le moment..."
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     }
   ],
   "objets_sol": [],

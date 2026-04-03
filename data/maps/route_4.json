@@ -42,7 +42,8 @@
         "La sortie du Mont Sélénite est derrière toi.",
         "Azuria est à l'est !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     }
   ],
   "objets_sol": [

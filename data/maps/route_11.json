@@ -543,7 +543,8 @@
         "Le Diglett's Cave est juste au nord !",
         "Tu peux y accéder par l'entrée."
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     }
   ],
   "panneaux": [

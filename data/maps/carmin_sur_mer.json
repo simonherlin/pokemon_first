@@ -79,7 +79,8 @@
         "Bienvenue à Carmin sur Mer !",
         "Le port est célèbre pour l'Océane."
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     },
     {
       "id": "pnj_carmin_02",
@@ -91,7 +92,8 @@
         "Le Major Bob est le champion d'arène ici.",
         "Il adore les Pokémon Électrik !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     },
     {
       "id": "pnj_carmin_03",
@@ -103,7 +105,8 @@
         "L'Océane est à quai au port.",
         "Il te faut un ticket pour monter à bord !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     },
     {
       "id": "pnj_carmin_04",
@@ -115,7 +118,8 @@
         "L'arbre là-bas bloque le passage vers la Route 9.",
         "Il faudrait pouvoir le couper..."
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     },
     {
       "id": "pnj_ferry_sevii",
@@ -138,7 +142,8 @@
           ]
         }
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     }
   ],
   "objets_sol": [],

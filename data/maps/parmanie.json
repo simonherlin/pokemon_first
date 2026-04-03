@@ -80,8 +80,9 @@
       "dialogue": [
         "PARMANIE\nLa ville au bord de la nature."
       ],
-      "mobile": false,
-      "type": "panneau"
+      "mobile": true,
+      "type": "panneau",
+      "rayon_deplacement": 2
     },
     {
       "id": "pnj_parmanie_01",
@@ -103,7 +104,8 @@
       "dialogue": [
         "L'Arène de Parmanie est spécialisée\nen type Poison.\nAttention aux empoisonnements !"
       ],
-      "mobile": false
+      "mobile": true,
+      "rayon_deplacement": 2
     }
   ],
   "tile_data": [
