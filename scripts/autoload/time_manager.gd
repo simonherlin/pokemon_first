@@ -75,6 +75,24 @@ func get_nom_phase() -> String:
 func est_carte_exterieure(carte_data: Dictionary) -> bool:
 	if carte_data.get("sombre", false):
 		return false  # Les grottes sombres ne sont pas affectées
+	# Les cartes marquées intérieur ne sont pas affectées
+	if carte_data.get("interieur", false):
+		return false
+	# Détection automatique des intérieurs par le nom de la carte
+	var carte_id: String = carte_data.get("id", "")
+	var prefixes_interieur := [
+		"maison_", "centre_pokemon_", "boutique_", "arene_",
+		"laboratoire", "labo_", "tour_pokemon_", "tour_sylphe_",
+		"ss_anne_", "repaire_rocket_", "casino_", "grand_magasin_",
+		"grotte_", "tunnel_", "mont_selenite_", "iles_ecume_",
+		"manoir_pokemon_", "route_victoire_", "grotte_inconnue_",
+		"ligue_", "dojo_", "musee_", "cabane_", "centrale",
+		"parc_safari_entree", "sevii_ile1_", "sevii_ile2_",
+		"sevii_ile3_", "sevii_grotte_"
+	]
+	for prefixe in prefixes_interieur:
+		if carte_id.begins_with(prefixe):
+			return false
 	var tileset: String = carte_data.get("tileset", "")
 	return tileset in ["outdoor", "exterieur"]
 
