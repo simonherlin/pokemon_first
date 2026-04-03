@@ -62,6 +62,7 @@ const INTRO_AUTO_AVANCE := 3.0  # secondes avant auto-avancement
 # --- Timer de sécurité : récupération si recevoir_params meurt ---
 var _scene_timer: float = 0.0
 var _combat_demarre: bool = false
+var _debug_timer: float = 0.0  # timer pour logs périodiques
 
 # --- Positions de base des sprites (pour animations) ---
 var _pos_joueur_base: Vector2 = Vector2.ZERO
@@ -196,13 +197,17 @@ func recevoir_params(params: Dictionary) -> void:
 		_jouer_cri_pokemon(_controller.pokemon_ennemi.espece_id)
 
 	# MAINTENANT démarrer la machine à états (après que l'UI est prête)
-	print("[BattleScene] Démarrage machine à états → INTRO")
+	print("[BattleScene] Démarrage machine à états → INTRO (combat_demarre=%s)" % _combat_demarre)
 	PlayerData.enregistrer_vu(_controller.pokemon_ennemi.espece_id)
+	# GARDE : si le timer de sécurité a déjà tiré pendant les await,
+	# ne pas revenir en INTRO — le combat est déjà en CHOIX_ACTION
+	if _combat_demarre:
+		print("[BattleScene] Combat déjà démarré (sécurité a tiré) — skip INTRO, on reste en CHOIX_ACTION")
+		return
 	_controller._changer_etat(BattleController.Etat.INTRO)
 	# Activer le timer d'intro — _process() gère l'avancement
 	_intro_en_cours = true
 	_intro_timer = 0.0
-	# Ne PAS mettre _combat_demarre ici — on le fait dans _process() quand l'intro avance
 	print("[BattleScene] Intro activée — en attente input (max %.1fs)" % INTRO_AUTO_AVANCE)
 
 # Charger les textures front/back des Pokémon en combat
@@ -450,11 +455,19 @@ func _afficher_info_pokemon() -> void:
 		_maj_indicateur_capture(pe)
 
 func _process(delta: float) -> void:
-	# Timer de sécurité : si après 8 secondes le combat n'a pas démarré correctement
+	# Log périodique toutes les 3 secondes pour diagnostic
+	_debug_timer += delta
+	if _debug_timer >= 3.0:
+		_debug_timer = 0.0
+		var etat_ctrl := "null"
+		if _controller:
+			etat_ctrl = BattleController.Etat.keys()[_controller.etat_actuel] if _controller.etat_actuel < BattleController.Etat.size() else str(_controller.etat_actuel)
+		print("[BattleScene] ÉTAT: menu=%s, intro=%s, demarre=%s, ctrl=%s" % [_menu_actif, _intro_en_cours, _combat_demarre, etat_ctrl])
+	# Timer de sécurité : si après 5 secondes le combat n'a pas démarré correctement
 	if not _combat_demarre:
 		_scene_timer += delta
-		if _scene_timer >= 8.0 and _controller:
-			print("[BattleScene] SÉCURITÉ: combat pas démarré après 8s — forçage CHOIX_ACTION")
+		if _scene_timer >= 5.0 and _controller:
+			print("[BattleScene] SÉCURITÉ: combat pas démarré après 5s — forçage CHOIX_ACTION")
 			_combat_demarre = true
 			_intro_en_cours = false
 			if _controller.pokemon_joueur and _controller.pokemon_ennemi:
@@ -474,6 +487,11 @@ func _process(delta: float) -> void:
 			if _controller:
 				_controller.avancer_intro()
 		return
+	# Filet de sécurité : si le contrôleur est en CHOIX_ACTION mais le menu n'est pas actif
+	if _controller and _controller.etat_actuel == BattleController.Etat.CHOIX_ACTION and _menu_actif == "":
+		print("[BattleScene] FILET: CHOIX_ACTION mais menu vide — réactivation menu")
+		_on_action_requise()
+		return
 	match _menu_actif:
 		"action":
 			_gerer_input_action()
@@ -490,6 +508,7 @@ func _gerer_input_action() -> void:
 		AudioManager.jouer_sfx(SFX_CURSOR)
 		_maj_curseur_action()
 	elif Input.is_action_just_pressed("action_confirmer"):
+		print("[BattleScene] ACTION CONFIRMÉE: %s (index=%d)" % [_actions[_index_action], _index_action])
 		AudioManager.jouer_sfx(SFX_CONFIRM)
 		_menu_actif = ""
 		menu_action.visible = false
