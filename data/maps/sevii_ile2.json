@@ -13,8 +13,7 @@
       "y": 5,
       "vers_map": "sevii_ile2_maison1",
       "vers_warp": "sortie",
-      "type": "porte",
-      "direction": "haut"
+      "type": "porte"
     },
     {
       "id": "maison2_entree",
@@ -22,8 +21,7 @@
       "y": 5,
       "vers_map": "sevii_ile2_maison2",
       "vers_warp": "sortie",
-      "type": "porte",
-      "direction": "haut"
+      "type": "porte"
     },
     {
       "id": "arrivee_marine",

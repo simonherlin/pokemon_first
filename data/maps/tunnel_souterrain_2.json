@@ -21,7 +21,10 @@
       "y": 27,
       "vers_map": "route_8",
       "vers_warp": "entree_tunnel_ouest",
-      "type": "porte"
+      "type": "porte",
+      "exit_x": 6,
+      "exit_y": 27,
+      "exit_direction": "bas"
     },
     {
       "id": "sortie_sud",

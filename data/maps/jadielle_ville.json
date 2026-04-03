@@ -29,8 +29,7 @@
       "y": 5,
       "vers_map": "centre_pokemon_jadielle",
       "vers_warp": "sortie",
-      "type": "porte",
-      "direction": "haut"
+      "type": "porte"
     },
     {
       "id": "boutique_entree",
@@ -38,8 +37,7 @@
       "y": 5,
       "vers_map": "boutique_jadielle",
       "vers_warp": "sortie",
-      "type": "porte",
-      "direction": "haut"
+      "type": "porte"
     },
     {
       "id": "arene_entree",
@@ -47,8 +45,7 @@
       "y": 13,
       "vers_map": "arene_jadielle",
       "vers_warp": "sortie",
-      "type": "porte",
-      "direction": "haut"
+      "type": "porte"
     }
   ],
   "pnj": [

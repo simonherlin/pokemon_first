@@ -29,8 +29,7 @@
       "y": 5,
       "vers_map": "centre_pokemon_lavanville",
       "vers_warp": "sortie",
-      "type": "porte",
-      "direction": "haut"
+      "type": "porte"
     },
     {
       "id": "boutique_entree",
@@ -38,8 +37,7 @@
       "y": 5,
       "vers_map": "boutique_lavanville",
       "vers_warp": "sortie",
-      "type": "porte",
-      "direction": "haut"
+      "type": "porte"
     },
     {
       "id": "tour_pokemon_entree",
@@ -47,8 +45,7 @@
       "y": 3,
       "vers_map": "tour_pokemon_1f",
       "vers_warp": "sortie",
-      "type": "porte",
-      "direction": "haut"
+      "type": "porte"
     },
     {
       "id": "maison_fuji_entree",
@@ -56,8 +53,7 @@
       "y": 12,
       "vers_map": "maison_m_fuji",
       "vers_warp": "sortie",
-      "type": "porte",
-      "direction": "haut"
+      "type": "porte"
     }
   ],
   "pnj": [

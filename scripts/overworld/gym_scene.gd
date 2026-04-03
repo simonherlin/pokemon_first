@@ -157,11 +157,13 @@ func _instancier_pnj() -> void:
 		entities.add_child(npc)
 
 func _teleporter_sur_warp(warp_id: String) -> void:
+	var map_h: int = carte_data.get("hauteur", 12)
 	for warp in carte_data.get("warps", []):
 		if warp.get("id", "") == warp_id or warp.get("vers_warp", "") == warp_id:
 			var x: int = warp.get("x", 0)
 			var y: int = warp.get("y", 0)
-			joueur.teleporter(x, y + 1, "bas")
+			var final_y: int = y + 1 if y + 1 < map_h else y
+			joueur.teleporter(x, final_y, "bas")
 			return
 
 func _on_dialogue_demarre(lignes: Array) -> void:

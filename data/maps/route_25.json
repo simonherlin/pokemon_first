@@ -19,8 +19,7 @@
       "y": 3,
       "vers_map": "maison_bill",
       "vers_warp": "sortie",
-      "type": "porte",
-      "direction": "haut"
+      "type": "porte"
     }
   ],
   "zones_herbes": [

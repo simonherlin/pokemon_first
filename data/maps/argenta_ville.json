@@ -19,8 +19,7 @@
       "y": 5,
       "vers_map": "centre_pokemon_argenta",
       "vers_warp": "sortie",
-      "type": "porte",
-      "direction": "haut"
+      "type": "porte"
     },
     {
       "id": "arene_entree",
@@ -28,8 +27,7 @@
       "y": 10,
       "vers_map": "arene_argenta",
       "vers_warp": "sortie",
-      "type": "porte",
-      "direction": "haut"
+      "type": "porte"
     },
     {
       "id": "musee_entree",
@@ -37,8 +35,7 @@
       "y": 3,
       "vers_map": "musee_argenta",
       "vers_warp": "sortie",
-      "type": "porte",
-      "direction": "haut"
+      "type": "porte"
     }
   ],
   "pnj": [
