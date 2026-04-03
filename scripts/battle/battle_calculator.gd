@@ -69,8 +69,8 @@ func _est_critique(attaquant: Pokemon, attaque: Dictionary) -> bool:
 	var vitesse_base: int = int(attaquant.stats_base.get("vitesse", 50))
 	var taux: float = vitesse_base / 512.0
 	# Attaque à fort taux de critique (ex: Tranche) : ×8
-	if attaque.get("effet", {}) != null:
-		var effet: Dictionary = attaque.get("effet", {})
+	if attaque.get("effet", null) != null and attaque.get("effet") is Dictionary:
+		var effet: Dictionary = attaque.get("effet")
 		if effet.get("type_effet", "") == "critique_eleve":
 			taux *= 8.0
 	return randf() < taux

@@ -27,6 +27,7 @@ extends Node2D
 @onready var label_exp: Label = $BattleHUD/PanelJoueur/LabelEXP
 
 @onready var label_message: RichTextLabel = $BattleHUD/PanelMessage/LabelMessage
+@onready var panel_message: PanelContainer = $BattleHUD/PanelMessage
 @onready var menu_action: VBoxContainer = $BattleHUD/MenuAction
 @onready var menu_attaque: VBoxContainer = $BattleHUD/MenuAttaque
 
@@ -304,10 +305,15 @@ func _exit_tree() -> void:
 	_deconnecter_signaux()
 
 func _on_message(texte: String) -> void:
+	if panel_message:
+		panel_message.visible = true
+	menu_attaque.visible = false
 	label_message.text = texte
 
 func _on_action_requise() -> void:
 	label_message.text = "Que faire ?"
+	if panel_message:
+		panel_message.visible = true
 	_afficher_info_pokemon()
 	_index_action = 0
 	menu_action.visible = true
@@ -316,6 +322,8 @@ func _on_action_requise() -> void:
 	_maj_curseur_action()
 
 func _on_attaque_requise() -> void:
+	if panel_message:
+		panel_message.visible = false
 	_index_attaque = 0
 	menu_action.visible = false
 	menu_attaque.visible = true
@@ -612,7 +620,8 @@ func _utiliser_item_combat(item_id: String) -> void:
 	if categorie == "balls":
 		_controller.joueur_tente_capture(item_id)
 	elif categorie in ["objets"]:
-		var effet: Dictionary = item_data.get("effet", {})
+		var effet_raw = item_data.get("effet", null)
+		var effet: Dictionary = effet_raw if effet_raw is Dictionary else {}
 		var type_effet: String = effet.get("type", "")
 		if type_effet in ["soin_pv", "guerison_statut", "soin_total", "rappel", "soin_pp", "soin_pp_all"]:
 			_choisir_cible_soin(item_id, item_data)
@@ -640,7 +649,8 @@ func _choisir_cible_soin(item_id: String, item_data: Dictionary) -> void:
 
 func _appliquer_soin_combat(item_id: String, item_data: Dictionary, index_cible: int) -> void:
 	var p_data: Dictionary = PlayerData.equipe[index_cible]
-	var effet: Dictionary = item_data.get("effet", {})
+	var effet_raw = item_data.get("effet", null)
+	var effet: Dictionary = effet_raw if effet_raw is Dictionary else {}
 	var type_effet: String = effet.get("type", "")
 	var nom_item: String = item_data.get("nom", item_id)
 	var surnom: String = p_data.get("surnom", "???")

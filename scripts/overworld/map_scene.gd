@@ -509,6 +509,9 @@ func _ouvrir_menu() -> void:
 
 func _on_menu_ferme() -> void:
 	_menu_ouvert = false
+	_start_menu = null
+	if joueur:
+		joueur.set_peut_bouger(true)
 
 # =============================================================================
 # CYCLE JOUR/NUIT
@@ -555,7 +558,4 @@ func _initialiser_meteo() -> void:
 	WeatherManager.configurer_meteo_carte(carte_id, carte_data)
 	if WeatherManager.meteo_actuelle != WeatherManager.Meteo.AUCUNE:
 		WeatherManager.creer_overlay_meteo(self)
-	_start_menu = null
-	if joueur:
-		joueur.set_peut_bouger(true)
 

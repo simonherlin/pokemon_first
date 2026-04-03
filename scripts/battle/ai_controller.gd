@@ -79,8 +79,11 @@ func choisir_changement(equipe: Array, pokemon_actuel: Pokemon, cible: Pokemon) 
 
 # Vérifier si une attaque de statut est utile contre la cible
 func _utile_statut(attaque_data: Dictionary, cible: Pokemon) -> bool:
-	var effet: Dictionary = attaque_data.get("effet", {})
-	if effet == null or effet.is_empty():
+	var effet_raw = attaque_data.get("effet", null)
+	if effet_raw == null or not (effet_raw is Dictionary):
+		return false
+	var effet: Dictionary = effet_raw
+	if effet.is_empty():
 		return false
 	var type_effet: String = effet.get("type_effet", "")
 	match type_effet:

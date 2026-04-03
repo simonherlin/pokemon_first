@@ -69,7 +69,10 @@ func peut_evoluer_niveau(espece_id: String, niveau: int) -> String:
 	var data := get_espece(espece_id)
 	if data.is_empty():
 		return ""
-	var evo: Dictionary = data.get("evolution", {})
+	var evo_raw = data.get("evolution", null)
+	if evo_raw == null or not (evo_raw is Dictionary):
+		return ""
+	var evo: Dictionary = evo_raw
 	if evo.is_empty():
 		return ""
 	if evo.get("methode", "") == "niveau" and niveau >= evo.get("niveau", 999):
@@ -81,7 +84,10 @@ func peut_evoluer_pierre(espece_id: String, pierre_id: String) -> String:
 	var data := get_espece(espece_id)
 	if data.is_empty():
 		return ""
-	var evo: Dictionary = data.get("evolution", {})
+	var evo_raw = data.get("evolution", null)
+	if evo_raw == null or not (evo_raw is Dictionary):
+		return ""
+	var evo: Dictionary = evo_raw
 	if evo.is_empty():
 		return ""
 	# Pierre simple (ex: Pikachu + Pierre Foudre)

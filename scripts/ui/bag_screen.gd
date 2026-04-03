@@ -199,7 +199,8 @@ func _tenter_utiliser_item() -> void:
 	var item_data: Dictionary = ItemsData.get_item(item_id)
 	if item_data.is_empty():
 		return
-	var effet: Dictionary = item_data.get("effet", {})
+	var effet_raw = item_data.get("effet", null)
+	var effet: Dictionary = effet_raw if effet_raw is Dictionary else {}
 	if effet.is_empty():
 		_afficher_message("Cet objet ne peut pas être utilisé ici.", Color.RED)
 		return
@@ -345,7 +346,8 @@ func _fermer_choix_pokemon() -> void:
 
 func _appliquer_item_hors_combat(item_id: String, item_data: Dictionary, index: int) -> void:
 	var p: Dictionary = PlayerData.equipe[index]
-	var effet: Dictionary = item_data.get("effet", {})
+	var effet_raw = item_data.get("effet", null)
+	var effet: Dictionary = effet_raw if effet_raw is Dictionary else {}
 	var type_effet: String = effet.get("type", "")
 	var nom_item: String = item_data.get("nom", item_id)
 	var surnom: String = p.get("surnom", "???")

@@ -6,10 +6,14 @@ extends Node
 # Appliquer l'effet d'une attaque après calcul des dégâts
 # Retourne un dictionnaire décrivant ce qui s'est passé
 func appliquer_effet(attaquant: Pokemon, defenseur: Pokemon, attaque: Dictionary) -> Dictionary:
-	var effet: Dictionary = attaque.get("effet", {})
+	var effet_raw = attaque.get("effet", null)
 	var resultat := {"message": "", "statut_applique": "", "stat_modifiee": ""}
 
-	if effet == null or effet.is_empty():
+	if effet_raw == null or not (effet_raw is Dictionary):
+		return resultat
+	var effet: Dictionary = effet_raw
+
+	if effet.is_empty():
 		return resultat
 
 	var type_effet: String = effet.get("type_effet", "")

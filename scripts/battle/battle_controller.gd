@@ -295,7 +295,9 @@ func joueur_tente_capture(ball_id: String) -> void:
 	var items_data := ItemsData.get_item(ball_id)
 	var multi: float = 1.0
 	if not items_data.is_empty():
-		multi = items_data.get("effet", {}).get("multiplicateur", 1.0)
+		var effet_raw = items_data.get("effet", null)
+		if effet_raw is Dictionary:
+			multi = effet_raw.get("multiplicateur", 1.0)
 	_changer_etat(Etat.CAPTURE)
 	_resoudre_capture(multi)
 
