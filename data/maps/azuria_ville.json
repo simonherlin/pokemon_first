@@ -34,7 +34,8 @@
       "y": 5,
       "vers_map": "centre_pokemon_azuria",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     },
     {
       "id": "boutique_entree",
@@ -42,7 +43,8 @@
       "y": 5,
       "vers_map": "boutique_azuria",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     },
     {
       "id": "arene_entree",
@@ -50,7 +52,8 @@
       "y": 13,
       "vers_map": "arene_azuria",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     },
     {
       "id": "grotte_inconnue_entree",

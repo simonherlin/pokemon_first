@@ -24,7 +24,8 @@
       "y": 13,
       "vers_map": "maison_joueur",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     },
     {
       "id": "maison_rival_entree",
@@ -32,7 +33,8 @@
       "y": 13,
       "vers_map": "maison_rival",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     },
     {
       "id": "laboratoire_entree",
@@ -40,7 +42,8 @@
       "y": 16,
       "vers_map": "laboratoire_chen",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     }
   ],
   "pnj": [
@@ -55,7 +58,14 @@
         "D'ici partent de grands aventuriers !"
       ],
       "dialogue_conditions": [
-        {"flag": "champion_ligue_battu", "valeur": true, "dialogue": ["Tu es le nouveau Maître\nPokémon ?!", "Bourg Palette est fière de toi !"]}
+        {
+          "flag": "champion_ligue_battu",
+          "valeur": true,
+          "dialogue": [
+            "Tu es le nouveau Maître\nPokémon ?!",
+            "Bourg Palette est fière de toi !"
+          ]
+        }
       ],
       "mobile": false
     },

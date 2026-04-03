@@ -264,11 +264,50 @@ func _ouvrir_boutique(items: Array) -> void:
 
 func _teleporter_sur_warp(warp_id: String) -> void:
 	for warp in carte_data.get("warps", []):
-		if warp.get("id", "") == warp_id or warp.get("vers_warp", "") == warp_id:
+		if warp.get("id", "") == warp_id:
 			var x: int = warp.get("x", 0)
 			var y: int = warp.get("y", 0)
-			joueur.teleporter(x, y + 1, "bas")  # Un tile sous le warp
+			var warp_type: String = warp.get("type", "porte")
+			var dir: String = warp.get("direction", "")
+			# Calculer l'offset et la direction selon le type de warp
+			var offset_x: int = 0
+			var offset_y: int = 0
+			if warp_type == "escalier":
+				# Escalier : apparaître SUR le warp, direction depuis les données ou "bas"
+				if dir.is_empty():
+					dir = "bas"
+			else:
+				# Porte / sortie : apparaître un tile devant la porte
+				if dir.is_empty():
+					# Deviner la direction : si sortie d'un bâtiment, aller vers le bas
+					# Si entrée dans un bâtiment, aller vers le haut
+					dir = "bas"
+				# Offset selon la direction de sortie
+				match dir:
+					"bas":
+						offset_y = 1
+					"haut":
+						offset_y = -1
+					"gauche":
+						offset_x = -1
+					"droite":
+						offset_x = 1
+			var final_x := x + offset_x
+			var final_y := y + offset_y
+			print("[MapScene] Warp '%s' type=%s → (%d,%d) dir=%s" % [warp_id, warp_type, final_x, final_y, dir])
+			joueur.teleporter(final_x, final_y, dir)
+			PlayerData.sauvegarder_position(carte_id, final_x, final_y, dir)
 			return
+	# Warp introuvable — essayer de trouver par vers_warp en fallback
+	for warp in carte_data.get("warps", []):
+		if warp.get("vers_warp", "") == warp_id:
+			var x: int = warp.get("x", 0)
+			var y: int = warp.get("y", 0)
+			print("[MapScene] Warp '%s' trouvé par vers_warp (fallback) → (%d,%d+1)" % [warp_id, x, y])
+			joueur.teleporter(x, y + 1, "bas")
+			PlayerData.sauvegarder_position(carte_id, x, y + 1, "bas")
+			return
+	push_warning("[MapScene] Warp '%s' introuvable dans carte '%s'" % [warp_id, carte_id])
 
 func _afficher_nom_carte() -> void:
 	var nom: String = carte_data.get("nom", carte_id)

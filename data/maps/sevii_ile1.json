@@ -19,7 +19,8 @@
       "y": 5,
       "vers_map": "sevii_ile1_centre_pokemon",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     },
     {
       "id": "boutique_entree",
@@ -27,7 +28,8 @@
       "y": 5,
       "vers_map": "sevii_ile1_boutique",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     },
     {
       "id": "maison_entree",
@@ -35,7 +37,8 @@
       "y": 10,
       "vers_map": "sevii_ile1_maison",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     },
     {
       "id": "port_ferry",

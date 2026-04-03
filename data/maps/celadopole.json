@@ -24,7 +24,8 @@
       "y": 5,
       "vers_map": "centre_pokemon_celadopole",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     },
     {
       "id": "grand_magasin_entree",
@@ -32,7 +33,8 @@
       "y": 5,
       "vers_map": "grand_magasin_1f",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     },
     {
       "id": "casino_entree",
@@ -40,7 +42,8 @@
       "y": 14,
       "vers_map": "casino_celadopole",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     },
     {
       "id": "arene_entree",
@@ -48,7 +51,8 @@
       "y": 14,
       "vers_map": "arene_celadopole",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     },
     {
       "id": "maison_evoli_entree",
@@ -56,7 +60,8 @@
       "y": 9,
       "vers_map": "maison_evoli_celadopole",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     }
   ],
   "zones_herbes": [],

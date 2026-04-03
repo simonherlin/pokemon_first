@@ -752,7 +752,10 @@ func _maj_menu_attaque() -> void:
 		if i < attaques.size():
 			var md := MoveData.get_move(attaques[i]["id"])
 			var type_atk: String = md.get("type", "normal").to_upper().left(3)
-			labels[i].text = "%s  %s  %d/%d" % [md.get("nom", "???"), type_atk, attaques[i]["pp_actuels"], attaques[i]["pp_max"]]
+			var pp_txt := "%d/%d" % [attaques[i]["pp_actuels"], attaques[i]["pp_max"]]
+			labels[i].text = "  %s  %s  %s" % [md.get("nom", "???"), type_atk, pp_txt]
+			labels[i].clip_text = true
+			labels[i].text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 			labels[i].visible = true
 		else:
 			labels[i].visible = false
@@ -764,8 +767,9 @@ func _maj_curseur_attaque() -> void:
 		if i < attaques.size():
 			var md := MoveData.get_move(attaques[i]["id"])
 			var type_atk: String = md.get("type", "normal").to_upper().left(3)
+			var pp_txt := "%d/%d" % [attaques[i]["pp_actuels"], attaques[i]["pp_max"]]
 			var prefix := "▶ " if i == _index_attaque else "  "
-			labels[i].text = prefix + "%s  %s  %d/%d" % [md.get("nom", "???"), type_atk, attaques[i]["pp_actuels"], attaques[i]["pp_max"]]
+			labels[i].text = prefix + "%s  %s  %s" % [md.get("nom", "???"), type_atk, pp_txt]
 
 func _abreger_statut(statut: String) -> String:
 	match statut:

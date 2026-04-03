@@ -27,7 +27,8 @@
       "y": 5,
       "vers_map": "centre_pokemon_plateau",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     },
     {
       "id": "ligue_entree",
@@ -35,7 +36,8 @@
       "y": 5,
       "vers_map": "ligue_olga",
       "vers_warp": "entree",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     }
   ],
   "zones_herbes": [],

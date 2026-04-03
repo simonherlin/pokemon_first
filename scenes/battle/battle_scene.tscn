@@ -213,22 +213,38 @@ offset_bottom = 310.0
 visible = false
 theme_override_constants/separation = 4
 
+[node name="BgAttaque" type="ColorRect" parent="BattleHUD/MenuAttaque"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+show_behind_parent = true
+color = Color(0.95, 0.95, 0.9, 1)
+
 [node name="LabelAttaque1" type="Label" parent="BattleHUD/MenuAttaque"]
 layout_mode = 2
 text = "Attaque 1"
+clip_text = true
+text_overrun_behavior = 3
 theme_override_font_sizes/font_size = 10
 
 [node name="LabelAttaque2" type="Label" parent="BattleHUD/MenuAttaque"]
 layout_mode = 2
 text = "Attaque 2"
+clip_text = true
+text_overrun_behavior = 3
 theme_override_font_sizes/font_size = 10
 
 [node name="LabelAttaque3" type="Label" parent="BattleHUD/MenuAttaque"]
 layout_mode = 2
 text = "Attaque 3"
+clip_text = true
+text_overrun_behavior = 3
 theme_override_font_sizes/font_size = 10
 
 [node name="LabelAttaque4" type="Label" parent="BattleHUD/MenuAttaque"]
 layout_mode = 2
 text = "Attaque 4"
+clip_text = true
+text_overrun_behavior = 3
 theme_override_font_sizes/font_size = 10

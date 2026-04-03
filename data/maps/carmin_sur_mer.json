@@ -24,7 +24,8 @@
       "y": 5,
       "vers_map": "centre_pokemon_carmin",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     },
     {
       "id": "boutique_entree",
@@ -32,7 +33,8 @@
       "y": 5,
       "vers_map": "boutique_carmin",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     },
     {
       "id": "arene_entree",
@@ -40,7 +42,8 @@
       "y": 13,
       "vers_map": "arene_carmin",
       "vers_warp": "sortie",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     },
     {
       "id": "port_entree",
@@ -48,7 +51,8 @@
       "y": 15,
       "vers_map": "ss_anne_pont",
       "vers_warp": "sortie_port",
-      "type": "porte"
+      "type": "porte",
+      "direction": "haut"
     },
     {
       "id": "sevii_ferry_depart",
