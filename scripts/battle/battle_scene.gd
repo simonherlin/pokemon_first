@@ -78,6 +78,8 @@ func _ready() -> void:
 	var bg_texture := load("res://assets/sprites/ui/battle_bg.png") as Texture2D
 	if bg_texture and background:
 		background.color = Color(0.75, 0.85, 0.65, 1)
+	# Fallback : si recevoir_params n'est jamais appelé, s'auto-initialiser
+	call_deferred("_auto_init_fallback")
 	# Charger le mapping des sprites de dresseurs
 	_charger_trainer_sprites_data()
 	# Sauvegarder les positions de base des sprites pour les animations
@@ -98,6 +100,25 @@ func _ready() -> void:
 	# Cacher l'indicateur de capture par défaut
 	if label_capture:
 		label_capture.visible = false
+
+# Fallback : appelé via call_deferred depuis _ready
+# Si après 2 frames recevoir_params n'a toujours pas été appelé,
+# on récupère les params depuis SceneManager.derniers_params_scene
+func _auto_init_fallback() -> void:
+	# Attendre 2 frames pour laisser SceneManager appeler recevoir_params
+	await get_tree().process_frame
+	await get_tree().process_frame
+	if _controller != null:
+		# recevoir_params a déjà été appelé — tout va bien
+		return
+	# recevoir_params n'a PAS été appelé — fallback
+	print("[BattleScene] ⚠ FALLBACK: recevoir_params jamais appelé — récupération params depuis SceneManager")
+	var params: Dictionary = SceneManager.derniers_params_scene
+	if params.is_empty():
+		push_error("[BattleScene] FALLBACK: aucun paramètre disponible — retour carte")
+		SceneManager.charger_scene("res://scenes/maps/bourg_palette.tscn", {})
+		return
+	recevoir_params(params)
 
 func recevoir_params(params: Dictionary) -> void:
 	print("[BattleScene] recevoir_params: type=%s, carte_retour=%s" % [params.get("type_combat", "sauvage"), params.get("carte_retour", "?")])
@@ -466,16 +487,22 @@ func _process(delta: float) -> void:
 	# Timer de sécurité : si après 5 secondes le combat n'a pas démarré correctement
 	if not _combat_demarre:
 		_scene_timer += delta
-		if _scene_timer >= 5.0 and _controller:
-			print("[BattleScene] SÉCURITÉ: combat pas démarré après 5s — forçage CHOIX_ACTION")
-			_combat_demarre = true
-			_intro_en_cours = false
-			if _controller.pokemon_joueur and _controller.pokemon_ennemi:
-				_controller._changer_etat(BattleController.Etat.CHOIX_ACTION)
-			else:
-				push_error("[BattleScene] SÉCURITÉ: pokemon null — retour à la carte")
+		if _scene_timer >= 5.0:
+			if _controller:
+				print("[BattleScene] SÉCURITÉ: combat pas démarré après 5s — forçage CHOIX_ACTION")
+				_combat_demarre = true
+				_intro_en_cours = false
+				if _controller.pokemon_joueur and _controller.pokemon_ennemi:
+					_controller._changer_etat(BattleController.Etat.CHOIX_ACTION)
+				else:
+					push_error("[BattleScene] SÉCURITÉ: pokemon null — retour à la carte")
+					SceneManager.charger_scene("res://scenes/maps/%s.tscn" % _carte_retour, {})
+				return
+			elif _scene_timer >= 10.0:
+				# 10 secondes et toujours pas de controller — abandon total
+				push_error("[BattleScene] CRITIQUE: 10s sans controller — retour carte")
 				SceneManager.charger_scene("res://scenes/maps/%s.tscn" % _carte_retour, {})
-			return
+				return
 	# Gérer l'avancement de l'intro (remplace le await timer dans le controller)
 	if _intro_en_cours:
 		_intro_timer += delta
