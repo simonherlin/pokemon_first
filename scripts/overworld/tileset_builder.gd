@@ -2,81 +2,194 @@ extends Node
 
 # TileSetBuilder — Crée le TileSet Godot 4 à partir de l'atlas tileset_outdoor.png
 # Utilisé par MapScene pour construire les TileMaps au runtime
+# Version RFVF : tileset 16 colonnes × 16 lignes = 256 tiles à 32×32px
 
 # --- Constantes ---
 const TAILLE_TILE := 32
-const COLONNES_ATLAS := 8
+const COLONNES_ATLAS := 16
 
-# Indices des tiles (correspondance avec l'atlas)
-# Ligne 0 : Terrain de base
+# ===== INDICES DES TILES (correspondance atlas 16 colonnes) =====
+
+# --- Ligne 0 : Sols extérieurs ---
 const TILE_HERBE := 0
-const TILE_HERBE_HAUTE := 1
-const TILE_CHEMIN := 2
-const TILE_SABLE := 3
-const TILE_EAU := 4
-const TILE_FLEUR := 5
-# Ligne 1 : Arbres et végétation
-const TILE_ARBRE_HAUT := 8
-const TILE_ARBRE_BAS := 9
-const TILE_ARBRE_HAUT_R := 10
-const TILE_ARBRE_BAS_R := 11
-const TILE_FENCE_H := 12
-const TILE_FENCE_V := 13
-const TILE_BUISSON := 14
-const TILE_HERBE_DETAIL := 15
-# Ligne 2 : Maisons
-const TILE_TOIT_G := 16
-const TILE_TOIT_M := 17
-const TILE_TOIT_D := 18
-const TILE_MUR_G := 19
-const TILE_MUR_M := 20
-const TILE_MUR_D := 21
-const TILE_PORTE := 22
-const TILE_FENETRE := 23
-# Ligne 3 : Intérieur
-const TILE_SOL_INT := 24
-const TILE_MUR_INT := 25
-const TILE_COMPTOIR := 26
-const TILE_MACHINE_SOIN := 27
-const TILE_ETAGERE := 28
-const TILE_TAPIS := 29
-const TILE_SOL_CARRELAGE := 30
-const TILE_MUR_MOTIF := 31
+const TILE_HERBE_VARIANTE := 1
+const TILE_HERBE_FLEURS := 2
+const TILE_HERBE_HAUTE := 3
+const TILE_CHEMIN := 4
+const TILE_CHEMIN_BORD_HAUT := 5
+const TILE_CHEMIN_BORD_BAS := 6
+const TILE_CHEMIN_BORD_GAUCHE := 7
+const TILE_CHEMIN_BORD_DROIT := 8
+const TILE_CHEMIN_COIN_HG := 9
+const TILE_CHEMIN_COIN_HD := 10
+const TILE_CHEMIN_COIN_BG := 11
+const TILE_CHEMIN_COIN_BD := 12
+const TILE_CHEMIN_COIN_INT_HG := 13
+const TILE_CHEMIN_COIN_INT_HD := 14
+const TILE_SABLE := 15
 
-# Ligne 4 : Chambre / Salon
-const TILE_LIT_TETE := 32
-const TILE_LIT_PIED := 33
-const TILE_TV := 34
-const TILE_PC := 35
-const TILE_PLANTE := 36
-const TILE_ESCALIER_UP := 37
-const TILE_ESCALIER_DOWN := 38
-const TILE_PAILLASSON := 39
+# --- Ligne 1 : Eau et rivages ---
+const TILE_EAU := 16
+const TILE_EAU_RIVAGE_HAUT := 17
+const TILE_EAU_RIVAGE_BAS := 18
+const TILE_EAU_RIVAGE_GAUCHE := 19
+const TILE_EAU_RIVAGE_DROIT := 20
+const TILE_EAU_COIN_HG := 21
+const TILE_EAU_COIN_HD := 22
+const TILE_EAU_COIN_BG := 23
+const TILE_EAU_COIN_BD := 24
+const TILE_EAU_COIN_INT_HG := 25
+const TILE_EAU_COIN_INT_HD := 26
+const TILE_EAU_COIN_INT_BG := 27
+const TILE_EAU_COIN_INT_BD := 28
+const TILE_CHEMIN_COIN_INT_BG := 29
+const TILE_CHEMIN_COIN_INT_BD := 30
+const TILE_RESERVE := 31
 
-# Ligne 5 : Intérieur avancé
-const TILE_PORTE_INT := 40
-const TILE_FENETRE_INT := 41
-const TILE_SOL_BOIS_FONCE := 42
-const TILE_MUR_EXT_FENETRE := 43
-const TILE_TABLE := 44
-const TILE_CHAISE := 45
-const TILE_POSTER := 46
-const TILE_POUBELLE := 47
+# --- Ligne 2 : Arbres, végétation, obstacles ---
+const TILE_ARBRE_HG := 32
+const TILE_ARBRE_HD := 33
+const TILE_ARBRE_BG := 34
+const TILE_ARBRE_BD := 35
+const TILE_BUISSON := 36
+const TILE_PETIT_ARBRE := 37
+const TILE_ROCHER := 38
+const TILE_CLOTURE_H := 39
+const TILE_CLOTURE_V := 40
+const TILE_PANNEAU := 41
+const TILE_BOITE_LETTRES := 42
+const TILE_REBORD_HAUT := 43
+const TILE_REBORD_GAUCHE := 44
+const TILE_REBORD_DROIT := 45
+const TILE_SOUCHE := 46
+const TILE_HERBE_RESERVE := 47
 
-# --- Tiles avec collision (murs, obstacles, mobilier) ---
+# --- Ligne 3 : Maisons toit rouge ---
+const TILE_MAISON_TOIT_HG := 48
+const TILE_MAISON_TOIT_HM := 49
+const TILE_MAISON_TOIT_HD := 50
+const TILE_MAISON_TOIT_BG := 51
+const TILE_MAISON_TOIT_BM := 52
+const TILE_MAISON_TOIT_BD := 53
+const TILE_MAISON_MUR_G := 54
+const TILE_MAISON_MUR_M := 55
+const TILE_MAISON_MUR_D := 56
+const TILE_MAISON_FENETRE := 57
+const TILE_MAISON_PORTE := 58
+
+# --- Ligne 4 : Labo Chen (toit bleu) ---
+const TILE_LABO_TOIT_HG := 64
+const TILE_LABO_TOIT_HM := 65
+const TILE_LABO_TOIT_HD := 66
+const TILE_LABO_TOIT_BG := 67
+const TILE_LABO_TOIT_BM := 68
+const TILE_LABO_TOIT_BD := 69
+const TILE_LABO_MUR_G := 70
+const TILE_LABO_MUR_M := 71
+const TILE_LABO_MUR_D := 72
+const TILE_LABO_FENETRE := 73
+const TILE_LABO_PORTE := 74
+
+# --- Ligne 5 : Centre Pokémon + Boutique ---
+const TILE_CENTRE_TOIT_G := 80
+const TILE_CENTRE_TOIT_M := 81
+const TILE_CENTRE_TOIT_D := 82
+const TILE_CENTRE_MUR_G := 83
+const TILE_CENTRE_PORTE := 84
+const TILE_CENTRE_MUR_D := 85
+const TILE_BOUTIQUE_TOIT_G := 86
+const TILE_BOUTIQUE_TOIT_M := 87
+const TILE_BOUTIQUE_TOIT_D := 88
+const TILE_BOUTIQUE_MUR_G := 89
+const TILE_BOUTIQUE_PORTE := 90
+const TILE_BOUTIQUE_MUR_D := 91
+const TILE_ARENE_SOL := 92
+const TILE_ARENE_STATUE := 93
+
+# --- Ligne 6 : Intérieur base ---
+const TILE_SOL_INT := 96
+const TILE_MUR_INT := 97
+const TILE_COMPTOIR := 98
+const TILE_MACHINE_SOIN := 99
+const TILE_ETAGERE := 100
+const TILE_TAPIS := 101
+const TILE_SOL_CARRELAGE := 102
+const TILE_MUR_MOTIF := 103
+const TILE_LIT_TETE := 104
+const TILE_LIT_PIED := 105
+const TILE_TV := 106
+const TILE_PC := 107
+const TILE_PLANTE := 108
+const TILE_ESCALIER_UP := 109
+const TILE_ESCALIER_DOWN := 110
+const TILE_PAILLASSON := 111
+
+# --- Ligne 7 : Intérieur avancé ---
+const TILE_PORTE_INT := 112
+const TILE_FENETRE_INT := 113
+const TILE_SOL_BOIS_FONCE := 114
+const TILE_MUR_EXT_FENETRE := 115
+const TILE_TABLE := 116
+const TILE_CHAISE := 117
+const TILE_POSTER := 118
+const TILE_POUBELLE := 119
+const TILE_CARRELAGE_MOTIF := 120
+const TILE_NOIR := 121
+const TILE_VIDE := 122
+
+# Alias de compatibilité (ancien → nouveau)
+const TILE_FLEUR := 2            # herbe_fleurs
+const TILE_PORTE := 58           # maison_porte
+const TILE_FENETRE := 57         # maison_fenetre
+const TILE_ARBRE_HAUT := 32      # arbre_hg (compatibilité)
+const TILE_ARBRE_BAS := 34       # arbre_bg
+const TILE_ARBRE_HAUT_R := 33    # arbre_hd
+const TILE_ARBRE_BAS_R := 35     # arbre_bd
+const TILE_FENCE_H := 39         # cloture_h
+const TILE_FENCE_V := 40         # cloture_v
+const TILE_HERBE_DETAIL := 1     # herbe_variante
+const TILE_TOIT_G := 48          # maison_toit_hg
+const TILE_TOIT_M := 49          # maison_toit_hm
+const TILE_TOIT_D := 50          # maison_toit_hd
+const TILE_MUR_G := 54           # maison_mur_g
+const TILE_MUR_M := 55           # maison_mur_m
+const TILE_MUR_D := 56           # maison_mur_d
+
+# --- Tiles avec collision ---
 const TILES_COLLISION := [
-	TILE_EAU, TILE_ARBRE_HAUT, TILE_ARBRE_BAS,
-	TILE_ARBRE_HAUT_R, TILE_ARBRE_BAS_R,
-	TILE_FENCE_H, TILE_FENCE_V, TILE_BUISSON,
-	TILE_TOIT_G, TILE_TOIT_M, TILE_TOIT_D,
-	TILE_MUR_G, TILE_MUR_M, TILE_MUR_D, TILE_FENETRE,
+	# Eau
+	TILE_EAU,
+	# Arbres (4 quadrants)
+	TILE_ARBRE_HG, TILE_ARBRE_HD, TILE_ARBRE_BG, TILE_ARBRE_BD,
+	# Obstacles extérieurs
+	TILE_BUISSON, TILE_PETIT_ARBRE, TILE_ROCHER,
+	TILE_CLOTURE_H, TILE_CLOTURE_V, TILE_PANNEAU, TILE_BOITE_LETTRES,
+	# Rebords (sautables vers le bas seulement — pour l'instant bloquant)
+	TILE_REBORD_HAUT,
+	# Toits maisons rouges
+	TILE_MAISON_TOIT_HG, TILE_MAISON_TOIT_HM, TILE_MAISON_TOIT_HD,
+	TILE_MAISON_TOIT_BG, TILE_MAISON_TOIT_BM, TILE_MAISON_TOIT_BD,
+	# Murs maisons (pas les portes)
+	TILE_MAISON_MUR_G, TILE_MAISON_MUR_M, TILE_MAISON_MUR_D, TILE_MAISON_FENETRE,
+	# Toits labo
+	TILE_LABO_TOIT_HG, TILE_LABO_TOIT_HM, TILE_LABO_TOIT_HD,
+	TILE_LABO_TOIT_BG, TILE_LABO_TOIT_BM, TILE_LABO_TOIT_BD,
+	# Murs labo
+	TILE_LABO_MUR_G, TILE_LABO_MUR_M, TILE_LABO_MUR_D, TILE_LABO_FENETRE,
+	# Centre Pokémon toits et murs
+	TILE_CENTRE_TOIT_G, TILE_CENTRE_TOIT_M, TILE_CENTRE_TOIT_D,
+	TILE_CENTRE_MUR_G, TILE_CENTRE_MUR_D,
+	# Boutique toits et murs
+	TILE_BOUTIQUE_TOIT_G, TILE_BOUTIQUE_TOIT_M, TILE_BOUTIQUE_TOIT_D,
+	TILE_BOUTIQUE_MUR_G, TILE_BOUTIQUE_MUR_D,
+	# Mobilier intérieur (bloquant)
 	TILE_MUR_INT, TILE_COMPTOIR, TILE_MACHINE_SOIN,
 	TILE_ETAGERE, TILE_MUR_MOTIF,
-	# Mobilier intérieur (bloquant)
 	TILE_LIT_TETE, TILE_LIT_PIED, TILE_TV, TILE_PC,
 	TILE_PLANTE, TILE_FENETRE_INT, TILE_MUR_EXT_FENETRE,
-	TILE_TABLE, TILE_CHAISE, TILE_POSTER, TILE_POUBELLE
-	# Note : TILE_ESCALIER_UP/DOWN, TILE_PORTE_INT, TILE_PAILLASSON = traversables (warps)
+	TILE_TABLE, TILE_CHAISE, TILE_POSTER, TILE_POUBELLE,
+	TILE_ARENE_STATUE,
+	# Note : Portes, escaliers, paillasson = traversables (warps ou libre)
 ]
 
 # --- Cache ---

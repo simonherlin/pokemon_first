@@ -1,258 +1,779 @@
 {
   "tile_0": {
     "name": "herbe",
-    "pattern": "plain",
     "atlas_x": 0,
     "atlas_y": 0,
     "col": 0,
     "row": 0
   },
   "tile_1": {
-    "name": "herbe_haute",
-    "pattern": "grass_pattern",
+    "name": "herbe_variante",
     "atlas_x": 32,
     "atlas_y": 0,
     "col": 1,
     "row": 0
   },
   "tile_2": {
-    "name": "chemin",
-    "pattern": "plain",
+    "name": "herbe_fleurs",
     "atlas_x": 64,
     "atlas_y": 0,
     "col": 2,
     "row": 0
   },
   "tile_3": {
-    "name": "sable",
-    "pattern": "plain",
+    "name": "herbe_haute",
     "atlas_x": 96,
     "atlas_y": 0,
     "col": 3,
     "row": 0
   },
   "tile_4": {
-    "name": "eau",
-    "pattern": "water_pattern",
+    "name": "chemin",
     "atlas_x": 128,
     "atlas_y": 0,
     "col": 4,
     "row": 0
   },
   "tile_5": {
-    "name": "fleur",
-    "pattern": "flower_pattern",
+    "name": "chemin_bord_haut",
     "atlas_x": 160,
     "atlas_y": 0,
     "col": 5,
     "row": 0
   },
   "tile_6": {
-    "name": "noir",
-    "pattern": "plain",
+    "name": "chemin_bord_bas",
     "atlas_x": 192,
     "atlas_y": 0,
     "col": 6,
     "row": 0
   },
   "tile_7": {
-    "name": "noir",
-    "pattern": "plain",
+    "name": "chemin_bord_gauche",
     "atlas_x": 224,
     "atlas_y": 0,
     "col": 7,
     "row": 0
   },
   "tile_8": {
-    "name": "arbre_haut",
-    "pattern": "tree_top",
-    "atlas_x": 0,
-    "atlas_y": 32,
-    "col": 0,
-    "row": 1
+    "name": "chemin_bord_droit",
+    "atlas_x": 256,
+    "atlas_y": 0,
+    "col": 8,
+    "row": 0
   },
   "tile_9": {
-    "name": "arbre_bas",
-    "pattern": "tree_trunk",
-    "atlas_x": 32,
-    "atlas_y": 32,
-    "col": 1,
-    "row": 1
+    "name": "chemin_coin_hg",
+    "atlas_x": 288,
+    "atlas_y": 0,
+    "col": 9,
+    "row": 0
   },
   "tile_10": {
-    "name": "arbre_haut",
-    "pattern": "tree_top_r",
-    "atlas_x": 64,
-    "atlas_y": 32,
-    "col": 2,
-    "row": 1
+    "name": "chemin_coin_hd",
+    "atlas_x": 320,
+    "atlas_y": 0,
+    "col": 10,
+    "row": 0
   },
   "tile_11": {
-    "name": "arbre_bas",
-    "pattern": "tree_trunk_r",
-    "atlas_x": 96,
-    "atlas_y": 32,
-    "col": 3,
-    "row": 1
+    "name": "chemin_coin_bg",
+    "atlas_x": 352,
+    "atlas_y": 0,
+    "col": 11,
+    "row": 0
   },
   "tile_12": {
-    "name": "fence",
-    "pattern": "fence_h",
-    "atlas_x": 128,
-    "atlas_y": 32,
-    "col": 4,
-    "row": 1
+    "name": "chemin_coin_bd",
+    "atlas_x": 384,
+    "atlas_y": 0,
+    "col": 12,
+    "row": 0
   },
   "tile_13": {
-    "name": "fence",
-    "pattern": "fence_v",
-    "atlas_x": 160,
-    "atlas_y": 32,
-    "col": 5,
-    "row": 1
+    "name": "chemin_coin_int_hg",
+    "atlas_x": 416,
+    "atlas_y": 0,
+    "col": 13,
+    "row": 0
   },
   "tile_14": {
-    "name": "herbe",
-    "pattern": "bush",
-    "atlas_x": 192,
-    "atlas_y": 32,
-    "col": 6,
-    "row": 1
+    "name": "chemin_coin_int_hd",
+    "atlas_x": 448,
+    "atlas_y": 0,
+    "col": 14,
+    "row": 0
   },
   "tile_15": {
-    "name": "herbe_haute",
-    "pattern": "tall_grass",
+    "name": "sable",
+    "atlas_x": 480,
+    "atlas_y": 0,
+    "col": 15,
+    "row": 0
+  },
+  "tile_16": {
+    "name": "eau",
+    "atlas_x": 0,
+    "atlas_y": 32,
+    "col": 0,
+    "row": 1
+  },
+  "tile_17": {
+    "name": "eau_rivage_haut",
+    "atlas_x": 32,
+    "atlas_y": 32,
+    "col": 1,
+    "row": 1
+  },
+  "tile_18": {
+    "name": "eau_rivage_bas",
+    "atlas_x": 64,
+    "atlas_y": 32,
+    "col": 2,
+    "row": 1
+  },
+  "tile_19": {
+    "name": "eau_rivage_gauche",
+    "atlas_x": 96,
+    "atlas_y": 32,
+    "col": 3,
+    "row": 1
+  },
+  "tile_20": {
+    "name": "eau_rivage_droit",
+    "atlas_x": 128,
+    "atlas_y": 32,
+    "col": 4,
+    "row": 1
+  },
+  "tile_21": {
+    "name": "eau_coin_hg",
+    "atlas_x": 160,
+    "atlas_y": 32,
+    "col": 5,
+    "row": 1
+  },
+  "tile_22": {
+    "name": "eau_coin_hd",
+    "atlas_x": 192,
+    "atlas_y": 32,
+    "col": 6,
+    "row": 1
+  },
+  "tile_23": {
+    "name": "eau_coin_bg",
     "atlas_x": 224,
     "atlas_y": 32,
     "col": 7,
     "row": 1
   },
-  "tile_16": {
-    "name": "maison_toit",
-    "pattern": "roof_l",
-    "atlas_x": 0,
-    "atlas_y": 64,
-    "col": 0,
-    "row": 2
-  },
-  "tile_17": {
-    "name": "maison_toit",
-    "pattern": "roof_m",
-    "atlas_x": 32,
-    "atlas_y": 64,
-    "col": 1,
-    "row": 2
-  },
-  "tile_18": {
-    "name": "maison_toit",
-    "pattern": "roof_r",
-    "atlas_x": 64,
-    "atlas_y": 64,
-    "col": 2,
-    "row": 2
-  },
-  "tile_19": {
-    "name": "maison_mur",
-    "pattern": "wall_l",
-    "atlas_x": 96,
-    "atlas_y": 64,
-    "col": 3,
-    "row": 2
-  },
-  "tile_20": {
-    "name": "maison_mur",
-    "pattern": "wall_m",
-    "atlas_x": 128,
-    "atlas_y": 64,
-    "col": 4,
-    "row": 2
-  },
-  "tile_21": {
-    "name": "maison_mur",
-    "pattern": "wall_r",
-    "atlas_x": 160,
-    "atlas_y": 64,
-    "col": 5,
-    "row": 2
-  },
-  "tile_22": {
-    "name": "maison_porte",
-    "pattern": "door",
-    "atlas_x": 192,
-    "atlas_y": 64,
-    "col": 6,
-    "row": 2
-  },
-  "tile_23": {
-    "name": "maison_mur",
-    "pattern": "window",
-    "atlas_x": 224,
-    "atlas_y": 64,
-    "col": 7,
-    "row": 2
-  },
   "tile_24": {
-    "name": "interieur_sol",
-    "pattern": "plain",
-    "atlas_x": 0,
-    "atlas_y": 96,
-    "col": 0,
-    "row": 3
+    "name": "eau_coin_bd",
+    "atlas_x": 256,
+    "atlas_y": 32,
+    "col": 8,
+    "row": 1
   },
   "tile_25": {
-    "name": "interieur_mur",
-    "pattern": "plain",
+    "name": "eau_coin_int_hg",
+    "atlas_x": 288,
+    "atlas_y": 32,
+    "col": 9,
+    "row": 1
+  },
+  "tile_26": {
+    "name": "eau_coin_int_hd",
+    "atlas_x": 320,
+    "atlas_y": 32,
+    "col": 10,
+    "row": 1
+  },
+  "tile_27": {
+    "name": "eau_coin_int_bg",
+    "atlas_x": 352,
+    "atlas_y": 32,
+    "col": 11,
+    "row": 1
+  },
+  "tile_28": {
+    "name": "eau_coin_int_bd",
+    "atlas_x": 384,
+    "atlas_y": 32,
+    "col": 12,
+    "row": 1
+  },
+  "tile_29": {
+    "name": "chemin_coin_int_bg",
+    "atlas_x": 416,
+    "atlas_y": 32,
+    "col": 13,
+    "row": 1
+  },
+  "tile_30": {
+    "name": "chemin_coin_int_bd",
+    "atlas_x": 448,
+    "atlas_y": 32,
+    "col": 14,
+    "row": 1
+  },
+  "tile_31": {
+    "name": "reserve",
+    "atlas_x": 480,
+    "atlas_y": 32,
+    "col": 15,
+    "row": 1
+  },
+  "tile_32": {
+    "name": "arbre_hg",
+    "atlas_x": 0,
+    "atlas_y": 64,
+    "col": 0,
+    "row": 2
+  },
+  "tile_33": {
+    "name": "arbre_hd",
+    "atlas_x": 32,
+    "atlas_y": 64,
+    "col": 1,
+    "row": 2
+  },
+  "tile_34": {
+    "name": "arbre_bg",
+    "atlas_x": 64,
+    "atlas_y": 64,
+    "col": 2,
+    "row": 2
+  },
+  "tile_35": {
+    "name": "arbre_bd",
+    "atlas_x": 96,
+    "atlas_y": 64,
+    "col": 3,
+    "row": 2
+  },
+  "tile_36": {
+    "name": "buisson",
+    "atlas_x": 128,
+    "atlas_y": 64,
+    "col": 4,
+    "row": 2
+  },
+  "tile_37": {
+    "name": "petit_arbre",
+    "atlas_x": 160,
+    "atlas_y": 64,
+    "col": 5,
+    "row": 2
+  },
+  "tile_38": {
+    "name": "rocher",
+    "atlas_x": 192,
+    "atlas_y": 64,
+    "col": 6,
+    "row": 2
+  },
+  "tile_39": {
+    "name": "cloture_h",
+    "atlas_x": 224,
+    "atlas_y": 64,
+    "col": 7,
+    "row": 2
+  },
+  "tile_40": {
+    "name": "cloture_v",
+    "atlas_x": 256,
+    "atlas_y": 64,
+    "col": 8,
+    "row": 2
+  },
+  "tile_41": {
+    "name": "panneau",
+    "atlas_x": 288,
+    "atlas_y": 64,
+    "col": 9,
+    "row": 2
+  },
+  "tile_42": {
+    "name": "boite_lettres",
+    "atlas_x": 320,
+    "atlas_y": 64,
+    "col": 10,
+    "row": 2
+  },
+  "tile_43": {
+    "name": "rebord_haut",
+    "atlas_x": 352,
+    "atlas_y": 64,
+    "col": 11,
+    "row": 2
+  },
+  "tile_44": {
+    "name": "rebord_gauche",
+    "atlas_x": 384,
+    "atlas_y": 64,
+    "col": 12,
+    "row": 2
+  },
+  "tile_45": {
+    "name": "rebord_droit",
+    "atlas_x": 416,
+    "atlas_y": 64,
+    "col": 13,
+    "row": 2
+  },
+  "tile_46": {
+    "name": "souche",
+    "atlas_x": 448,
+    "atlas_y": 64,
+    "col": 14,
+    "row": 2
+  },
+  "tile_47": {
+    "name": "herbe_reserve",
+    "atlas_x": 480,
+    "atlas_y": 64,
+    "col": 15,
+    "row": 2
+  },
+  "tile_48": {
+    "name": "maison_toit_hg",
+    "atlas_x": 0,
+    "atlas_y": 96,
+    "col": 0,
+    "row": 3
+  },
+  "tile_49": {
+    "name": "maison_toit_hm",
     "atlas_x": 32,
     "atlas_y": 96,
     "col": 1,
     "row": 3
   },
-  "tile_26": {
-    "name": "comptoir",
-    "pattern": "plain",
+  "tile_50": {
+    "name": "maison_toit_hd",
     "atlas_x": 64,
     "atlas_y": 96,
     "col": 2,
     "row": 3
   },
-  "tile_27": {
-    "name": "machine_soin",
-    "pattern": "machine",
+  "tile_51": {
+    "name": "maison_toit_bg",
     "atlas_x": 96,
     "atlas_y": 96,
     "col": 3,
     "row": 3
   },
-  "tile_28": {
-    "name": "etagere",
-    "pattern": "shelf",
+  "tile_52": {
+    "name": "maison_toit_bm",
     "atlas_x": 128,
     "atlas_y": 96,
     "col": 4,
     "row": 3
   },
-  "tile_29": {
-    "name": "tapis_rouge",
-    "pattern": "carpet",
+  "tile_53": {
+    "name": "maison_toit_bd",
     "atlas_x": 160,
     "atlas_y": 96,
     "col": 5,
     "row": 3
   },
-  "tile_30": {
-    "name": "interieur_sol",
-    "pattern": "tile_pattern",
+  "tile_54": {
+    "name": "maison_mur_g",
     "atlas_x": 192,
     "atlas_y": 96,
     "col": 6,
     "row": 3
   },
-  "tile_31": {
-    "name": "interieur_mur",
-    "pattern": "wall_pattern",
+  "tile_55": {
+    "name": "maison_mur_m",
     "atlas_x": 224,
     "atlas_y": 96,
     "col": 7,
     "row": 3
+  },
+  "tile_56": {
+    "name": "maison_mur_d",
+    "atlas_x": 256,
+    "atlas_y": 96,
+    "col": 8,
+    "row": 3
+  },
+  "tile_57": {
+    "name": "maison_fenetre",
+    "atlas_x": 288,
+    "atlas_y": 96,
+    "col": 9,
+    "row": 3
+  },
+  "tile_58": {
+    "name": "maison_porte",
+    "atlas_x": 320,
+    "atlas_y": 96,
+    "col": 10,
+    "row": 3
+  },
+  "tile_64": {
+    "name": "labo_toit_hg",
+    "atlas_x": 0,
+    "atlas_y": 128,
+    "col": 0,
+    "row": 4
+  },
+  "tile_65": {
+    "name": "labo_toit_hm",
+    "atlas_x": 32,
+    "atlas_y": 128,
+    "col": 1,
+    "row": 4
+  },
+  "tile_66": {
+    "name": "labo_toit_hd",
+    "atlas_x": 64,
+    "atlas_y": 128,
+    "col": 2,
+    "row": 4
+  },
+  "tile_67": {
+    "name": "labo_toit_bg",
+    "atlas_x": 96,
+    "atlas_y": 128,
+    "col": 3,
+    "row": 4
+  },
+  "tile_68": {
+    "name": "labo_toit_bm",
+    "atlas_x": 128,
+    "atlas_y": 128,
+    "col": 4,
+    "row": 4
+  },
+  "tile_69": {
+    "name": "labo_toit_bd",
+    "atlas_x": 160,
+    "atlas_y": 128,
+    "col": 5,
+    "row": 4
+  },
+  "tile_70": {
+    "name": "labo_mur_g",
+    "atlas_x": 192,
+    "atlas_y": 128,
+    "col": 6,
+    "row": 4
+  },
+  "tile_71": {
+    "name": "labo_mur_m",
+    "atlas_x": 224,
+    "atlas_y": 128,
+    "col": 7,
+    "row": 4
+  },
+  "tile_72": {
+    "name": "labo_mur_d",
+    "atlas_x": 256,
+    "atlas_y": 128,
+    "col": 8,
+    "row": 4
+  },
+  "tile_73": {
+    "name": "labo_fenetre",
+    "atlas_x": 288,
+    "atlas_y": 128,
+    "col": 9,
+    "row": 4
+  },
+  "tile_74": {
+    "name": "labo_porte",
+    "atlas_x": 320,
+    "atlas_y": 128,
+    "col": 10,
+    "row": 4
+  },
+  "tile_80": {
+    "name": "centre_toit_g",
+    "atlas_x": 0,
+    "atlas_y": 160,
+    "col": 0,
+    "row": 5
+  },
+  "tile_81": {
+    "name": "centre_toit_m",
+    "atlas_x": 32,
+    "atlas_y": 160,
+    "col": 1,
+    "row": 5
+  },
+  "tile_82": {
+    "name": "centre_toit_d",
+    "atlas_x": 64,
+    "atlas_y": 160,
+    "col": 2,
+    "row": 5
+  },
+  "tile_83": {
+    "name": "centre_mur_g",
+    "atlas_x": 96,
+    "atlas_y": 160,
+    "col": 3,
+    "row": 5
+  },
+  "tile_84": {
+    "name": "centre_porte",
+    "atlas_x": 128,
+    "atlas_y": 160,
+    "col": 4,
+    "row": 5
+  },
+  "tile_85": {
+    "name": "centre_mur_d",
+    "atlas_x": 160,
+    "atlas_y": 160,
+    "col": 5,
+    "row": 5
+  },
+  "tile_86": {
+    "name": "boutique_toit_g",
+    "atlas_x": 192,
+    "atlas_y": 160,
+    "col": 6,
+    "row": 5
+  },
+  "tile_87": {
+    "name": "boutique_toit_m",
+    "atlas_x": 224,
+    "atlas_y": 160,
+    "col": 7,
+    "row": 5
+  },
+  "tile_88": {
+    "name": "boutique_toit_d",
+    "atlas_x": 256,
+    "atlas_y": 160,
+    "col": 8,
+    "row": 5
+  },
+  "tile_89": {
+    "name": "boutique_mur_g",
+    "atlas_x": 288,
+    "atlas_y": 160,
+    "col": 9,
+    "row": 5
+  },
+  "tile_90": {
+    "name": "boutique_porte",
+    "atlas_x": 320,
+    "atlas_y": 160,
+    "col": 10,
+    "row": 5
+  },
+  "tile_91": {
+    "name": "boutique_mur_d",
+    "atlas_x": 352,
+    "atlas_y": 160,
+    "col": 11,
+    "row": 5
+  },
+  "tile_92": {
+    "name": "arene_sol",
+    "atlas_x": 384,
+    "atlas_y": 160,
+    "col": 12,
+    "row": 5
+  },
+  "tile_93": {
+    "name": "arene_statue",
+    "atlas_x": 416,
+    "atlas_y": 160,
+    "col": 13,
+    "row": 5
+  },
+  "tile_96": {
+    "name": "sol_bois",
+    "atlas_x": 0,
+    "atlas_y": 192,
+    "col": 0,
+    "row": 6
+  },
+  "tile_97": {
+    "name": "mur_interieur",
+    "atlas_x": 32,
+    "atlas_y": 192,
+    "col": 1,
+    "row": 6
+  },
+  "tile_98": {
+    "name": "comptoir",
+    "atlas_x": 64,
+    "atlas_y": 192,
+    "col": 2,
+    "row": 6
+  },
+  "tile_99": {
+    "name": "machine_soin",
+    "atlas_x": 96,
+    "atlas_y": 192,
+    "col": 3,
+    "row": 6
+  },
+  "tile_100": {
+    "name": "etagere",
+    "atlas_x": 128,
+    "atlas_y": 192,
+    "col": 4,
+    "row": 6
+  },
+  "tile_101": {
+    "name": "tapis",
+    "atlas_x": 160,
+    "atlas_y": 192,
+    "col": 5,
+    "row": 6
+  },
+  "tile_102": {
+    "name": "sol_carrelage",
+    "atlas_x": 192,
+    "atlas_y": 192,
+    "col": 6,
+    "row": 6
+  },
+  "tile_103": {
+    "name": "mur_motif",
+    "atlas_x": 224,
+    "atlas_y": 192,
+    "col": 7,
+    "row": 6
+  },
+  "tile_104": {
+    "name": "lit_tete",
+    "atlas_x": 256,
+    "atlas_y": 192,
+    "col": 8,
+    "row": 6
+  },
+  "tile_105": {
+    "name": "lit_pied",
+    "atlas_x": 288,
+    "atlas_y": 192,
+    "col": 9,
+    "row": 6
+  },
+  "tile_106": {
+    "name": "tv",
+    "atlas_x": 320,
+    "atlas_y": 192,
+    "col": 10,
+    "row": 6
+  },
+  "tile_107": {
+    "name": "pc",
+    "atlas_x": 352,
+    "atlas_y": 192,
+    "col": 11,
+    "row": 6
+  },
+  "tile_108": {
+    "name": "plante",
+    "atlas_x": 384,
+    "atlas_y": 192,
+    "col": 12,
+    "row": 6
+  },
+  "tile_109": {
+    "name": "escalier_haut",
+    "atlas_x": 416,
+    "atlas_y": 192,
+    "col": 13,
+    "row": 6
+  },
+  "tile_110": {
+    "name": "escalier_bas",
+    "atlas_x": 448,
+    "atlas_y": 192,
+    "col": 14,
+    "row": 6
+  },
+  "tile_111": {
+    "name": "paillasson",
+    "atlas_x": 480,
+    "atlas_y": 192,
+    "col": 15,
+    "row": 6
+  },
+  "tile_112": {
+    "name": "porte_int",
+    "atlas_x": 0,
+    "atlas_y": 224,
+    "col": 0,
+    "row": 7
+  },
+  "tile_113": {
+    "name": "fenetre_int",
+    "atlas_x": 32,
+    "atlas_y": 224,
+    "col": 1,
+    "row": 7
+  },
+  "tile_114": {
+    "name": "bois_fonce",
+    "atlas_x": 64,
+    "atlas_y": 224,
+    "col": 2,
+    "row": 7
+  },
+  "tile_115": {
+    "name": "mur_ext_fenetre",
+    "atlas_x": 96,
+    "atlas_y": 224,
+    "col": 3,
+    "row": 7
+  },
+  "tile_116": {
+    "name": "table",
+    "atlas_x": 128,
+    "atlas_y": 224,
+    "col": 4,
+    "row": 7
+  },
+  "tile_117": {
+    "name": "chaise",
+    "atlas_x": 160,
+    "atlas_y": 224,
+    "col": 5,
+    "row": 7
+  },
+  "tile_118": {
+    "name": "poster",
+    "atlas_x": 192,
+    "atlas_y": 224,
+    "col": 6,
+    "row": 7
+  },
+  "tile_119": {
+    "name": "poubelle",
+    "atlas_x": 224,
+    "atlas_y": 224,
+    "col": 7,
+    "row": 7
+  },
+  "tile_120": {
+    "name": "carrelage_motif",
+    "atlas_x": 256,
+    "atlas_y": 224,
+    "col": 8,
+    "row": 7
+  },
+  "tile_121": {
+    "name": "noir",
+    "atlas_x": 288,
+    "atlas_y": 224,
+    "col": 9,
+    "row": 7
+  },
+  "tile_122": {
+    "name": "vide",
+    "atlas_x": 320,
+    "atlas_y": 224,
+    "col": 10,
+    "row": 7
   }
 }

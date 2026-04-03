@@ -28,9 +28,30 @@
         "Je fais des recherches sur les POKÉMON."
       ],
       "dialogue_conditions": [
-        {"flag": "champion_ligue_battu", "valeur": true, "dialogue": ["Tu as battu le Conseil 4 !", "Ton Pokédex doit être bien rempli !\nJe suis fier de toi !"]},
-        {"flag": "pokedex_recu", "valeur": true, "dialogue": ["Comment va ton POKÉDEX ?", "Continue de chercher des POKÉMON !"]},
-        {"flag": "premier_pokemon_recu", "valeur": true, "dialogue": ["Tu as un POKÉMON maintenant !", "Pars à l'aventure et remplis\nton POKÉDEX !"]}
+        {
+          "flag": "champion_ligue_battu",
+          "valeur": true,
+          "dialogue": [
+            "Tu as battu le Conseil 4 !",
+            "Ton Pokédex doit être bien rempli !\nJe suis fier de toi !"
+          ]
+        },
+        {
+          "flag": "pokedex_recu",
+          "valeur": true,
+          "dialogue": [
+            "Comment va ton POKÉDEX ?",
+            "Continue de chercher des POKÉMON !"
+          ]
+        },
+        {
+          "flag": "premier_pokemon_recu",
+          "valeur": true,
+          "dialogue": [
+            "Tu as un POKÉMON maintenant !",
+            "Pars à l'aventure et remplis\nton POKÉDEX !"
+          ]
+        }
       ],
       "mobile": false,
       "type": "special"
@@ -46,8 +67,22 @@
         "Je veux mon POKÉMON !"
       ],
       "dialogue_conditions": [
-        {"flag": "champion_ligue_battu", "valeur": true, "dialogue": ["...Je n'arrive pas à croire\nque tu m'aies battu.", "La prochaine fois, je serai\nplus fort !"]},
-        {"flag": "rival_labo_battu", "valeur": true, "dialogue": ["Hmph ! Ne crois pas que\nc'est fini entre nous !", "Je deviendrai le meilleur\ndresseur !"]}
+        {
+          "flag": "champion_ligue_battu",
+          "valeur": true,
+          "dialogue": [
+            "...Je n'arrive pas à croire\nque tu m'aies battu.",
+            "La prochaine fois, je serai\nplus fort !"
+          ]
+        },
+        {
+          "flag": "rival_labo_battu",
+          "valeur": true,
+          "dialogue": [
+            "Hmph ! Ne crois pas que\nc'est fini entre nous !",
+            "Je deviendrai le meilleur\ndresseur !"
+          ]
+        }
       ],
       "mobile": false,
       "type": "special"
@@ -57,174 +92,150 @@
   "panneaux": [],
   "tiles_sol": [
     [
-      24,
-      24,
-      24,
-      24,
-      24,
-      24,
-      24,
-      24,
-      24,
-      24
+      96,
+      96,
+      96,
+      96,
+      96,
+      96,
+      96,
+      96,
+      96,
+      96
     ],
     [
-      24,
-      24,
-      24,
-      24,
-      24,
-      24,
-      24,
-      24,
-      24,
-      24
+      96,
+      96,
+      96,
+      96,
+      96,
+      96,
+      96,
+      96,
+      96,
+      96
     ],
     [
-      24,
-      24,
-      24,
-      24,
-      29,
-      29,
-      24,
-      24,
-      24,
-      24
+      96,
+      96,
+      96,
+      96,
+      101,
+      101,
+      96,
+      96,
+      96,
+      96
     ],
     [
-      24,
-      24,
-      24,
-      24,
-      29,
-      29,
-      24,
-      24,
-      24,
-      24
+      96,
+      96,
+      96,
+      96,
+      101,
+      101,
+      96,
+      96,
+      96,
+      96
     ],
     [
-      24,
-      24,
-      24,
-      24,
-      29,
-      29,
-      24,
-      24,
-      24,
-      24
+      96,
+      96,
+      96,
+      96,
+      101,
+      101,
+      96,
+      96,
+      96,
+      96
     ],
     [
-      24,
-      24,
-      24,
-      24,
-      29,
-      29,
-      24,
-      24,
-      24,
-      24
+      96,
+      96,
+      96,
+      96,
+      101,
+      101,
+      96,
+      96,
+      96,
+      96
     ],
     [
-      24,
-      24,
-      24,
-      24,
-      29,
-      29,
-      24,
-      24,
-      24,
-      24
+      96,
+      96,
+      96,
+      96,
+      101,
+      101,
+      96,
+      96,
+      96,
+      96
     ],
     [
-      24,
-      24,
-      24,
-      24,
-      29,
-      29,
-      24,
-      24,
-      24,
-      24
+      96,
+      96,
+      96,
+      96,
+      101,
+      101,
+      96,
+      96,
+      96,
+      96
     ],
     [
-      24,
-      24,
-      24,
-      24,
-      29,
-      29,
-      24,
-      24,
-      24,
-      24
+      96,
+      96,
+      96,
+      96,
+      101,
+      101,
+      96,
+      96,
+      96,
+      96
     ],
     [
-      24,
-      24,
-      24,
-      24,
-      29,
-      29,
-      24,
-      24,
-      24,
-      24
+      96,
+      96,
+      96,
+      96,
+      101,
+      101,
+      96,
+      96,
+      96,
+      96
     ]
   ],
   "tiles_objets": [
     [
-      25,
-      25,
-      25,
-      25,
-      25,
-      25,
-      25,
-      25,
-      25,
-      25
+      97,
+      97,
+      97,
+      97,
+      97,
+      97,
+      97,
+      97,
+      97,
+      97
     ],
     [
-      25,
-      27,
-      26,
-      26,
-      26,
-      26,
-      26,
-      27,
+      97,
+      99,
+      98,
+      98,
+      98,
+      98,
+      98,
+      99,
       -1,
-      25
-    ],
-    [
-      -1,
-      -1,
-      -1,
-      -1,
-      -1,
-      -1,
-      -1,
-      -1,
-      -1,
-      -1
-    ],
-    [
-      -1,
-      -1,
-      30,
-      30,
-      -1,
-      -1,
-      -1,
-      -1,
-      -1,
-      -1
+      97
     ],
     [
       -1,
@@ -241,12 +252,12 @@
     [
       -1,
       -1,
-      30,
-      30,
+      102,
+      102,
       -1,
       -1,
-      30,
-      30,
+      -1,
+      -1,
       -1,
       -1
     ],
@@ -259,6 +270,18 @@
       -1,
       -1,
       -1,
+      -1,
+      -1
+    ],
+    [
+      -1,
+      -1,
+      102,
+      102,
+      -1,
+      -1,
+      102,
+      102,
       -1,
       -1
     ],
@@ -287,7 +310,6 @@
       -1
     ],
     [
-      25,
       -1,
       -1,
       -1,
@@ -296,7 +318,20 @@
       -1,
       -1,
       -1,
-      25
+      -1,
+      -1
+    ],
+    [
+      97,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      97
     ]
   ],
   "tile_data": [

@@ -232,6 +232,32 @@ func _entrer_warp(warp: Dictionary) -> void:
 		var flag_requis := _get_flag_ligue_requis(PlayerData.carte_actuelle)
 		if not flag_requis.is_empty() and not GameManager.get_flag(flag_requis):
 			return  # Warp bloqué : vaincre le champion d'abord
+
+	# Vérifier les conditions d'accès au warp (ex: arène Jadielle = 7 badges)
+	var condition: Dictionary = warp.get("condition", {})
+	if not condition.is_empty():
+		var cond_type: String = condition.get("type", "")
+		var autorise: bool = true
+
+		if cond_type == "badges":
+			var nb_requis: int = condition.get("nombre", 0)
+			if GameManager.nombre_badges() < nb_requis:
+				autorise = false
+		elif cond_type == "flag":
+			var flag_cle: String = condition.get("flag", "")
+			var flag_val = condition.get("valeur", true)
+			if not flag_cle.is_empty() and GameManager.get_flag(flag_cle) != flag_val:
+				autorise = false
+
+		if not autorise:
+			# Afficher le message de refus
+			var msg_refus: String = condition.get("message_refus", "L'accès est bloqué.")
+			var scene_root := get_tree().current_scene
+			var dialog_box_node = scene_root.get("dialog_box") if scene_root else null
+			if dialog_box_node and dialog_box_node.has_method("afficher_dialogue"):
+				dialog_box_node.afficher_dialogue([msg_refus])
+			return  # Warp bloqué
+
 	peut_bouger = false
 	var vers_map: String = warp.get("vers_map", "")
 	var vers_warp: String = warp.get("vers_warp", "")
