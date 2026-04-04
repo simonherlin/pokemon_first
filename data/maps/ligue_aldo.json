@@ -30,7 +30,7 @@
       "id": "pnj_ligue_aldo",
       "x": 6,
       "y": 3,
-      "sprite": "champion",
+      "sprite": "bruno",
       "direction": "bas",
       "dialogue": [
         "ALDO : Je suis ALDO !",

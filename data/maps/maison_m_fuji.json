@@ -21,7 +21,7 @@
       "id": "pnj_fuji_aide_01",
       "x": 3,
       "y": 3,
-      "sprite": "pnj_fille",
+      "sprite": "pnj_fillette",
       "direction": "bas",
       "dialogue": [
         "M. Fuji n'est pas encore revenu...",

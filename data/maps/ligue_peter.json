@@ -30,7 +30,7 @@
       "id": "pnj_ligue_peter",
       "x": 6,
       "y": 3,
-      "sprite": "champion",
+      "sprite": "lance",
       "direction": "bas",
       "dialogue": [
         "PETER : Je suis PETER,\nle maître des Dragons !",

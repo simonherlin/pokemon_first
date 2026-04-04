@@ -44,7 +44,7 @@
       "id": "dresseur_rv2_01",
       "x": 6,
       "y": 10,
-      "sprite": "dresseur",
+      "sprite": "dresseur_m",
       "direction": "droite",
       "dialogue": [
         "Tu cherches le Conseil des 4 ?"

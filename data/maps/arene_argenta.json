@@ -21,7 +21,7 @@
       "id": "champion_pierre",
       "x": 6,
       "y": 2,
-      "sprite": "pnj_champion",
+      "sprite": "brock",
       "direction": "bas",
       "dialogue": [
         "Je suis PIERRE, le champion d'Argenta !",
@@ -36,7 +36,7 @@
       "id": "apprenti_arene_01",
       "x": 6,
       "y": 8,
-      "sprite": "pnj_homme",
+      "sprite": "pnj_campeur",
       "direction": "bas",
       "dialogue": [
         "Tu veux affronter Pierre ?",
@@ -50,7 +50,7 @@
       "id": "guide_arene",
       "x": 2,
       "y": 12,
-      "sprite": "pnj_homme",
+      "sprite": "pnj_guide_arene",
       "direction": "droite",
       "dialogue": [
         "Bienvenue à l'Arène d'Argenta !",

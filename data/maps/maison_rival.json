@@ -21,7 +21,7 @@
       "id": "soeur_rival",
       "x": 3,
       "y": 3,
-      "sprite": "pnj_femme",
+      "sprite": "soeur_rival",
       "direction": "bas",
       "dialogue": [
         "Oh, tu cherches mon frère ?",

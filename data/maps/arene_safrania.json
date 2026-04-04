@@ -22,7 +22,7 @@
       "id": "champion_morgane_pnj",
       "x": 6,
       "y": 3,
-      "sprite": "pnj_medium",
+      "sprite": "sabrina",
       "direction": "bas",
       "dialogue": [],
       "mobile": false,

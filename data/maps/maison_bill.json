@@ -21,7 +21,7 @@
       "id": "pnj_bill",
       "x": 5,
       "y": 2,
-      "sprite": "pnj_homme",
+      "sprite": "bill",
       "direction": "bas",
       "dialogue": [
         "Salut ! Je suis BILL !",
@@ -42,7 +42,7 @@
       "id": "pnj_bill_pc",
       "x": 8,
       "y": 1,
-      "sprite": "pnj_homme",
+      "sprite": "bill",
       "direction": "bas",
       "dialogue": [
         "C'est le PC de BILL.",

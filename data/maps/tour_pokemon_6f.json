@@ -21,7 +21,7 @@
       "id": "m_fuji",
       "x": 6,
       "y": 2,
-      "sprite": "pnj_vieux",
+      "sprite": "mr_fuji",
       "direction": "bas",
       "dialogue": [
         "Oh ! Tu es venu me sauver !",

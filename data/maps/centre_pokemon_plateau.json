@@ -22,7 +22,7 @@
       "id": "infirmiere_plateau",
       "x": 5,
       "y": 2,
-      "sprite": "infirmiere",
+      "sprite": "pnj_infirmiere",
       "direction": "bas",
       "dialogue": [
         "Bienvenue au Centre Pokémon !",
@@ -36,7 +36,7 @@
       "id": "pc_plateau",
       "x": 1,
       "y": 2,
-      "sprite": "pc",
+      "sprite": "pnj_pc",
       "direction": "bas",
       "dialogue": [
         "PC allumé.\nAccéder au stockage ?"

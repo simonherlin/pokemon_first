@@ -30,7 +30,7 @@
       "id": "dresseur_rv1_01",
       "x": 7,
       "y": 9,
-      "sprite": "dresseur",
+      "sprite": "dresseur_m",
       "direction": "bas",
       "dialogue": [
         "La Route Victoire élimine les faibles !"
@@ -43,7 +43,7 @@
       "id": "dresseur_rv1_02",
       "x": 13,
       "y": 8,
-      "sprite": "dresseur",
+      "sprite": "dresseur_f",
       "direction": "gauche",
       "dialogue": [
         "Le Conseil des 4 est la\nplus grande épreuve !"

@@ -22,7 +22,7 @@
       "id": "champion_giovanni_arene",
       "x": 6,
       "y": 3,
-      "sprite": "champion",
+      "sprite": "giovanni",
       "direction": "bas",
       "dialogue": [
         "GIOVANNI : Nous nous retrouvons !",
@@ -37,7 +37,7 @@
       "id": "dresseur_01",
       "x": 3,
       "y": 7,
-      "sprite": "dresseur",
+      "sprite": "pnj_karateka",
       "direction": "droite",
       "dialogue": [
         "Le Champion de cette Arène\nest le plus puissant de Kanto !"
@@ -50,7 +50,7 @@
       "id": "dresseur_02",
       "x": 8,
       "y": 5,
-      "sprite": "dresseur",
+      "sprite": "dresseur_m",
       "direction": "gauche",
       "dialogue": [
         "Si tu bats notre Champion,\ntu pourras défier la Ligue !"

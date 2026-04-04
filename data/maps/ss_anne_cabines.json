@@ -44,7 +44,7 @@
       "id": "gentleman_ss_anne_01",
       "x": 8,
       "y": 8,
-      "sprite": "pnj_homme",
+      "sprite": "gentleman",
       "direction": "bas",
       "dialogue": [],
       "mobile": false,

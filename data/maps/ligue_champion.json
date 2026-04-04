@@ -22,7 +22,7 @@
       "id": "pnj_ligue_champion",
       "x": 6,
       "y": 3,
-      "sprite": "champion",
+      "sprite": "pnj_rival",
       "direction": "bas",
       "dialogue": [
         "RÉGIS : Salut !",

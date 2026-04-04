@@ -30,7 +30,7 @@
       "id": "giovanni_sylphe_pnj",
       "x": 7,
       "y": 4,
-      "sprite": "pnj_giovanni",
+      "sprite": "giovanni",
       "direction": "bas",
       "dialogue": [],
       "mobile": false,

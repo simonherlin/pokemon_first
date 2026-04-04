@@ -30,7 +30,7 @@
       "id": "pnj_ligue_olga",
       "x": 6,
       "y": 3,
-      "sprite": "champion",
+      "sprite": "lorelei",
       "direction": "bas",
       "dialogue": [
         "OLGA : Je suis OLGA\ndu Conseil des 4 !",

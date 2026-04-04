@@ -29,7 +29,7 @@
       "id": "montagnard_selenite_02",
       "x": 10,
       "y": 6,
-      "sprite": "pnj_homme",
+      "sprite": "pnj_montagnard",
       "direction": "bas",
       "equipe": [
         {

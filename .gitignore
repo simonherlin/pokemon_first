@@ -40,3 +40,4 @@ tools/source_sprites/*.png
 *.tmp
 *.bak
 tools/__pycache__/
+*.bak

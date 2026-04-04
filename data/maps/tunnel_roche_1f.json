@@ -45,7 +45,7 @@
       "id": "randonneur_tunnel_roche_01",
       "x": 7,
       "y": 11,
-      "sprite": "dresseur_randonneur",
+      "sprite": "pnj_montagnard",
       "direction": "bas",
       "dialogue": [],
       "mobile": false,

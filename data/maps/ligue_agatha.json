@@ -30,7 +30,7 @@
       "id": "pnj_ligue_agatha",
       "x": 6,
       "y": 3,
-      "sprite": "champion",
+      "sprite": "agatha",
       "direction": "bas",
       "dialogue": [
         "AGATHA : Je suis AGATHA\ndu Conseil des 4 !",

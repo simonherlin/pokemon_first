@@ -21,7 +21,7 @@
       "id": "giovanni_repaire",
       "x": 5,
       "y": 4,
-      "sprite": "pnj_giovanni",
+      "sprite": "giovanni",
       "direction": "bas",
       "dialogue": [],
       "mobile": false,

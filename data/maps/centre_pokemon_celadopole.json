@@ -36,7 +36,7 @@
       "id": "pc_celadopole",
       "x": 1,
       "y": 1,
-      "sprite": "pc",
+      "sprite": "pnj_pc",
       "direction": "bas",
       "dialogue": [
         "Le PC est allumé."

@@ -29,7 +29,7 @@
       "id": "maman",
       "x": 2,
       "y": 3,
-      "sprite": "pnj_femme",
+      "sprite": "maman",
       "direction": "bas",
       "dialogue": [
         "Les garçons et leur POKÉMON...",
